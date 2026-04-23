@@ -1,0 +1,104 @@
+{
+  "name": "奇异商店",
+  "nameEN": "Exotic Shop",
+  "startDate": "2025-04-15T00:00:00+08:00",
+  "durationDays": 13,
+  "items": [
+    {
+      "id": 1,
+      "name": "护理关怀",
+      "weapon": "R-301 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/1.jpg",
+      "price": 50
+    },
+    {
+      "id": 2,
+      "name": "火山利器",
+      "weapon": "暴雷 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/2.jpg",
+      "price": 50
+    },
+    {
+      "id": 3,
+      "name": "纱甲防线",
+      "weapon": "CAR 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/3.jpg",
+      "price": 50
+    },
+    {
+      "id": 4,
+      "name": "闪电虫",
+      "weapon": "电能冲锋枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/4.jpg",
+      "price": 50
+    },
+    {
+      "id": 5,
+      "name": "奥丁的恩典",
+      "weapon": "暴雷 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/5.jpg",
+      "price": 50
+    },
+    {
+      "id": 6,
+      "name": "头来人物",
+      "weapon": "敖犬圆弹枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/6.jpg",
+      "price": 50
+    },
+    {
+      "id": 7,
+      "name": "极光猎手",
+      "weapon": "三重狙击枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/7.jpg",
+      "price": 50
+    },
+    {
+      "id": 8,
+      "name": "深渊之眼",
+      "weapon": "哨兵狙击枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/8.jpg",
+      "price": 50
+    },
+    {
+      "id": 9,
+      "name": "烈焰风暴",
+      "weapon": "专注轻机枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/9.jpg",
+      "price": 50
+    },
+    {
+      "id": 10,
+      "name": "冰霜裂痕",
+      "weapon": "平行步枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/10.jpg",
+      "price": 50
+    },
+    {
+      "id": 11,
+      "name": "幽灵协议",
+      "weapon": "转换者冲锋枪 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/11.jpg",
+      "price": 50
+    },
+    {
+      "id": 12,
+      "name": "星际旅者",
+      "weapon": "波塞克弓 皮肤",
+      "type": "暴雷 皮肤",
+      "image": "/shop/exotic/12.jpg",
+      "price": 50
+    }
+  ]
+}

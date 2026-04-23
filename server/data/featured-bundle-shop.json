@@ -1,0 +1,53 @@
+{
+  "name": "精选组合包商店",
+  "nameEN": "Featured Bundle Shop",
+  "startDate": "2026-04-23T00:00:00+08:00",
+  "durationDays": 13,
+  "items": [
+    {
+      "id": 1,
+      "name": "剧毒虚空组合包",
+      "type": "组合包",
+      "image": "/shop/featured-bundle/1.jpg",
+      "originalPrice": 1000,
+      "salePrice": 100,
+      "discount": 90
+    },
+    {
+      "id": 2,
+      "name": "剧毒虚空",
+      "type": "捆绑包",
+      "image": "/shop/featured-bundle/2.jpg",
+      "originalPrice": null,
+      "salePrice": 1800,
+      "discount": null
+    },
+    {
+      "id": 3,
+      "name": "无政府主义导航员组合包",
+      "type": "组合包",
+      "image": "/shop/featured-bundle/3.jpg",
+      "originalPrice": 1000,
+      "salePrice": 300,
+      "discount": 70
+    },
+    {
+      "id": 4,
+      "name": "无政府主义甲航员",
+      "type": "捆绑包",
+      "image": "/shop/featured-bundle/4.jpg",
+      "originalPrice": 1000,
+      "salePrice": 100,
+      "discount": 90
+    },
+    {
+      "id": 5,
+      "name": "生化保镖复古组合包",
+      "type": "组合包",
+      "image": "/shop/featured-bundle/5.jpg",
+      "originalPrice": 1000,
+      "salePrice": 100,
+      "discount": 90
+    }
+  ]
+}

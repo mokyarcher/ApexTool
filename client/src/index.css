@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e7e7ea;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(218,41,42,0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(244,174,61,0.12), transparent 60%),
+    #0B0B0D;
+}
+.font-display { font-family: 'Teko', Impact, sans-serif; letter-spacing: 0.02em; }
+
+.card {
+  @apply bg-apex-panel border border-apex-border rounded-xl;
+}
+.btn {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-apex-border bg-apex-panel hover:border-apex-red hover:text-white transition;
+}
+.chip {
+  @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium;
+}
+
+.rarity-common    { @apply bg-zinc-600/20 text-zinc-200 border border-zinc-500/40; }
+.rarity-rare      { @apply bg-blue-600/20 text-blue-200 border border-blue-500/40; }
+.rarity-epic      { @apply bg-purple-600/20 text-purple-200 border border-purple-500/40; }
+.rarity-legendary { @apply bg-amber-500/20 text-amber-200 border border-amber-500/50; }
+.rarity-mythic    { @apply bg-red-600/25 text-red-200 border border-red-500/50; }
+
+.scroll-fade::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-fade::-webkit-scrollbar-thumb { background: #2A2A31; border-radius: 8px; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}

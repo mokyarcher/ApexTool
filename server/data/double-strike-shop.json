@@ -1,0 +1,53 @@
+{
+  "name": "双重击商店",
+  "nameEN": "Double Strike Shop",
+  "startDate": "2025-04-15T00:00:00+08:00",
+  "durationDays": 6,
+  "items": [
+    {
+      "id": 1,
+      "name": "多元宇宙马尼拉短跑员",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/1.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53
+    },
+    {
+      "id": 2,
+      "name": "火沃尔特菲茨罗伊",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/2.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53
+    },
+    {
+      "id": 3,
+      "name": "脸面飞车",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/3.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53
+    },
+    {
+      "id": 4,
+      "name": "九纶",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/4.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53
+    },
+    {
+      "id": 5,
+      "name": "永远乐观",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/5.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53
+    }
+  ]
+}

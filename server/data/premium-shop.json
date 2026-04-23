@@ -1,0 +1,53 @@
+{
+  "name": "高级射击商店",
+  "nameEN": "Premium Shooting Shop",
+  "startDate": "2025-04-15T00:00:00+08:00",
+  "durationDays": 7,
+  "items": [
+    {
+      "id": 1,
+      "name": "深红竞技",
+      "type": "捆绑包",
+      "image": "/shop/premium/1.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 2,
+      "name": "激波狂欢",
+      "type": "巅峰包",
+      "image": "/shop/premium/2.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 3,
+      "name": "滴水不漏",
+      "type": "捆绑包",
+      "image": "/shop/premium/3.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 4,
+      "name": "半转天才",
+      "type": "巅峰包",
+      "image": "/shop/premium/4.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 5,
+      "name": "夏日灼热",
+      "type": "捆绑包",
+      "image": "/shop/premium/5.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    }
+  ]
+}

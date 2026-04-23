@@ -1,0 +1,84 @@
+{
+  "name": "余震里程碑收集",
+  "nameEN": "Aftershock Milestone Collection",
+  "startDate": "2025-04-10T00:00:00+08:00",
+  "durationDays": 21,
+  "banner": "/shop/milestone/banner.jpg",
+  "description": "选择以查看和购买外观",
+  "featuredItems": [
+    {
+      "id": 1,
+      "name": "太空复仇者",
+      "legend": "琉雀",
+      "image": "/shop/milestone/featured/1.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
+    },
+    {
+      "id": 2,
+      "name": "机器人霸主",
+      "legend": "探路者",
+      "image": "/shop/milestone/featured/2.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
+    },
+    {
+      "id": 3,
+      "name": "赤色遗人",
+      "legend": "艾许",
+      "image": "/shop/milestone/featured/3.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
+    },
+    {
+      "id": 4,
+      "name": "暗影猎手",
+      "legend": "寻血猎犬",
+      "image": "/shop/milestone/featured/4.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
+    }
+  ],
+  "detail": {
+    "title": "余震逆转突击",
+    "subtitle": "里程碑衣服",
+    "icon": "/shop/milestone/icon.jpg",
+    "bundleContents": [
+      "1件限定物品（中心）",
+      "2个装饰物品"
+    ],
+    "probabilities": [
+      { "label": "限定传说级", "value": "~5%" },
+      { "label": "传说级", "value": "10%" },
+      { "label": "史诗级", "value": "20%" },
+      { "label": "稀有级", "value": "70%" }
+    ],
+    "bundles": [
+      { "count": 1, "priceMaterials": 330, "priceCoins": 1850 },
+      { "count": 2, "discount": 40, "priceMaterials": null, "priceCoins": 2200 },
+      { "count": 4, "discount": 60, "priceMaterials": null, "priceCoins": 1650 }
+    ],
+    "milestones": [
+      { "id": 1, "requiredPacks": 2, "reward": { "name": "里程碑奖励 1", "image": "/shop/milestone/milestones/1.jpg" } },
+      { "id": 2, "requiredPacks": 3, "reward": { "name": "里程碑奖励 2", "image": "/shop/milestone/milestones/2.jpg" } },
+      { "id": 3, "requiredPacks": 4, "reward": { "name": "里程碑奖励 3", "image": "/shop/milestone/milestones/3.jpg" } },
+      { "id": 4, "requiredPacks": 5, "reward": { "name": "里程碑奖励 4", "image": "/shop/milestone/milestones/4.jpg" } },
+      { "id": 5, "requiredPacks": 5, "reward": { "name": "里程碑奖励 5", "image": "/shop/milestone/milestones/5.jpg" } }
+    ],
+    "rewards": [
+      { "id": 1, "name": "皮肤 1", "image": "/shop/milestone/rewards/1.jpg", "rarity": "mythic", "featured": true },
+      { "id": 2, "name": "皮肤 2", "image": "/shop/milestone/rewards/2.jpg", "rarity": "legendary" },
+      { "id": 3, "name": "皮肤 3", "image": "/shop/milestone/rewards/3.jpg", "rarity": "legendary" },
+      { "id": 4, "name": "武器皮肤 1", "image": "/shop/milestone/rewards/4.jpg", "rarity": "epic" },
+      { "id": 5, "name": "武器皮肤 2", "image": "/shop/milestone/rewards/5.jpg", "rarity": "epic" },
+      { "id": 6, "name": "皮肤 4", "image": "/shop/milestone/rewards/6.jpg", "rarity": "epic" },
+      { "id": 7, "name": "皮肤 5", "image": "/shop/milestone/rewards/7.jpg", "rarity": "epic" },
+      { "id": 8, "name": "武器皮肤 3", "image": "/shop/milestone/rewards/8.jpg", "rarity": "epic" },
+      { "id": 9, "name": "装饰 1", "image": "/shop/milestone/rewards/9.jpg", "rarity": "rare" },
+      { "id": 10, "name": "装饰 2", "image": "/shop/milestone/rewards/10.jpg", "rarity": "rare" },
+      { "id": 11, "name": "装饰 3", "image": "/shop/milestone/rewards/11.jpg", "rarity": "rare" },
+      { "id": 12, "name": "装饰 4", "image": "/shop/milestone/rewards/12.jpg", "rarity": "rare" }
+    ],
+    "totalItems": 26
+  }
+}
