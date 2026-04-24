@@ -135,4 +135,13 @@ router.get('/exotic', (_req, res) => {
   }
 });
 
+router.get('/mythic', (_req, res) => {
+  try {
+    const data = loadJSON('mythic.json');
+    res.json(data);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 export default router;

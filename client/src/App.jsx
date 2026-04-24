@@ -5,6 +5,7 @@ import Maps from './pages/Maps.jsx';
 import CoinsPage from './pages/Coins.jsx';
 import Crafting from './pages/Crafting.jsx';
 import Shop from './pages/Shop.jsx';
+import Mythic from './pages/Mythic.jsx';
 
 const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
@@ -29,6 +30,14 @@ export default function App() {
             </div>
           </div>
           <nav className="flex items-center gap-1">
+            <NavLink
+              to="/mythic"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-lg text-sm font-bold transition ${isActive ? 'text-red-400 bg-red-500/10 border border-red-500/30' : 'text-red-400 hover:text-red-300 hover:bg-red-500/5 border border-transparent'}`
+              }
+            >
+              神话级
+            </NavLink>
             {navItems.map(({ to, label, icon: Icon }) => (
               <NavLink
                 key={to}
@@ -57,6 +66,7 @@ export default function App() {
           <Route path="/coins" element={<CoinsPage />} />
           <Route path="/crafting" element={<Crafting />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/mythic" element={<Mythic />} />
         </Routes>
       </main>
 

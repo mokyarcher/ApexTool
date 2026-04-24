@@ -1,0 +1,85 @@
+{
+  "heirlooms": {
+    "name": "传家宝",
+    "currency": { "shards": 0 },
+    "items": [
+      { "id": 1, "name": "传家宝刀", "legend": "恶灵", "image": "/mythic/heirloom/1.jpg", "model": "/mythic/heirloom/models/1.glb", "price": 150 },
+      { "id": 2, "name": "寒冬之祸", "legend": "寻血猎犬", "image": "/mythic/heirloom/2.jpg", "model": "/mythic/heirloom/models/2.glb", "price": 150 },
+      { "id": 3, "name": "电击棍", "legend": "命脉", "image": "/mythic/heirloom/3.jpg", "model": "/mythic/heirloom/models/3.glb", "price": 150 },
+      { "id": 4, "name": "贝尔瓦拳击手套", "legend": "探路者", "image": "/mythic/heirloom/4.jpg", "model": "/mythic/heirloom/models/4.glb", "price": 150 },
+      { "id": 5, "name": "蝴蝶刀", "legend": "动力小子", "image": "/mythic/heirloom/5.jpg", "model": "/mythic/heirloom/models/5.glb", "price": 150 },
+      { "id": 6, "name": "机智过人", "legend": "幻象", "image": "/mythic/heirloom/6.jpg", "model": "/mythic/heirloom/models/6.glb", "price": 150 },
+      { "id": 7, "name": "死亡之锤", "legend": "侵蚀", "image": "/mythic/heirloom/7.jpg", "model": "/mythic/heirloom/models/7.glb", "price": 150 },
+      { "id": 8, "name": "狂风战斧", "legend": "直布罗陀", "image": "/mythic/heirloom/8.jpg", "model": "/mythic/heirloom/models/8.glb", "price": 150 },
+      { "id": 9, "name": "冷钢库克力刀", "legend": "班加罗尔", "image": "/mythic/heirloom/9.jpg", "model": "/mythic/heirloom/models/9.glb", "price": 150 },
+      { "id": 10, "name": "死神镰刀", "legend": "亡灵", "image": "/mythic/heirloom/10.jpg", "model": "/mythic/heirloom/models/10.glb", "price": 150 },
+      { "id": 11, "name": "杜鲁米之刃", "legend": "密客", "image": "/mythic/heirloom/11.jpg", "model": "/mythic/heirloom/models/11.glb", "price": 150 },
+      { "id": 12, "name": "能量读数器", "legend": "沃特森", "image": "/mythic/heirloom/12.jpg", "model": "/mythic/heirloom/models/12.glb", "price": 150 },
+      { "id": 13, "name": "朱雀", "legend": "瓦尔基里", "image": "/mythic/heirloom/13.jpg", "model": "/mythic/heirloom/models/13.glb", "price": 150 },
+      { "id": 14, "name": "问题解决者", "legend": "兰伯特", "image": "/mythic/heirloom/14.jpg", "model": "/mythic/heirloom/models/14.glb", "price": 150 },
+      { "id": 15, "name": "阿兰萨之爪", "legend": "罗芭", "image": "/mythic/heirloom/15.jpg", "model": "/mythic/heirloom/models/15.glb", "price": 150 },
+      { "id": 16, "name": "终场表演", "legend": "希尔", "image": "/mythic/heirloom/16.jpg", "model": "/mythic/heirloom/models/16.glb", "price": 150 },
+      { "id": 17, "name": "最强连结", "legend": "艾许", "image": "/mythic/heirloom/17.jpg", "model": "/mythic/heirloom/models/17.glb", "price": 150 },
+      { "id": 18, "name": "狂霆利刃", "legend": "暴雷", "image": "/mythic/heirloom/18.jpg", "model": "/mythic/heirloom/models/18.glb", "price": 150 }
+    ]
+  },
+  "prestigeSkins": {
+    "name": "威望级皮肤",
+    "currency": { "shards": 0 },
+    "items": [
+      { "id": 1, "name": "APEX 星辰", "legend": "地平线", "image": "/mythic/prestige/1.jpg", "price": 150, "badges": ["/mythic/prestige/1-badge1.jpg", "/mythic/prestige/1-badge2.jpg"] },
+      { "id": 2, "name": "APEX 战士", "legend": "疯玛吉", "image": "/mythic/prestige/2.jpg", "price": 150, "badges": ["/mythic/prestige/2-badge1.jpg", "/mythic/prestige/2-badge2.jpg"] },
+      { "id": 3, "name": "APEX 偶像", "legend": "沃特森", "image": "/mythic/prestige/3.jpg", "price": 150, "badges": ["/mythic/prestige/3-badge1.jpg", "/mythic/prestige/3-badge2.jpg"] },
+      { "id": 4, "name": "APEX 猎手", "legend": "寻血猎犬", "image": "/mythic/prestige/4.jpg", "price": 150, "badges": ["/mythic/prestige/4-badge1.jpg", "/mythic/prestige/4-badge2.jpg"] }
+    ]
+  },
+  "artifacts": {
+    "name": "APEX 神器",
+    "currency": { "shards": 0, "tokens": 20 },
+    "items": [
+      {
+        "id": 1,
+        "name": "钴蓝七首",
+        "type": "基础 APEX 神器",
+        "image": "/mythic/artifact/1.jpg",
+        "price": 150,
+        "isBase": true,
+        "evolutions": [
+          { "id": "1a", "name": "钴蓝七首套装", "type": "APEX 神器套装", "image": "/mythic/artifact/1a.jpg", "costPerItem": 10, "owned": 0, "total": 5 },
+          { "id": "1b", "name": "融化七首套装", "type": "APEX 神器套装", "image": "/mythic/artifact/1b.jpg", "costPerItem": 10, "owned": 0, "total": 5 }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "暗影之刃",
+        "type": "基础 APEX 神器",
+        "image": "/mythic/artifact/2.jpg",
+        "price": 150,
+        "isBase": true,
+        "evolutions": [
+          { "id": "2a", "name": "暗影之刃套装", "type": "APEX 神器套装", "image": "/mythic/artifact/2a.jpg", "costPerItem": 10, "owned": 0, "total": 5 },
+          { "id": "2b", "name": "烈焰之刃套装", "type": "APEX 神器套装", "image": "/mythic/artifact/2b.jpg", "costPerItem": 10, "owned": 0, "total": 5 }
+        ]
+      }
+    ]
+  },
+  "universalMelee": {
+    "name": "通用近战",
+    "currency": { "shards": 0, "tokens": 20 },
+    "items": [
+      { "id": 1, "name": "金属女妖套装", "type": "通用近战套装", "image": "/mythic/melee/1.jpg", "costPerItem": 150, "owned": 0, "total": 2 },
+      { "id": 2, "name": "绝命二重奏套装", "type": "通用近战套装", "image": "/mythic/melee/2.jpg", "costPerItem": 10, "owned": 0, "total": 5 },
+      { "id": 3, "name": "满员全垒打套装", "type": "通用近战套装", "image": "/mythic/melee/3.jpg", "costPerItem": 10, "owned": 0, "total": 5 },
+      { "id": 4, "name": "战术利刃套装", "type": "通用近战套装", "image": "/mythic/melee/4.jpg", "costPerItem": 10, "owned": 0, "total": 5 }
+    ]
+  },
+  "mythicWeapons": {
+    "name": "神话武器",
+    "currency": { "shards": 0, "tokens": 20 },
+    "items": [
+      { "id": 1, "name": "激流捕食者", "type": "神话武器套装", "image": "/mythic/weapon/1.jpg", "costPerItem": 10, "owned": 0, "total": 18 },
+      { "id": 2, "name": "猛禽", "type": "神话武器套装", "image": "/mythic/weapon/2.jpg", "costPerItem": 10, "owned": 0, "total": 18 },
+      { "id": 3, "name": "路怒", "type": "神话武器套装", "image": "/mythic/weapon/3.jpg", "costPerItem": 10, "owned": 0, "total": 18 }
+    ]
+  }
+}

@@ -288,7 +288,125 @@ function MilestoneModal({ data, onClose }) {
   );
 }
 
+/* ── Double Strike Bundle Detail Modal ── */
+function DoubleStrikeModal({ item, onClose }) {
+  const [hovered, setHovered] = useState(0);
+  const active = item.contents[hovered];
+
+  useEffect(() => {
+    const h = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', h);
+    return () => document.removeEventListener('keydown', h);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
+      <div
+        className="relative bg-apex-panel border border-apex-border rounded-2xl shadow-2xl flex overflow-hidden"
+        style={{ maxWidth: 1440, maxHeight: '90vh', width: '95vw' }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button className="absolute top-3 right-3 z-20 text-white/60 hover:text-white transition" onClick={onClose}>
+          <X size={22} />
+        </button>
+
+        {/* Left panel - info */}
+        <div className="w-[420px] shrink-0 p-8 flex flex-col justify-between border-r border-apex-border/50">
+          <div>
+            {/* Title + separator */}
+            <h2 className="font-display text-4xl text-white font-bold leading-tight tracking-wide">{item.name}</h2>
+            <div className="h-[2px] bg-gradient-to-r from-zinc-400 to-transparent mt-3 mb-5" />
+
+            {/* Sub-item icon grid */}
+            <div className="flex gap-3">
+              {item.contents.map((c, i) => {
+                const borderColor = c.rarity === '史诗' ? 'border-purple-500' : 'border-amber-500';
+                const activeShadow = c.rarity === '史诗' ? 'shadow-purple-500/30' : 'shadow-amber-500/30';
+                return (
+                  <div
+                    key={c.id}
+                    onMouseEnter={() => setHovered(i)}
+                    className={`w-[72px] h-[72px] rounded-lg border-2 overflow-hidden cursor-pointer transition-all duration-200 ${
+                      i === hovered
+                        ? `${borderColor} shadow-lg ${activeShadow} scale-105`
+                        : `${borderColor}/60 hover:${borderColor}`
+                    }`}
+                  >
+                    <img
+                      src={c.image}
+                      alt={c.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bottom: price + buttons */}
+          <div className="space-y-3">
+            <div className="text-sm text-red-500 font-bold">金币不足</div>
+            {/* Price bar */}
+            <div className="flex items-center gap-4 bg-zinc-800/80 rounded-lg px-5 py-3 border border-zinc-600/50">
+              <span className="text-white font-bold text-base">{item.discount}% 折扣</span>
+              <span className="line-through text-zinc-500 text-base flex items-center gap-1"><Coins size={14} /> {item.originalPrice.toLocaleString()}</span>
+              <span className="text-amber-300 font-bold text-base flex items-center gap-1"><Coins size={14} /> {item.salePrice.toLocaleString()}</span>
+            </div>
+            {/* Action buttons */}
+            <div className="flex gap-3">
+              <button className="flex-1 bg-zinc-700/60 hover:bg-zinc-600/60 border border-zinc-600/50 rounded-lg py-2.5 text-center text-sm text-zinc-300 transition">
+                <div className="flex items-center justify-center gap-1.5"><Gift size={14} /> 赠礼</div>
+                <div className="text-xs text-zinc-500 mt-0.5">需要登录验证</div>
+              </button>
+              <button className="flex-1 bg-amber-600/80 hover:bg-amber-500/80 border border-amber-500/50 rounded-lg py-2.5 text-center text-sm text-white font-semibold transition">
+                获得 APEX 金币
+              </button>
+            </div>
+            {/* ESC hint */}
+            <div className="text-xs text-zinc-500 pt-1">
+              <span className="chip bg-zinc-700/40 text-zinc-300 border-zinc-600/40 mr-2 text-[10px] px-1.5 py-0.5">ESC</span> 返回
+            </div>
+          </div>
+        </div>
+
+        {/* Right panel - large preview */}
+        <div className="flex-1 relative flex items-center justify-center bg-zinc-900/50 overflow-hidden">
+          <img
+            key={active.id}
+            src={active.image}
+            alt={active.name}
+            className="w-full h-full object-contain animate-[fadeScale_0.3s_ease-out]"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Main Shop Page ──────────────────────────────────── */
+
+/* ── helpers ── */
+function toFullImage(path) {
+  const i = path.lastIndexOf('/');
+  return path.slice(0, i) + '/full' + path.slice(i);
+}
+
+/* ── Lightbox ── */
+function ShopLightbox({ src, alt, onClose }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
+  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+  function close() { setVisible(false); setTimeout(onClose, 400); }
+  return (
+    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`} onClick={close}>
+      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
+      <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
+    </div>
+  );
+}
 
 /* ── Horizontal scroll row with arrow buttons ── */
 function ScrollRow({ children, itemWidth = 200, gap = 12 }) {
@@ -325,7 +443,7 @@ function ScrollRow({ children, itemWidth = 200, gap = 12 }) {
       <div
         ref={ref}
         onScroll={check}
-        className="flex overflow-x-auto scroll-smooth scrollbar-hide"
+        className="flex overflow-x-auto scroll-smooth scrollbar-hide py-3 -my-3 px-3 -mx-3"
         style={{ gap }}
       >
         {children}
@@ -343,10 +461,10 @@ function ScrollRow({ children, itemWidth = 200, gap = 12 }) {
 }
 
 /* ── Discount Shop Card (reused by double-strike, featured-bundle, premium) ── */
-function DiscountShopCard({ item }) {
+function DiscountShopCard({ item, onClick }) {
   return (
-    <div className="card overflow-hidden hover:border-apex-red/60 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 w-[200px] shrink-0">
-      <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50">
+    <div className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 w-[200px] shrink-0">
+      <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={onClick}>
         {item.discount && (
           <span className="absolute top-2 left-2 z-10 chip bg-green-600/80 text-white border-0 text-xs font-bold">
             -{item.discount}%
@@ -395,6 +513,8 @@ export default function Shop() {
   const [showMilestone, setShowMilestone] = useState(false);
   const [exPage, setExPage] = useState(0);
   const [rcPage, setRcPage] = useState(0);
+  const [shopLightbox, setShopLightbox] = useState(null);
+  const [dsDetail, setDsDetail] = useState(null);
 
   const msCountdown = useCountdown(msData?.startDate, msData?.durationDays);
   const psCountdown = useCountdown(psData?.startDate, psData?.durationDays);
@@ -466,7 +586,7 @@ export default function Shop() {
           <ShopSectionHeader title={dsData.name} countdown={dsCountdown} />
           <ScrollRow>
             {dsData.items.map((item) => (
-              <DiscountShopCard key={item.id} item={item} />
+              <DiscountShopCard key={item.id} item={item} onClick={() => setDsDetail(item)} />
             ))}
           </ScrollRow>
         </section>
@@ -480,7 +600,7 @@ export default function Shop() {
           <ShopSectionHeader title={psData.name} countdown={psCountdown} />
           <ScrollRow>
             {psData.items.map((item) => (
-              <DiscountShopCard key={item.id} item={item} />
+              <DiscountShopCard key={item.id} item={item} onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })} />
             ))}
           </ScrollRow>
         </section>
@@ -494,7 +614,7 @@ export default function Shop() {
           <ShopSectionHeader title={fbData.name} countdown={fbCountdown} />
           <ScrollRow>
             {fbData.items.map((item) => (
-              <DiscountShopCard key={item.id} item={item} />
+              <DiscountShopCard key={item.id} item={item} onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })} />
             ))}
           </ScrollRow>
         </section>
@@ -545,9 +665,9 @@ export default function Shop() {
               {rcData.items.slice(rcPage * rcPerPage, (rcPage + 1) * rcPerPage).map((item) => (
                 <div
                   key={item.id}
-                  className="card overflow-hidden hover:border-apex-red/60 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                  className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
                 >
-                  <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50">
+                  <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                   </div>
                   <div className="p-3 space-y-1">
@@ -614,9 +734,9 @@ export default function Shop() {
               {exData.items.slice(exPage * perPage, (exPage + 1) * perPage).map((item) => (
                 <div
                   key={item.id}
-                  className="card overflow-hidden hover:border-apex-red/60 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                  className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
                 >
-                  <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50">
+                  <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                   </div>
                   <div className="p-2.5 space-y-0.5">
@@ -636,6 +756,16 @@ export default function Shop() {
       {/* ── Milestone Detail Modal ── */}
       {showMilestone && msData && (
         <MilestoneModal data={msData} onClose={() => setShowMilestone(false)} />
+      )}
+
+      {/* ── Double Strike Detail Modal ── */}
+      {dsDetail && (
+        <DoubleStrikeModal item={dsDetail} onClose={() => setDsDetail(null)} />
+      )}
+
+      {/* ── Shop Lightbox ── */}
+      {shopLightbox && (
+        <ShopLightbox src={shopLightbox.src} alt={shopLightbox.alt} onClose={() => setShopLightbox(null)} />
       )}
     </div>
   );

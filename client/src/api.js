@@ -17,5 +17,6 @@ export const api = {
   doubleStrike: () => req('/shop/double-strike'),
   featuredBundle: () => req('/shop/featured-bundle'),
   recolor: () => req('/shop/recolor'),
-  exotic: () => req('/shop/exotic')
+  exotic: () => req('/shop/exotic'),
+  mythic: () => req('/shop/mythic')
 };
