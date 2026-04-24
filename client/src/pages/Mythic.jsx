@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Flame, Sparkles, X, RotateCcw } from 'lucide-react';
-import '@google/model-viewer';
+import '@google/model-viewer/dist/model-viewer.min.js';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -194,9 +194,45 @@ function SetCard({ item, onClick }) {
 /* ── 3D Model Viewer Modal ── */
 function ModelViewer3D({ item, onClose }) {
   const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState('download'); // 'download' | 'processing' | 'done'
+  const mvRef = useRef(null);
+  const lastProgressTime = useRef(Date.now());
+  const stallTimer = useRef(null);
+
   useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
   useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+
+  useEffect(() => {
+    const el = mvRef.current;
+    if (!el) return;
+    const onProgress = (e) => {
+      const p = Math.round(e.detail.totalProgress * 100);
+      setProgress(p);
+      lastProgressTime.current = Date.now();
+      clearTimeout(stallTimer.current);
+      if (p < 100) {
+        stallTimer.current = setTimeout(() => {
+          if (phase !== 'done') setPhase('processing');
+        }, 1500);
+      }
+    };
+    const onLoad = () => {
+      clearTimeout(stallTimer.current);
+      setProgress(100);
+      setPhase('done');
+    };
+    el.addEventListener('progress', onProgress);
+    el.addEventListener('load', onLoad);
+    return () => {
+      clearTimeout(stallTimer.current);
+      el.removeEventListener('progress', onProgress);
+      el.removeEventListener('load', onLoad);
+    };
+  }, []);
+
   function close() { setVisible(false); setTimeout(onClose, 400); }
+  const isLoading = phase !== 'done';
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
@@ -210,12 +246,36 @@ function ModelViewer3D({ item, onClose }) {
           <div className="text-sm text-zinc-400 mt-1">{item.legend} · 传家宝</div>
           <div className="flex items-center gap-1 text-red-400 font-bold mt-2"><ShardIcon size={16} /> {item.price}</div>
         </div>
+        {/* Loading indicator */}
+        {isLoading && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-3">
+            {phase === 'download' ? (
+              <>
+                <div className="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                <span className="text-sm text-zinc-400">下载模型 {progress}%</span>
+              </>
+            ) : (
+              <>
+                <div className="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full animate-pulse" style={{ width: '100%' }} />
+                </div>
+                <span className="text-sm text-zinc-400 animate-pulse">处理模型中…</span>
+              </>
+            )}
+          </div>
+        )}
         {/* Drag hint */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm">
+        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm transition-opacity duration-300 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
           <RotateCcw size={14} /> 拖拽旋转 · 滚轮缩放
         </div>
         {/* model-viewer */}
         <model-viewer
+          ref={mvRef}
           src={item.model}
           poster={item.image}
           alt={item.name}
