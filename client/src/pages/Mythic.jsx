@@ -28,9 +28,9 @@ function PagedRow({ children, itemsPerPage = 5 }) {
           <button
             onClick={() => setPage((p) => Math.max(0, p - 1))}
             disabled={page === 0}
-            className="w-7 h-7 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
+            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
           >
-            <ChevronLeft size={16} />
+            <ChevronLeft size={22} />
           </button>
           <div className="flex gap-1">
             {Array.from({ length: totalPages }).map((_, i) => (
@@ -43,9 +43,9 @@ function PagedRow({ children, itemsPerPage = 5 }) {
           <button
             onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
             disabled={page === totalPages - 1}
-            className="w-7 h-7 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
+            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
           >
-            <ChevronRight size={16} />
+            <ChevronRight size={22} />
           </button>
         </div>
       )}
