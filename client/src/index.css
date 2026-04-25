@@ -39,3 +39,68 @@ body {
   from { opacity: 0; transform: scale(0.92); }
   to   { opacity: 1; transform: scale(1); }
 }
+
+/* ── Apex-style 3D viewer background ── */
+.apex-viewer-bg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: radial-gradient(ellipse 120% 100% at 55% 50%, #2a0505 0%, #150303 40%, #080202 70%, #040101 100%);
+}
+.apex-viewer-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 55%, rgba(220,30,30,0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 60% at 30% 40%, rgba(200,20,20,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 55% at 75% 60%, rgba(210,25,25,0.2) 0%, transparent 55%);
+  animation: smokePulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes smokePulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.05); }
+  100% { opacity: 0.8; transform: scale(0.98); }
+}
+
+/* Floating particles */
+.apex-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.apex-particle {
+  position: absolute;
+  width: 6px;
+  height: 7px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: particleDrift linear infinite;
+}
+@keyframes particleDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(12vw, -3vh) rotate(30deg); }
+}
+
+/* Dynamic smoke overlay */
+.apex-viewer-bg::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(200,25,25,0.18) 0%, transparent 70%);
+  filter: url(#apex-smoke-filter);
+  animation: smokeShift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes smokeShift {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(3%, -2%) scale(1.05); }
+  66%  { transform: translate(-2%, 3%) scale(0.97); }
+  100% { transform: translate(1%, -1%) scale(1.02); }
+}

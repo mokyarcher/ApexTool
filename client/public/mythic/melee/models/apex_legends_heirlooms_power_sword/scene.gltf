@@ -1,0 +1,539 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        0.8603515625,
+        8.271484375,
+        5.9287109375
+      ],
+      "min": [
+        -0.861328125,
+        -14.65625,
+        -5.9296875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 32700,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9999849796295166,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        1.9963396787643433,
+        0.9966881275177002
+      ],
+      "min": [
+        0.2070610523223877,
+        0.003570377826690674
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 21800,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        0.5061314702033997,
+        0.11312824487686157
+      ],
+      "min": [
+        0.5061313509941101,
+        0.11312812566757202
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 43600,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        1.9963396787643433,
+        0.9966881275177002
+      ],
+      "min": [
+        0.2070610523223877,
+        0.003570377826690674
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 65400,
+      "componentType": 5126,
+      "count": 2725,
+      "max": [
+        1.9963396787643433,
+        0.9966881275177002
+      ],
+      "min": [
+        0.2070610523223877,
+        0.003570377826690674
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 6228,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 65400,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        0.6982421875,
+        40.796875,
+        3.357421875
+      ],
+      "min": [
+        -0.69921875,
+        7.27734375,
+        -3.357421875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 72936,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        0.9999847412109375,
+        1.0,
+        0.9999424815177917
+      ],
+      "min": [
+        -0.9999986886978149,
+        -0.9999848008155823,
+        -0.9999424815177917
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 43600,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        0.9532805681228638,
+        0.9999996423721313,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9497318267822266,
+        -0.9999986886978149,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 87200,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        1.9979733228683472,
+        0.9957795143127441
+      ],
+      "min": [
+        0.0045032501220703125,
+        0.4065937399864197
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 92224,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        0.6001620292663574,
+        0.9999998807907104
+      ],
+      "min": [
+        0.39983779191970825,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 97248,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        1.9979733228683472,
+        0.9957795143127441
+      ],
+      "min": [
+        0.0045032501220703125,
+        0.4065937399864197
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 102272,
+      "componentType": 5126,
+      "count": 628,
+      "max": [
+        1.9979733228683472,
+        0.9957795143127441
+      ],
+      "min": [
+        0.0045032501220703125,
+        0.4065937399864197
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 24912,
+      "componentType": 5125,
+      "count": 1314,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "零宽不连字 (https://sketchfab.com/LkblZ)",
+      "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+      "source": "https://sketchfab.com/3d-models/apex-legends-heirlooms-power-sword-b94e627b207645c2804e15d814d8578e",
+      "title": "Apex Legends Heirlooms Power Sword"
+    },
+    "generator": "Sketchfab-17.3.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 30168,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 107296,
+      "byteOffset": 30168,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 80472,
+      "byteOffset": 137464,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 53648,
+      "byteOffset": 217936,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 271584,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "extensionsUsed": [
+    "KHR_materials_pbrSpecularGlossiness",
+    "KHR_materials_emissive_strength"
+  ],
+  "images": [
+    {
+      "uri": "textures/alter_ego_sword_powersword_blade_diffuse.png"
+    },
+    {
+      "uri": "textures/alter_ego_sword_powersword_blade_specularGlossiness.png"
+    },
+    {
+      "uri": "textures/alter_ego_sword_powersword_blade_emissive.jpeg"
+    },
+    {
+      "uri": "textures/alter_ego_sword_powersword_blade_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 2
+      },
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 1.5152157405271485
+        },
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "diffuseTexture": {
+            "index": 0
+          },
+          "glossinessFactor": 1.0,
+          "specularFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularGlossinessTexture": {
+            "index": 1
+          }
+        }
+      },
+      "name": "alter_ego_sword_powersword_blade",
+      "normalTexture": {
+        "index": 3
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "body_0_heirloom_agnostic_v24_riseego_alter_ego_sword_powersword_blade_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4,
+            "TEXCOORD_2": 5,
+            "TEXCOORD_3": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "body_0_alter_ego_sword_powersword_blade_alter_ego_sword_powersword_blade_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TANGENT": 10,
+            "TEXCOORD_0": 11,
+            "TEXCOORD_1": 12,
+            "TEXCOORD_2": 13,
+            "TEXCOORD_3": 14
+          },
+          "indices": 15,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.9319459795951843,
+        0.36201006174087524,
+        0.020626666024327358,
+        0.0,
+        -0.14529776573181152,
+        0.4249580800533297,
+        -0.8934758901596068,
+        0.0,
+        -0.3322127163410187,
+        0.8296742439270018,
+        0.44863721728324907,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "42904336ed5d4d1b9b31cfce7ac32052.fbx"
+    },
+    {
+      "children": [
+        3,
+        5
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "body_0_heirloom_agnostic_v24_riseego"
+    },
+    {
+      "mesh": 0,
+      "name": "body_0_heirloom_agnostic_v24_riseego_alter_ego_sword_powersword_blade_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "body_0_alter_ego_sword_powersword_blade"
+    },
+    {
+      "mesh": 1,
+      "name": "body_0_alter_ego_sword_powersword_blade_alter_ego_sword_powersword_blade_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ]
+}

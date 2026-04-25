@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Flame, Sparkles, X, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flame, Sparkles, X, RotateCcw, ArrowLeft } from 'lucide-react';
 import '@google/model-viewer/dist/model-viewer.min.js';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
@@ -13,7 +13,7 @@ function TokenIcon({ size = 14 }) {
   return <Sparkles size={size} className="text-green-400 inline" />;
 }
 
-/* ── Paginated horizontal scroll with page indicators ── */
+/* ── Paginated horizontal scroll with side arrow buttons ── */
 function PagedRow({ children, itemsPerPage = 5 }) {
   const items = Array.isArray(children) ? children : [children];
   const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -21,38 +21,44 @@ function PagedRow({ children, itemsPerPage = 5 }) {
   const pageItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   return (
-    <div>
-      {/* Page indicators + arrows */}
+    <div className="relative flex items-center gap-2">
+      {/* Left arrow */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-end gap-2 mb-2">
-          <button
-            onClick={() => setPage((p) => Math.max(0, p - 1))}
-            disabled={page === 0}
-            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
-          >
-            <ChevronLeft size={22} />
-          </button>
-          <div className="flex gap-1">
+        <button
+          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          disabled={page === 0}
+          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+        >
+          <ChevronLeft size={22} />
+        </button>
+      )}
+      {/* Cards + page indicators */}
+      <div className="flex-1 min-w-0">
+        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
+          {pageItems}
+        </div>
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-1.5 mt-3">
             {Array.from({ length: totalPages }).map((_, i) => (
               <div
                 key={i}
-                className={`h-1 rounded-full transition-all ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600'}`}
+                onClick={() => setPage(i)}
+                className={`h-1 rounded-full transition-all cursor-pointer ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
               />
             ))}
           </div>
-          <button
-            onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-            disabled={page === totalPages - 1}
-            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition disabled:opacity-30"
-          >
-            <ChevronRight size={22} />
-          </button>
-        </div>
-      )}
-      {/* Cards */}
-      <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
-        {pageItems}
+        )}
       </div>
+      {/* Right arrow */}
+      {totalPages > 1 && (
+        <button
+          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+          disabled={page === totalPages - 1}
+          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+        >
+          <ChevronRight size={22} />
+        </button>
+      )}
     </div>
   );
 }
@@ -97,22 +103,103 @@ function PrestigeCard({ item, onClick }) {
     >
       <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-        {/* Badge icons on right */}
-        {item.badges && item.badges.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-col gap-1.5">
-            {item.badges.map((b, i) => (
-              <div key={i} className="w-10 h-10 rounded border border-red-600/50 bg-black/50 overflow-hidden">
-                <img src={b} alt="" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-              </div>
-            ))}
-          </div>
-        )}
       </div>
       <div className="p-3 space-y-1">
         <div className="text-sm text-red-400 font-semibold leading-tight">{item.name}</div>
         <div className="text-xs text-zinc-400">{item.legend}</div>
         <div className="flex items-center gap-1 text-sm font-bold text-red-400 mt-1">
           <ShardIcon size={13} /> {item.price}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Prestige Skin Detail Modal ── */
+function PrestigeDetailModal({ item, onClose }) {
+  const [visible, setVisible] = useState(false);
+  const [activeLevel, setActiveLevel] = useState(0);
+  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
+  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+  function close() { setVisible(false); setTimeout(onClose, 400); }
+
+  const levels = item.levels || [];
+  const current = levels[activeLevel];
+
+  return (
+    <div className={`fixed inset-0 z-50 transition-all duration-400 ease-out ${visible ? 'bg-black/90 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
+      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
+      <div
+        className={`absolute inset-0 flex transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Left panel - info */}
+        <div className="w-[40%] flex flex-col justify-between px-10 py-10 relative z-10">
+          <div>
+            <h2 className="font-display text-5xl text-white font-bold">{item.name}</h2>
+            <div className="w-full h-px bg-zinc-700 mt-3 mb-3" />
+            <div className="text-sm text-zinc-400 mb-5">{item.desc}</div>
+
+            {/* Level icons row */}
+            <div className="flex items-center gap-2 mb-5">
+              {levels.map((lv, i) => (
+                <div key={lv.level} className="flex items-center gap-2">
+                  <div
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+                      i === activeLevel
+                        ? 'border-red-500 shadow-lg shadow-red-500/30 scale-105'
+                        : 'border-zinc-600/50 hover:border-zinc-400 opacity-60 hover:opacity-100'
+                    }`}
+                    onMouseEnter={() => setActiveLevel(i)}
+                  >
+                    <img src={lv.icon} alt={`等级 ${lv.level}`} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  </div>
+                  {i < levels.length - 1 && <span className="text-zinc-600 text-lg">»</span>}
+                </div>
+              ))}
+            </div>
+
+            {/* Description */}
+            <div className="text-sm text-zinc-500 leading-relaxed">
+              威望级皮肤是稀有度为神话级的传奇外观皮肤，每一款都有 3 个等级（威望皮肤共有 3 个版本）。玩家解锁 1 级威望级皮肤后，可以完成挑战，解锁 2 级和 3 级（无需额外花费）。挑战开放后，玩家可以在任何时候选择完成这些挑战，没有时间限制。
+            </div>
+          </div>
+
+          {/* Buy button - pinned to bottom */}
+          <div className="w-80 border border-zinc-600 rounded-lg overflow-hidden">
+            <div className="flex items-center justify-center gap-2 py-3 text-sm text-zinc-300">购买</div>
+            <div className="flex items-center justify-center gap-1 py-2 bg-gradient-to-r from-amber-700/80 to-amber-600/80 text-sm font-bold text-white">
+              <ShardIcon size={14} /> {item.price}
+            </div>
+          </div>
+        </div>
+
+        {/* Right panel - skin image with red smoke bg */}
+        <div className="w-[55%] relative overflow-hidden">
+          {/* Red smoke background */}
+          <div className="absolute inset-0 apex-viewer-bg">
+            <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+              <defs>
+                <filter id="prestige-smoke-filter" x="-50%" y="-50%" width="200%" height="200%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5" result="noise">
+                    <animate attributeName="seed" from="0" to="100" dur="20s" repeatCount="indefinite" />
+                  </feTurbulence>
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+            </svg>
+            <ApexParticles count={25} />
+          </div>
+          {/* Skin image */}
+          {current && (
+            <img
+              key={current.level}
+              src={current.image}
+              alt={`${item.name} 等级${current.level}`}
+              className="absolute inset-0 w-full h-full object-contain object-center z-10 transition-opacity duration-300"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -191,6 +278,99 @@ function SetCard({ item, onClick }) {
   );
 }
 
+/* ── Melee Set Detail Modal ── */
+function MeleeSetModal({ set, onClose, onViewModel }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
+  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+  function close() { setVisible(false); setTimeout(onClose, 400); }
+
+  return (
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-8 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
+      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
+      <div
+        className={`relative w-[92vw] max-w-[1400px] max-h-[90vh] overflow-y-auto scrollbar-hide transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="mb-6">
+          <h2 className="font-display text-3xl text-white font-bold">{set.name}</h2>
+          <div className="text-sm text-zinc-400 mt-1">已拥有 {set.owned}/{set.total} 件物品</div>
+        </div>
+        {/* Variant cards */}
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide p-4">
+          {set.variants && set.variants.map((v, i) => {
+            const isBase = i === 0;
+            return (
+              <div
+                key={v.id}
+                className={`shrink-0 w-[260px] rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
+                  isBase
+                    ? 'border-amber-500/60 hover:border-amber-400 hover:shadow-amber-500/20 bg-gradient-to-b from-amber-900/20 to-zinc-900/80'
+                    : 'border-red-900/40 hover:border-red-500/60 hover:shadow-red-500/10 bg-gradient-to-b from-zinc-800/80 to-zinc-900/90'
+                }`}
+                onClick={() => onViewModel(v)}
+              >
+                <div className="aspect-[3/4] relative overflow-hidden">
+                  <img src={v.image} alt={v.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                </div>
+                <div className="p-3 space-y-1">
+                  <div className={`text-sm font-semibold leading-tight ${isBase ? 'text-amber-400' : 'text-red-400'}`}>{v.name}</div>
+                  <div className="text-xs text-zinc-500">{v.tag}</div>
+                  <div className="flex items-center gap-1 text-sm font-bold mt-1">
+                    {v.currency === 'shards' ? (
+                      <span className="text-red-400"><ShardIcon size={13} /> {v.price}</span>
+                    ) : (
+                      <span className="text-green-400"><TokenIcon size={13} /> {v.price}</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Floating hexagonal particles ── */
+function ApexParticles({ count = 50 }) {
+  const particles = useRef(
+    Array.from({ length: count }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: 3 + Math.random() * 7,
+      opacity: 0.4 + Math.random() * 0.6,
+      duration: 6 + Math.random() * 10,
+      delay: Math.random() * -10,
+      color: Math.random() > 0.3
+        ? `rgb(${200 + Math.random() * 55}, ${140 + Math.random() * 60}, ${20 + Math.random() * 40})`
+        : `rgb(${180 + Math.random() * 75}, ${50 + Math.random() * 30}, ${20 + Math.random() * 20})`,
+    }))
+  ).current;
+  return (
+    <div className="apex-particles">
+      {particles.map((p, i) => (
+        <div
+          key={i}
+          className="apex-particle"
+          style={{
+            left: p.left,
+            top: p.top,
+            width: p.size,
+            height: p.size * 1.15,
+            backgroundColor: p.color,
+            opacity: p.opacity,
+            animationDuration: `${p.duration}s`,
+            animationDelay: `${p.delay}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ── 3D Model Viewer Modal ── */
 function ModelViewer3D({ item, onClose }) {
   const [visible, setVisible] = useState(false);
@@ -243,49 +423,52 @@ function ModelViewer3D({ item, onClose }) {
         {/* Info overlay */}
         <div className="absolute top-6 left-6 z-10">
           <h2 className="font-display text-3xl text-white font-bold">{item.name}</h2>
-          <div className="text-sm text-zinc-400 mt-1">{item.legend} · 传家宝</div>
+          <div className="text-sm text-zinc-400 mt-1">{item.tag || `${item.legend} · 传家宝`}</div>
           <div className="flex items-center gap-1 text-red-400 font-bold mt-2"><ShardIcon size={16} /> {item.price}</div>
         </div>
-        {/* Loading indicator */}
+        {/* Top progress bar */}
         {isLoading && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-3">
-            {phase === 'download' ? (
-              <>
-                <div className="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-300 ease-out"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <span className="text-sm text-zinc-400">下载模型 {progress}%</span>
-              </>
-            ) : (
-              <>
-                <div className="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full animate-pulse" style={{ width: '100%' }} />
-                </div>
-                <span className="text-sm text-zinc-400 animate-pulse">处理模型中…</span>
-              </>
-            )}
+          <div className="absolute top-0 left-0 right-0 z-10">
+            <div className="h-1 bg-zinc-800/50 w-full">
+              <div
+                className={`h-full bg-gradient-to-r from-red-600 to-red-400 transition-all duration-300 ease-out ${phase === 'processing' ? 'animate-pulse' : ''}`}
+                style={{ width: phase === 'processing' ? '100%' : `${progress}%` }}
+              />
+            </div>
           </div>
         )}
         {/* Drag hint */}
         <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm transition-opacity duration-300 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
-          <RotateCcw size={14} /> 拖拽旋转 · 滚轮缩放
+          <RotateCcw size={14} /> 拖拽旋转 · 滚轮缩放 · 带动画模型自动播放
         </div>
-        {/* model-viewer */}
-        <model-viewer
-          ref={mvRef}
-          src={item.model}
-          poster={item.image}
-          alt={item.name}
-          camera-controls
-          auto-rotate
-          shadow-intensity="1.5"
-          exposure="1.2"
-          tone-mapping="commerce"
-          style={{ width: '100%', height: '100%', borderRadius: '16px', background: 'radial-gradient(ellipse at center, #1a0a0a 0%, #0a0a0a 100%)' }}
-        />
+        {/* Apex background + particles + model-viewer */}
+        <div className="apex-viewer-bg" style={{ width: '100%', height: '100%' }}>
+          {/* SVG noise filter for smoke */}
+          <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+            <defs>
+              <filter id="apex-smoke-filter" x="-50%" y="-50%" width="200%" height="200%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="2" result="noise">
+                  <animate attributeName="seed" from="0" to="100" dur="20s" repeatCount="indefinite" />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            </defs>
+          </svg>
+          <ApexParticles />
+          <model-viewer
+            ref={mvRef}
+            src={item.model}
+            alt={item.name}
+            camera-controls
+            auto-rotate
+            autoplay
+            shadow-intensity="0.8"
+            exposure="1.2"
+            tone-mapping="commerce"
+            interaction-prompt="auto"
+            style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2, background: 'transparent' }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -310,6 +493,8 @@ export default function Mythic() {
   const { data, loading, error, reload } = useFetch(api.mythic, []);
   const [lightbox, setLightbox] = useState(null);
   const [modelViewer, setModelViewer] = useState(null);
+  const [meleeSet, setMeleeSet] = useState(null);
+  const [prestigeDetail, setPrestigeDetail] = useState(null);
 
   if (loading) return <Loader />;
   if (error) return <ErrorBox error={error} onRetry={reload} />;
@@ -342,13 +527,13 @@ export default function Mythic() {
           <MythicSectionHeader title={prestigeSkins.name} shards={prestigeSkins.currency.shards} />
           <PagedRow itemsPerPage={3}>
             {prestigeSkins.items.map((item) => (
-              <PrestigeCard key={item.id} item={item} onClick={() => openLightbox(item.image, item.name)} />
+              <PrestigeCard key={item.id} item={item} onClick={() => setPrestigeDetail(item)} />
             ))}
           </PagedRow>
         </section>
       )}
 
-      {/* ── APEX 神器 ── */}
+      {/* ── APEX 神器（暂时隐藏） ──
       {artifacts && (
         <section>
           <MythicSectionHeader title={artifacts.name} shards={artifacts.currency.shards} tokens={artifacts.currency.tokens} />
@@ -361,6 +546,7 @@ export default function Mythic() {
           </div>
         </section>
       )}
+      */}
 
       {/* ── 通用近战 ── */}
       {universalMelee && (
@@ -368,7 +554,7 @@ export default function Mythic() {
           <MythicSectionHeader title={universalMelee.name} shards={universalMelee.currency.shards} tokens={universalMelee.currency.tokens} />
           <PagedRow itemsPerPage={3}>
             {universalMelee.items.map((item) => (
-              <SetCard key={item.id} item={item} onClick={() => openLightbox(item.image, item.name)} />
+              <SetCard key={item.id} item={item} onClick={() => setMeleeSet(item)} />
             ))}
           </PagedRow>
         </section>
@@ -384,6 +570,20 @@ export default function Mythic() {
             ))}
           </PagedRow>
         </section>
+      )}
+
+      {/* ── Prestige Detail Modal ── */}
+      {prestigeDetail && (
+        <PrestigeDetailModal item={prestigeDetail} onClose={() => setPrestigeDetail(null)} />
+      )}
+
+      {/* ── Melee Set Modal ── */}
+      {meleeSet && !modelViewer && (
+        <MeleeSetModal
+          set={meleeSet}
+          onClose={() => setMeleeSet(null)}
+          onViewModel={(variant) => setModelViewer({ ...variant, legend: meleeSet.name })}
+        />
       )}
 
       {/* ── 3D Model Viewer ── */}
