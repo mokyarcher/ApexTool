@@ -376,6 +376,7 @@ function ModelViewer3D({ item, onClose }) {
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState('download'); // 'download' | 'processing' | 'done'
+  const [loadError, setLoadError] = useState(false);
   const mvRef = useRef(null);
   const lastProgressTime = useRef(Date.now());
   const stallTimer = useRef(null);
@@ -402,12 +403,19 @@ function ModelViewer3D({ item, onClose }) {
       setProgress(100);
       setPhase('done');
     };
+    const onError = () => {
+      clearTimeout(stallTimer.current);
+      setLoadError(true);
+      setPhase('done');
+    };
     el.addEventListener('progress', onProgress);
     el.addEventListener('load', onLoad);
+    el.addEventListener('error', onError);
     return () => {
       clearTimeout(stallTimer.current);
       el.removeEventListener('progress', onProgress);
       el.removeEventListener('load', onLoad);
+      el.removeEventListener('error', onError);
     };
   }, []);
 
@@ -438,9 +446,17 @@ function ModelViewer3D({ item, onClose }) {
           </div>
         )}
         {/* Drag hint */}
-        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm transition-opacity duration-300 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm transition-opacity duration-300 ${!isLoading && !loadError ? 'opacity-100' : 'opacity-0'}`}>
           <RotateCcw size={14} /> 拖拽旋转 · 滚轮缩放 · 带动画模型自动播放
         </div>
+        {/* Model not found message */}
+        {loadError && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+            <div className="text-5xl mb-4">🚀</div>
+            <div className="text-xl text-zinc-300 font-semibold">模型文件正在路上</div>
+            <div className="text-sm text-zinc-500 mt-2">Model file is on the way...</div>
+          </div>
+        )}
         {/* Apex background + particles + model-viewer */}
         <div className="apex-viewer-bg" style={{ width: '100%', height: '100%' }}>
           {/* SVG noise filter for smoke */}
