@@ -1,6 +1,6 @@
 Model Information:
-* title:	Apex Legends Heirlooms Raptor's Claw
-* source:	https://sketchfab.com/3d-models/apex-legends-heirlooms-raptors-claw-edf71354ef644f4581b3decdd3d59738
+* title:	Apex Legends Heirlooms Serpent's Sting
+* source:	https://sketchfab.com/3d-models/apex-legends-heirlooms-serpents-sting-3accceb96784447a81ed250f92b7d36e
 * author:	零宽不连字 (https://sketchfab.com/LkblZ)
 
 Model License:

@@ -104,13 +104,6 @@ function PrestigeCard({ item, onClick }) {
       <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
-      <div className="p-3 space-y-1">
-        <div className="text-sm text-red-400 font-semibold leading-tight">{item.name}</div>
-        <div className="text-xs text-zinc-400">{item.legend}</div>
-        <div className="flex items-center gap-1 text-sm font-bold text-red-400 mt-1">
-          <ShardIcon size={13} /> {item.price}
-        </div>
-      </div>
     </div>
   );
 }
@@ -165,13 +158,11 @@ function PrestigeDetailModal({ item, onClose }) {
             </div>
           </div>
 
-          {/* Buy button - pinned to bottom */}
-          <div className="w-80 border border-zinc-600 rounded-lg overflow-hidden">
-            <div className="flex items-center justify-center gap-2 py-3 text-sm text-zinc-300">购买</div>
-            <div className="flex items-center justify-center gap-1 py-2 bg-gradient-to-r from-amber-700/80 to-amber-600/80 text-sm font-bold text-white">
-              <ShardIcon size={14} /> {item.price}
-            </div>
-          </div>
+          {/* ESC back */}
+          <button className="flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
+            <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+            <span className="text-sm">返回</span>
+          </button>
         </div>
 
         {/* Right panel - skin image with red smoke bg */}
@@ -269,11 +260,6 @@ function SetCard({ item, onClick }) {
       <div className="aspect-[5/3] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
-      <div className="p-3 space-y-1">
-        <div className="text-sm text-red-400 font-semibold">{item.name}</div>
-        <div className="text-xs text-zinc-500">{item.type}</div>
-        <div className="text-xs text-zinc-400 mt-1">已拥有 {item.owned}/{item.total} 件物品</div>
-      </div>
     </div>
   );
 }
@@ -286,44 +272,38 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
   function close() { setVisible(false); setTimeout(onClose, 400); }
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-8 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
+    <div className={`fixed inset-0 z-50 flex flex-col justify-center p-6 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
+      <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
+        <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+        <span className="text-sm">返回</span>
+      </button>
       <div
-        className={`relative w-[92vw] max-w-[1400px] max-h-[90vh] overflow-y-auto scrollbar-hide transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+        className={`relative w-full max-w-[1400px] mx-auto transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-4">
           <h2 className="font-display text-3xl text-white font-bold">{set.name}</h2>
           <div className="text-sm text-zinc-400 mt-1">已拥有 {set.owned}/{set.total} 件物品</div>
         </div>
         {/* Variant cards */}
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide p-4">
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide py-2">
           {set.variants && set.variants.map((v, i) => {
             const isBase = i === 0;
             return (
               <div
                 key={v.id}
-                className={`shrink-0 w-[260px] rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
+                className={`shrink-0 rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
                   isBase
                     ? 'border-amber-500/60 hover:border-amber-400 hover:shadow-amber-500/20 bg-gradient-to-b from-amber-900/20 to-zinc-900/80'
                     : 'border-red-900/40 hover:border-red-500/60 hover:shadow-red-500/10 bg-gradient-to-b from-zinc-800/80 to-zinc-900/90'
                 }`}
+                style={{ width: 'min(260px, 22vw)', height: 'min(380px, 65vh)' }}
                 onClick={() => onViewModel(v)}
               >
-                <div className="aspect-[3/4] relative overflow-hidden">
+                <div className="w-full h-full relative overflow-hidden">
                   <img src={v.image} alt={v.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                </div>
-                <div className="p-3 space-y-1">
-                  <div className={`text-sm font-semibold leading-tight ${isBase ? 'text-amber-400' : 'text-red-400'}`}>{v.name}</div>
-                  <div className="text-xs text-zinc-500">{v.tag}</div>
-                  <div className="flex items-center gap-1 text-sm font-bold mt-1">
-                    {v.currency === 'shards' ? (
-                      <span className="text-red-400"><ShardIcon size={13} /> {v.price}</span>
-                    ) : (
-                      <span className="text-green-400"><TokenIcon size={13} /> {v.price}</span>
-                    )}
-                  </div>
                 </div>
               </div>
             );
@@ -434,6 +414,10 @@ function ModelViewer3D({ item, onClose }) {
           <div className="text-sm text-zinc-400 mt-1">{item.tag || `${item.legend} · 传家宝`}</div>
           <div className="flex items-center gap-1 text-red-400 font-bold mt-2"><ShardIcon size={16} /> {item.price}</div>
         </div>
+        <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
+          <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+          <span className="text-sm">返回</span>
+        </button>
         {/* Top progress bar */}
         {isLoading && (
           <div className="absolute top-0 left-0 right-0 z-10">
@@ -445,10 +429,6 @@ function ModelViewer3D({ item, onClose }) {
             </div>
           </div>
         )}
-        {/* Drag hint */}
-        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-zinc-500 text-sm transition-opacity duration-300 ${!isLoading && !loadError ? 'opacity-100' : 'opacity-0'}`}>
-          <RotateCcw size={14} /> 拖拽旋转 · 滚轮缩放 · 带动画模型自动播放
-        </div>
         {/* Model not found message */}
         {loadError && (
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
@@ -594,7 +574,7 @@ export default function Mythic() {
       )}
 
       {/* ── Melee Set Modal ── */}
-      {meleeSet && !modelViewer && (
+      {meleeSet && (
         <MeleeSetModal
           set={meleeSet}
           onClose={() => setMeleeSet(null)}
