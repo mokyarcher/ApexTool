@@ -558,6 +558,23 @@ export default function Mythic() {
   const [meleeSet, setMeleeSet] = useState(null);
   const [prestigeDetail, setPrestigeDetail] = useState(null);
 
+  // Preload all model files in background after page renders
+  useEffect(() => {
+    if (!data) return;
+    const urls = new Set();
+    data.heirlooms?.items?.forEach((i) => i.model && urls.add(i.model));
+    data.universalMelee?.items?.forEach((s) => s.variants?.forEach((v) => v.model && urls.add(v.model)));
+    let cancelled = false;
+    const preload = async () => {
+      for (const url of urls) {
+        if (cancelled) break;
+        try { await fetch(url); } catch { /* ignore */ }
+      }
+    };
+    const timer = setTimeout(preload, 1000);
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [data]);
+
   if (loading) return <Loader />;
   if (error) return <ErrorBox error={error} onRetry={reload} />;
   if (!data) return null;
