@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Flame, Sparkles, X, RotateCcw, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flame, Sparkles, X } from 'lucide-react';
 import '@google/model-viewer/dist/model-viewer.min.js';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
@@ -13,6 +13,22 @@ function TokenIcon({ size = 14 }) {
   return <Sparkles size={size} className="text-green-400 inline" />;
 }
 
+function MythicSection({ children }) {
+  return (
+    <section className="relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(circle_at_85%_100%,rgba(127,29,29,0.16),transparent_40%)]" />
+      <div className="relative z-10">{children}</div>
+    </section>
+  );
+}
+
+const CARD_SHELL =
+  'group relative flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
+
+function CardShine() {
+  return <div className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-full group-hover:opacity-100" />;
+}
+
 /* ── Paginated horizontal scroll with side arrow buttons ── */
 function PagedRow({ children, itemsPerPage = 5 }) {
   const items = Array.isArray(children) ? children : [children];
@@ -21,29 +37,29 @@ function PagedRow({ children, itemsPerPage = 5 }) {
   const pageItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   return (
-    <div className="relative flex items-center gap-2">
+    <div className="relative flex items-center gap-3">
       {/* Left arrow */}
       {totalPages > 1 && (
         <button
           onClick={() => setPage((p) => Math.max(0, p - 1))}
           disabled={page === 0}
-          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+          className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronLeft size={22} />
         </button>
       )}
       {/* Cards + page indicators */}
       <div className="flex-1 min-w-0">
-        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
+        <div className="grid gap-4 p-1.5" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
           {pageItems}
         </div>
         {totalPages > 1 && (
-          <div className="flex justify-center gap-1.5 mt-3">
+          <div className="flex justify-center gap-2 mt-4">
             {Array.from({ length: totalPages }).map((_, i) => (
               <div
                 key={i}
                 onClick={() => setPage(i)}
-                className={`h-1 rounded-full transition-all cursor-pointer ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
+                className={`h-1.5 rounded-full transition-all cursor-pointer ${i === page ? 'w-8 bg-red-500 shadow shadow-red-500/40' : 'w-4 bg-zinc-700 hover:bg-zinc-500'}`}
               />
             ))}
           </div>
@@ -54,7 +70,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
         <button
           onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
           disabled={page === totalPages - 1}
-          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+          className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronRight size={22} />
         </button>
@@ -64,16 +80,25 @@ function PagedRow({ children, itemsPerPage = 5 }) {
 }
 
 /* ── Section header with currency display ── */
-function MythicSectionHeader({ title, shards, tokens }) {
+function MythicSectionHeader({ title, shards, tokens, count }) {
   return (
-    <div className="flex items-center gap-3 mb-3">
-      <h2 className="font-display text-2xl text-white font-bold">{title}</h2>
+    <div className="flex items-end justify-between gap-4 mb-5">
+      <div className="flex items-center gap-3">
+        <div className="w-1 h-8 rounded-full bg-gradient-to-b from-red-400 to-red-700 shadow-lg shadow-red-500/25" />
+        <div>
+          <div className="text-[10px] tracking-[0.35em] text-red-400/80 font-bold uppercase">MYTHIC COLLECTION</div>
+          <h2 className="font-display text-3xl text-white font-bold leading-none mt-1">{title}</h2>
+        </div>
+      </div>
       <div className="flex items-center gap-3 text-sm">
+        {count !== undefined && (
+          <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-400 text-xs">{count} ITEMS</span>
+        )}
         {shards !== undefined && (
-          <span className="flex items-center gap-1 text-red-400 font-semibold"><ShardIcon /> {shards}</span>
+          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 font-semibold"><ShardIcon /> {shards}</span>
         )}
         {tokens !== undefined && (
-          <span className="flex items-center gap-1 text-green-400 font-semibold"><TokenIcon /> {tokens}</span>
+          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-300 font-semibold"><TokenIcon /> {tokens}</span>
         )}
       </div>
     </div>
@@ -84,11 +109,12 @@ function MythicSectionHeader({ title, shards, tokens }) {
 function HeirloomCard({ item, onClick }) {
   return (
     <div
-      className="flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-500/60 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-200 cursor-pointer"
+      className={CARD_SHELL}
       onClick={onClick}
     >
+      <CardShine />
       <div className="relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80" style={{ aspectRatio: '325/600' }}>
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
     </div>
   );
@@ -98,11 +124,12 @@ function HeirloomCard({ item, onClick }) {
 function PrestigeCard({ item, onClick }) {
   return (
     <div
-      className="flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-500/60 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-200 cursor-pointer"
+      className={CARD_SHELL}
       onClick={onClick}
     >
+      <CardShine />
       <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
     </div>
   );
@@ -246,11 +273,12 @@ function ArtifactRow({ item, onClickImage }) {
 function SetCard({ item, onClick }) {
   return (
     <div
-      className="flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-500/60 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-200 cursor-pointer relative"
+      className={CARD_SHELL}
       onClick={onClick}
     >
+      <CardShine />
       {/* Cost badge */}
-      <div className="absolute top-2 left-2 z-10 flex items-center gap-1 text-xs font-bold bg-black/60 rounded px-2 py-0.5">
+      <div className="absolute top-2 left-2 z-20 flex items-center gap-1 text-xs font-bold bg-black/65 rounded-full px-2.5 py-1 border border-white/10 backdrop-blur">
         {item.costPerItem >= 150 ? (
           <span className="text-red-400"><ShardIcon size={12} /> {item.costPerItem} 每件</span>
         ) : (
@@ -258,7 +286,7 @@ function SetCard({ item, onClick }) {
         )}
       </div>
       <div className="aspect-[5/3] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.04] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
     </div>
   );
@@ -534,37 +562,42 @@ export default function Mythic() {
   if (error) return <ErrorBox error={error} onRetry={reload} />;
   if (!data) return null;
 
-  const { heirlooms, prestigeSkins, artifacts, universalMelee, mythicWeapons } = data;
+  const { heirlooms, prestigeSkins, universalMelee, mythicWeapons } = data;
 
   function openLightbox(src, alt) {
     setLightbox({ src, alt });
   }
 
   return (
-    <div className="space-y-10">
+    <div className="relative space-y-8">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-28 -left-20 h-[380px] w-[380px] rounded-full bg-red-600/12 blur-[110px]" />
+        <div className="absolute -bottom-24 right-[-90px] h-[320px] w-[320px] rounded-full bg-fuchsia-700/10 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.07] [background-size:22px_22px] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)]" />
+      </div>
 
       {/* ── 传家宝 ── */}
       {heirlooms && (
-        <section>
-          <MythicSectionHeader title={heirlooms.name} shards={heirlooms.currency.shards} />
+        <MythicSection>
+          <MythicSectionHeader title={heirlooms.name} shards={heirlooms.currency.shards} count={heirlooms.items.length} />
           <PagedRow itemsPerPage={5}>
             {heirlooms.items.map((item) => (
               <HeirloomCard key={item.id} item={item} onClick={() => item.model ? setModelViewer(item) : openLightbox(item.image, item.name)} />
             ))}
           </PagedRow>
-        </section>
+        </MythicSection>
       )}
 
       {/* ── 威望级皮肤 ── */}
       {prestigeSkins && (
-        <section>
-          <MythicSectionHeader title={prestigeSkins.name} shards={prestigeSkins.currency.shards} />
+        <MythicSection>
+          <MythicSectionHeader title={prestigeSkins.name} shards={prestigeSkins.currency.shards} count={prestigeSkins.items.length} />
           <PagedRow itemsPerPage={3}>
             {prestigeSkins.items.map((item) => (
               <PrestigeCard key={item.id} item={item} onClick={() => setPrestigeDetail(item)} />
             ))}
           </PagedRow>
-        </section>
+        </MythicSection>
       )}
 
       {/* ── APEX 神器（暂时隐藏） ──
@@ -584,26 +617,26 @@ export default function Mythic() {
 
       {/* ── 通用近战 ── */}
       {universalMelee && (
-        <section>
-          <MythicSectionHeader title={universalMelee.name} shards={universalMelee.currency.shards} tokens={universalMelee.currency.tokens} />
+        <MythicSection>
+          <MythicSectionHeader title={universalMelee.name} shards={universalMelee.currency.shards} tokens={universalMelee.currency.tokens} count={universalMelee.items.length} />
           <PagedRow itemsPerPage={3}>
             {universalMelee.items.map((item) => (
               <SetCard key={item.id} item={item} onClick={() => setMeleeSet(item)} />
             ))}
           </PagedRow>
-        </section>
+        </MythicSection>
       )}
 
       {/* ── 神话武器 ── */}
       {mythicWeapons && (
-        <section>
-          <MythicSectionHeader title={mythicWeapons.name} shards={mythicWeapons.currency.shards} tokens={mythicWeapons.currency.tokens} />
+        <MythicSection>
+          <MythicSectionHeader title={mythicWeapons.name} shards={mythicWeapons.currency.shards} tokens={mythicWeapons.currency.tokens} count={mythicWeapons.items.length} />
           <PagedRow itemsPerPage={3}>
             {mythicWeapons.items.map((item) => (
               <SetCard key={item.id} item={item} onClick={() => openLightbox(item.image, item.name)} />
             ))}
           </PagedRow>
-        </section>
+        </MythicSection>
       )}
 
       {/* ── Prestige Detail Modal ── */}

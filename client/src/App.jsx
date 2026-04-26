@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
-import { Map, Trophy, Coins, Hammer, Gamepad2, ShoppingBag } from 'lucide-react';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag } from 'lucide-react';
 import BattlePass from './pages/BattlePass.jsx';
 import Maps from './pages/Maps.jsx';
 import CoinsPage from './pages/Coins.jsx';
@@ -9,7 +9,6 @@ import Mythic from './pages/Mythic.jsx';
 
 const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
-  { to: '/maps', label: '地图轮换', icon: Map },
   { to: '/shop', label: '商店', icon: ShoppingBag },
   { to: '/coins', label: '金币比例', icon: Coins },
   { to: '/crafting', label: '制造轮换', icon: Hammer }
@@ -18,22 +17,22 @@ const navItems = [
 export default function App() {
   return (
     <div className="min-h-full flex flex-col">
-      <header className="border-b border-apex-border bg-apex-panel/60 backdrop-blur sticky top-0 z-20">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 grid place-items-center rounded-lg bg-apex-red shadow-lg shadow-apex-red/30">
-              <Gamepad2 size={20} />
+      <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-20">
+        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 grid place-items-center rounded-lg bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/25">
+              <Gamepad2 size={17} />
             </div>
             <div>
-              <div className="font-display text-2xl leading-none text-white">APEX TOOL</div>
-              <div className="text-xs text-zinc-400 -mt-0.5">赛季工具箱</div>
+              <div className="font-display text-xl leading-none text-white tracking-wide">APEX TOOL</div>
+              <div className="text-[10px] text-zinc-500 -mt-px tracking-wider">赛季工具箱</div>
             </div>
           </div>
           <nav className="flex items-center gap-1">
             <NavLink
               to="/mythic"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-lg text-sm font-bold transition ${isActive ? 'text-red-400 bg-red-500/10 border border-red-500/30' : 'text-red-400 hover:text-red-300 hover:bg-red-500/5 border border-transparent'}`
+                `px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
               }
             >
               神话级
@@ -43,14 +42,14 @@ export default function App() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition ${
+                  `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-apex-red/15 text-white border border-apex-red/40'
-                      : 'text-zinc-300 hover:text-white hover:bg-white/5 border border-transparent'
+                      ? 'bg-white/10 text-white border border-white/15 shadow-sm shadow-red-500/10'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'
                   }`
                 }
               >
-                <Icon size={16} />
+                <Icon size={15} />
                 <span className="hidden sm:inline">{label}</span>
               </NavLink>
             ))}
