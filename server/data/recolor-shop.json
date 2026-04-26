@@ -1,8 +1,8 @@
 {
   "name": "改色",
   "nameEN": "Recolors",
-  "startDate": "2025-04-15T00:00:00+08:00",
-  "durationDays": 16,
+  "startDate": "2026-04-22T00:00:00+08:00",
+  "durationDays": 7,
   "items": [
     {
       "id": 1,
@@ -39,15 +39,6 @@
       "image": "/shop/recolor/4.jpg",
       "priceMaterials": null,
       "priceTokens": 1800
-    },
-    {
-      "id": 5,
-      "name": "苍白护卫",
-      "legend": "暴雷皮肤",
-      "type": "改色",
-      "image": "/shop/recolor/5.jpg",
-      "priceMaterials": 1800,
-      "priceTokens": 10500
     }
   ]
 }

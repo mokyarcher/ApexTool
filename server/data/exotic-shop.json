@@ -1,103 +1,151 @@
 {
   "name": "奇异商店",
   "nameEN": "Exotic Shop",
-  "startDate": "2025-04-15T00:00:00+08:00",
+  "startDate": "2026-04-23T00:00:00+08:00",
   "durationDays": 13,
   "items": [
     {
       "id": 1,
-      "name": "护理关怀",
+      "name": "护甲灭绝",
       "weapon": "R-301 皮肤",
-      "type": "暴雷 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/1.jpg",
       "price": 50
     },
     {
       "id": 2,
-      "name": "火山利器",
-      "weapon": "暴雷 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "闪电虫",
+      "weapon": "电能冲锋枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/2.jpg",
       "price": 50
     },
     {
       "id": 3,
-      "name": "纱甲防线",
-      "weapon": "CAR 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "火山裂隙",
+      "weapon": "暴走 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/3.jpg",
       "price": 50
     },
     {
       "id": 4,
-      "name": "闪电虫",
-      "weapon": "电能冲锋枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "奥丁的恩典",
+      "weapon": "暴走 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/4.jpg",
       "price": 50
     },
     {
       "id": 5,
-      "name": "奥丁的恩典",
-      "weapon": "暴雷 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "边境忠诚",
+      "weapon": "C.A.R. 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/5.jpg",
       "price": 50
     },
     {
       "id": 6,
-      "name": "头来人物",
-      "weapon": "敖犬圆弹枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "头条人物",
+      "weapon": "敖犬霰弹枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/6.jpg",
       "price": 50
     },
     {
       "id": 7,
-      "name": "极光猎手",
-      "weapon": "三重狙击枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "严冬之魂",
+      "weapon": "喷火轻机枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/7.jpg",
       "price": 50
     },
     {
       "id": 8,
-      "name": "深渊之眼",
-      "weapon": "哨兵狙击枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "绅士球星",
+      "weapon": "赫姆洛克突击步枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/8.jpg",
       "price": 50
     },
     {
       "id": 9,
-      "name": "烈焰风暴",
-      "weapon": "专注轻机枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "白日做梦",
+      "weapon": "猎兽冲锋枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/9.jpg",
       "price": 50
     },
     {
       "id": 10,
-      "name": "冰霜裂痕",
-      "weapon": "平行步枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "液冷式",
+      "weapon": "猎兽冲锋枪 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/10.jpg",
       "price": 50
     },
     {
       "id": 11,
-      "name": "幽灵协议",
-      "weapon": "转换者冲锋枪 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "神圣之心",
+      "weapon": "EVA-8 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/11.jpg",
       "price": 50
     },
     {
       "id": 12,
-      "name": "星际旅者",
-      "weapon": "波塞克弓 皮肤",
-      "type": "暴雷 皮肤",
+      "name": "天龙星座",
+      "weapon": "EVA-8 皮肤",
+      "type": "奇异 皮肤",
       "image": "/shop/exotic/12.jpg",
+      "price": 50
+    },
+    {
+      "id": 13,
+      "name": "派对终结者",
+      "weapon": "R-99 冲锋枪 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/13.jpg",
+      "price": 50
+    },
+    {
+      "id": 14,
+      "name": "神秘线圈",
+      "weapon": "R-99 冲锋枪 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/14.jpg",
+      "price": 50
+    },
+    {
+      "id": 15,
+      "name": "过热",
+      "weapon": "平行步枪 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/15.jpg",
+      "price": 50
+    },
+    {
+      "id": 16,
+      "name": "虚空冲动",
+      "weapon": "30-30 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/16.jpg",
+      "price": 50
+    },
+    {
+      "id": 17,
+      "name": "赏金猎人",
+      "weapon": "三重式狙击枪 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/17.jpg",
+      "price": 50
+    },
+    {
+      "id": 18,
+      "name": "激光开膛手",
+      "weapon": "充能步枪 皮肤",
+      "type": "奇异 皮肤",
+      "image": "/shop/exotic/18.jpg",
       "price": 50
     }
   ]

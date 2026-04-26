@@ -474,7 +474,6 @@ function DiscountShopCard({ item, onClick }) {
       </div>
       <div className="p-3 space-y-1">
         <div className="text-sm text-white leading-tight">{item.name}</div>
-        <div className="text-xs text-zinc-400">{item.type}</div>
         <div className="flex items-center gap-2 text-xs mt-1">
           {item.originalPrice && (
             <span className="line-through text-zinc-500"><Coins size={11} className="inline" /> {item.originalPrice}</span>
@@ -631,7 +630,6 @@ export default function Shop() {
                 </div>
                 <div className="p-3 space-y-1">
                   <div className="text-sm text-white leading-tight">{item.name}</div>
-                  <div className="text-xs text-zinc-400 flex items-center gap-1"><Palette size={11} /> {item.legend}</div>
                   <div className="flex items-center gap-2 text-xs mt-1">
                     {item.priceMaterials && (
                       <span className="flex items-center gap-1 text-zinc-300"><Wrench size={11} /> {item.priceMaterials}</span>
@@ -675,13 +673,6 @@ export default function Shop() {
                     >
                       <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                      </div>
-                      <div className="p-2.5 space-y-0.5">
-                        <div className="text-sm text-white leading-tight">{item.name}</div>
-                        <div className="text-xs text-zinc-400">{item.weapon}</div>
-                        <div className="flex items-center gap-1 text-xs mt-1">
-                          <span className="flex items-center gap-1 text-emerald-300"><Sparkles size={11} /> {item.price}</span>
-                        </div>
                       </div>
                     </div>
                   ))}

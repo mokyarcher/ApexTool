@@ -1,7 +1,7 @@
 {
   "name": "高级射击商店",
   "nameEN": "Premium Shooting Shop",
-  "startDate": "2025-04-15T00:00:00+08:00",
+  "startDate": "2026-04-22T00:00:00+08:00",
   "durationDays": 7,
   "items": [
     {
@@ -45,6 +45,33 @@
       "name": "夏日灼热",
       "type": "捆绑包",
       "image": "/shop/premium/5.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 6,
+      "name": "霓虹猎手",
+      "type": "捆绑包",
+      "image": "/shop/premium/6.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 7,
+      "name": "星际先锋",
+      "type": "巅峰包",
+      "image": "/shop/premium/7.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2500,
+      "discount": 45
+    },
+    {
+      "id": 8,
+      "name": "烈焰守护",
+      "type": "捆绑包",
+      "image": "/shop/premium/8.jpg",
       "originalPrice": 4600,
       "salePrice": 2500,
       "discount": 45

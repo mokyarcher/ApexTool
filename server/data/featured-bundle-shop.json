@@ -48,6 +48,15 @@
       "originalPrice": 1000,
       "salePrice": 100,
       "discount": 90
+    },
+    {
+      "id": 6,
+      "name": "暗影特工组合包",
+      "type": "组合包",
+      "image": "/shop/featured-bundle/6.jpg",
+      "originalPrice": 1000,
+      "salePrice": 100,
+      "discount": 90
     }
   ]
 }

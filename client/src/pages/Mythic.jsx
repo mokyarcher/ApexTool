@@ -34,14 +34,23 @@ function PagedRow({ children, itemsPerPage = 5 }) {
   const items = Array.isArray(children) ? children : [children];
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [page, setPage] = useState(0);
+  const [direction, setDirection] = useState(0); // -1 = left, 1 = right
+  const [animKey, setAnimKey] = useState(0);
   const pageItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
+
+  function goTo(p) {
+    if (p === page) return;
+    setDirection(p > page ? 1 : -1);
+    setPage(p);
+    setAnimKey((k) => k + 1);
+  }
 
   return (
     <div className="relative flex items-center gap-3">
       {/* Left arrow */}
       {totalPages > 1 && (
         <button
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          onClick={() => goTo(Math.max(0, page - 1))}
           disabled={page === 0}
           className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
@@ -49,8 +58,15 @@ function PagedRow({ children, itemsPerPage = 5 }) {
         </button>
       )}
       {/* Cards + page indicators */}
-      <div className="flex-1 min-w-0">
-        <div className="grid gap-4 p-1.5" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
+      <div className="flex-1 min-w-0 overflow-hidden">
+        <div
+          key={animKey}
+          className="grid gap-4 p-1.5 animate-page-slide"
+          style={{
+            gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)`,
+            '--slide-from': direction >= 0 ? '60px' : '-60px',
+          }}
+        >
           {pageItems}
         </div>
         {totalPages > 1 && (
@@ -58,7 +74,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
             {Array.from({ length: totalPages }).map((_, i) => (
               <div
                 key={i}
-                onClick={() => setPage(i)}
+                onClick={() => goTo(i)}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${i === page ? 'w-8 bg-red-500 shadow shadow-red-500/40' : 'w-4 bg-zinc-700 hover:bg-zinc-500'}`}
               />
             ))}
@@ -68,7 +84,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
       {/* Right arrow */}
       {totalPages > 1 && (
         <button
-          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+          onClick={() => goTo(Math.min(totalPages - 1, page + 1))}
           disabled={page === totalPages - 1}
           className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
@@ -524,8 +540,10 @@ function ModelViewer3D({ item, onClose }) {
             camera-controls
             auto-rotate
             autoplay
-            shadow-intensity="0.8"
-            exposure="1.2"
+            shadow-intensity="1.2"
+            shadow-softness="0.8"
+            exposure="1.3"
+            environment-image="neutral"
             tone-mapping="commerce"
             interaction-prompt="auto"
             style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2, background: 'transparent' }}

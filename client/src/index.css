@@ -40,6 +40,14 @@ body {
   to   { opacity: 1; transform: scale(1); }
 }
 
+@keyframes pageSlide {
+  from { opacity: 0; transform: translateX(var(--slide-from, 60px)); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-page-slide {
+  animation: pageSlide 0.35s ease-out both;
+}
+
 /* ── Apex-style 3D viewer background ── */
 .apex-viewer-bg {
   position: relative;

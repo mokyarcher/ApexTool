@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from 'react';
-import { Star, Lock, Gift, Package, Sparkles, Coins, Wrench, Crown, Zap, ShieldCheck, X, Info } from 'lucide-react';
+import { Star, Lock, Gift, Package, Sparkles, Coins, Wrench, Crown, Zap, ShieldCheck, X, Info, Clock } from 'lucide-react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -57,6 +57,28 @@ function Lightbox({ src, alt, onClose }) {
   );
 }
 
+function TierButton({ icon: Icon, label, cls, tipImage, onImageClick }) {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <button
+        className={`px-4 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 flex items-center gap-1.5 cursor-pointer hover:brightness-125 hover:shadow-lg hover:shadow-white/15 hover:-translate-y-0.5 active:translate-y-0 ${cls}`}
+        onClick={() => tipImage && onImageClick && onImageClick(tipImage, label)}
+      >
+        <Icon size={15} /> {label}
+      </button>
+      {show && tipImage && (
+        <div className="absolute top-full left-0 mt-3 z-50">
+          <div className="absolute left-8 -top-1.5 w-3 h-3 rotate-45 bg-zinc-900/95 border-l border-t border-white/10" />
+          <div className="rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
+            <img src={tipImage} alt="" style={{ width: '460px', height: 'auto' }} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function RewardCard({ r, onImageClick }) {
   const Icon = typeIcon[r.type] || Gift;
   const rarity = r.rarity || 'common';
@@ -98,6 +120,22 @@ export default function BattlePass() {
   const [filter, setFilter] = useState('all'); // all | free | premium | ultimate | ultimate_plus
   const [lightbox, setLightbox] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
+  const [countdown, setCountdown] = useState('');
+
+  useEffect(() => {
+    if (!data) return;
+    function calc() {
+      const diff = new Date(data.endDate).getTime() - Date.now();
+      if (diff <= 0) { setCountdown('已结束'); return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      setCountdown(`${d}天${h}小时${m}分`);
+    }
+    calc();
+    const t = setInterval(calc, 60000);
+    return () => clearInterval(t);
+  }, [data]);
 
   const filtered = useMemo(() => {
     if (!data) return [];
@@ -114,19 +152,25 @@ export default function BattlePass() {
         <div>
           <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
           <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
+          {countdown && (
+            <div className="flex items-center gap-2 mt-2 text-amber-300 font-semibold">
+              <Clock size={16} />
+              <span>剩余时间：{countdown}</span>
+            </div>
+          )}
           <p className="text-zinc-400 mt-2 max-w-xl">{data.description}</p>
-          <div className="flex gap-2 mt-3 text-sm flex-wrap items-center">
-            <span className="chip bg-zinc-700/40 text-zinc-200 border border-zinc-600/40"><Lock size={14} />免费</span>
-            <span className="chip rarity-legendary"><Star size={14} />高级 {data.pricePremium} 币</span>
-            <span className="chip bg-purple-600/25 text-purple-200 border border-purple-500/50"><ShieldCheck size={14} />终极 ¥{(data.priceUltimate / 100).toFixed(0)}</span>
-            <span className="chip bg-amber-500/25 text-amber-200 border border-amber-500/50"><Crown size={14} />终极+ ¥{(data.priceUltimatePlus / 100).toFixed(0)}</span>
-            <button onClick={() => setShowInfo(true)} className="chip bg-sky-600/20 text-sky-200 border border-sky-500/40 hover:bg-sky-600/30 transition cursor-pointer"><Info size={14} />详细信息</button>
+          <div className="flex gap-3 mt-4 flex-wrap items-center">
+            <TierButton icon={Lock} label="免费" cls="bg-zinc-700/40 text-zinc-200 border-zinc-600/40 hover:bg-zinc-700/60" tipImage="/bp/tier-free.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+            <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage="/bp/tier-premium.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+            <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage="/bp/tier-ultimate.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+            <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage="/bp/tier-ultimate-plus.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+            <button onClick={() => setShowInfo(true)} className="px-4 py-2 rounded-lg text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
           </div>
         </div>
-        <div className="text-right text-xs text-zinc-400">
-          <div>开始: {data.startDate}</div>
-          <div>结束: {data.endDate}</div>
-          <div className="mt-1">共 {data.rewards.length} 项奖励</div>
+        <div className="text-right text-base text-zinc-300 space-y-1.5">
+          <div>开始: <span className="text-white font-semibold text-lg">{data.startDate}</span></div>
+          <div>结束: <span className="text-white font-semibold text-lg">{data.endDate}</span></div>
+          <div className="mt-2 text-xl text-white font-bold">共 {data.rewards.length} 项奖励</div>
         </div>
       </section>
 
@@ -159,7 +203,7 @@ export default function BattlePass() {
 
       {lightbox && (
         <Lightbox
-          src={lightbox.image.replace('/bp/', '/bp/full/')}
+          src={lightbox.image.startsWith('/bp/tier-') ? lightbox.image : lightbox.image.replace('/bp/', '/bp/full/')}
           alt={lightbox.nameCN || lightbox.name}
           onClose={() => setLightbox(null)}
         />

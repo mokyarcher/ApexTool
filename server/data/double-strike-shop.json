@@ -1,8 +1,8 @@
 {
   "name": "双重击商店",
   "nameEN": "Double Strike Shop",
-  "startDate": "2025-04-15T00:00:00+08:00",
-  "durationDays": 6,
+  "startDate": "2026-04-22T00:00:00+08:00",
+  "durationDays": 7,
   "items": [
     {
       "id": 1,
@@ -77,6 +77,63 @@
         { "id": 1, "name": "永远乐观", "rarity": "传说", "type": "永远乐观 皮肤", "image": "/shop/double-strike/5-1.jpg" },
         { "id": 2, "name": "光明之刃", "rarity": "传说", "type": "永远乐观 武器皮肤", "image": "/shop/double-strike/5-2.jpg" },
         { "id": 3, "name": "乐观边框", "rarity": "史诗", "type": "永远乐观 边框", "image": "/shop/double-strike/5-3.jpg" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "暗夜执行者",
+      "legend": "暗夜执行者",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/6.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53,
+      "contents": [
+        { "id": 1, "name": "暗夜执行者", "rarity": "传说", "type": "皮肤", "image": "/shop/double-strike/6-1.jpg" },
+        { "id": 2, "name": "暗夜武器", "rarity": "传说", "type": "武器皮肤", "image": "/shop/double-strike/6-2.jpg" },
+        { "id": 3, "name": "暗夜边框", "rarity": "史诗", "type": "边框", "image": "/shop/double-strike/6-3.jpg" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "极地猎人",
+      "legend": "极地猎人",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/7.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53,
+      "contents": [
+        { "id": 1, "name": "极地猎人", "rarity": "传说", "type": "皮肤", "image": "/shop/double-strike/7-1.jpg" },
+        { "id": 2, "name": "极地武器", "rarity": "传说", "type": "武器皮肤", "image": "/shop/double-strike/7-2.jpg" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "钢铁意志",
+      "legend": "钢铁意志",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/8.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53,
+      "contents": [
+        { "id": 1, "name": "钢铁意志", "rarity": "传说", "type": "皮肤", "image": "/shop/double-strike/8-1.jpg" },
+        { "id": 2, "name": "钢铁武器", "rarity": "传说", "type": "武器皮肤", "image": "/shop/double-strike/8-2.jpg" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "幻影突袭",
+      "legend": "幻影突袭",
+      "type": "捆绑包",
+      "image": "/shop/double-strike/9.jpg",
+      "originalPrice": 4600,
+      "salePrice": 2150,
+      "discount": 53,
+      "contents": [
+        { "id": 1, "name": "幻影突袭", "rarity": "传说", "type": "皮肤", "image": "/shop/double-strike/9-1.jpg" },
+        { "id": 2, "name": "幻影武器", "rarity": "传说", "type": "武器皮肤", "image": "/shop/double-strike/9-2.jpg" }
       ]
     }
   ]
