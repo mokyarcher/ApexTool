@@ -60,7 +60,7 @@ function MilestoneModal({ data, onClose }) {
       onClick={handleClose}
     >
       <div
-        className={`relative w-full max-w-[1100px] max-h-[90vh] overflow-hidden rounded-xl bg-apex-panel border border-apex-border shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+        className={`relative w-full max-w-[1100px] max-h-[90vh] overflow-hidden bg-apex-panel border border-apex-border shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button className="absolute top-4 right-4 text-white/60 hover:text-white transition z-10" onClick={handleClose}>
@@ -78,7 +78,7 @@ function MilestoneModal({ data, onClose }) {
                     key={previewItem.id}
                     src={previewItem.image.replace('/rewards/', '/rewards/full/')}
                     alt={previewItem.name}
-                    className="max-w-full max-h-[50vh] object-contain rounded-lg animate-[fadeScale_0.25s_ease-out]"
+                    className="max-w-full max-h-[50vh] object-contain animate-[fadeScale_0.25s_ease-out]"
                   />
                 )}
               </div>
@@ -96,7 +96,7 @@ function MilestoneModal({ data, onClose }) {
             <div className="p-5 space-y-4 overflow-y-auto flex-1">
               {/* Header */}
               <div className="flex items-start gap-3">
-                {d.icon && <img src={d.icon} alt="" className="w-14 h-14 rounded-lg shrink-0" />}
+                {d.icon && <img src={d.icon} alt="" className="w-14 h-14 shrink-0" />}
                 <div>
                   <div className="font-display text-xl text-white leading-tight">{d.title}</div>
                   <div className="text-xs text-zinc-400 mt-0.5">{d.subtitle}</div>
@@ -125,7 +125,7 @@ function MilestoneModal({ data, onClose }) {
               {/* Bundle purchase options */}
               <div className="space-y-2">
                 {d.bundles.map((b, i) => (
-                  <div key={i} className="flex items-center justify-between bg-zinc-800/50 rounded-lg p-2.5 border border-apex-border">
+                  <div key={i} className="flex items-center justify-between bg-zinc-800/50 p-2.5 border border-apex-border">
                     <div className="flex items-center gap-2">
                       {b.discount && <span className="chip bg-green-600/20 text-green-300 border border-green-500/40 text-[10px]">-{b.discount}%</span>}
                       <span className="text-sm text-white">{b.count} 个组合包</span>
@@ -151,7 +151,7 @@ function MilestoneModal({ data, onClose }) {
                 {d.milestones.map((m, idx) => (
                   <div key={m.id} className="flex items-center shrink-0">
                     <div className="flex flex-col items-center gap-1">
-                      <div className="w-20 h-20 rounded-lg border border-apex-border bg-zinc-800/50 overflow-hidden">
+                      <div className="w-20 h-20 border border-apex-border bg-zinc-800/50 overflow-hidden">
                         {m.reward.image && (
                           <img src={m.reward.image} alt={m.reward.name} className="w-full h-full object-cover" />
                         )}
@@ -201,7 +201,7 @@ function MilestoneModal({ data, onClose }) {
               function RewardCell({ rw }) {
                 return (
                   <div
-                    className={`relative aspect-[1/2] rounded-lg border overflow-hidden cursor-pointer hover:scale-[1.04] hover:shadow-lg transition-all duration-200 ${RARITY_CLS[rw.rarity] || 'rarity-common'} ${pinnedReward?.id === rw.id ? 'ring-2 ring-apex-red' : ''}`}
+                    className={`relative aspect-[1/2] border overflow-hidden cursor-pointer hover:scale-[1.04] hover:shadow-lg transition-all duration-200 ${RARITY_CLS[rw.rarity] || 'rarity-common'} ${pinnedReward?.id === rw.id ? 'ring-2 ring-apex-red' : ''}`}
                     onMouseEnter={() => setHoveredReward(rw)}
                     onMouseLeave={() => setHoveredReward(null)}
                     onClick={() => setPinnedReward(pinnedReward?.id === rw.id ? null : rw)}
@@ -224,13 +224,13 @@ function MilestoneModal({ data, onClose }) {
                       {/* Featured hero item – spans 2 cols × full rows */}
                       {featuredItem && (
                         <div
-                          className={`row-span-2 col-span-3 relative rounded-lg border overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-200 ${RARITY_CLS[featuredItem.rarity] || 'rarity-common'} ${pinnedReward?.id === featuredItem.id ? 'ring-2 ring-apex-red' : ''}`}
+                          className={`row-span-2 col-span-3 relative border overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-200 ${RARITY_CLS[featuredItem.rarity] || 'rarity-common'} ${pinnedReward?.id === featuredItem.id ? 'ring-2 ring-apex-red' : ''}`}
                           onMouseEnter={() => setHoveredReward(featuredItem)}
                           onMouseLeave={() => setHoveredReward(null)}
                           onClick={() => setPinnedReward(pinnedReward?.id === featuredItem.id ? null : featuredItem)}
                         >
                           <img src={featuredItem.image.replace('/rewards/', '/rewards/full/')} alt={featuredItem.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                          <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm rounded-lg p-2 max-w-[100px]">
+                          <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm p-2 max-w-[100px]">
                             <div className="text-xs text-white font-semibold leading-tight truncate">{featuredItem.name}</div>
                             <span className={`chip text-[10px] mt-1 ${RARITY_CLS[featuredItem.rarity] || ''}`}>{RARITY_LABEL[featuredItem.rarity] || featuredItem.rarity}</span>
                           </div>
@@ -255,7 +255,7 @@ function MilestoneModal({ data, onClose }) {
                       <button
                         onClick={() => setPage(Math.max(0, page - 1))}
                         disabled={page === 0}
-                        className="p-1.5 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 disabled:hover:border-apex-border transition"
+                        className="p-1.5 border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 disabled:hover:border-apex-border transition"
                       >
                         <ChevronLeft size={18} />
                       </button>
@@ -271,7 +271,7 @@ function MilestoneModal({ data, onClose }) {
                       <button
                         onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
                         disabled={page === totalPages - 1}
-                        className="p-1.5 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 disabled:hover:border-apex-border transition"
+                        className="p-1.5 border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 disabled:hover:border-apex-border transition"
                       >
                         <ChevronRight size={18} />
                       </button>
@@ -302,7 +302,7 @@ function DoubleStrikeModal({ item, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="relative bg-apex-panel border border-apex-border rounded-2xl shadow-2xl flex overflow-hidden"
+        className="relative bg-apex-panel border border-apex-border shadow-2xl flex overflow-hidden"
         style={{ maxWidth: 1440, maxHeight: '90vh', width: '95vw' }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -327,7 +327,7 @@ function DoubleStrikeModal({ item, onClose }) {
                   <div
                     key={c.id}
                     onMouseEnter={() => setHovered(i)}
-                    className={`w-[72px] h-[72px] rounded-lg border-2 overflow-hidden cursor-pointer transition-all duration-200 ${
+                    className={`w-[72px] h-[72px] border-2 overflow-hidden cursor-pointer transition-all duration-200 ${
                       i === hovered
                         ? `${borderColor} shadow-lg ${activeShadow} scale-105`
                         : `${borderColor}/60 hover:${borderColor}`
@@ -349,18 +349,18 @@ function DoubleStrikeModal({ item, onClose }) {
           <div className="space-y-3">
             <div className="text-sm text-red-500 font-bold">金币不足</div>
             {/* Price bar */}
-            <div className="flex items-center gap-4 bg-zinc-800/80 rounded-lg px-5 py-3 border border-zinc-600/50">
+            <div className="flex items-center gap-4 bg-zinc-800/80 px-5 py-3 border border-zinc-600/50">
               <span className="text-white font-bold text-base">{item.discount}% 折扣</span>
               <span className="line-through text-zinc-500 text-base flex items-center gap-1"><Coins size={14} /> {item.originalPrice.toLocaleString()}</span>
               <span className="text-amber-300 font-bold text-base flex items-center gap-1"><Coins size={14} /> {item.salePrice.toLocaleString()}</span>
             </div>
             {/* Action buttons */}
             <div className="flex gap-3">
-              <button className="flex-1 bg-zinc-700/60 hover:bg-zinc-600/60 border border-zinc-600/50 rounded-lg py-2.5 text-center text-sm text-zinc-300 transition">
+              <button className="flex-1 bg-zinc-700/60 hover:bg-zinc-600/60 border border-zinc-600/50 py-2.5 text-center text-sm text-zinc-300 transition">
                 <div className="flex items-center justify-center gap-1.5"><Gift size={14} /> 赠礼</div>
                 <div className="text-xs text-zinc-500 mt-0.5">需要登录验证</div>
               </button>
-              <button className="flex-1 bg-amber-600/80 hover:bg-amber-500/80 border border-amber-500/50 rounded-lg py-2.5 text-center text-sm text-white font-semibold transition">
+              <button className="flex-1 bg-amber-600/80 hover:bg-amber-500/80 border border-amber-500/50 py-2.5 text-center text-sm text-white font-semibold transition">
                 获得 APEX 金币
               </button>
             </div>
@@ -403,7 +403,7 @@ function ShopLightbox({ src, alt, onClose }) {
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
-      <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
+      <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
     </div>
   );
 }
@@ -413,30 +413,46 @@ function ScrollRow({ children, itemsPerPage = 5 }) {
   const items = Array.isArray(children) ? children : [children];
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [page, setPage] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
   const pageItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
+  function goTo(p) {
+    if (p === page) return;
+    setDirection(p > page ? 1 : -1);
+    setPage(p);
+    setAnimKey((k) => k + 1);
+  }
+
   return (
-    <div className="relative flex items-center gap-2">
+    <div className="relative flex items-center gap-3">
       {totalPages > 1 && (
         <button
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          onClick={() => goTo(Math.max(0, page - 1))}
           disabled={page === 0}
-          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+          className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronLeft size={22} />
         </button>
       )}
-      <div className="flex-1 min-w-0">
-        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
+      <div className="flex-1 min-w-0 overflow-hidden">
+        <div
+          key={animKey}
+          className="grid gap-3 p-1.5 animate-page-slide"
+          style={{
+            gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)`,
+            '--slide-from': direction >= 0 ? '60px' : '-60px',
+          }}
+        >
           {pageItems}
         </div>
         {totalPages > 1 && (
-          <div className="flex justify-center gap-1.5 mt-3">
+          <div className="flex justify-center gap-2 mt-4">
             {Array.from({ length: totalPages }).map((_, i) => (
               <div
                 key={i}
-                onClick={() => setPage(i)}
-                className={`h-1 rounded-full transition-all cursor-pointer ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
+                onClick={() => goTo(i)}
+                className={`h-1.5 rounded-full transition-all cursor-pointer ${i === page ? 'w-8 bg-red-500 shadow shadow-red-500/40' : 'w-4 bg-zinc-700 hover:bg-zinc-500'}`}
               />
             ))}
           </div>
@@ -444,9 +460,9 @@ function ScrollRow({ children, itemsPerPage = 5 }) {
       </div>
       {totalPages > 1 && (
         <button
-          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+          onClick={() => goTo(Math.min(totalPages - 1, page + 1))}
           disabled={page === totalPages - 1}
-          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+          className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronRight size={22} />
         </button>
@@ -458,17 +474,18 @@ function ScrollRow({ children, itemsPerPage = 5 }) {
 /* ── Discount Shop Card (reused by double-strike, featured-bundle, premium) ── */
 function DiscountShopCard({ item, onClick }) {
   return (
-    <div className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200">
-      <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={onClick}>
+    <div className={SHOP_CARD} onClick={onClick}>
+      <CardShine />
+      <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
         {item.discount && (
-          <span className="absolute top-2 left-2 z-10 chip bg-green-600/80 text-white border-0 text-xs font-bold">
+          <span className="absolute top-2 left-2 z-20 chip bg-green-600/80 text-white border-0 text-xs font-bold">
             -{item.discount}%
           </span>
         )}
         <img
           src={item.image}
           alt={item.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
@@ -485,13 +502,37 @@ function DiscountShopCard({ item, onClick }) {
   );
 }
 
-/* ── Section header helper ── */
-function ShopSectionHeader({ title, countdown }) {
+/* ── Section wrapper (Mythic-style glass panel) ── */
+function ShopSection({ children }) {
   return (
-    <div className="flex items-center gap-3">
-      <h2 className="font-display text-2xl text-white">{title}</h2>
-      <div className="flex items-center gap-1.5 text-sm text-zinc-400">
-        <Clock size={14} /> 刷新：{countdown}
+    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(circle_at_85%_100%,rgba(127,29,29,0.16),transparent_40%)]" />
+      <div className="relative z-10">{children}</div>
+    </section>
+  );
+}
+
+/* ── Card shine sweep on hover ── */
+function CardShine() {
+  return <div className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-full group-hover:opacity-100" />;
+}
+
+const SHOP_CARD =
+  'group relative flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
+
+/* ── Section header helper (Mythic-style) ── */
+function ShopSectionHeader({ title, countdown, subtitle }) {
+  return (
+    <div className="flex items-end justify-between gap-4 mb-5">
+      <div className="flex items-center gap-3">
+        <div className="w-1 h-8 rounded-full bg-gradient-to-b from-red-400 to-red-700 shadow-lg shadow-red-500/25" />
+        <div>
+          <div className="text-[10px] tracking-[0.35em] text-red-400/80 font-bold uppercase">{subtitle || 'APEX SHOP'}</div>
+          <h2 className="font-display text-3xl text-white font-bold leading-none mt-1">{title}</h2>
+        </div>
+      </div>
+      <div className="flex items-center gap-1.5 text-sm text-zinc-400 px-2.5 py-1 bg-white/5 border border-white/10">
+        <Clock size={14} /> {countdown}
       </div>
     </div>
   );
@@ -506,6 +547,8 @@ export default function Shop() {
   const { data: exData, loading: exLoading, error: exError, reload: exReload } = useFetch(api.exotic, []);
   const [showMilestone, setShowMilestone] = useState(false);
   const [exPage, setExPage] = useState(0);
+  const [exDirection, setExDirection] = useState(0);
+  const [exAnimKey, setExAnimKey] = useState(0);
   const [shopLightbox, setShopLightbox] = useState(null);
   const [dsDetail, setDsDetail] = useState(null);
 
@@ -519,23 +562,30 @@ export default function Shop() {
   if (msLoading || psLoading || dsLoading || fbLoading || rcLoading || exLoading) return <Loader />;
 
   return (
-    <div className="space-y-8">
+    <div className="relative space-y-8">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-28 -left-20 h-[380px] w-[380px] rounded-full bg-red-600/12 blur-[110px]" />
+        <div className="absolute -bottom-24 right-[-90px] h-[320px] w-[320px] rounded-full bg-fuchsia-700/10 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.07] [background-size:22px_22px] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)]" />
+      </div>
+
       {/* ── 里程碑收集 ── */}
       {msError ? (
         <ErrorBox error={msError} onRetry={msReload} />
       ) : msData && (
-        <section className="space-y-3">
-          <ShopSectionHeader title={msData.name} countdown={msCountdown} />
+        <ShopSection>
+          <ShopSectionHeader title={msData.name} countdown={msCountdown} subtitle="MILESTONE" />
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
             <div
-              className="lg:col-span-2 card overflow-hidden cursor-pointer group hover:border-apex-red/60 transition-all duration-200"
+              className={`lg:col-span-2 ${SHOP_CARD}`}
               onClick={() => setShowMilestone(true)}
             >
+              <CardShine />
               <div className="aspect-[3/4] relative overflow-hidden">
                 <img
                   src={msData.banner}
                   alt={msData.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -551,10 +601,11 @@ export default function Shop() {
               {msData.featuredItems.map((item) => (
                 <div
                   key={item.id}
-                  className="card p-3 flex flex-col gap-2 hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                  className="group relative card overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 p-3 flex flex-col gap-2 cursor-pointer"
                 >
-                  <div className="aspect-square rounded-lg border border-apex-border overflow-hidden bg-zinc-800/50">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  <CardShine />
+                  <div className="aspect-square border border-red-900/30 overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                   </div>
                   <div>
                     <div className="text-sm text-white leading-tight">{item.name}</div>
@@ -568,65 +619,67 @@ export default function Shop() {
               ))}
             </div>
           </div>
-        </section>
+        </ShopSection>
       )}
 
       {/* ── 双重击商店 ── */}
       {dsError ? (
         <ErrorBox error={dsError} onRetry={dsReload} />
       ) : dsData && (
-        <section className="space-y-3">
-          <ShopSectionHeader title={dsData.name} countdown={dsCountdown} />
+        <ShopSection>
+          <ShopSectionHeader title={dsData.name} countdown={dsCountdown} subtitle="DOUBLE STRIKE" />
           <ScrollRow>
             {dsData.items.map((item) => (
               <DiscountShopCard key={item.id} item={item} onClick={() => setDsDetail(item)} />
             ))}
           </ScrollRow>
-        </section>
+        </ShopSection>
       )}
 
       {/* ── 高级射击商店 ── */}
       {psError ? (
         <ErrorBox error={psError} onRetry={psReload} />
       ) : psData && (
-        <section className="space-y-3">
-          <ShopSectionHeader title={psData.name} countdown={psCountdown} />
+        <ShopSection>
+          <ShopSectionHeader title={psData.name} countdown={psCountdown} subtitle="PREMIUM" />
           <ScrollRow>
             {psData.items.map((item) => (
               <DiscountShopCard key={item.id} item={item} onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })} />
             ))}
           </ScrollRow>
-        </section>
+        </ShopSection>
       )}
 
       {/* ── 精选组合包商店 ── */}
       {fbError ? (
         <ErrorBox error={fbError} onRetry={fbReload} />
       ) : fbData && (
-        <section className="space-y-3">
-          <ShopSectionHeader title={fbData.name} countdown={fbCountdown} />
+        <ShopSection>
+          <ShopSectionHeader title={fbData.name} countdown={fbCountdown} subtitle="FEATURED BUNDLE" />
           <ScrollRow>
             {fbData.items.map((item) => (
               <DiscountShopCard key={item.id} item={item} onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })} />
             ))}
           </ScrollRow>
-        </section>
+        </ShopSection>
       )}
 
       {/* ── 改色 ── */}
       {rcError ? (
         <ErrorBox error={rcError} onRetry={rcReload} />
       ) : rcData && (
-        <section className="space-y-3">
-          <ShopSectionHeader title={rcData.name} countdown={rcCountdown} />
+        <ShopSection>
+          <ShopSectionHeader title={rcData.name} countdown={rcCountdown} subtitle="RECOLOR" />
           <ScrollRow>
             {rcData.items.map((item) => (
               <div
                 key={item.id}
-                className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                className={SHOP_CARD}
+                onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}
               >
-                <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                <CardShine />
+                <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                 </div>
                 <div className="p-3 space-y-1">
                   <div className="text-sm text-white leading-tight">{item.name}</div>
@@ -642,7 +695,7 @@ export default function Shop() {
               </div>
             ))}
           </ScrollRow>
-        </section>
+        </ShopSection>
       )}
 
       {/* ── 奇异商店 ── */}
@@ -652,38 +705,44 @@ export default function Shop() {
         const perPage = 6;
         const totalPages = Math.ceil(exData.items.length / perPage);
         return (
-          <section className="space-y-3">
-            <ShopSectionHeader title={exData.name} countdown={exCountdown} />
-            <div className="flex items-center gap-2">
+          <ShopSection>
+            <ShopSectionHeader title={exData.name} countdown={exCountdown} subtitle="EXOTIC" />
+            <div className="flex items-center gap-3">
               {totalPages > 1 && (
                 <button
-                  onClick={() => setExPage(Math.max(0, exPage - 1))}
+                  onClick={() => { if (exPage > 0) { setExDirection(-1); setExAnimKey(k => k + 1); setExPage(exPage - 1); } }}
                   disabled={exPage === 0}
-                  className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+                  className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
                 >
                   <ChevronLeft size={22} />
                 </button>
               )}
-              <div className="flex-1 min-w-0">
-                <div className="grid grid-rows-2 gap-3" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridAutoFlow: 'column' }}>
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <div
+                  key={exAnimKey}
+                  className="grid grid-rows-2 gap-3 p-1.5 animate-page-slide"
+                  style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridAutoFlow: 'column', '--slide-from': exDirection >= 0 ? '60px' : '-60px' }}
+                >
                   {exData.items.slice(exPage * perPage, (exPage + 1) * perPage).map((item) => (
                     <div
                       key={item.id}
-                      className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                      className={SHOP_CARD}
+                      onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}
                     >
-                      <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                      <CardShine />
+                      <div className="aspect-[5/2] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                       </div>
                     </div>
                   ))}
                 </div>
                 {totalPages > 1 && (
-                  <div className="flex justify-center gap-1.5 mt-3">
+                  <div className="flex justify-center gap-2 mt-4">
                     {Array.from({ length: totalPages }).map((_, i) => (
                       <div
                         key={i}
-                        onClick={() => setExPage(i)}
-                        className={`h-1 rounded-full transition-all cursor-pointer ${i === exPage ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
+                        onClick={() => { if (i !== exPage) { setExDirection(i > exPage ? 1 : -1); setExAnimKey(k => k + 1); setExPage(i); } }}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${i === exPage ? 'w-8 bg-red-500 shadow shadow-red-500/40' : 'w-4 bg-zinc-700 hover:bg-zinc-500'}`}
                       />
                     ))}
                   </div>
@@ -691,15 +750,15 @@ export default function Shop() {
               </div>
               {totalPages > 1 && (
                 <button
-                  onClick={() => setExPage(Math.min(totalPages - 1, exPage + 1))}
+                  onClick={() => { if (exPage < totalPages - 1) { setExDirection(1); setExAnimKey(k => k + 1); setExPage(exPage + 1); } }}
                   disabled={exPage === totalPages - 1}
-                  className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+                  className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
                 >
                   <ChevronRight size={22} />
                 </button>
               )}
             </div>
-          </section>
+          </ShopSection>
         );
       })()}
 

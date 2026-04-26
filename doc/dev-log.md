@@ -274,6 +274,58 @@
 
 ---
 
+## 2025-04-27 · 全局 UI 直角化 + 商店翻页过渡动画
+
+### 商店翻页过渡效果
+
+- `ScrollRow` 组件新增 `direction` / `animKey` 状态，翻页时触发 `animate-page-slide` 动画
+- 奇异商店独立翻页区域同步适配，左右翻页带方向感知滑动效果
+- 页码指示器统一为红色发光圆点样式，箭头按钮样式与神话级页面一致
+
+### 全站直角化
+
+将所有页面的圆角元素统一改为直角（sharp corners），涉及：
+
+**全局基础类 (`index.css`)**
+- `.card` 移除 `rounded-xl`
+- `.btn` 移除 `rounded-lg`
+- `.chip` 移除 `rounded-md`
+
+**导航栏 (`App.jsx`)**
+- Logo 图标、神话级按钮、通行证/商店/金币/制造轮换导航链接 → 移除 `rounded-lg`
+
+**通行证页 (`BattlePass.jsx`)**
+- 顶部信息面板 → `!rounded-none`
+- 档位按钮（免费/高级/终极/终极+）→ 移除 `rounded-lg`
+- 奖励对比按钮 → 移除 `rounded-lg`
+- 筛选按钮（全部/免费/高级…）→ 移除 `rounded-lg`
+- 奖励卡片 → `!rounded-none`
+- 悬浮提示图框 → 移除 `rounded-xl`
+
+**神话级页 (`Mythic.jsx`)**
+- Section 面板 → 移除 `rounded-3xl`
+- 卡片 `CARD_SHELL` → `!rounded-none`
+- 翻页箭头 → 移除 `rounded-xl`
+- 标签胶囊（ITEMS / 碎片 / 代币）→ 移除 `rounded-full`
+- 价格标签 → 移除 `rounded-full`
+- 弹窗变体卡片 → 移除 `rounded-xl`
+- 威望等级图标 → 移除 `rounded-lg`
+- ESC 按键标签 → 移除 `rounded`
+- Lightbox 图片 → 移除 `rounded-lg`
+
+**商店页 (`Shop.jsx`)**
+- Section 面板 → 移除 `rounded-3xl`
+- 里程碑弹窗 → 移除 `rounded-xl`
+- 双重打击详情弹窗 → 移除 `rounded-2xl`
+- 所有弹窗内卡片、图标、按钮、价格栏 → 移除各级 `rounded-*`
+- 翻页箭头 → 移除 `rounded-xl`
+- 倒计时胶囊 → 移除 `rounded-full`
+- Lightbox 图片 → 移除 `rounded-lg`
+
+> 保留 `rounded-full` 的元素：页码圆点指示器、装饰竖条、背景光晕 blur 圆
+
+---
+
 ## 待办
 
 - [ ] 补充所有商店板块的商品图片

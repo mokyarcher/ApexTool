@@ -14,13 +14,13 @@ body {
 .font-display { font-family: 'Teko', Impact, sans-serif; letter-spacing: 0.02em; }
 
 .card {
-  @apply bg-apex-panel border border-apex-border rounded-xl;
+  @apply bg-apex-panel border border-apex-border;
 }
 .btn {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-apex-border bg-apex-panel hover:border-apex-red hover:text-white transition;
+  @apply inline-flex items-center gap-2 px-4 py-2 border border-apex-border bg-apex-panel hover:border-apex-red hover:text-white transition;
 }
 .chip {
-  @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium;
+  @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium;
 }
 
 .rarity-common    { @apply bg-zinc-600/20 text-zinc-200 border border-zinc-500/40; }

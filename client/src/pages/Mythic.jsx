@@ -15,7 +15,7 @@ function TokenIcon({ size = 14 }) {
 
 function MythicSection({ children }) {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(circle_at_85%_100%,rgba(127,29,29,0.16),transparent_40%)]" />
       <div className="relative z-10">{children}</div>
     </section>
@@ -23,7 +23,7 @@ function MythicSection({ children }) {
 }
 
 const CARD_SHELL =
-  'group relative flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
+  'group relative flex-1 min-w-0 card !rounded-none overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
 
 function CardShine() {
   return <div className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-full group-hover:opacity-100" />;
@@ -52,7 +52,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
         <button
           onClick={() => goTo(Math.max(0, page - 1))}
           disabled={page === 0}
-          className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
+          className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronLeft size={22} />
         </button>
@@ -86,7 +86,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
         <button
           onClick={() => goTo(Math.min(totalPages - 1, page + 1))}
           disabled={page === totalPages - 1}
-          className="w-11 h-44 shrink-0 flex items-center justify-center rounded-xl bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
+          className="w-11 h-44 shrink-0 flex items-center justify-center bg-black/35 border border-red-500/20 text-white/45 hover:text-white hover:bg-red-950/40 hover:border-red-500/55 hover:shadow-lg hover:shadow-red-500/10 transition-all disabled:opacity-20 disabled:hover:bg-black/35 disabled:hover:text-white/45 disabled:hover:border-red-500/20"
         >
           <ChevronRight size={22} />
         </button>
@@ -108,13 +108,13 @@ function MythicSectionHeader({ title, shards, tokens, count }) {
       </div>
       <div className="flex items-center gap-3 text-sm">
         {count !== undefined && (
-          <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-400 text-xs">{count} ITEMS</span>
+          <span className="px-2.5 py-1 bg-white/5 border border-white/10 text-zinc-400 text-xs">{count} ITEMS</span>
         )}
         {shards !== undefined && (
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 font-semibold"><ShardIcon /> {shards}</span>
+          <span className="flex items-center gap-1.5 px-2.5 py-1 bg-red-500/10 border border-red-500/20 text-red-300 font-semibold"><ShardIcon /> {shards}</span>
         )}
         {tokens !== undefined && (
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-300 font-semibold"><TokenIcon /> {tokens}</span>
+          <span className="flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 border border-green-500/20 text-green-300 font-semibold"><TokenIcon /> {tokens}</span>
         )}
       </div>
     </div>
@@ -181,7 +181,7 @@ function PrestigeDetailModal({ item, onClose }) {
               {levels.map((lv, i) => (
                 <div key={lv.level} className="flex items-center gap-2">
                   <div
-                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+                    className={`w-16 h-16 overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
                       i === activeLevel
                         ? 'border-red-500 shadow-lg shadow-red-500/30 scale-105'
                         : 'border-zinc-600/50 hover:border-zinc-400 opacity-60 hover:opacity-100'
@@ -203,7 +203,7 @@ function PrestigeDetailModal({ item, onClose }) {
 
           {/* ESC back */}
           <button className="flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
-            <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+            <span className="text-sm border border-zinc-600 px-2 py-1">ESC</span>
             <span className="text-sm">返回</span>
           </button>
         </div>
@@ -268,7 +268,7 @@ function ArtifactRow({ item, onClickImage }) {
           onClick={() => onClickImage(evo.image, evo.name)}
         >
           {/* Cost badge */}
-          <div className="absolute top-2 left-2 z-10 flex items-center gap-1 text-xs font-bold text-green-400 bg-black/60 rounded px-2 py-0.5">
+          <div className="absolute top-2 left-2 z-10 flex items-center gap-1 text-xs font-bold text-green-400 bg-black/60 px-2 py-0.5">
             <TokenIcon size={12} /> {evo.costPerItem} 每件
           </div>
           <div className="aspect-[10/7] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
@@ -294,7 +294,7 @@ function SetCard({ item, onClick }) {
     >
       <CardShine />
       {/* Cost badge */}
-      <div className="absolute top-2 left-2 z-20 flex items-center gap-1 text-xs font-bold bg-black/65 rounded-full px-2.5 py-1 border border-white/10 backdrop-blur">
+      <div className="absolute top-2 left-2 z-20 flex items-center gap-1 text-xs font-bold bg-black/65 px-2.5 py-1 border border-white/10 backdrop-blur">
         {item.costPerItem >= 150 ? (
           <span className="text-red-400"><ShardIcon size={12} /> {item.costPerItem} 每件</span>
         ) : (
@@ -325,7 +325,7 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
     <div className={`fixed inset-0 z-50 flex items-center justify-center p-6 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
       <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
-        <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+        <span className="text-sm border border-zinc-600 px-2 py-1">ESC</span>
         <span className="text-sm">返回</span>
       </button>
       <div
@@ -343,7 +343,7 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
               disabled={page === 0}
-              className="w-10 h-48 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+              className="w-10 h-48 shrink-0 flex items-center justify-center bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
             >
               <ChevronLeft size={22} />
             </button>
@@ -355,7 +355,7 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
                 return (
                   <div
                     key={v.id}
-                    className={`rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
+                    className={`overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
                       isBase
                         ? 'border-amber-500/60 hover:border-amber-400 hover:shadow-amber-500/20 bg-gradient-to-b from-amber-900/20 to-zinc-900/80'
                         : 'border-red-900/40 hover:border-red-500/60 hover:shadow-red-500/10 bg-gradient-to-b from-zinc-800/80 to-zinc-900/90'
@@ -385,7 +385,7 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
             <button
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
               disabled={page === totalPages - 1}
-              className="w-10 h-48 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+              className="w-10 h-48 shrink-0 flex items-center justify-center bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
             >
               <ChevronRight size={22} />
             </button>
@@ -540,7 +540,7 @@ function ModelViewer3D({ item, onClose }) {
           <div className="flex items-center gap-1 text-red-400 font-bold mt-2"><ShardIcon size={16} /> {item.price}</div>
         </div>
         <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
-          <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
+          <span className="text-sm border border-zinc-600 px-2 py-1">ESC</span>
           <span className="text-sm">返回</span>
         </button>
         {/* Top progress bar */}
@@ -605,7 +605,7 @@ function MythicLightbox({ src, alt, onClose }) {
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
-      <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
+      <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
     </div>
   );
 }

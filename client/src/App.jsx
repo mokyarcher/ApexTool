@@ -20,7 +20,7 @@ export default function App() {
       <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 grid place-items-center rounded-lg bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/25">
+            <div className="w-8 h-8 grid place-items-center bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/25">
               <Gamepad2 size={17} />
             </div>
             <div>
@@ -32,7 +32,7 @@ export default function App() {
             <NavLink
               to="/mythic"
               className={({ isActive }) =>
-                `px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
+                `px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
               }
             >
               神话级
@@ -42,7 +42,7 @@ export default function App() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 ${
+                  `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
                     isActive
                       ? 'bg-white/10 text-white border border-white/15 shadow-sm shadow-red-500/10'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'

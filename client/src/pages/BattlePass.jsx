@@ -62,7 +62,7 @@ function TierButton({ icon: Icon, label, cls, tipImage, onImageClick }) {
   return (
     <div className="relative" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
       <button
-        className={`px-4 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 flex items-center gap-1.5 cursor-pointer hover:brightness-125 hover:shadow-lg hover:shadow-white/15 hover:-translate-y-0.5 active:translate-y-0 ${cls}`}
+        className={`px-4 py-2 text-sm font-semibold border transition-all duration-200 flex items-center gap-1.5 cursor-pointer hover:brightness-125 hover:shadow-lg hover:shadow-white/15 hover:-translate-y-0.5 active:translate-y-0 ${cls}`}
         onClick={() => tipImage && onImageClick && onImageClick(tipImage, label)}
       >
         <Icon size={15} /> {label}
@@ -70,7 +70,7 @@ function TierButton({ icon: Icon, label, cls, tipImage, onImageClick }) {
       {show && tipImage && (
         <div className="absolute top-full left-0 mt-3 z-50">
           <div className="absolute left-8 -top-1.5 w-3 h-3 rotate-45 bg-zinc-900/95 border-l border-t border-white/10" />
-          <div className="rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
+          <div className="border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
             <img src={tipImage} alt="" style={{ width: '460px', height: 'auto' }} />
           </div>
         </div>
@@ -83,7 +83,7 @@ function RewardCard({ r, onImageClick }) {
   const Icon = typeIcon[r.type] || Gift;
   const rarity = r.rarity || 'common';
   return (
-    <div className="card p-3 flex flex-col gap-2 hover:border-apex-red/60 hover:scale-[1.04] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 ease-out">
+    <div className="card !rounded-none p-3 flex flex-col gap-2 hover:border-apex-red/60 hover:scale-[1.04] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 ease-out">
       <div className="flex items-center justify-between">
         <span className="font-display text-xl text-white">Lv.{r.level}</span>
         {(() => { const t = TIER_META[r.tier] || TIER_META.free; const TIcon = t.icon; return (
@@ -91,7 +91,7 @@ function RewardCard({ r, onImageClick }) {
         ); })()}
       </div>
       <div
-        className={`aspect-square rounded-lg border flex items-center justify-center overflow-hidden rarity-${rarity} ${r.image ? 'cursor-pointer' : ''}`}
+        className={`aspect-square border flex items-center justify-center overflow-hidden rarity-${rarity} ${r.image ? 'cursor-pointer' : ''}`}
         onClick={() => r.image && onImageClick(r)}
       >
         {r.image ? (
@@ -148,7 +148,7 @@ export default function BattlePass() {
 
   return (
     <div className="space-y-6">
-      <section className="card p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+      <section className="card !rounded-none p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
         <div>
           <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
           <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
@@ -164,7 +164,7 @@ export default function BattlePass() {
             <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage="/bp/tier-premium.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
             <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage="/bp/tier-ultimate.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
             <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage="/bp/tier-ultimate-plus.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-            <button onClick={() => setShowInfo(true)} className="px-4 py-2 rounded-lg text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
+            <button onClick={() => setShowInfo(true)} className="px-4 py-2 text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
           </div>
         </div>
         <div className="text-right text-base text-zinc-300 space-y-1.5">
@@ -185,7 +185,7 @@ export default function BattlePass() {
           <button
             key={o.k}
             onClick={() => setFilter(o.k)}
-            className={`px-3 py-1.5 rounded-lg text-sm border transition ${
+            className={`px-3 py-1.5 text-sm border transition ${
               filter === o.k ? 'border-apex-red text-white bg-apex-red/15' : 'border-apex-border text-zinc-300 hover:text-white'
             }`}
           >
