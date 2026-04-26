@@ -37,6 +37,22 @@
       "image": "/shop/milestone/featured/4.jpg",
       "priceMaterials": 1800,
       "priceCoins": 2400
+    },
+    {
+      "id": 5,
+      "name": "冰霜先锋",
+      "legend": "动力小子",
+      "image": "/shop/milestone/featured/5.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
+    },
+    {
+      "id": 6,
+      "name": "黄金猎鹰",
+      "legend": "暴雷",
+      "image": "/shop/milestone/featured/6.jpg",
+      "priceMaterials": 1800,
+      "priceCoins": 2400
     }
   ],
   "detail": {

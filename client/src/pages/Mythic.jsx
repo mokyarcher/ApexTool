@@ -267,19 +267,25 @@ function SetCard({ item, onClick }) {
 /* ── Melee Set Detail Modal ── */
 function MeleeSetModal({ set, onClose, onViewModel }) {
   const [visible, setVisible] = useState(false);
+  const [page, setPage] = useState(0);
+  const perPage = 4;
   useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
   useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
   function close() { setVisible(false); setTimeout(onClose, 400); }
 
+  const variants = set.variants || [];
+  const totalPages = Math.ceil(variants.length / perPage);
+  const pageItems = variants.slice(page * perPage, (page + 1) * perPage);
+
   return (
-    <div className={`fixed inset-0 z-50 flex flex-col justify-center p-6 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-6 transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
       <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
       <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
         <span className="text-sm border border-zinc-600 rounded px-2 py-1">ESC</span>
         <span className="text-sm">返回</span>
       </button>
       <div
-        className={`relative w-full max-w-[1400px] mx-auto transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+        className={`relative w-full max-w-[1400px] transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -287,27 +293,59 @@ function MeleeSetModal({ set, onClose, onViewModel }) {
           <h2 className="font-display text-3xl text-white font-bold">{set.name}</h2>
           <div className="text-sm text-zinc-400 mt-1">已拥有 {set.owned}/{set.total} 件物品</div>
         </div>
-        {/* Variant cards */}
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide py-2">
-          {set.variants && set.variants.map((v, i) => {
-            const isBase = i === 0;
-            return (
-              <div
-                key={v.id}
-                className={`shrink-0 rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
-                  isBase
-                    ? 'border-amber-500/60 hover:border-amber-400 hover:shadow-amber-500/20 bg-gradient-to-b from-amber-900/20 to-zinc-900/80'
-                    : 'border-red-900/40 hover:border-red-500/60 hover:shadow-red-500/10 bg-gradient-to-b from-zinc-800/80 to-zinc-900/90'
-                }`}
-                style={{ width: 'min(260px, 22vw)', height: 'min(380px, 65vh)' }}
-                onClick={() => onViewModel(v)}
-              >
-                <div className="w-full h-full relative overflow-hidden">
-                  <img src={v.image} alt={v.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                </div>
+        {/* Variant cards with pagination */}
+        <div className="flex items-center gap-3">
+          {totalPages > 1 && (
+            <button
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page === 0}
+              className="w-10 h-48 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+            >
+              <ChevronLeft size={22} />
+            </button>
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="grid gap-5 p-3" style={{ gridTemplateColumns: `repeat(${perPage}, 1fr)` }}>
+              {pageItems.map((v, idx) => {
+                const isBase = page === 0 && idx === 0;
+                return (
+                  <div
+                    key={v.id}
+                    className={`rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer hover:scale-[1.02] hover:brightness-110 hover:shadow-xl ${
+                      isBase
+                        ? 'border-amber-500/60 hover:border-amber-400 hover:shadow-amber-500/20 bg-gradient-to-b from-amber-900/20 to-zinc-900/80'
+                        : 'border-red-900/40 hover:border-red-500/60 hover:shadow-red-500/10 bg-gradient-to-b from-zinc-800/80 to-zinc-900/90'
+                    }`}
+                    onClick={() => onViewModel(v)}
+                  >
+                    <div className="aspect-[2/3] relative overflow-hidden">
+                      <img src={v.image} alt={v.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {totalPages > 1 && (
+              <div className="flex justify-center gap-1.5 mt-2">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <div
+                    key={i}
+                    onClick={() => setPage(i)}
+                    className={`h-1 rounded-full transition-all cursor-pointer ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
+                  />
+                ))}
               </div>
-            );
-          })}
+            )}
+          </div>
+          {totalPages > 1 && (
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+              disabled={page === totalPages - 1}
+              className="w-10 h-48 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+            >
+              <ChevronRight size={22} />
+            </button>
+          )}
         </div>
       </div>
     </div>

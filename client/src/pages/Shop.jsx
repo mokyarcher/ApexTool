@@ -408,52 +408,47 @@ function ShopLightbox({ src, alt, onClose }) {
   );
 }
 
-/* ── Horizontal scroll row with arrow buttons ── */
-function ScrollRow({ children, itemWidth = 200, gap = 12 }) {
-  const ref = useRef(null);
-  const [canLeft, setCanLeft] = useState(false);
-  const [canRight, setCanRight] = useState(false);
-
-  function check() {
-    const el = ref.current;
-    if (!el) return;
-    setCanLeft(el.scrollLeft > 4);
-    setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
-  }
-
-  useEffect(() => { check(); window.addEventListener('resize', check); return () => window.removeEventListener('resize', check); }, [children]);
-
-  function scroll(dir) {
-    const el = ref.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * (itemWidth + gap) * 2, behavior: 'smooth' });
-    setTimeout(check, 350);
-  }
+/* ── Paginated row with side arrow buttons ── */
+function ScrollRow({ children, itemsPerPage = 5 }) {
+  const items = Array.isArray(children) ? children : [children];
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const [page, setPage] = useState(0);
+  const pageItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   return (
-    <div className="relative group/scroll">
-      {canLeft && (
+    <div className="relative flex items-center gap-2">
+      {totalPages > 1 && (
         <button
-          onClick={() => scroll(-1)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/70 border border-apex-border text-white/80 hover:text-white hover:bg-black/90 backdrop-blur transition opacity-0 group-hover/scroll:opacity-100"
+          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          disabled={page === 0}
+          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft size={22} />
         </button>
       )}
-      <div
-        ref={ref}
-        onScroll={check}
-        className="flex overflow-x-auto scroll-smooth scrollbar-hide py-3 -my-3 px-3 -mx-3"
-        style={{ gap }}
-      >
-        {children}
+      <div className="flex-1 min-w-0">
+        <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}>
+          {pageItems}
+        </div>
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-1.5 mt-3">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setPage(i)}
+                className={`h-1 rounded-full transition-all cursor-pointer ${i === page ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
-      {canRight && (
+      {totalPages > 1 && (
         <button
-          onClick={() => scroll(1)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/70 border border-apex-border text-white/80 hover:text-white hover:bg-black/90 backdrop-blur transition opacity-0 group-hover/scroll:opacity-100"
+          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+          disabled={page === totalPages - 1}
+          className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
         >
-          <ChevronRight size={18} />
+          <ChevronRight size={22} />
         </button>
       )}
     </div>
@@ -463,7 +458,7 @@ function ScrollRow({ children, itemWidth = 200, gap = 12 }) {
 /* ── Discount Shop Card (reused by double-strike, featured-bundle, premium) ── */
 function DiscountShopCard({ item, onClick }) {
   return (
-    <div className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 w-[200px] shrink-0">
+    <div className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200">
       <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={onClick}>
         {item.discount && (
           <span className="absolute top-2 left-2 z-10 chip bg-green-600/80 text-white border-0 text-xs font-bold">
@@ -512,7 +507,6 @@ export default function Shop() {
   const { data: exData, loading: exLoading, error: exError, reload: exReload } = useFetch(api.exotic, []);
   const [showMilestone, setShowMilestone] = useState(false);
   const [exPage, setExPage] = useState(0);
-  const [rcPage, setRcPage] = useState(0);
   const [shopLightbox, setShopLightbox] = useState(null);
   const [dsDetail, setDsDetail] = useState(null);
 
@@ -623,71 +617,35 @@ export default function Shop() {
       {/* ── 改色 ── */}
       {rcError ? (
         <ErrorBox error={rcError} onRetry={rcReload} />
-      ) : rcData && (() => {
-        const rcPerPage = 5;
-        const rcTotalPages = Math.ceil(rcData.items.length / rcPerPage);
-        return (
-          <section className="space-y-3">
-            <div className="flex items-center gap-3">
-              <h2 className="font-display text-2xl text-white">{rcData.name}</h2>
-              <div className="flex items-center gap-1.5 text-sm text-zinc-400">
-                <Clock size={14} /> 刷新：{rcCountdown}
+      ) : rcData && (
+        <section className="space-y-3">
+          <ShopSectionHeader title={rcData.name} countdown={rcCountdown} />
+          <ScrollRow>
+            {rcData.items.map((item) => (
+              <div
+                key={item.id}
+                className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+              >
+                <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                </div>
+                <div className="p-3 space-y-1">
+                  <div className="text-sm text-white leading-tight">{item.name}</div>
+                  <div className="text-xs text-zinc-400 flex items-center gap-1"><Palette size={11} /> {item.legend}</div>
+                  <div className="flex items-center gap-2 text-xs mt-1">
+                    {item.priceMaterials && (
+                      <span className="flex items-center gap-1 text-zinc-300"><Wrench size={11} /> {item.priceMaterials}</span>
+                    )}
+                    {item.priceTokens && (
+                      <span className="flex items-center gap-1 text-amber-300"><Coins size={11} /> {item.priceTokens}</span>
+                    )}
+                  </div>
+                </div>
               </div>
-              {rcTotalPages > 1 && (
-                <div className="ml-auto flex items-center gap-2">
-                  <button
-                    onClick={() => setRcPage(Math.max(0, rcPage - 1))}
-                    disabled={rcPage === 0}
-                    className="p-1 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 transition"
-                  >
-                    <ChevronLeft size={16} />
-                  </button>
-                  <div className="flex items-center gap-1.5">
-                    {Array.from({ length: rcTotalPages }, (_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setRcPage(i)}
-                        className={`w-6 h-1.5 rounded-full transition ${i === rcPage ? 'bg-apex-red' : 'bg-zinc-600 hover:bg-zinc-500'}`}
-                      />
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => setRcPage(Math.min(rcTotalPages - 1, rcPage + 1))}
-                    disabled={rcPage === rcTotalPages - 1}
-                    className="p-1 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 transition"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className="grid grid-cols-5 gap-3">
-              {rcData.items.slice(rcPage * rcPerPage, (rcPage + 1) * rcPerPage).map((item) => (
-                <div
-                  key={item.id}
-                  className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
-                >
-                  <div className="aspect-[3/4] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                  </div>
-                  <div className="p-3 space-y-1">
-                    <div className="text-sm text-white leading-tight">{item.name}</div>
-                    <div className="text-xs text-zinc-400 flex items-center gap-1"><Palette size={11} /> {item.legend}</div>
-                    <div className="flex items-center gap-2 text-xs mt-1">
-                      {item.priceMaterials && (
-                        <span className="flex items-center gap-1 text-zinc-300"><Wrench size={11} /> {item.priceMaterials}</span>
-                      )}
-                      {item.priceTokens && (
-                        <span className="flex items-center gap-1 text-amber-300"><Coins size={11} /> {item.priceTokens}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        );
-      })()}
+            ))}
+          </ScrollRow>
+        </section>
+      )}
 
       {/* ── 奇异商店 ── */}
       {exError ? (
@@ -697,57 +655,58 @@ export default function Shop() {
         const totalPages = Math.ceil(exData.items.length / perPage);
         return (
           <section className="space-y-3">
-            <div className="flex items-center gap-3">
-              <h2 className="font-display text-2xl text-white">{exData.name}</h2>
-              <div className="flex items-center gap-1.5 text-sm text-zinc-400">
-                <Clock size={14} /> 刷新：{exCountdown}
-              </div>
+            <ShopSectionHeader title={exData.name} countdown={exCountdown} />
+            <div className="flex items-center gap-2">
               {totalPages > 1 && (
-                <div className="ml-auto flex items-center gap-2">
-                  <button
-                    onClick={() => setExPage(Math.max(0, exPage - 1))}
-                    disabled={exPage === 0}
-                    className="p-1 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 transition"
-                  >
-                    <ChevronLeft size={16} />
-                  </button>
-                  <div className="flex items-center gap-1.5">
-                    {Array.from({ length: totalPages }, (_, i) => (
-                      <button
+                <button
+                  onClick={() => setExPage(Math.max(0, exPage - 1))}
+                  disabled={exPage === 0}
+                  className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
+                >
+                  <ChevronLeft size={22} />
+                </button>
+              )}
+              <div className="flex-1 min-w-0">
+                <div className="grid grid-rows-2 gap-3" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridAutoFlow: 'column' }}>
+                  {exData.items.slice(exPage * perPage, (exPage + 1) * perPage).map((item) => (
+                    <div
+                      key={item.id}
+                      className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                    >
+                      <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                      </div>
+                      <div className="p-2.5 space-y-0.5">
+                        <div className="text-sm text-white leading-tight">{item.name}</div>
+                        <div className="text-xs text-zinc-400">{item.weapon}</div>
+                        <div className="flex items-center gap-1 text-xs mt-1">
+                          <span className="flex items-center gap-1 text-emerald-300"><Sparkles size={11} /> {item.price}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {totalPages > 1 && (
+                  <div className="flex justify-center gap-1.5 mt-3">
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                      <div
                         key={i}
                         onClick={() => setExPage(i)}
-                        className={`w-6 h-1.5 rounded-full transition ${i === exPage ? 'bg-apex-red' : 'bg-zinc-600 hover:bg-zinc-500'}`}
+                        className={`h-1 rounded-full transition-all cursor-pointer ${i === exPage ? 'w-6 bg-red-500' : 'w-4 bg-zinc-600 hover:bg-zinc-500'}`}
                       />
                     ))}
                   </div>
-                  <button
-                    onClick={() => setExPage(Math.min(totalPages - 1, exPage + 1))}
-                    disabled={exPage === totalPages - 1}
-                    className="p-1 rounded-lg border border-apex-border hover:border-apex-red hover:text-white disabled:opacity-30 transition"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className="grid grid-rows-2 gap-3" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridAutoFlow: 'column' }}>
-              {exData.items.slice(exPage * perPage, (exPage + 1) * perPage).map((item) => (
-                <div
-                  key={item.id}
-                  className="card overflow-hidden hover:border-apex-red/60 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200"
+                )}
+              </div>
+              {totalPages > 1 && (
+                <button
+                  onClick={() => setExPage(Math.min(totalPages - 1, exPage + 1))}
+                  disabled={exPage === totalPages - 1}
+                  className="w-10 h-40 shrink-0 flex items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-700/40 text-white/50 hover:text-white hover:bg-zinc-800/80 hover:border-zinc-600 transition-all disabled:opacity-20 disabled:hover:bg-zinc-900/60 disabled:hover:text-white/50 disabled:hover:border-zinc-700/40"
                 >
-                  <div className="aspect-[5/2] relative overflow-hidden bg-zinc-800/50 cursor-pointer" onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}>
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                  </div>
-                  <div className="p-2.5 space-y-0.5">
-                    <div className="text-sm text-white leading-tight">{item.name}</div>
-                    <div className="text-xs text-zinc-400">{item.weapon}</div>
-                    <div className="flex items-center gap-1 text-xs mt-1">
-                      <span className="flex items-center gap-1 text-emerald-300"><Sparkles size={11} /> {item.price}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  <ChevronRight size={22} />
+                </button>
+              )}
             </div>
           </section>
         );
