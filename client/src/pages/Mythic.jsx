@@ -497,7 +497,7 @@ function ModelViewer3D({ item, onClose }) {
         )}
         {/* Model not found message */}
         {loadError && (
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
             <div className="text-5xl mb-4">🚀</div>
             <div className="text-xl text-zinc-300 font-semibold">模型文件正在路上</div>
             <div className="text-sm text-zinc-500 mt-2">Model file is on the way...</div>
