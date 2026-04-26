@@ -271,7 +271,7 @@ function ArtifactRow({ item, onClickImage }) {
           <div className="absolute top-2 left-2 z-10 flex items-center gap-1 text-xs font-bold text-green-400 bg-black/60 rounded px-2 py-0.5">
             <TokenIcon size={12} /> {evo.costPerItem} 每件
           </div>
-          <div className="aspect-[5/3] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
+          <div className="aspect-[10/7] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
             <img src={evo.image} alt={evo.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           </div>
           <div className="p-3 space-y-1">
@@ -301,7 +301,7 @@ function SetCard({ item, onClick }) {
           <span className="text-green-400"><TokenIcon size={12} /> {item.costPerItem} 每件</span>
         )}
       </div>
-      <div className="aspect-[5/3] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
+      <div className="aspect-[10/7] relative overflow-hidden bg-gradient-to-br from-red-900/30 to-zinc-900/80">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.04] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
       </div>
     </div>
@@ -464,6 +464,49 @@ function ModelViewer3D({ item, onClose }) {
       clearTimeout(stallTimer.current);
       setProgress(100);
       setPhase('done');
+      // 播放一次 → 等5秒 → 平滑倒放 → 等5秒 → 再播放
+      let rafId = null;
+      let delayTimer = null;
+      const easeInOut = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      const reversePlay = () => {
+        el.pause();
+        el.removeEventListener('finished', onAnimEnd);
+        const duration = el.duration;
+        const reverseDuration = duration * 1200;
+        let start = null;
+        const step = (ts) => {
+          if (!start) start = ts;
+          const progress = Math.min(1, (ts - start) / reverseDuration);
+          el.currentTime = (1 - easeInOut(progress)) * duration;
+          if (progress < 1) {
+            rafId = requestAnimationFrame(step);
+          } else {
+            el.currentTime = 0;
+            delayTimer = setTimeout(() => {
+              el.addEventListener('finished', onAnimEnd);
+              const allNames = el.availableAnimations || [];
+              if (allNames.length > 0) {
+                allNames.forEach((name) => el.play({ repetitions: 1, animationName: name }));
+              } else {
+                el.play({ repetitions: 1 });
+              }
+            }, 5000);
+          }
+        };
+        rafId = requestAnimationFrame(step);
+      };
+      const onAnimEnd = () => {
+        delayTimer = setTimeout(reversePlay, 5000);
+      };
+      // 播放所有可用动画
+      const names = el.availableAnimations || [];
+      if (names.length > 0) {
+        names.forEach((name) => el.play({ repetitions: 1, animationName: name }));
+      } else {
+        el.play({ repetitions: 1 });
+      }
+      el.addEventListener('finished', onAnimEnd);
+      el._cleanup = () => { cancelAnimationFrame(rafId); clearTimeout(delayTimer); el.removeEventListener('finished', onAnimEnd); };
     };
     const onError = () => {
       clearTimeout(stallTimer.current);
@@ -539,7 +582,6 @@ function ModelViewer3D({ item, onClose }) {
             alt={item.name}
             camera-controls
             auto-rotate
-            autoplay
             shadow-intensity="1.2"
             shadow-softness="0.8"
             exposure="1.3"

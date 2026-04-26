@@ -154,6 +154,124 @@
 | `2.jpg` | 猛禽 |
 | `3.jpg` | 路怒 |
 
+## 2026-04-25
+
+### 通行证页面 - 交互增强
+
+- 倒计时组件：显示赛季剩余时间（天/时/分/秒）
+- 奖励图片放大字体，增加 Tier 按钮悬浮提示（Tooltip）
+- 悬浮动画优化：卡片缩放不产生抖动
+- 点击奖励图片打开 Lightbox 大图查看
+
+### 神话级页面 - 翻页动画
+
+- `PagedRow` 组件新增滑动过渡动画（slide + fade）
+- CSS `@keyframes pageSlide` 动画：0.35s 时长，60px 滑动距离
+- 翻页指示器和箭头按钮统一使用 `goTo` 函数触发动画
+
+### 商店页面 - 数据与 UI 更新
+
+- 更新商店 JSON 文件，匹配实际图片资源数量：
+  - `double-strike-shop.json`：5 → 9 件
+  - `premium-shop.json`：5 → 8 件
+  - `featured-bundle-shop.json`：5 → 6 件
+  - `recolor-shop.json`：5 → 4 件
+  - `exotic-shop.json`：12 → 18 件
+- 奇异商店 18 件物品命名（根据图片内容）：护甲灭绝、闪电虫、火山裂隙 等
+- 移除商店卡片文字描述（折扣卡片、改色卡片、奇异卡片），图片已包含完整信息
+
+### Blender PBR 贴图自动配置插件
+
+新增工具脚本 `tools/apex_texture_setup.py`，用于 Blender 中自动化配置 Apex Legends 武器皮肤的 PBR 材质。
+
+**功能**：
+- 扫描指定目录的 PBR 贴图文件（`_col`、`_nml`、`_gls`、`_spc`、`_ao`、`_ilm`、`_cav`）
+- 按部件名称（如 `breachbeam_main`）自动分组
+- 为每个部件创建完整的 Principled BSDF 材质节点树：
+  - `_col` → Base Color（sRGB）
+  - `_nml` → Normal Map → Normal（Non-Color）
+  - `_gls` → Invert → Roughness（Non-Color，光泽度转粗糙度）
+  - `_spc` → Specular IOR Level（Non-Color）
+  - `_ao` + `_cav` → MixRGB Multiply 混合后叠加到 Base Color
+  - `_ilm` → Emission Color + Emission Strength
+- 自动修改场景色彩管理为 Standard（避免 Filmic 压暗颜色）
+
+**调优参数**：
+| 参数 | 值 | 说明 |
+|------|---|------|
+| AO Multiply Factor | 0.4 | 环境光遮蔽叠加强度（过高会发灰）|
+| Cavity Multiply Factor | 0.2 | 腔体叠加强度 |
+| Emission Strength | 5.0 | 自发光强度 |
+| View Transform | Standard | 替代 Filmic 避免颜色失真 |
+
+**使用方法**：
+1. Blender → 编辑 → 偏好设置 → 插件 → 安装 → 选择 `apex_texture_setup.py`
+2. 3D 视口右侧边栏 → Apex 标签页 → 选择贴图文件夹 → 运行
+
+> **注意**：Blender 视口中的锯齿（狗牙）是视口抗锯齿限制，非贴图问题。可通过开启视口抗锯齿、使用渲染预览模式或执行最终渲染解决。
+
+---
+
+## 2026-04-26
+
+### 3D 模型查看器 - 光照与动画优化
+
+**光照改进**：
+- 新增 `environment-image="neutral"` 环境光照（IBL），解决模型无光影的问题
+- 新增 `shadow-softness="0.8"` 柔和阴影
+- 调整 `shadow-intensity` 从 0.8 → 1.2
+- 曝光值 `exposure` 最终调整为 1.3（1.8 过亮）
+
+**动画播放逻辑**：
+- 移除 `autoplay` 属性（默认无限循环）
+- 加载完成后用 JS 手动控制动画：
+  1. 获取 `el.availableAnimations` 所有动画名
+  2. 逐个调用 `el.play({ repetitions: 1, animationName: name })` 播放全部动画
+  3. 播放完毕后等 5 秒
+  4. 使用 `requestAnimationFrame` + `easeInOut` 缓动函数平滑倒放
+  5. 倒放结束后等 5 秒，再次正向播放
+  6. 循环往复
+
+**动画流程**：`正向播放 → 等5秒 → 平滑倒放 → 等5秒 → 正向播放 → ...`
+
+### 多动画 GLB 模型兼容问题
+
+**问题**：部分 Sketchfab 模型（如瓦基里传家宝）在 Blender 中可播放动画，但导出 GLB 后 `<model-viewer>` 无法播放。
+
+**原因**：
+- `<model-viewer>` 默认只播放第一个动画
+- 有些模型的动画被拆分成多个轨道（如瓦基里的模型有 7-10 个动画轨道）
+- 如果第一个轨道为空/无可见效果，模型看起来就是静态的
+- gltf-viewer 的 "playAll" 可同时播放所有轨道，但 `<model-viewer>` 不支持
+
+**解决方案 — Blender 动画烘焙合并**：
+
+新增工具脚本 `tools/bake_animations.py`，在 Blender 中运行：
+1. 自动查找骨架（Armature）
+2. 收集所有动作（Actions）
+3. 清除现有 NLA 轨道
+4. 将所有动作添加到 NLA 轨道（blend_type = COMBINE）
+5. 使用 `bpy.ops.nla.bake()` 烘焙为单一动作 `CombinedAction`
+6. 清理旧轨道和旧动作
+
+**使用方法**：
+1. 在 Blender 中打开包含多动画的模型
+2. 切换到 **Scripting** 工作区
+3. 打开 `tools/bake_animations.py` → 点击 ▶ 运行
+4. 重新导出 GLB（勾选动画 ✅、形态键 ✅、蒙皮 ✅）
+
+> **重要**：不要在 Blender 的 Python 控制台（`>>>`）逐行粘贴脚本，会报缩进错误。必须在文本编辑器中打开整个文件后运行。
+
+### 神话级页面 - 卡片尺寸调整
+
+- 通用近战 & 神话武器卡片宽高比从 `5:3` 调整为 `10:7`，增加卡片高度约 17%
+
+### Sketchfab 模型下载指南
+
+- 推荐下载 **GLB** 格式（2k 贴图版本），单文件包含模型+贴图+动画
+- 如果 GLB 为白模（无贴图），说明上传者未提供材质，需换模型源或自行配贴图
+- 下载前检查 Sketchfab 预览页是否有动画时间轴（有 = 含动画，无 = 静态模型）
+
 ---
 
 ## 待办
