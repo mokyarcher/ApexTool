@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag } from 'lucide-react';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame } from 'lucide-react';
 import BattlePass from './pages/BattlePass.jsx';
 import Maps from './pages/Maps.jsx';
 import CoinsPage from './pages/Coins.jsx';
@@ -11,7 +11,7 @@ const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
   { to: '/shop', label: '商店', icon: ShoppingBag },
   { to: '/coins', label: '金币比例', icon: Coins },
-  { to: '/crafting', label: '制造轮换', icon: Hammer }
+  // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
 export default function App() {
@@ -32,10 +32,10 @@ export default function App() {
             <NavLink
               to="/mythic"
               className={({ isActive }) =>
-                `px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
+                `flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
               }
             >
-              神话级
+              <Flame size={14} /> 神话级
             </NavLink>
             {navItems.map(({ to, label, icon: Icon }) => (
               <NavLink

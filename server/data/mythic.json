@@ -63,12 +63,66 @@
         ]
       },
       {
-        "id": 4, "name": "APEX 猎手", "legend": "寻血猎犬", "image": "/mythic/prestige/4.jpg", "price": 150,
-        "desc": "寻血猎犬威望级皮肤套装",
+        "id": 4, "name": "APEX 激流", "legend": "动力小子", "image": "/mythic/prestige/4.jpg", "price": 150,
+        "desc": "动力小子威望级皮肤套装",
         "levels": [
           { "level": 1, "icon": "/mythic/prestige/4-icon1.jpg", "image": "/mythic/prestige/4-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
           { "level": 2, "icon": "/mythic/prestige/4-icon2.jpg", "image": "/mythic/prestige/4-lv2.jpg", "subtitle": "完成挑战解锁" },
-          { "level": 3, "icon": "/mythic/prestige/4-icon3.jpg", "image": "/mythic/prestige/4-lv3.jpg", "subtitle": "用寻血猎犬造成 100,000 点伤害" }
+          { "level": 3, "icon": "/mythic/prestige/4-icon3.jpg", "image": "/mythic/prestige/4-lv3.jpg", "subtitle": "用动力小子造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 5, "name": "APEX 兽化人", "legend": "罗芭", "image": "/mythic/prestige/5.jpg", "price": 150,
+        "desc": "罗芭威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/5-icon1.jpg", "image": "/mythic/prestige/5-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/5-icon2.jpg", "image": "/mythic/prestige/5-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/5-icon3.jpg", "image": "/mythic/prestige/5-lv3.jpg", "subtitle": "用罗芭造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 6, "name": "APEX 噩梦", "legend": "亡灵", "image": "/mythic/prestige/6.jpg", "price": 150,
+        "desc": "亡灵威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/6-icon1.jpg", "image": "/mythic/prestige/6-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/6-icon2.jpg", "image": "/mythic/prestige/6-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/6-icon3.jpg", "image": "/mythic/prestige/6-lv3.jpg", "subtitle": "用亡灵造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 7, "name": "APEX 拦截者", "legend": "瓦尔基里", "image": "/mythic/prestige/7.jpg", "price": 150,
+        "desc": "瓦尔基里威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/7-icon1.jpg", "image": "/mythic/prestige/7-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/7-icon2.jpg", "image": "/mythic/prestige/7-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/7-icon3.jpg", "image": "/mythic/prestige/7-lv3.jpg", "subtitle": "用瓦尔基里造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 8, "name": "APEX 蔓延", "legend": "侵蚀", "image": "/mythic/prestige/8.jpg", "price": 150,
+        "desc": "侵蚀威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/8-icon1.jpg", "image": "/mythic/prestige/8-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/8-icon2.jpg", "image": "/mythic/prestige/8-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/8-icon3.jpg", "image": "/mythic/prestige/8-lv3.jpg", "subtitle": "用侵蚀造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 9, "name": "APEX 虚空转移", "legend": "恶灵", "image": "/mythic/prestige/9.jpg", "price": 150,
+        "desc": "恶灵威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/9-icon1.jpg", "image": "/mythic/prestige/9-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/9-icon2.jpg", "image": "/mythic/prestige/9-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/9-icon3.jpg", "image": "/mythic/prestige/9-lv3.jpg", "subtitle": "用恶灵造成 100,000 点伤害" }
+        ]
+      },
+      {
+        "id": 10, "name": "APEX 猎手", "legend": "寻血猎犬", "image": "/mythic/prestige/10.jpg", "price": 150,
+        "desc": "寻血猎犬威望级皮肤套装",
+        "levels": [
+          { "level": 1, "icon": "/mythic/prestige/10-icon1.jpg", "image": "/mythic/prestige/10-lv1.jpg", "subtitle": "通过游戏内限时活动解锁，或在神话级商店上架后入手" },
+          { "level": 2, "icon": "/mythic/prestige/10-icon2.jpg", "image": "/mythic/prestige/10-lv2.jpg", "subtitle": "完成挑战解锁" },
+          { "level": 3, "icon": "/mythic/prestige/10-icon3.jpg", "image": "/mythic/prestige/10-lv3.jpg", "subtitle": "用寻血猎犬造成 100,000 点伤害" }
         ]
       }
     ]

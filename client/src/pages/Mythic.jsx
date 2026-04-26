@@ -23,7 +23,7 @@ function MythicSection({ children }) {
 }
 
 const CARD_SHELL =
-  'group relative flex-1 min-w-0 card !rounded-none overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
+  'group relative flex-1 min-w-0 card !rounded-none overflow-hidden border-red-900/40 hover:border-2 hover:border-red-400 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/20 transition-all duration-300 cursor-pointer';
 
 function CardShine() {
   return <div className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-full group-hover:opacity-100" />;
@@ -61,7 +61,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
       <div className="flex-1 min-w-0 overflow-hidden">
         <div
           key={animKey}
-          className="grid gap-4 p-1.5 animate-page-slide"
+          className="grid gap-4 p-3 animate-page-slide"
           style={{
             gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)`,
             '--slide-from': direction >= 0 ? '60px' : '-60px',

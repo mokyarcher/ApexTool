@@ -30,7 +30,7 @@ export default function CoinsPage() {
               <div className="flex items-center gap-2 text-zinc-400 text-sm">
                 <Coins size={16} /> 金币包
               </div>
-              <div className="font-display text-5xl text-white mt-2 leading-none">{p.coins.toLocaleString()}</div>
+              <div className="font-display text-5xl text-amber-400 mt-2 leading-none">{p.coins.toLocaleString()}</div>
               {p.bonus > 0 && (
                 <div className="text-sm text-apex-orange mt-1 flex items-center gap-1">
                   <Sparkles size={14} /> 额外赠送 {p.bonus}(共 {p.totalCoins.toLocaleString()})
