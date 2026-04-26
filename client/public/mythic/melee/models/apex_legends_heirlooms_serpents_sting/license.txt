@@ -1,8 +1,0 @@
-Model Information:
-* title:	Apex Legends Heirlooms Serpent's Sting
-* source:	https://sketchfab.com/3d-models/apex-legends-heirlooms-serpents-sting-3accceb96784447a81ed250f92b7d36e
-* author:	零宽不连字 (https://sketchfab.com/LkblZ)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
