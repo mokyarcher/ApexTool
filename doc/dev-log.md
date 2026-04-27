@@ -359,6 +359,43 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 - 新顺序：通行证 → 商店 → 神话级 → 金币比例
 - 神话级保留红色特殊样式（通过 `mythic: true` 标志区分）
 
+## 2026-04-27
+
+### 传家宝 3D 模型加载体验优化
+
+- `Mythic.jsx` 中的 `<model-viewer>` 改为直接引入 `@google/model-viewer/dist/model-viewer.min.js`，避免生产构建中自定义元素注册被 tree-shaking 影响
+- 3D 查看器新增模型加载状态反馈：
+  - 下载阶段显示实时进度条
+  - 进度长时间停滞时自动切换为「处理中…」状态，避免卡在固定百分比造成误导
+  - 加载完成后再显示「拖拽旋转 · 滚轮缩放」提示
+
+### 传家宝模型体积优化
+
+- 对 `client/public/mythic/heirloom/models/` 下的 `.glb` 文件进行了贴图压缩优化
+- 使用 `gltf-transform webp` 将模型内嵌贴图转换为 WebP，同时保持 `.glb` 自包含结构，避免拆分成外部 `.bin` / `.webp` 资源
+- 典型压缩结果：
+
+| 模型 | 压缩前 | 压缩后 | 缩减比例 |
+|------|--------|--------|----------|
+| `1.glb` | 10.2 MB | 3.1 MB | 70% |
+| `2.glb` | 13.1 MB | 4.0 MB | 69% |
+| `3.glb` | 1.5 MB | 172 KB | 89% |
+| `4.glb` | 3.2 MB | 1.1 MB | 66% |
+| `5.glb` | 4.5 MB | 1.5 MB | 67% |
+| `6.glb` | 10.8 MB | 2.2 MB | 80% |
+
+- 压缩后远程访问下模型加载时间显著下降，较大模型从十秒级等待缩短到数秒内可用
+
+### 站点 HTTPS 配置
+
+- 为 `apex.sharex.my` 申请并启用了 Let's Encrypt 证书
+- Nginx 已配置 `80 -> 443` 自动跳转
+- 证书部署路径：
+  - `/etc/letsencrypt/live/apex.sharex.my/fullchain.pem`
+  - `/etc/letsencrypt/live/apex.sharex.my/privkey.pem`
+- 已验证 `https://apex.sharex.my` 可正常访问
+- `certbot renew --dry-run` 已通过，自动续期可用
+
 ---
 
 ## 待办
