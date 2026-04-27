@@ -10,6 +10,7 @@ import Mythic from './pages/Mythic.jsx';
 const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
   { to: '/shop', label: '商店', icon: ShoppingBag },
+  { to: '/mythic', label: '神话级', icon: Flame, mythic: true },
   { to: '/coins', label: '金币比例', icon: Coins },
   // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
@@ -29,24 +30,18 @@ export default function App() {
             </div>
           </div>
           <nav className="flex items-center gap-1">
-            <NavLink
-              to="/mythic"
-              className={({ isActive }) =>
-                `flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
-              }
-            >
-              <Flame size={14} /> 神话级
-            </NavLink>
-            {navItems.map(({ to, label, icon: Icon }) => (
+            {navItems.map(({ to, label, icon: Icon, mythic }) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
-                    isActive
-                      ? 'bg-white/10 text-white border border-white/15 shadow-sm shadow-red-500/10'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'
-                  }`
+                  mythic
+                    ? `flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
+                    : `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
+                        isActive
+                          ? 'bg-white/10 text-white border border-white/15 shadow-sm shadow-red-500/10'
+                          : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'
+                      }`
                 }
               >
                 <Icon size={15} />
