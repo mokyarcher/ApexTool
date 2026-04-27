@@ -6,6 +6,7 @@ import CoinsPage from './pages/Coins.jsx';
 import Crafting from './pages/Crafting.jsx';
 import Shop from './pages/Shop.jsx';
 import Mythic from './pages/Mythic.jsx';
+import ParticleNest from './components/ParticleNest.jsx';
 
 const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
@@ -18,6 +19,7 @@ const navItems = [
 export default function App() {
   return (
     <div className="min-h-full flex flex-col">
+      <ParticleNest />
       <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">

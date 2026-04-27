@@ -15,8 +15,13 @@ function TokenIcon({ size = 14 }) {
 
 function MythicSection({ children }) {
   return (
-    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(circle_at_85%_100%,rgba(127,29,29,0.16),transparent_40%)]" />
+    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/40 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      {/* Top accent line */}
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+      {/* Inner vignette */}
+      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_2px_30px_rgba(0,0,0,0.4)]" />
+      {/* Diagonal scan lines */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-size:6px_6px] [background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.1)_0px,rgba(255,255,255,0.1)_1px,transparent_1px,transparent_4px)]" />
       <div className="relative z-10">{children}</div>
     </section>
   );

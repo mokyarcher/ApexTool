@@ -438,7 +438,7 @@ function ScrollRow({ children, itemsPerPage = 5 }) {
       <div className="flex-1 min-w-0 overflow-hidden">
         <div
           key={animKey}
-          className="grid gap-3 p-1.5 animate-page-slide"
+          className="grid gap-3 p-4 animate-page-slide"
           style={{
             gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)`,
             '--slide-from': direction >= 0 ? '60px' : '-60px',
@@ -505,8 +505,13 @@ function DiscountShopCard({ item, onClick }) {
 /* ── Section wrapper (Mythic-style glass panel) ── */
 function ShopSection({ children }) {
   return (
-    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/35 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(239,68,68,0.12),transparent_35%),radial-gradient(circle_at_85%_100%,rgba(127,29,29,0.16),transparent_40%)]" />
+    <section className="relative overflow-hidden border border-white/5 bg-zinc-950/40 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      {/* Top accent line */}
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+      {/* Inner vignette */}
+      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_2px_30px_rgba(0,0,0,0.4)]" />
+      {/* Diagonal scan lines */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-size:6px_6px] [background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.1)_0px,rgba(255,255,255,0.1)_1px,transparent_1px,transparent_4px)]" />
       <div className="relative z-10">{children}</div>
     </section>
   );
@@ -518,7 +523,7 @@ function CardShine() {
 }
 
 const SHOP_CARD =
-  'group relative flex-1 min-w-0 card overflow-hidden border-red-900/40 hover:border-red-400/75 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 cursor-pointer';
+  'group relative flex-1 min-w-0 card border-red-900/40 hover:border-2 hover:border-red-400 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/20 transition-all duration-300 cursor-pointer';
 
 /* ── Section header helper (Mythic-style) ── */
 function ShopSectionHeader({ title, countdown, subtitle }) {
@@ -563,12 +568,6 @@ export default function Shop() {
 
   return (
     <div className="relative space-y-8">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-28 -left-20 h-[380px] w-[380px] rounded-full bg-red-600/12 blur-[110px]" />
-        <div className="absolute -bottom-24 right-[-90px] h-[320px] w-[320px] rounded-full bg-fuchsia-700/10 blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.07] [background-size:22px_22px] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)]" />
-      </div>
-
       {/* ── 里程碑收集 ── */}
       {msError ? (
         <ErrorBox error={msError} onRetry={msReload} />
@@ -720,7 +719,7 @@ export default function Shop() {
               <div className="flex-1 min-w-0 overflow-hidden">
                 <div
                   key={exAnimKey}
-                  className="grid grid-rows-2 gap-3 p-1.5 animate-page-slide"
+                  className="grid grid-rows-2 gap-3 p-4 animate-page-slide"
                   style={{ gridTemplateColumns: 'repeat(3, 1fr)', gridAutoFlow: 'column', '--slide-from': exDirection >= 0 ? '60px' : '-60px' }}
                 >
                   {exData.items.slice(exPage * perPage, (exPage + 1) * perPage).map((item) => (

@@ -68,8 +68,8 @@ function TierButton({ icon: Icon, label, cls, tipImage, onImageClick }) {
         <Icon size={15} /> {label}
       </button>
       {show && tipImage && (
-        <div className="absolute top-full left-0 mt-3 z-50">
-          <div className="absolute left-8 -top-1.5 w-3 h-3 rotate-45 bg-zinc-900/95 border-l border-t border-white/10" />
+        <div className="absolute bottom-full left-0 mb-3 z-50">
+          <div className="absolute left-8 -bottom-1.5 w-3 h-3 rotate-45 bg-zinc-900/95 border-r border-b border-white/10" />
           <div className="border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
             <img src={tipImage} alt="" style={{ width: '460px', height: 'auto' }} />
           </div>
@@ -79,34 +79,48 @@ function TierButton({ icon: Icon, label, cls, tipImage, onImageClick }) {
   );
 }
 
+const RARITY_GLOW = {
+  common: 'from-zinc-700/30 to-zinc-900/60 hover:border-zinc-400/50 hover:shadow-zinc-500/10',
+  rare: 'from-blue-900/30 to-zinc-900/60 hover:border-blue-400/60 hover:shadow-blue-500/15',
+  epic: 'from-purple-900/30 to-zinc-900/60 hover:border-purple-400/60 hover:shadow-purple-500/15',
+  legendary: 'from-amber-900/25 to-zinc-900/60 hover:border-amber-400/60 hover:shadow-amber-500/15',
+  mythic: 'from-red-900/30 to-zinc-900/60 hover:border-red-400/60 hover:shadow-red-500/15',
+};
+
 function RewardCard({ r, onImageClick }) {
   const Icon = typeIcon[r.type] || Gift;
   const rarity = r.rarity || 'common';
+  const glow = RARITY_GLOW[rarity] || RARITY_GLOW.common;
   return (
-    <div className="card !rounded-none p-3 flex flex-col gap-2 hover:border-apex-red/60 hover:scale-[1.04] hover:-translate-y-1 hover:shadow-lg hover:shadow-apex-red/15 transition-all duration-200 ease-out">
-      <div className="flex items-center justify-between">
-        <span className="font-display text-xl text-white">Lv.{r.level}</span>
+    <div className={`group relative card !rounded-none overflow-hidden bg-gradient-to-b ${glow} hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg transition-all duration-250 ease-out`}>
+      {/* Shine sweep on hover */}
+      <div className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-gradient-to-r from-transparent via-white/8 to-transparent opacity-0 transition-all duration-600 group-hover:translate-x-full group-hover:opacity-100" />
+      {/* Top bar: level + tier */}
+      <div className="flex items-center justify-between px-3 pt-2.5 pb-1">
+        <span className="font-display text-lg text-white/90">Lv.{r.level}</span>
         {(() => { const t = TIER_META[r.tier] || TIER_META.free; const TIcon = t.icon; return (
-          <span className={`chip ${t.cls}`}><TIcon size={12} /> {t.label}</span>
+          <span className={`chip ${t.cls}`}><TIcon size={11} /> {t.label}</span>
         ); })()}
       </div>
+      {/* Image area */}
       <div
-        className={`aspect-square border flex items-center justify-center overflow-hidden rarity-${rarity} ${r.image ? 'cursor-pointer' : ''}`}
+        className={`aspect-square mx-2 mb-1 border flex items-center justify-center overflow-hidden rarity-${rarity} ${r.image ? 'cursor-pointer' : ''}`}
         onClick={() => r.image && onImageClick(r)}
       >
         {r.image ? (
           <img
             src={r.image}
             alt={r.nameCN || r.name}
-            className="w-full h-full object-contain p-2"
+            className="w-full h-full object-contain p-1.5 transition duration-400 group-hover:scale-[1.06] group-hover:brightness-110"
             onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }}
           />
         ) : null}
-        <Icon size={40} style={{ display: r.image ? 'none' : 'block' }} />
+        <Icon size={36} className="text-zinc-500" style={{ display: r.image ? 'none' : 'block' }} />
       </div>
-      <div>
-        <div className="text-sm text-white leading-tight">{(r.nameCN || r.name)}{r.amount ? ` ×${r.amount}` : ''}</div>
-        <div className="flex gap-1 mt-1 flex-wrap">
+      {/* Info bar */}
+      <div className="px-3 py-2.5 bg-black/25">
+        <div className="text-sm text-white leading-tight truncate">{(r.nameCN || r.name)}{r.amount ? ` ×${r.amount}` : ''}</div>
+        <div className="flex gap-1 mt-1.5 flex-wrap">
           <span className={`chip rarity-${rarity}`}>{RARITY_CN[rarity] || rarity}</span>
           {r.reactive && <span className="chip rarity-legendary">动态</span>}
         </div>
@@ -147,8 +161,13 @@ export default function BattlePass() {
   if (error) return <ErrorBox error={error} onRetry={reload} />;
 
   return (
-    <div className="space-y-6">
-      <section className="card !rounded-none p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+    <div className="relative space-y-6">
+
+      <section className="relative card !rounded-none overflow-hidden">
+        {/* ── Hero section gradient overlay ── */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(168,85,247,0.12),transparent_50%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-950/20 via-transparent to-purple-950/15" />
+        <div className="relative p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
         <div>
           <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
           <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
@@ -171,6 +190,7 @@ export default function BattlePass() {
           <div>开始: <span className="text-white font-semibold text-lg">{data.startDate}</span></div>
           <div>结束: <span className="text-white font-semibold text-lg">{data.endDate}</span></div>
           <div className="mt-2 text-xl text-white font-bold">共 {data.rewards.length} 项奖励</div>
+        </div>
         </div>
       </section>
 
