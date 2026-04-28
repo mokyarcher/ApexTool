@@ -51,6 +51,7 @@ export default function ParticleNest({
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const time = performance.now() * 0.0012;
 
       for (const p of particles) {
         const prevAttracted = p.attracted;
@@ -147,10 +148,14 @@ export default function ParticleNest({
             const ratio = distSq / limit;
             const alpha = (1 - ratio) * opacity;
             const lw = isMouse ? lineWidth * (1.5 - ratio) : lineWidth;
+            const hueSeed = time * 0.8 + (a.x + b.x) * 0.004 + (a.y + b.y) * 0.003;
+            const r = Math.round(128 + 127 * Math.sin(hueSeed));
+            const g = Math.round(128 + 127 * Math.sin(hueSeed + (Math.PI * 2) / 3));
+            const bl = Math.round(128 + 127 * Math.sin(hueSeed + (Math.PI * 4) / 3));
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${color},${alpha})`;
+            ctx.strokeStyle = `rgba(${r},${g},${bl},${alpha})`;
             ctx.lineWidth = lw;
             ctx.stroke();
           }
