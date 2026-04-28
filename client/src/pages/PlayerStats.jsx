@@ -466,7 +466,7 @@ export default function PlayerStats() {
                   <div className="flex flex-wrap justify-center gap-x-2 gap-y-0.5 text-[11px] text-zinc-400">
                     {r.level && (
                       <span className="bg-zinc-800 px-1.5 py-0.5">
-                        Lv.{r.level}{r.prestige && r.prestige !== '0' ? ` (P${r.prestige})` : ''}
+                        Lv.{r.level}{r.prestige && r.prestige !== '0' ? ` (阶段${Number(r.prestige) + 1})` : ''}
                       </span>
                     )}
                     <span className="bg-zinc-800 px-1.5 py-0.5">{r.platform}</span>
@@ -530,7 +530,7 @@ export default function PlayerStats() {
                     <div className="flex items-center gap-2 mt-1 flex-wrap justify-center sm:justify-start">
                       <span className="chip bg-zinc-800 border-zinc-600/40 text-white">Lv.{data.global?.level || '?'}</span>
                       {data.global?.levelPrestige > 0 && (
-                        <span className="chip bg-amber-900/40 border-amber-500/40 text-amber-300">声望 {data.global.levelPrestige}</span>
+                        <span className="chip bg-amber-900/40 border-amber-500/40 text-amber-300">阶段 {data.global.levelPrestige + 1}</span>
                       )}
                       <PlatformBadge platform={data.global?.platform} />
                     </div>
