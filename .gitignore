@@ -9,3 +9,5 @@ build
 client/public/mythic/**/apex-legends-*/
 client/public/mythic/**/*.zip
 client/public/mythic/**/*-bak.glb
+# Debug files
+server/debug-*.html

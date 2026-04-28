@@ -18,5 +18,13 @@ export const api = {
   featuredBundle: () => req('/shop/featured-bundle'),
   recolor: () => req('/shop/recolor'),
   exotic: () => req('/shop/exotic'),
-  mythic: () => req('/shop/mythic')
+  mythic: () => req('/shop/mythic'),
+  player: ({ uid, name, platform = 'PC' }) => {
+    const params = new URLSearchParams({ platform });
+    if (uid) params.set('uid', uid);
+    else if (name) params.set('name', name);
+    return req(`/player?${params}`);
+  },
+  playerLookup: ({ name, platform = 'PC' }) =>
+    req(`/player/lookup?name=${encodeURIComponent(name)}&platform=${platform}`),
 };

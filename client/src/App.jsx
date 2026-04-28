@@ -1,11 +1,12 @@
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame } from 'lucide-react';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search } from 'lucide-react';
 import BattlePass from './pages/BattlePass.jsx';
 import Maps from './pages/Maps.jsx';
 import CoinsPage from './pages/Coins.jsx';
 import Crafting from './pages/Crafting.jsx';
 import Shop from './pages/Shop.jsx';
 import Mythic from './pages/Mythic.jsx';
+import PlayerStats from './pages/PlayerStats.jsx';
 import ParticleNest from './components/ParticleNest.jsx';
 
 const navItems = [
@@ -13,6 +14,7 @@ const navItems = [
   { to: '/shop', label: '商店', icon: ShoppingBag },
   { to: '/mythic', label: '神话级', icon: Flame, mythic: true },
   { to: '/coins', label: '金币比例', icon: Coins },
+  { to: '/stats', label: '战绩查询', icon: Search },
   // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
@@ -63,6 +65,7 @@ export default function App() {
           <Route path="/crafting" element={<Crafting />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/mythic" element={<Mythic />} />
+          <Route path="/stats" element={<PlayerStats />} />
         </Routes>
       </main>
 

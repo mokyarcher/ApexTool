@@ -6,6 +6,7 @@
 - **地图轮换** (大逃杀 / 排位 / LTM) 实时倒计时
 - **金币购买** 档位性价比对比
 - **制造台轮换** (每日 / 每周)
+- **战绩查询** 支持 UID / 名字深度搜索，多匹配选择，全面汉化
 
 ## 技术栈
 
@@ -22,7 +23,7 @@ ApexTool/
 │   ├── data/         通行证等静态数据
 │   └── lib/cache.js  内存缓存
 └── client/     # React 前端 (端口 5173)
-    └── src/pages/    BattlePass / Maps / Coins / Crafting
+    └── src/pages/    BattlePass / Maps / Coins / Crafting / PlayerStats
 ```
 
 ## 本地运行
@@ -65,6 +66,8 @@ npm run dev
 | `GET /api/maps` | 三模式地图轮换 |
 | `GET /api/coins` | 金币包档位 & 性价比 |
 | `GET /api/crafting` | 制造台轮换 |
+| `GET /api/player?uid=xxx&platform=PC` | 玩家战绩查询 (UID) |
+| `GET /api/player/lookup?name=xxx&platform=PC` | 深度搜索玩家 |
 
 ## 免责声明
 
