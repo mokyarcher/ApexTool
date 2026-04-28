@@ -28,7 +28,7 @@ export default function App() {
             </div>
             <div>
               <div className="font-display text-xl leading-none text-white tracking-wide">APEX TOOL</div>
-              <div className="text-[10px] text-zinc-500 -mt-px tracking-wider">赛季工具箱</div>
+              <div className="text-[10px] text-zinc-500 -mt-px tracking-wider">赛季工具站</div>
             </div>
           </div>
           <nav className="flex items-center gap-1">
