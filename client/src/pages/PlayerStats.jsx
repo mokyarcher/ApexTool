@@ -62,9 +62,17 @@ function tStat(name) {
 }
 
 /* ── Platform icon ── */
+const PLATFORM_STYLE = {
+  PC: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+  PS4: 'bg-zinc-800 border-zinc-600/40 text-zinc-300',
+  X1: 'bg-emerald-900/50 border-emerald-500/40 text-emerald-300',
+  SWITCH: 'bg-red-900/50 border-red-500/40 text-red-300',
+};
+
 function PlatformBadge({ platform }) {
-  const label = { PC: 'PC', PS4: 'PS', X1: 'Xbox', SWITCH: 'Switch' }[platform] || platform;
-  return <span className="chip bg-zinc-800 border-zinc-600/40 text-zinc-300">{label}</span>;
+  const label = { PC: 'PC', PS4: 'PS', X1: 'Xbox', SWITCH: 'NS' }[platform] || platform;
+  const style = PLATFORM_STYLE[platform] || 'bg-zinc-800 border-zinc-600/40 text-zinc-300';
+  return <span className={`chip ${style}`}>{label}</span>;
 }
 
 /* ── Online status dot ── */
@@ -233,6 +241,7 @@ export default function PlayerStats() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchedByName, setSearchedByName] = useState(false);
+  const [skippedSelection, setSkippedSelection] = useState(false);
   const [saved, setSaved] = useState(getSavedUID);
   const [lookupResults, setLookupResults] = useState(null);
   const [lookupLoading, setLookupLoading] = useState(false);
@@ -246,8 +255,10 @@ export default function PlayerStats() {
     setError(null);
     setData(null);
     setLookupResults(null);
+    setLastLookupResults(null);
     const isUid = /^\d{5,}$/.test(q);
     setSearchedByName(!isUid);
+    setSkippedSelection(false);
     if (isUid) {
       // UID search: direct query
       try {
@@ -270,6 +281,7 @@ export default function PlayerStats() {
         const lookup = await api.playerLookup({ name: q, platform: plat });
         if (lookup.results?.length === 1) {
           // Only one match → load directly
+          setSkippedSelection(true);
           setLookupLoading(false);
           setLoading(true);
           const result = await api.player({ uid: lookup.results[0].uid, platform: lookup.results[0].platform || plat });
@@ -526,11 +538,42 @@ export default function PlayerStats() {
                   </div>
                   {/* Name + level */}
                   <div className="text-center sm:text-left">
-                    <h2 className="font-display text-xl text-white font-bold">{data.global?.name || '未知'}</h2>
+                    <h2 className="font-display text-xl text-white font-bold">{data.global?.name || query || '未知'}</h2>
                     <div className="flex items-center gap-2 mt-1 flex-wrap justify-center sm:justify-start">
-                      <span className="chip bg-zinc-800 border-zinc-600/40 text-white">Lv.{data.global?.level || '?'}</span>
+                      <span className={`chip relative group cursor-help ${
+                        ({
+                          0: 'bg-emerald-900/50 border-emerald-500/40 text-emerald-300',
+                          1: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+                          2: 'bg-purple-900/50 border-purple-500/40 text-purple-300',
+                          3: 'bg-amber-900/50 border-amber-500/40 text-amber-300',
+                        }[data.global?.levelPrestige] || 'bg-red-900/50 border-red-500/40 text-red-300')
+                      }`}>
+                        Lv.{data.global?.level || '?'}
+                        {data.global?.levelPrestige > 0 && (
+                          <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block z-30">
+                            <div className="bg-zinc-900 border border-white/10 shadow-xl px-3 py-2 text-[11px] text-zinc-300 whitespace-nowrap">
+                              累计等级 Lv.{data.global.levelPrestige * 500 + (data.global.level || 0)}
+                            </div>
+                          </div>
+                        )}
+                      </span>
                       {data.global?.levelPrestige > 0 && (
-                        <span className="chip bg-amber-900/40 border-amber-500/40 text-amber-300">阶段 {data.global.levelPrestige + 1}</span>
+                        <span className={`chip relative group cursor-help ${({
+                          1: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+                          2: 'bg-purple-900/50 border-purple-500/40 text-purple-300',
+                          3: 'bg-amber-900/50 border-amber-500/40 text-amber-300',
+                        }[data.global.levelPrestige] || 'bg-red-900/50 border-red-500/40 text-red-300')}`}>
+                          阶段 {data.global.levelPrestige + 1}
+                          <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block z-30">
+                            <div className="bg-zinc-900 border border-white/10 shadow-xl px-3 py-2 text-[11px] text-zinc-300 whitespace-nowrap space-y-0.5">
+                              {Array.from({ length: data.global.levelPrestige + 1 }, (_, i) => (
+                                <div key={i} className={i === data.global.levelPrestige ? 'text-amber-300 font-bold' : 'text-zinc-500'}>
+                                  Lv.{i * 500 + 1} - Lv.{(i + 1) * 500}　阶段 {i + 1} {i === data.global.levelPrestige ? ' ◀ 当前' : ''}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </span>
                       )}
                       <PlatformBadge platform={data.global?.platform} />
                     </div>
@@ -547,24 +590,6 @@ export default function PlayerStats() {
                       </div>
                     )}
                   </div>
-                  {/* Name search hint */}
-                  {searchedByName && (
-                    <div className="w-full bg-amber-900/15 border border-amber-500/20 px-3 py-2 text-[11px] text-amber-300/80 space-y-1">
-                      <div>⚠ 按名字查询只返回第一个匹配，可能不是你要找的玩家。</div>
-                      <div className="text-amber-400/60">
-                        不是你？去{' '}
-                        <a
-                          href={`https://apexlegendsstatus.com/profile/search/${platform}/${encodeURIComponent(data.global?.name || query)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline hover:text-amber-300 transition"
-                        >
-                          apexlegendsstatus.com 深度搜索
-                        </a>
-                        {' '}找到正确的页面，URL 中的数字就是你的 UID。
-                      </div>
-                    </div>
-                  )}
                   {/* Level progress */}
                   {data.global?.toNextLevelPercent != null && (
                     <div className="w-full">
