@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Swords, Shield, Zap, Clock, ChevronDown, ChevronUp, Crosshair, Target, Gauge } from 'lucide-react';
+import { BookOpen, Swords, Shield, Zap, Clock, ChevronDown, ChevronUp, Crosshair, Target, Gauge, GitCompareArrows, X } from 'lucide-react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -104,6 +104,198 @@ function LegendCard({ legend }) {
           <AbilityCard ability={legend.tactical} type="tactical" />
           <AbilityCard ability={legend.ultimate} type="ultimate" />
         </div>
+      )}
+    </div>
+  );
+}
+
+function WeaponCompare({ weapons }) {
+  const [pickA, setPickA] = useState(null);
+  const [pickB, setPickB] = useState(null);
+  const [search, setSearch] = useState('');
+  const [picking, setPicking] = useState(null); // 'A' | 'B' | null
+
+  const filtered = weapons.filter(w =>
+    !search || w.name.includes(search) || w.nameEN.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const weaponA = weapons.find(w => w.id === pickA);
+  const weaponB = weapons.find(w => w.id === pickB);
+
+  const stats = [
+    { key: 'bodyDamage', label: '身体伤害', higher: true },
+    { key: 'headDamage', label: '爆头伤害', higher: true },
+    { key: 'legDamage', label: '腿部伤害', higher: true },
+    { key: 'rpm', label: '射速 (RPM)', higher: true },
+    { key: 'dps', label: 'DPS', higher: true },
+  ];
+
+  const magStats = [
+    { key: 'base', label: '基础弹匣' },
+    { key: 'purple', label: '紫色弹匣' },
+  ];
+
+  const reloadStats = [
+    { key: 'tactical', label: '战术换弹' },
+    { key: 'full', label: '完整换弹' },
+  ];
+
+  function valColor(a, b, higherBetter) {
+    if (a == null || b == null || a === b) return 'text-white';
+    const aWins = higherBetter ? a > b : a < b;
+    return aWins ? 'text-emerald-400' : 'text-zinc-500';
+  }
+
+  function PickerSlot({ side, weapon, onClear }) {
+    return (
+      <div
+        onClick={() => { if (!weapon) setPicking(side); }}
+        className={`flex-1 border p-4 min-h-[100px] flex flex-col items-center justify-center cursor-pointer transition-all ${
+          picking === side
+            ? 'border-red-500/50 bg-red-500/5'
+            : weapon
+              ? 'border-white/[0.08] bg-white/[0.02]'
+              : 'border-dashed border-white/[0.1] hover:border-white/20 hover:bg-white/[0.02]'
+        }`}
+      >
+        {weapon ? (
+          <div className="text-center relative w-full">
+            <button
+              onClick={e => { e.stopPropagation(); onClear(); }}
+              className="absolute top-0 right-0 text-zinc-600 hover:text-red-400 transition"
+            >
+              <X size={14} />
+            </button>
+            <div className="font-bold text-white">{weapon.name}</div>
+            <div className="text-xs text-zinc-500">{weapon.nameEN}</div>
+            <div className={`text-xs mt-1 px-2 py-0.5 inline-block ${AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300'}`}>
+              {weapon.ammoType}
+            </div>
+          </div>
+        ) : (
+          <div className="text-center">
+            <div className="text-zinc-500 text-sm">点击选择武器 {side}</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Picker */}
+      <div className="flex gap-3 items-stretch">
+        <PickerSlot side="A" weapon={weaponA} onClear={() => setPickA(null)} />
+        <div className="flex items-center">
+          <GitCompareArrows size={20} className="text-zinc-600" />
+        </div>
+        <PickerSlot side="B" weapon={weaponB} onClear={() => setPickB(null)} />
+      </div>
+
+      {/* Weapon selector dropdown */}
+      {picking && (
+        <div className="border border-white/[0.08] bg-zinc-900/95 backdrop-blur-sm p-3 space-y-2">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-zinc-400">选择武器 {picking}</span>
+            <button onClick={() => setPicking(null)} className="text-zinc-500 hover:text-white">
+              <X size={14} />
+            </button>
+          </div>
+          <input
+            type="text"
+            placeholder="搜索武器..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className="w-full bg-zinc-800/50 border border-white/[0.06] px-3 py-1.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500/40"
+            autoFocus
+          />
+          <div className="max-h-60 overflow-y-auto space-y-0.5">
+            {filtered.map(w => {
+              const disabled = (picking === 'A' && w.id === pickB) || (picking === 'B' && w.id === pickA);
+              return (
+                <button
+                  key={w.id}
+                  disabled={disabled}
+                  onClick={() => {
+                    if (picking === 'A') setPickA(w.id);
+                    else setPickB(w.id);
+                    setPicking(null);
+                    setSearch('');
+                  }}
+                  className={`w-full text-left px-3 py-2 text-sm flex items-center gap-3 transition ${
+                    disabled
+                      ? 'text-zinc-600 cursor-not-allowed'
+                      : 'text-zinc-300 hover:bg-white/[0.05] hover:text-white'
+                  }`}
+                >
+                  <span className="font-medium">{w.name}</span>
+                  <span className="text-xs text-zinc-600">{w.nameEN}</span>
+                  <span className={`text-xs ml-auto px-1.5 py-0.5 ${AMMO_STYLE[w.ammoType] || ''}`}>{w.ammoType}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Comparison table */}
+      {weaponA && weaponB && (
+        <div className="border border-white/[0.06] bg-black/40 overflow-hidden">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white/[0.06]">
+                <th className="text-left text-zinc-500 font-normal px-4 py-2.5 w-1/3">数据项</th>
+                <th className="text-center text-zinc-300 font-medium px-4 py-2.5 w-1/3">{weaponA.name}</th>
+                <th className="text-center text-zinc-300 font-medium px-4 py-2.5 w-1/3">{weaponB.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stats.map(({ key, label, higher }) => (
+                <tr key={key} className="border-b border-white/[0.04]">
+                  <td className="text-zinc-400 px-4 py-2">{label}</td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponA[key], weaponB[key], higher)}`}>
+                    {weaponA[key] ?? '-'}
+                  </td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponB[key], weaponA[key], higher)}`}>
+                    {weaponB[key] ?? '-'}
+                  </td>
+                </tr>
+              ))}
+              {magStats.map(({ key, label }) => (
+                <tr key={`mag-${key}`} className="border-b border-white/[0.04]">
+                  <td className="text-zinc-400 px-4 py-2">{label}</td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponA.magSize?.[key], weaponB.magSize?.[key], true)}`}>
+                    {weaponA.magSize?.[key] ?? '-'}
+                  </td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponB.magSize?.[key], weaponA.magSize?.[key], true)}`}>
+                    {weaponB.magSize?.[key] ?? '-'}
+                  </td>
+                </tr>
+              ))}
+              {reloadStats.map(({ key, label }) => (
+                <tr key={`reload-${key}`} className="border-b border-white/[0.04]">
+                  <td className="text-zinc-400 px-4 py-2">{label}</td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponA.reloadTime?.[key], weaponB.reloadTime?.[key], false)}`}>
+                    {weaponA.reloadTime?.[key] != null ? `${weaponA.reloadTime[key]}s` : '-'}
+                  </td>
+                  <td className={`text-center px-4 py-2 font-mono ${valColor(weaponB.reloadTime?.[key], weaponA.reloadTime?.[key], false)}`}>
+                    {weaponB.reloadTime?.[key] != null ? `${weaponB.reloadTime[key]}s` : '-'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Description */}
+          <div className="grid grid-cols-2 gap-3 p-4 border-t border-white/[0.06]">
+            <div className="text-xs text-zinc-500 leading-relaxed">{weaponA.description}</div>
+            <div className="text-xs text-zinc-500 leading-relaxed">{weaponB.description}</div>
+          </div>
+        </div>
+      )}
+
+      {(!weaponA || !weaponB) && !picking && (
+        <div className="text-center text-zinc-600 py-12 text-sm">选择两把武器开始对比</div>
       )}
     </div>
   );
@@ -247,6 +439,16 @@ export default function Encyclopedia() {
         >
           <span className="flex items-center gap-1.5"><Crosshair size={14} /> 武器数据</span>
         </button>
+        <button
+          onClick={() => { setTab('compare'); setSearch(''); }}
+          className={`px-4 py-2 text-sm font-medium transition-all ${
+            tab === 'compare'
+              ? 'bg-red-500/15 text-red-400 border border-red-500/35'
+              : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
+          }`}
+        >
+          <span className="flex items-center gap-1.5"><GitCompareArrows size={14} /> 武器对比</span>
+        </button>
 
         <div className="ml-auto">
           <input
@@ -329,6 +531,16 @@ export default function Encyclopedia() {
                 <div className="text-center text-zinc-500 py-12">没有匹配的武器</div>
               )}
             </div>
+          )}
+        </>
+      )}
+
+      {tab === 'compare' && (
+        <>
+          {weaponsLoading && <Loader />}
+          {weaponsError && <ErrorBox error={weaponsError} onRetry={reloadWeapons} />}
+          {!weaponsLoading && !weaponsError && weaponsData?.weapons && (
+            <WeaponCompare weapons={weaponsData.weapons} />
           )}
         </>
       )}

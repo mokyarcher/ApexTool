@@ -13,10 +13,12 @@ function loadJSON(file) {
 const router = Router();
 
 router.get('/legends', (_req, res) => {
+  res.set('Cache-Control', 'public, max-age=3600');
   res.json(loadJSON('legends.json'));
 });
 
 router.get('/weapons', (_req, res) => {
+  res.set('Cache-Control', 'public, max-age=3600');
   res.json(loadJSON('weapons.json'));
 });
 

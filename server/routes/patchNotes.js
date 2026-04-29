@@ -12,6 +12,7 @@ const loadJSON = (file) => JSON.parse(readFileSync(join(dataDir, file), 'utf-8')
 router.get('/', (_req, res) => {
   try {
     const data = loadJSON('patch-notes.json');
+    res.set('Cache-Control', 'public, max-age=3600');
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: '无法加载补丁说明数据' });
