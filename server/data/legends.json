@@ -229,6 +229,657 @@
         "damage": "5-12/秒",
         "duration": 15
       }
+    },
+    {
+      "id": 8,
+      "name": "直布罗陀",
+      "nameEN": "Gibraltar",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/gibraltar.jpg",
+      "description": "坚不可摧的堡垒战士，用护盾和空袭保护队伍。",
+      "passive": {
+        "name": "枪盾",
+        "nameEN": "Gun Shield",
+        "description": "瞄准时自动展开枪盾，吸收来自正面的伤害。",
+        "details": "瞄准时展开护盾，护盾生命值 50，被击破后有 9 秒冷却。可手动关闭。",
+        "cooldown": 9
+      },
+      "tactical": {
+        "name": "防护穹顶",
+        "nameEN": "Dome of Protection",
+        "description": "投掷一个穹顶护盾，阻挡所有攻击 12 秒。",
+        "details": "穹顶内外双方射击均被阻挡。穹顶内复活队友速度加快（4 秒）。穹顶内使用治疗物品速度提升 15%。",
+        "cooldown": 30,
+        "duration": 12
+      },
+      "ultimate": {
+        "name": "防御轰炸",
+        "nameEN": "Defensive Bombardment",
+        "description": "呼叫集中迫击炮空袭标记位置。",
+        "details": "投掷信号弹标记区域，迫击炮持续轰炸约 6 秒。每颗炮弹 40 伤害并产生减速效果。对队友有减速但不伤害。",
+        "cooldown": 270,
+        "damage": 40,
+        "duration": 6
+      }
+    },
+    {
+      "id": 9,
+      "name": "幻象",
+      "nameEN": "Mirage",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/mirage.jpg",
+      "description": "全息幻术大师，利用诱饵迷惑敌人。",
+      "passive": {
+        "name": "现在你看到我了……",
+        "nameEN": "Now You See Me...",
+        "description": "复活队友和使用重生信标时自动隐身，被击倒时释放诱饵并短暂隐身。",
+        "details": "复活/使用信标时自己和队友均隐身。被击倒时释放一个诱饵并隐身 5 秒。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "灵魂出窍",
+        "nameEN": "Psyche Out",
+        "description": "派出一个全息诱饵迷惑敌人。",
+        "details": "诱饵会沿直线移动，被射击时会标记射击者的位置 3 秒。可控制诱饵模仿自己的动作。60 秒后消失。",
+        "cooldown": 15,
+        "duration": 60
+      },
+      "ultimate": {
+        "name": "万花筒派对",
+        "nameEN": "Life of the Party",
+        "description": "释放一群全息诱饵并短暂隐身。",
+        "details": "释放 6 个诱饵模仿自己的动作，同时自身隐身约 1 秒。诱饵被攻击时标记攻击者位置。",
+        "cooldown": 60
+      }
+    },
+    {
+      "id": 10,
+      "name": "沃特森",
+      "nameEN": "Wattson",
+      "role": "控场手",
+      "roleEN": "Controller",
+      "image": "/legends/wattson.jpg",
+      "description": "电网防御专家，利用电栅栏和拦截塔控制区域。",
+      "passive": {
+        "name": "天才火花",
+        "nameEN": "Spark of Genius",
+        "description": "终极加速剂完全充满终极能量。随时间缓慢回复护盾。",
+        "details": "1 个终极加速剂直接充满终极技能。被动每秒恢复 0.5 护盾值。",
+        "cooldown": null,
+        "healPerSecond": 0.5
+      },
+      "tactical": {
+        "name": "周界安全",
+        "nameEN": "Perimeter Security",
+        "description": "放置电栅栏节点，节点之间形成电网。",
+        "details": "最多同时放置 12 个节点。敌人触碰电网受到 15 伤害并被减速 3 秒。电网可以被射击摧毁。自己可穿过敌方沃特森的电网。",
+        "cooldown": 15,
+        "damage": 15,
+        "charges": 4
+      },
+      "ultimate": {
+        "name": "拦截塔",
+        "nameEN": "Interception Pylon",
+        "description": "放置一个电塔，摧毁来袭投掷物并修复护盾。",
+        "details": "拦截范围内所有来袭手雷和空袭。为范围内所有队友每秒恢复 2 护盾值。持续 90 秒。最多存在 1 个。",
+        "cooldown": 180,
+        "duration": 90
+      }
+    },
+    {
+      "id": 11,
+      "name": "密客",
+      "nameEN": "Crypto",
+      "role": "侦察兵",
+      "roleEN": "Recon",
+      "image": "/legends/crypto.jpg",
+      "description": "监视专家，利用无人机侦察敌情和破坏敌方装备。",
+      "passive": {
+        "name": "神经链接",
+        "nameEN": "Neurolink",
+        "description": "无人机探测到的敌人对全队可见。",
+        "details": "无人机 30 米范围内检测到的敌人、陷阱均对全队标记。无人机可查看附近调查信标显示剩余队伍数。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "监视无人机",
+        "nameEN": "Surveillance Drone",
+        "description": "部署空中无人机，可远程操控侦察。",
+        "details": "无人机可飞行最远 200 米，生命值 60。投掷后自动飞向前方，也可手动操控。被摧毁后 40 秒冷却。",
+        "cooldown": 40,
+        "range": 200
+      },
+      "ultimate": {
+        "name": "无人机 EMP",
+        "nameEN": "Drone EMP",
+        "description": "无人机释放 EMP 冲击波，破坏护盾和陷阱。",
+        "details": "以无人机为中心释放 EMP，造成 50 护盾伤害，摧毁范围内所有陷阱，并对敌人施加 1-2 秒减速。不伤害自己但会伤害队友护盾。",
+        "cooldown": 180,
+        "damage": 50
+      }
+    },
+    {
+      "id": 12,
+      "name": "亡灵",
+      "nameEN": "Revenant",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/revenant.jpg",
+      "description": "暗影刺客，擅长攀爬和压制敌人技能。",
+      "passive": {
+        "name": "刺客本能",
+        "nameEN": "Assassin's Instinct",
+        "description": "可以看到低血量敌人的标记，蹲走更快，攀爬更高。",
+        "details": "生命值低于 40 的敌人会被高亮标记。蹲走速度等同正常步行。墙壁攀爬高度大幅增加。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "暗影潜行",
+        "nameEN": "Shadow Pounce",
+        "description": "蓄力后向前方猛扑。",
+        "details": "蓄力越久飞行距离越远，最远约 75 米。可在空中使用。落地后短暂恢复。",
+        "cooldown": 25,
+        "range": 75
+      },
+      "ultimate": {
+        "name": "锻造暗影",
+        "nameEN": "Forged Shadows",
+        "description": "召唤坚固的暗影外壳保护自己。",
+        "details": "获得 75 额外暗影生命值，击倒敌人时刷新外壳。暗影状态下战术冷却减少。持续 25 秒。",
+        "cooldown": 180,
+        "duration": 25
+      }
+    },
+    {
+      "id": 13,
+      "name": "罗芭",
+      "nameEN": "Loba",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/loba.jpg",
+      "description": "高级窃贼，利用传送手环和黑市为队伍搜刮物资。",
+      "passive": {
+        "name": "慧眼识珠",
+        "nameEN": "Eye for Quality",
+        "description": "能透过墙壁和地面看到附近的紫色和金色物品。",
+        "details": "约 112.5 米范围内的史诗和传说品质物品透过障碍物高亮显示。可以 Ping 标记。",
+        "cooldown": null,
+        "range": 112.5
+      },
+      "tactical": {
+        "name": "飞贼手环",
+        "nameEN": "Burglar's Best Friend",
+        "description": "投掷手环传送到落点位置。",
+        "details": "投掷手环后传送到手环落点。飞行中可按键提前落地。投掷到移动后有短暂武器收起延迟。",
+        "cooldown": 30,
+        "range": 75
+      },
+      "ultimate": {
+        "name": "黑市精品店",
+        "nameEN": "Black Market Boutique",
+        "description": "放置便携设备，附近所有队员可从中拾取物品。",
+        "details": "放置黑市后，范围内所有地面物资和死亡箱内物品均可远程拾取。每人最多拿 2 件（弹药不限）。敌人也可使用。",
+        "cooldown": 120
+      }
+    },
+    {
+      "id": 14,
+      "name": "兰伯特",
+      "nameEN": "Rampart",
+      "role": "控场手",
+      "roleEN": "Controller",
+      "image": "/legends/rampart.jpg",
+      "description": "改装专家，利用强化掩体和重机枪控制战场。",
+      "passive": {
+        "name": "改装装载机",
+        "nameEN": "Modded Loader",
+        "description": "使用轻机枪和小娘炮时弹匣增大、装弹加速。",
+        "details": "轻机枪弹匣容量增加 15%，装弹速度提升 25%。小娘炮（终极技能）弹药容量也增大。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "增强掩体",
+        "nameEN": "Amped Cover",
+        "description": "放置可展开的掩体墙，上半部分增强穿过的子弹伤害。",
+        "details": "掩体分为上下两层：下层为实体墙（生命值 400），上层为增幅面板（生命值 175），穿过上层的子弹伤害增加 20%。最多放置 5 个。",
+        "cooldown": 20,
+        "charges": 5
+      },
+      "ultimate": {
+        "name": "小娘炮",
+        "nameEN": "Mobile Minigun \"Sheila\"",
+        "description": "掏出一把手持重机枪，可边走边射。",
+        "details": "手持重机枪有 173 发弹药（被动加成后），需蓄力加速射击。也可以放置在地面让任何人使用。持续到弹药用完。",
+        "cooldown": 120
+      }
+    },
+    {
+      "id": 15,
+      "name": "地平线",
+      "nameEN": "Horizon",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/horizon.jpg",
+      "description": "重力操控科学家，利用反重力装置改变战场高度。",
+      "passive": {
+        "name": "太空行走",
+        "nameEN": "Spacewalk",
+        "description": "从高处落地时减少着陆硬直，保持移动性。",
+        "details": "高处落地几乎无硬直和减速，落地后可立即行动和射击。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "重力升降机",
+        "nameEN": "Gravity Lift",
+        "description": "释放一个反重力场，将玩家向上推送。",
+        "details": "持续 10 秒，站在上面的所有人（含敌人）被推到高空。顶部短暂悬浮后下落。可配合投掷物使用。",
+        "cooldown": 20,
+        "duration": 10
+      },
+      "ultimate": {
+        "name": "黑洞",
+        "nameEN": "Black Hole",
+        "description": "投掷一个微型黑洞，将附近敌人吸入。",
+        "details": "黑洞存在约 10 秒，持续吸引范围内的敌人。配合手雷效果极佳。可以被射击摧毁（生命值 175）。",
+        "cooldown": 180,
+        "duration": 10
+      }
+    },
+    {
+      "id": 16,
+      "name": "暴雷",
+      "nameEN": "Fuse",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/fuse.jpg",
+      "description": "爆破专家，携带额外投掷物并发射集束炸弹。",
+      "passive": {
+        "name": "榴弹手",
+        "nameEN": "Grenadier",
+        "description": "每个投掷物槽可堆叠两个手雷，投掷距离更远、更准确。",
+        "details": "手雷每格可携带 2 个。使用机械手臂发射手雷，速度更快、距离更远、弧线更平。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "集束炸弹",
+        "nameEN": "Knuckle Cluster",
+        "description": "发射粘附炸弹，命中后持续爆炸。",
+        "details": "粘附在表面或敌人身上后释放多颗子母弹，持续造成总计约 50 伤害。2 发储备。",
+        "cooldown": 20,
+        "damage": 50,
+        "charges": 2
+      },
+      "ultimate": {
+        "name": "火圈轰炸",
+        "nameEN": "The Motherlode",
+        "description": "发射环形火焰炸弹，围困区域内的敌人。",
+        "details": "发射后在目标区域形成火圈，持续约 17 秒。火圈造成每秒 35 伤害并减速。中心不受伤害，需配合其他技能逼敌出圈。",
+        "cooldown": 120,
+        "damage": "35/秒",
+        "duration": 17
+      }
+    },
+    {
+      "id": 17,
+      "name": "瓦尔基里",
+      "nameEN": "Valkyrie",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/valkyrie.jpg",
+      "description": "翱翔天际的飞行员，利用喷气背包实现空中机动。",
+      "passive": {
+        "name": "VTOL 喷气装置",
+        "nameEN": "VTOL Jets",
+        "description": "按住跳跃键使用喷气背包飞行。飞行时标记视野中的敌人。",
+        "details": "喷气燃料随时间恢复。飞行中会暴露位置（尾迹可见）。飞行中可发现并标记下方敌人（约 250 米范围）。飞行中无法射击。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "导弹齐射",
+        "nameEN": "Missile Swarm",
+        "description": "发射一组迷你火箭，造成伤害和眩晕。",
+        "details": "发射 12 发小型导弹，每发约 3 伤害，命中后使敌人短暂眩晕和减速约 2 秒。可在飞行中使用。",
+        "cooldown": 30,
+        "damage": "3×12"
+      },
+      "ultimate": {
+        "name": "天际跳水",
+        "nameEN": "Skyward Dive",
+        "description": "队伍起飞升空后像跳伞一样重新部署。",
+        "details": "蓄力后带领全队升空（队友需挂载），到达高空后像开局跳伞一样滑翔部署。蓄力时可被打断。适合大转点。",
+        "cooldown": 180
+      }
+    },
+    {
+      "id": 18,
+      "name": "希尔",
+      "nameEN": "Seer",
+      "role": "侦察兵",
+      "roleEN": "Recon",
+      "image": "/legends/seer.jpg",
+      "description": "艺术感知者，利用微型无人机精准追踪和打断敌人。",
+      "passive": {
+        "name": "心跳感应器",
+        "nameEN": "Heart Seeker",
+        "description": "瞄准时可感知 75 米范围内敌人的方向和大致距离。",
+        "details": "瞄准时屏幕中央出现方向指示，指向附近敌人心跳位置。可穿透墙壁感应。不会提醒敌人。",
+        "cooldown": null,
+        "range": 75
+      },
+      "tactical": {
+        "name": "聚焦之眼",
+        "nameEN": "Focus of Attention",
+        "description": "发射微型无人机，暴露并打断范围内的敌人。",
+        "details": "发射一道圆柱形区域扫描，命中的敌人被标记 8 秒（显示生命值和护盾值），并打断正在使用的治疗物品和复活。",
+        "cooldown": 30,
+        "duration": 8
+      },
+      "ultimate": {
+        "name": "展览会",
+        "nameEN": "Exhibit",
+        "description": "创建一个大范围球体，其中移动或射击的敌人会被标记。",
+        "details": "球体持续 30 秒，半径约 65 米。球体内走动、射击、使用技能的敌人会被实时标记（显示脚印标记）。站着不动不会被标记。",
+        "cooldown": 120,
+        "duration": 30
+      }
+    },
+    {
+      "id": 19,
+      "name": "艾许",
+      "nameEN": "Ash",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/ash.jpg",
+      "description": "冷酷的模拟体战士，利用死亡箱追踪敌人和传送门突袭。",
+      "passive": {
+        "name": "标记死亡",
+        "nameEN": "Marked for Death",
+        "description": "地图上标记最近的死亡箱位置，交互死亡箱可揭示攻击者位置。",
+        "details": "小地图上显示附近死亡箱图标。对死亡箱使用数据刀可标记击杀者位置 5 秒。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "弧形陷阱",
+        "nameEN": "Arc Snare",
+        "description": "投掷旋转陷阱，束缚并伤害第一个靠近的敌人。",
+        "details": "命中地面后展开，第一个进入范围的敌人被束缚 3 秒（无法移动），受到 10 伤害。可射击摧毁。",
+        "cooldown": 25,
+        "damage": 10,
+        "duration": 3
+      },
+      "ultimate": {
+        "name": "相位撕裂",
+        "nameEN": "Phase Breach",
+        "description": "向目标位置撕开单向传送门。",
+        "details": "瞬间到达目标位置（最远约 62.5 米），留下单向传送门持续 15 秒，队友可从入口传送过来。敌人不可使用。",
+        "cooldown": 120,
+        "duration": 15,
+        "range": 62.5
+      }
+    },
+    {
+      "id": 20,
+      "name": "疯玛吉",
+      "nameEN": "Mad Maggie",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/mad-maggie.jpg",
+      "description": "暴力破门专家，擅长破坏掩体和追击敌人。",
+      "passive": {
+        "name": "军阀之怒",
+        "nameEN": "Warlord's Ire",
+        "description": "持霰弹枪时移速更快。对敌人造成伤害后短暂高亮标记敌人。",
+        "details": "持霰弹枪移速与手枪相同。命中敌人后标记其轮廓数秒。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "暴乱演习",
+        "nameEN": "Riot Drill",
+        "description": "发射钻头，穿透障碍物后在另一侧释放火焰。",
+        "details": "钻头可穿过掩体、门和兰伯特掩体，穿透后释放火焰造成每秒约 16 伤害，持续约 9 秒。适合逼敌离开掩体。",
+        "cooldown": 22,
+        "damage": "16/秒",
+        "duration": 9
+      },
+      "ultimate": {
+        "name": "破坏球",
+        "nameEN": "Wrecking Ball",
+        "description": "投掷一个弹跳球，沿途释放加速板。",
+        "details": "球体弹跳前进，碰到敌人造成 20 伤害并减速。沿途留下加速板，友方踩到移速提升 30%。球体持续约 12 秒。",
+        "cooldown": 90,
+        "damage": 20,
+        "duration": 12
+      }
+    },
+    {
+      "id": 21,
+      "name": "纽卡斯尔",
+      "nameEN": "Newcastle",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/newcastle.jpg",
+      "description": "移动堡垒，可以在复活队友时携带护盾移动保护。",
+      "passive": {
+        "name": "夺旗移动护盾",
+        "nameEN": "Retrieve the Wounded",
+        "description": "复活队友时可以拖拽移动，同时展开一个正面护盾。",
+        "details": "复活时自动展开方向可控的护盾，可以拖拽被击倒的队友到安全位置后再复活。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "移动护盾",
+        "nameEN": "Mobile Shield",
+        "description": "投掷一个可控制移动方向的能量护盾。",
+        "details": "护盾生命值约 350，可控制前进方向。护盾展开后蹲下可获得掩护。持续约 20 秒或被摧毁。",
+        "cooldown": 15,
+        "duration": 20
+      },
+      "ultimate": {
+        "name": "城堡围墙",
+        "nameEN": "Castle Wall",
+        "description": "跳向目标位置，落地后展开一道大型防护墙。",
+        "details": "跳跃距离约 35 米，落地后展开弧形围墙。围墙有电栅栏效果，敌人穿过减速。围墙生命值较高，持续约 25 秒。",
+        "cooldown": 120,
+        "duration": 25
+      }
+    },
+    {
+      "id": 22,
+      "name": "万蒂奇",
+      "nameEN": "Vantage",
+      "role": "侦察兵",
+      "roleEN": "Recon",
+      "image": "/legends/vantage.jpg",
+      "description": "狙击手新秀，利用蝙蝠伙伴和自定义狙击枪控制远距离战场。",
+      "passive": {
+        "name": "侦察者之眼",
+        "nameEN": "Spotter's Lens",
+        "description": "非武装状态下瞄准敌人可查看其队伍信息。",
+        "details": "显示目标的护盾等级、队伍人数存活情况和距离。使用狙击镜瞄准时也可触发。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "回声重定位",
+        "nameEN": "Echo Relocation",
+        "description": "命令蝙蝠伙伴 Echo 飞到指定位置，按键跳到 Echo 身边。",
+        "details": "Echo 飞行距离约 40 米，到位后可按键弹射到 Echo 位置。弹射过程中可取消。Echo 被击杀后冷却较长。",
+        "cooldown": 25,
+        "range": 40
+      },
+      "ultimate": {
+        "name": "狙击手之印",
+        "nameEN": "Sniper's Mark",
+        "description": "使用自定义狙击枪射击，命中的敌人被标记且后续受到更多伤害。",
+        "details": "3 发弹药。首发 50 伤害，被标记的敌人后续受到的伤害提升 15%。标记持续 10 秒。队友攻击标记目标同样增伤。",
+        "cooldown": 40,
+        "damage": 50
+      }
+    },
+    {
+      "id": 23,
+      "name": "催化剂",
+      "nameEN": "Catalyst",
+      "role": "控场手",
+      "roleEN": "Controller",
+      "image": "/legends/catalyst.jpg",
+      "description": "铁磁流体操控者，用黑色液体构建防线和封锁门窗。",
+      "passive": {
+        "name": "筑垒者",
+        "nameEN": "Barricade",
+        "description": "用铁磁流体强化门，被破坏的门可以重新封堵。",
+        "details": "强化的门需要额外 2 次近战或更多伤害才能摧毁。可修复被摧毁的门。每次最多强化 2 扇门。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "穿刺针刺",
+        "nameEN": "Piercing Spikes",
+        "description": "投掷一团铁磁流体，地面展开后减速并伤害经过的敌人。",
+        "details": "地面展开一片约 6 米的流体区域，敌人踩上减速并受到 15 伤害/秒。持续约 25 秒。可叠加放置。",
+        "cooldown": 25,
+        "damage": "15/秒",
+        "duration": 25,
+        "charges": 2
+      },
+      "ultimate": {
+        "name": "暗幕屏障",
+        "nameEN": "Dark Veil",
+        "description": "竖起一道铁磁流体墙，穿过的敌人被减速并短暂致盲。",
+        "details": "一道长约 55 米的黑色墙壁，穿过的敌人被减速和短暂致盲（约 1.5 秒）。墙壁阻挡侦查类扫描。持续约 25 秒。",
+        "cooldown": 120,
+        "duration": 25
+      }
+    },
+    {
+      "id": 24,
+      "name": "弹道",
+      "nameEN": "Ballistic",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/ballistic.jpg",
+      "description": "老牌枪械大师，携带第三把武器并为队伍强化射击能力。",
+      "passive": {
+        "name": "背包武器",
+        "nameEN": "Sling",
+        "description": "可在背包中携带第三把武器（不含配件）。",
+        "details": "第三把武器存放在背包中，只保留裸枪。可随时切换。死亡后敌人可拾取。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "抑制弹",
+        "nameEN": "Whistler",
+        "description": "发射一枚发热弹，命中的敌人武器过热无法射击。",
+        "details": "命中后目标武器过热约 2 秒无法开火。如果目标不持武器则造成 20 伤害。弹道有追踪辅助。",
+        "cooldown": 22,
+        "damage": 20,
+        "duration": 2
+      },
+      "ultimate": {
+        "name": "万金油",
+        "nameEN": "Tempest",
+        "description": "队伍所有成员获得更快射速、装弹速度和无限弹药。",
+        "details": "持续约 12 秒。范围内全队获得：射速提升、装弹速度提升、无限弹药、无需换弹。过热效果期间仍不可射击。",
+        "cooldown": 120,
+        "duration": 12
+      }
+    },
+    {
+      "id": 25,
+      "name": "导能",
+      "nameEN": "Conduit",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/conduit.jpg",
+      "description": "能量导体，以自身生命为代价为队友充能护盾。",
+      "passive": {
+        "name": "蓄能",
+        "nameEN": "Savior's Speed",
+        "description": "向受到伤害的队友移动时获得移速加成。",
+        "details": "当队友在附近受到伤害时，朝其移动速度提升。帮助快速赶到队友身边提供支援。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "辐射转移",
+        "nameEN": "Radiant Transfer",
+        "description": "消耗自身生命值为队友回复护盾。",
+        "details": "消耗自身生命值向指定队友发射能量束，回复其护盾值。可远距离使用（约 50 米）。2 发储备。对自己不生效。",
+        "cooldown": 30,
+        "charges": 2,
+        "range": 50
+      },
+      "ultimate": {
+        "name": "能量风暴",
+        "nameEN": "Energy Barricade",
+        "description": "发射一组能量柱，对经过的敌人造成减速和护盾伤害。",
+        "details": "发射 6 个能量柱排列成弧线，敌人接触时受到护盾伤害并被减速。持续约 20 秒。可作为区域封锁使用。",
+        "cooldown": 120,
+        "duration": 20
+      }
+    },
+    {
+      "id": 26,
+      "name": "变幻",
+      "nameEN": "Alter",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/alter.jpg",
+      "description": "虚空行者，利用虚空通道在不同位置之间快速穿梭。",
+      "passive": {
+        "name": "天赋：虚空之路",
+        "nameEN": "Gift from the Rift",
+        "description": "被击倒后可以短暂传送到附近位置。",
+        "details": "被击倒后激活，短暂进入虚空向指定方向移动一段距离后回到现实。为队友争取复活时间。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "虚空通道",
+        "nameEN": "Void Passage",
+        "description": "在表面放置一个虚空传送入口，穿墙传送到另一侧。",
+        "details": "在墙壁、地板、天花板上放置入口，穿过对应的物体表面到另一侧。自己和队友可使用。持续约 20 秒。",
+        "cooldown": 25,
+        "duration": 20
+      },
+      "ultimate": {
+        "name": "虚空之链",
+        "nameEN": "Void Nexus",
+        "description": "放置一个虚空锚点，全队可从任意位置传送回此锚点。",
+        "details": "放置锚点后，按键即可将全队传送回锚点位置。适合打完拉、拾取后撤退。持续约 40 秒。传送有短暂延迟。",
+        "cooldown": 180,
+        "duration": 40
+      }
+    },
+    {
+      "id": 27,
+      "name": "琉雀",
+      "nameEN": "Sparrow",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/sparrow.jpg",
+      "description": "灵活的空中战士，利用飞行和俯冲进行高速突击。",
+      "passive": {
+        "name": "鸟瞰",
+        "nameEN": "Bird's Eye View",
+        "description": "空中滑翔时可标记视野内的敌人。",
+        "details": "在空中时视野内的敌人被标记。滑翔状态下可更清晰地观察地面动态。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "天翔突击",
+        "nameEN": "Flight",
+        "description": "快速升空并短暂飞行。",
+        "details": "激活后向上弹射并进入自由飞行状态，可向任意方向滑翔。飞行持续约 5 秒。可在飞行中使用武器。",
+        "cooldown": 20,
+        "duration": 5
+      },
+      "ultimate": {
+        "name": "猛禽俯冲",
+        "nameEN": "Screaming Eagle",
+        "description": "高空俯冲向目标区域，落地时造成范围伤害。",
+        "details": "升到高空后锁定目标区域俯冲，落地造成范围伤害和减速。落地伤害约 50-70，中心最高。可在俯冲中调整落点。",
+        "cooldown": 150,
+        "damage": "50-70"
+      }
     }
   ]
 }

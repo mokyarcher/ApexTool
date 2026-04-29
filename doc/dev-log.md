@@ -487,6 +487,34 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 
 ---
 
+## 2026-04-29（下午）—— 性能优化 & 百科图鉴
+
+### 路由级代码分割
+
+- 使用 `React.lazy()` + `Suspense` 按路由拆分代码
+- 主 chunk 从 **1,278 KB → 178 KB**，减少 **86%**
+- 各页面独立 chunk，仅在访问时按需加载
+- 切换页面时显示加载动画（红色旋转圈）
+
+### 百科图鉴页面（新功能）
+
+- 新增 `/encyclopedia` 页面，包含**传奇角色**和**武器数据**两个 Tab
+- **传奇角色**：全部 27 个角色，每个包含被动/战术/终极技能详解（名称、描述、冷却、伤害、持续时间等）
+- **武器数据**：26 把武器，涵盖突击步枪(4)、冲锋枪(5)、轻机枪(4)、射手步枪(4)、狙击步枪(3)、霰弹枪(3)、手枪(3)
+- 武器 ID 改为 `类别-序号` 格式（如 `ar-1`、`smg-2`），各类别独立编号，便于后续维护
+- 支持按角色定位/武器类别筛选，支持中英文搜索
+- 后端 API：`/api/encyclopedia/legends`、`/api/encyclopedia/weapons`
+- 数据文件：`server/data/legends.json`、`server/data/weapons.json`
+
+### 相关文件
+
+- `client/src/pages/Encyclopedia.jsx` — 百科页面组件
+- `server/routes/encyclopedia.js` — 百科 API 路由
+- `server/data/legends.json` — 27 个传奇角色数据
+- `server/data/weapons.json` — 26 把武器数据
+
+---
+
 ## 待办
 
 > `[✔]` 已完成　　`[ ]` 待开发
