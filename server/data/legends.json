@@ -1,0 +1,234 @@
+{
+  "legends": [
+    {
+      "id": 1,
+      "name": "恶灵",
+      "nameEN": "Wraith",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/wraith.jpg",
+      "description": "跨维度空袭手，能够利用虚空进行快速转移和开辟安全通道。",
+      "passive": {
+        "name": "虚空之声",
+        "nameEN": "Voices from the Void",
+        "description": "附近有危险瞄准你时会听到警告声。",
+        "details": "当敌人瞄准你或附近有陷阱时触发语音提示，可通过按键通知队友。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "虚空相位",
+        "nameEN": "Into the Void",
+        "description": "进入虚空状态快速重新定位，期间无法受到伤害。",
+        "details": "激活后 1.25 秒进入虚空，持续 4 秒，期间无敌但无法攻击/交互，移速提升 30%。留下蓝色轨迹。",
+        "cooldown": 25,
+        "duration": 4
+      },
+      "ultimate": {
+        "name": "传送裂隙",
+        "nameEN": "Dimensional Rift",
+        "description": "打开连接两个位置的传送门，持续 60 秒。",
+        "details": "放置起点后移速提升，到达目的地放置终点。传送门双向可用，友方/敌方均可进入，持续 60 秒。移动距离上限约 75 米。",
+        "cooldown": 210,
+        "duration": 60
+      }
+    },
+    {
+      "id": 2,
+      "name": "寻血猎犬",
+      "nameEN": "Bloodhound",
+      "role": "侦察兵",
+      "roleEN": "Recon",
+      "image": "/legends/bloodhound.jpg",
+      "description": "终极猎人，能够追踪敌人足迹并揭示隐藏的敌人。",
+      "passive": {
+        "name": "追踪者",
+        "nameEN": "Tracker",
+        "description": "可以看到敌人留下的痕迹，持续 90 秒。",
+        "details": "地面上显示敌人经过的脚印、开门痕迹、射击痕迹等，最长保留 90 秒。可标记为队友所见。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "全视之眼",
+        "nameEN": "Eye of the Allfather",
+        "description": "短暂扫描前方区域，揭示隐藏的敌人、陷阱和线索。",
+        "details": "发出锥形扫描波，范围 75 米、角度 125°，扫描到的敌人被标记 3 秒。敌人会收到'被扫描'提示。",
+        "cooldown": 25,
+        "duration": 3
+      },
+      "ultimate": {
+        "name": "野兽狩猎",
+        "nameEN": "Beast of the Hunt",
+        "description": "增强感官，移速大幅提升，冷色调视野中敌人被红色高亮。",
+        "details": "持续 35 秒，移速提升 30%，冷色调视野中敌人显示为红色。击倒敌人延长 5 秒，战术冷却缩短至 8 秒。",
+        "cooldown": 180,
+        "duration": 35
+      }
+    },
+    {
+      "id": 3,
+      "name": "命脉",
+      "nameEN": "Lifeline",
+      "role": "支援",
+      "roleEN": "Support",
+      "image": "/legends/lifeline.jpg",
+      "description": "战斗医疗兵，使用无人机治疗队友并呼叫高质量物资。",
+      "passive": {
+        "name": "战斗复活",
+        "nameEN": "Combat Revive",
+        "description": "部署无人机自动复活队友，自己可以同时自由移动和战斗。",
+        "details": "无人机复活队友时会产生护盾保护。可同时复活两个队友。打开蓝色补给箱时获得额外物品。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "急救无人机",
+        "nameEN": "D.O.C. Heal Drone",
+        "description": "放出无人机，自动治疗附近的队友。",
+        "details": "无人机持续 20 秒，每秒治疗 8 点生命值，范围内所有友方（包括自己）均可治疗。",
+        "cooldown": 40,
+        "duration": 20,
+        "healPerSecond": 8
+      },
+      "ultimate": {
+        "name": "关怀补给包",
+        "nameEN": "Care Package",
+        "description": "呼叫一个内含高品质防御装备的补给包。",
+        "details": "空投补给包包含 3 个物品槽，可能出现升级护甲、护甲电池、凤凰治疗包等高级物资。有几率出现金色装备。",
+        "cooldown": 300
+      }
+    },
+    {
+      "id": 4,
+      "name": "班加罗尔",
+      "nameEN": "Bangalore",
+      "role": "突击手",
+      "roleEN": "Assault",
+      "image": "/legends/bangalore.jpg",
+      "description": "职业军人，擅长使用烟雾弹掩护和空袭打击。",
+      "passive": {
+        "name": "疾步",
+        "nameEN": "Double Time",
+        "description": "被射击时短暂提升移速。",
+        "details": "被子弹命中或子弹擦身而过时，移速提升 30%，持续 2 秒。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "烟雾发射器",
+        "nameEN": "Smoke Launcher",
+        "description": "发射烟雾弹，产生烟幕墙。",
+        "details": "2 发储备，直击伤害 10，烟雾持续 23 秒，遮挡视野。可用于掩护撤退或复活队友。",
+        "cooldown": 33,
+        "duration": 23,
+        "damage": 10,
+        "charges": 2
+      },
+      "ultimate": {
+        "name": "雷鸣轰炸",
+        "nameEN": "Rolling Thunder",
+        "description": "呼叫空袭，在指定区域投下大量导弹。",
+        "details": "投掷信号弹标记区域，导弹从前向后依次落地。每颗导弹造成 40 伤害并产生减速效果，落地延迟约 6 秒。影响友方（减速但不伤害）。",
+        "cooldown": 180,
+        "damage": 40
+      }
+    },
+    {
+      "id": 5,
+      "name": "探路者",
+      "nameEN": "Pathfinder",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/pathfinder.jpg",
+      "description": "欢快的侦察机器人，利用钩爪进行高机动性移动。",
+      "passive": {
+        "name": "内幕知识",
+        "nameEN": "Insider Knowledge",
+        "description": "扫描侦察信标可缩短终极技能冷却时间。",
+        "details": "每次扫描信标减少终极技能 10 秒冷却。同时为队伍揭示下一个安全区。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "钩爪",
+        "nameEN": "Grappling Hook",
+        "description": "使用钩爪快速到达难以抵达的位置。",
+        "details": "钩爪射程 21 米，可钩住地形或敌人。冷却时间根据飞行距离动态调整：最短 10 秒，最长 30 秒。",
+        "cooldown": "10-30",
+        "range": 21
+      },
+      "ultimate": {
+        "name": "飞索发射器",
+        "nameEN": "Zipline Gun",
+        "description": "创建一条所有人都可以使用的飞索。",
+        "details": "发射飞索最远 100 米，全队和敌人均可使用。可在飞索上跳跃以规避射击。",
+        "cooldown": 120,
+        "range": 100
+      }
+    },
+    {
+      "id": 6,
+      "name": "动力小子",
+      "nameEN": "Octane",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/octane.jpg",
+      "description": "速度狂魔，用生命值换速度的高速战士。",
+      "passive": {
+        "name": "急速修复",
+        "nameEN": "Swift Mend",
+        "description": "脱战后自动恢复生命值。",
+        "details": "未受伤 6 秒后自动回血，每秒恢复 1.5 点生命值。",
+        "cooldown": null,
+        "healPerSecond": 1.5
+      },
+      "tactical": {
+        "name": "兴奋剂",
+        "nameEN": "Stim",
+        "description": "消耗生命值换取 30% 移速提升。",
+        "details": "消耗 20 点生命值，获得 30% 移速加成持续 6 秒。使用时不会被减速效果影响。不会把自己杀死（最低保留 1 HP）。",
+        "cooldown": 1,
+        "duration": 6,
+        "healthCost": 20
+      },
+      "ultimate": {
+        "name": "发射跳板",
+        "nameEN": "Launch Pad",
+        "description": "放置弹跳板，踏上后会被弹射到空中。",
+        "details": "弹跳板可供所有人使用（含敌人）。跳上去时按跳跃键可以双段跳。放置后永久存在直到被摧毁。",
+        "cooldown": 90
+      }
+    },
+    {
+      "id": 7,
+      "name": "侵蚀",
+      "nameEN": "Caustic",
+      "role": "控场手",
+      "roleEN": "Controller",
+      "image": "/legends/caustic.jpg",
+      "description": "有毒陷阱专家，利用毒气控制区域和削弱敌人。",
+      "passive": {
+        "name": "毒气幻象",
+        "nameEN": "Nox Vision",
+        "description": "在毒气中可以看到敌人的轮廓。",
+        "details": "自己不受毒气减速和伤害影响。在自己的毒气范围内，敌人轮廓被高亮显示。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "毒气陷阱",
+        "nameEN": "Nox Gas Trap",
+        "description": "放置最多 6 个毒气罐，敌人靠近或射击时释放毒气。",
+        "details": "最多同时存在 6 个陷阱。触发后释放毒气，每秒造成 5-12 递增伤害，持续约 11 秒。敌人在毒气中被减速。射击底部可摧毁（未触发时）。",
+        "cooldown": 25,
+        "charges": 3,
+        "damage": "5-12/秒",
+        "duration": 11
+      },
+      "ultimate": {
+        "name": "毒气手雷",
+        "nameEN": "Nox Gas Grenade",
+        "description": "投掷大范围毒气手雷。",
+        "details": "大范围毒气覆盖，每秒 5-12 递增伤害，持续约 15 秒。覆盖范围比战术毒气罐大得多。适合攻楼和区域封锁。",
+        "cooldown": 180,
+        "damage": "5-12/秒",
+        "duration": 15
+      }
+    }
+  ]
+}

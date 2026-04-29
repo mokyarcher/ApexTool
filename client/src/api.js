@@ -27,4 +27,6 @@ export const api = {
   },
   playerLookup: ({ name, platform = 'PC' }) =>
     req(`/player/lookup?name=${encodeURIComponent(name)}&platform=${platform}`),
+  legends: () => req('/encyclopedia/legends'),
+  weapons: () => req('/encyclopedia/weapons'),
 };

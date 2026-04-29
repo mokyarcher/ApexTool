@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search } from 'lucide-react';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
 
 const BattlePass = lazy(() => import('./pages/BattlePass.jsx'));
@@ -10,6 +10,7 @@ const Crafting = lazy(() => import('./pages/Crafting.jsx'));
 const Shop = lazy(() => import('./pages/Shop.jsx'));
 const Mythic = lazy(() => import('./pages/Mythic.jsx'));
 const PlayerStats = lazy(() => import('./pages/PlayerStats.jsx'));
+const Encyclopedia = lazy(() => import('./pages/Encyclopedia.jsx'));
 
 const Loading = () => (
   <div className="flex items-center justify-center py-32">
@@ -23,6 +24,7 @@ const navItems = [
   { to: '/mythic', label: '神话级', icon: Flame, mythic: true },
   { to: '/coins', label: '金币比例', icon: Coins },
   { to: '/stats', label: '战绩查询', icon: Search },
+  { to: '/encyclopedia', label: '百科', icon: BookOpen },
   // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
@@ -75,6 +77,7 @@ export default function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/mythic" element={<Mythic />} />
             <Route path="/stats" element={<PlayerStats />} />
+            <Route path="/encyclopedia" element={<Encyclopedia />} />
           </Routes>
         </Suspense>
       </main>
