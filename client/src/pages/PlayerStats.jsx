@@ -64,7 +64,7 @@ function tStat(name) {
 /* ── Platform icon ── */
 const PLATFORM_STYLE = {
   PC: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
-  PS4: 'bg-zinc-800 border-zinc-600/40 text-zinc-300',
+  PS4: 'bg-indigo-900/50 border-indigo-500/40 text-indigo-300',
   X1: 'bg-emerald-900/50 border-emerald-500/40 text-emerald-300',
   SWITCH: 'bg-red-900/50 border-red-500/40 text-red-300',
 };
