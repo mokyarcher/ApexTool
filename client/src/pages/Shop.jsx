@@ -476,27 +476,13 @@ function DiscountShopCard({ item, onClick }) {
   return (
     <div className={SHOP_CARD} onClick={onClick}>
       <CardShine />
-      <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
-        {item.discount && (
-          <span className="absolute top-2 left-2 z-20 chip bg-green-600/80 text-white border-0 text-xs font-bold">
-            -{item.discount}%
-          </span>
-        )}
+      <div className="aspect-[1/2] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
         <img
           src={item.image}
           alt={item.name}
           className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
-      </div>
-      <div className="p-3 space-y-1">
-        <div className="text-sm text-white leading-tight">{item.name}</div>
-        <div className="flex items-center gap-2 text-xs mt-1">
-          {item.originalPrice && (
-            <span className="line-through text-zinc-500"><Coins size={11} className="inline" /> {item.originalPrice}</span>
-          )}
-          <span className="text-amber-300 font-semibold"><Coins size={11} className="inline" /> {item.salePrice}</span>
-        </div>
       </div>
     </div>
   );
@@ -621,7 +607,7 @@ export default function Shop() {
         </ShopSection>
       )}
 
-      {/* ── 双重击商店 ── */}
+      {/* ── 战斗促销 ── */}
       {dsError ? (
         <ErrorBox error={dsError} onRetry={dsReload} />
       ) : dsData && (
@@ -635,7 +621,7 @@ export default function Shop() {
         </ShopSection>
       )}
 
-      {/* ── 高级射击商店 ── */}
+      {/* ── 黄金周活动 ── */}
       {psError ? (
         <ErrorBox error={psError} onRetry={psReload} />
       ) : psData && (

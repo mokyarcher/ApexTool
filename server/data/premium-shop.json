@@ -1,80 +1,98 @@
 {
-  "name": "高级射击商店",
-  "nameEN": "Premium Shooting Shop",
-  "startDate": "2026-04-22T00:00:00+08:00",
+  "name": "黄金周活动",
+  "nameEN": "Golden Week Event",
+  "startDate": "2026-04-29T00:00:00+08:00",
   "durationDays": 7,
   "items": [
     {
       "id": 1,
-      "name": "深红竞技",
+      "name": "恶魔熏蒸者",
+      "legend": "直布罗陀",
       "type": "捆绑包",
       "image": "/shop/premium/1.jpg",
       "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "salePrice": 2250,
+      "discount": 51
     },
     {
       "id": 2,
-      "name": "激波狂欢",
-      "type": "巅峰包",
+      "name": "紫色喜悦",
+      "legend": "探路者",
+      "type": "捆绑包",
       "image": "/shop/premium/2.jpg",
       "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "salePrice": 2250,
+      "discount": 51
     },
     {
       "id": 3,
-      "name": "滴水不漏",
+      "name": "复仇血脉",
+      "legend": "弹道",
       "type": "捆绑包",
       "image": "/shop/premium/3.jpg",
       "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "salePrice": 2250,
+      "discount": 51
     },
     {
       "id": 4,
-      "name": "半转天才",
-      "type": "巅峰包",
+      "name": "天空哨兵",
+      "legend": "瓦尔基里",
+      "type": "捆绑包",
       "image": "/shop/premium/4.jpg",
-      "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "originalPrice": 4300,
+      "salePrice": 2250,
+      "discount": 47
     },
     {
       "id": 5,
-      "name": "夏日灼热",
+      "name": "忍者外科医生",
+      "legend": "生命线",
       "type": "捆绑包",
       "image": "/shop/premium/5.jpg",
-      "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "originalPrice": 4300,
+      "salePrice": 2250,
+      "discount": 47
     },
     {
       "id": 6,
-      "name": "霓虹猎手",
+      "name": "机甲马文",
+      "legend": "探路者",
       "type": "捆绑包",
       "image": "/shop/premium/6.jpg",
-      "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "originalPrice": 4300,
+      "salePrice": 2250,
+      "discount": 47
     },
     {
       "id": 7,
-      "name": "星际先锋",
-      "type": "巅峰包",
+      "name": "内心恶魔",
+      "legend": "恶灵",
+      "type": "皮肤",
       "image": "/shop/premium/7.jpg",
-      "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "originalPrice": 1800,
+      "salePrice": 1500,
+      "discount": 16
     },
     {
       "id": 8,
-      "name": "烈焰守护",
-      "type": "捆绑包",
+      "name": "风暴将临",
+      "legend": "地平线",
+      "type": "皮肤",
       "image": "/shop/premium/8.jpg",
-      "originalPrice": 4600,
-      "salePrice": 2500,
-      "discount": 45
+      "originalPrice": 1800,
+      "salePrice": 1500,
+      "discount": 16
+    },
+    {
+      "id": 9,
+      "name": "狩猎狐狸",
+      "legend": "兰伯特",
+      "type": "皮肤",
+      "image": "/shop/premium/9.jpg",
+      "originalPrice": 1800,
+      "salePrice": 1500,
+      "discount": 16
     }
   ]
 }
