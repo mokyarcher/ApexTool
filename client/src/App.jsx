@@ -1,13 +1,21 @@
+import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
 import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search } from 'lucide-react';
-import BattlePass from './pages/BattlePass.jsx';
-import Maps from './pages/Maps.jsx';
-import CoinsPage from './pages/Coins.jsx';
-import Crafting from './pages/Crafting.jsx';
-import Shop from './pages/Shop.jsx';
-import Mythic from './pages/Mythic.jsx';
-import PlayerStats from './pages/PlayerStats.jsx';
 import ParticleNest from './components/ParticleNest.jsx';
+
+const BattlePass = lazy(() => import('./pages/BattlePass.jsx'));
+const Maps = lazy(() => import('./pages/Maps.jsx'));
+const CoinsPage = lazy(() => import('./pages/Coins.jsx'));
+const Crafting = lazy(() => import('./pages/Crafting.jsx'));
+const Shop = lazy(() => import('./pages/Shop.jsx'));
+const Mythic = lazy(() => import('./pages/Mythic.jsx'));
+const PlayerStats = lazy(() => import('./pages/PlayerStats.jsx'));
+
+const Loading = () => (
+  <div className="flex items-center justify-center py-32">
+    <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const navItems = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
@@ -57,16 +65,18 @@ export default function App() {
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
-        <Routes>
-          <Route path="/" element={<Navigate to="/battlepass" replace />} />
-          <Route path="/battlepass" element={<BattlePass />} />
-          <Route path="/maps" element={<Maps />} />
-          <Route path="/coins" element={<CoinsPage />} />
-          <Route path="/crafting" element={<Crafting />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/mythic" element={<Mythic />} />
-          <Route path="/stats" element={<PlayerStats />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/battlepass" replace />} />
+            <Route path="/battlepass" element={<BattlePass />} />
+            <Route path="/maps" element={<Maps />} />
+            <Route path="/coins" element={<CoinsPage />} />
+            <Route path="/crafting" element={<Crafting />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/mythic" element={<Mythic />} />
+            <Route path="/stats" element={<PlayerStats />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <footer className="border-t border-apex-border py-4 text-center text-xs text-zinc-500">
