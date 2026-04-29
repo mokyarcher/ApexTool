@@ -29,4 +29,5 @@ export const api = {
     req(`/player/lookup?name=${encodeURIComponent(name)}&platform=${platform}`),
   legends: () => req('/encyclopedia/legends'),
   weapons: () => req('/encyclopedia/weapons'),
+  patchNotes: () => req('/patch-notes'),
 };

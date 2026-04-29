@@ -1,0 +1,192 @@
+{
+  "patches": [
+    {
+      "id": "28.1",
+      "title": "Breach 中期补丁 (28.1)",
+      "titleEN": "Breach Midseason Designer's Notes",
+      "date": "2026-03-23",
+      "season": "S28 Breach",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/28-1-designers-notes",
+      "summary": "削弱强势阵容，增强直布罗陀/恶灵/沃特森，赫姆洛克变为全新精英武器，RE-45 永久改为点射能量武器。",
+      "legendChanges": [
+        {
+          "legend": "直布罗陀",
+          "legendEN": "Gibraltar",
+          "changes": [
+            "新增动量被动：脱战时持续奔跑可获得移速加成",
+            "终极技能投掷延迟减少，操作更流畅",
+            "新升级 - 雷电穹顶：穹顶通电，首个进入的敌人受到伤害和减速",
+            "新升级 - 治疗穹顶：穹顶内小型治疗物品效果翻倍，穹顶持续时间延长",
+            "新升级 - 三重轰炸：终极技能拆分为三次较小范围轰炸，覆盖更灵活"
+          ]
+        },
+        {
+          "legend": "恶灵",
+          "legendEN": "Wraith",
+          "changes": [
+            "两个冷却缩减升级整合进基础技能，技能更频繁可用",
+            "终极技能施放速度加快",
+            "新升级 - 相位穹顶：开启终极传送门时创建虚空穹顶，队友在内无敌",
+            "新升级 - 相位跳跃：战术技能持续时间延长，虚空中可二段跳"
+          ]
+        },
+        {
+          "legend": "沃特森",
+          "legendEN": "Wattson",
+          "changes": [
+            "战术技能部署速度加快",
+            "电网触碰伤害提升",
+            "战术放置在硬光网格前可立即强化网格",
+            "终极技能释放时强化范围内所有硬光网格"
+          ]
+        }
+      ],
+      "weaponChanges": [
+        {
+          "weapon": "赫姆洛克突击步枪",
+          "weaponEN": "Hemlok Breach AR",
+          "changes": [
+            "变为全新精英武器：全自动消音突击步枪",
+            "副射击模式发射破门弹，对硬光和传奇放置物造成额外伤害"
+          ]
+        },
+        {
+          "weapon": "RE-45 点射手枪",
+          "weaponEN": "RE-45 Burst",
+          "changes": [
+            "永久替代 RE-45 Auto",
+            "改为点射模式，使用能量弹药",
+            "不再与其他轻型自动武器竞争"
+          ]
+        },
+        {
+          "weapon": "30-30 连发枪",
+          "weaponEN": "30-30 Repeater",
+          "changes": [
+            "基础伤害恢复：41 → 43（回调之前的削弱）"
+          ]
+        },
+        {
+          "weapon": "P2020 手枪",
+          "weaponEN": "P2020",
+          "changes": [
+            "弹匣容量：8 → 9",
+            "锤击点解锁费用：500 → 425"
+          ]
+        },
+        {
+          "weapon": "猎兽冲锋枪",
+          "weaponEN": "Prowler",
+          "changes": [
+            "连发射击间隔缩短",
+            "后坐力降低"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "28.0",
+      "title": "Breach 赛季补丁 (28.0)",
+      "titleEN": "Apex Legends™: Breach Patch Notes",
+      "date": "2026-02-09",
+      "season": "S28 Breach",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/breach-patch-notes",
+      "summary": "新赛季 Breach 上线，新增硬光网格机制。暴雷大幅重做，催化剂和寻血猎犬增强。射手步枪全线削弱，霰弹枪加强。击倒护盾移除改为等级绑定。",
+      "legendChanges": [
+        {
+          "legend": "暴雷",
+          "legendEN": "Fuse",
+          "changes": [
+            "被动：不再受爆炸伤害减速",
+            "战术：切枪速度加快，弹道更平，延迟 1.7s → 1.0s，基础伤害 10 → 15，持续时间减半",
+            "终极技能完全重做：发射迫击炮砸地后散射子弹药，瞄准时可穿透 13 米掩体",
+            "新升级 - 烈焰技术：终极落地后留下 8 秒火焰区域",
+            "新升级 - 爆弹跳跃：在自己的集束炸弹旁跳跃可获得爆炸推力",
+            "新升级 - 重燃：爆炸伤害可充能终极（每 2 点伤害减 1 秒冷却）"
+          ]
+        },
+        {
+          "legend": "催化剂",
+          "legendEN": "Catalyst",
+          "changes": [
+            "被动：可强化门数量 2 → 4",
+            "战术区域增大，最大陷阱数增加",
+            "激活时间缩短"
+          ]
+        },
+        {
+          "legend": "寻血猎犬",
+          "legendEN": "Bloodhound",
+          "changes": [
+            "技能调整（详见完整补丁说明）"
+          ]
+        }
+      ],
+      "weaponChanges": [
+        {
+          "weapon": "G7 侦察枪",
+          "weaponEN": "G7 Scout",
+          "changes": [
+            "进入空投包",
+            "伤害 36 → 37",
+            "射速提升",
+            "可装备狙击镜",
+            "新增配件：双发扳机"
+          ]
+        },
+        {
+          "weapon": "猎兽弓",
+          "weaponEN": "Bocek Compound Bow",
+          "changes": [
+            "满蓄力伤害 65 → 60",
+            "蓄力满伤害 55 → 50",
+            "拉弓时间增加"
+          ]
+        },
+        {
+          "weapon": "30-30 连发枪",
+          "weaponEN": "30-30 Repeater",
+          "changes": [
+            "基础伤害 43 → 41",
+            "蓄力伤害倍率降低",
+            "蓄力时间略微增加"
+          ]
+        },
+        {
+          "weapon": "三重式狙击枪",
+          "weaponEN": "Triple Take",
+          "changes": [
+            "射速降低",
+            "蓄力收束时间略微增加"
+          ]
+        },
+        {
+          "weapon": "P2020 手枪",
+          "weaponEN": "P2020",
+          "changes": [
+            "从空投包回归地面",
+            "伤害 25 → 23",
+            "装弹速度降低",
+            "射速降低",
+            "移除配件：动能供弹器"
+          ]
+        },
+        {
+          "weapon": "EVA-8 自动霰弹枪",
+          "weaponEN": "EVA-8 Auto",
+          "changes": [
+            "射速略微提升",
+            "弹道收束"
+          ]
+        }
+      ],
+      "otherChanges": [
+        "新增硬光网格（Hardlight Mesh）机制",
+        "击倒护盾移出掉落池，改为与角色等级绑定",
+        "白色背包移出掉落池，加入初始装备",
+        "空投包轮换：P2020 回归地面，G7 进入空投包",
+        "金色武器轮换：哨兵、平行步枪、和平捍卫者、30-30、双持 P2020"
+      ]
+    }
+  ]
+}

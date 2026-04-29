@@ -203,7 +203,7 @@
         "tactical": null,
         "full": null
       },
-      "description": "复合弓，无需弹匣，拉弓蓄力后射击。蓄满力伤害最高，箭矢可拾回。极其安静，不会暴露位置。"
+      "description": "复合弓，无需弹匣，拉弓蓄力后射击。蓄满力伤害最高，箭矢可拾回。极其安静，不会暴露位置。S28 满蓄力伤害 65→60，拉弓时间增加。"
     },
     {
       "id": "ar-2",
@@ -451,8 +451,9 @@
       "nameEN": "G7 Scout",
       "category": "marksman",
       "ammoType": "轻型弹药",
+      "note": "S28 进入空投包",
       "image": "/weapons/g7.jpg",
-      "bodyDamage": 36,
+      "bodyDamage": 37,
       "headDamage": 58,
       "legDamage": 29,
       "rpm": 240,
@@ -467,7 +468,7 @@
         "tactical": 2.4,
         "full": 3
       },
-      "description": "半自动射手步枪，点射节奏快、伤害稳定。可装双发扳机配件变为两连发。中远距离利器。"
+      "description": "半自动射手步枪，点射节奏快、伤害稳定。可装双发扳机配件变为两连发。中远距离利器。S28 进入空投包。"
     },
     {
       "id": "marksman-4",
@@ -476,7 +477,7 @@
       "category": "marksman",
       "ammoType": "重型弹药",
       "image": "/weapons/3030.jpg",
-      "bodyDamage": 42,
+      "bodyDamage": 43,
       "headDamage": 74,
       "legDamage": 34,
       "rpm": 139,
@@ -595,14 +596,15 @@
       "nameEN": "P2020",
       "category": "pistol",
       "ammoType": "轻型弹药",
+      "note": "S28 从空投包回归地面",
       "image": "/weapons/p2020.jpg",
-      "bodyDamage": 18,
+      "bodyDamage": 23,
       "headDamage": 27,
       "legDamage": 15,
       "rpm": 420,
-      "dps": 126,
+      "dps": 161,
       "magSize": {
-        "base": 10,
+        "base": 9,
         "white": 12,
         "blue": 14,
         "purple": 16
@@ -615,10 +617,11 @@
     },
     {
       "id": "pistol-2",
-      "name": "RE-45 自动手枪",
-      "nameEN": "RE-45 Auto",
+      "name": "RE-45 点射手枪",
+      "nameEN": "RE-45 Burst",
       "category": "pistol",
-      "ammoType": "轻型弹药",
+      "ammoType": "能量弹药",
+      "note": "S28.1 改为点射能量武器，永久替代 RE-45 Auto",
       "image": "/weapons/re45.jpg",
       "bodyDamage": 12,
       "headDamage": 18,
@@ -635,7 +638,7 @@
         "tactical": 1.5,
         "full": 2.12
       },
-      "description": "全自动轻型手枪，射速快、后坐力低。可装消音器配件。近距离副武器首选，切枪速度极快。"
+      "description": "点射能量手枪，S28.1 永久替代 RE-45 Auto。改用能量弹药，不再与其他轻型自动武器竞争，拥有更独特的定位。"
     },
     {
       "id": "pistol-3",
