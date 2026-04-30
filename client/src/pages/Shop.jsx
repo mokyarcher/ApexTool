@@ -364,10 +364,10 @@ function DoubleStrikeModal({ item, onClose }) {
                 获得 APEX 金币
               </button>
             </div>
-            {/* ESC hint */}
-            <div className="text-xs text-zinc-500 pt-1">
-              <span className="chip bg-zinc-700/40 text-zinc-300 border-zinc-600/40 mr-2 text-[10px] px-1.5 py-0.5">ESC</span> 返回
-            </div>
+            {/* ESC / 返回 */}
+            <button onClick={onClose} className="flex items-center gap-2 text-sm font-bold text-zinc-400 hover:text-white hover:scale-110 pt-1 transition-all duration-200 cursor-pointer origin-left">
+              <span className="chip bg-zinc-700/40 text-zinc-300 border-zinc-600/40 text-xs px-2 py-1">ESC</span> 返回
+            </button>
           </div>
         </div>
 
@@ -402,8 +402,10 @@ function ShopLightbox({ src, alt, onClose }) {
   function close() { setVisible(false); setTimeout(onClose, 400); }
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`} onClick={close}>
-      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
       <img src={src} alt={alt} className={`max-h-[90vh] max-w-[90vw] object-contain shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} onClick={(e) => e.stopPropagation()} />
+      <button onClick={close} className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-sm font-bold text-zinc-400 hover:text-white hover:scale-110 transition-all duration-200 cursor-pointer z-10">
+        <span className="chip bg-zinc-700/40 text-zinc-300 border-zinc-600/40 text-xs px-2 py-1">ESC</span> 返回
+      </button>
     </div>
   );
 }
@@ -476,13 +478,27 @@ function DiscountShopCard({ item, onClick }) {
   return (
     <div className={SHOP_CARD} onClick={onClick}>
       <CardShine />
-      <div className="aspect-[1/2] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+      <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+        {item.discount && (
+          <span className="absolute top-2 left-2 z-20 chip bg-green-600/80 text-white border-0 text-xs font-bold">
+            -{item.discount}%
+          </span>
+        )}
         <img
           src={item.image}
           alt={item.name}
           className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
+      </div>
+      <div className="p-3 space-y-1">
+        <div className="text-sm text-white leading-tight">{item.name}</div>
+        <div className="flex items-center gap-2 text-xs mt-1">
+          {item.originalPrice && (
+            <span className="line-through text-zinc-500"><Coins size={11} className="inline" /> {item.originalPrice.toLocaleString()}</span>
+          )}
+          <span className="text-amber-300 font-semibold"><Coins size={11} className="inline" /> {item.salePrice.toLocaleString()}</span>
+        </div>
       </div>
     </div>
   );
@@ -573,13 +589,6 @@ export default function Shop() {
                   className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <div className="font-display text-xl text-white">{msData.name}</div>
-                  <div className="text-xs text-zinc-300 mt-1 flex items-center gap-1">
-                    {msData.description} <ChevronRight size={14} />
-                  </div>
-                </div>
               </div>
             </div>
             <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -715,8 +724,8 @@ export default function Shop() {
                       onClick={() => setShopLightbox({ src: toFullImage(item.image), alt: item.name })}
                     >
                       <CardShine />
-                      <div className="aspect-[5/2] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                      <div className="aspect-[9/4] relative overflow-hidden bg-gradient-to-b from-zinc-800/80 to-zinc-900/80">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-contain transition duration-500 group-hover:scale-[1.035] group-hover:brightness-110" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                       </div>
                     </div>
                   ))}

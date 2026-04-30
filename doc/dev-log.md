@@ -889,6 +889,63 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 - [✔] Steam 账号绑定（绑定/解绑/跨设备同步/同名玩家引导）
 - [✔] EA → Steam 全站 UI 迁移
 - [✔] Apex-MBTI 竞技场人格测试（第一版）
+- [✔] 百科图鉴 - 武器图片本地化 & 数据扩充
+- [✔] 百科图鉴 & 通行证页面 - 筛选栏冻结 & Lightbox 优化
+
+---
+
+## 2026-05-01 · 武器图片本地化 & 筛选栏冻结 & Lightbox 统一
+
+### 百科图鉴 - 武器图片本地化
+
+- 批量重命名桌面武器缩略图（`R-99_SMG.png` → `r99.png`），复制到 `client/public/weapons/`
+- `weapons.json` 全部 28 把武器的 `image` 字段从 `.jpg` 更新为 `.png` 本地路径
+- `legends.json` 全部 27 个传奇的 `image` 字段从 `.jpg` 更新为 `.png`
+- 新增 3 把武器数据：
+  - 克雷贝尔狙击枪（Kraber，空投武器）
+  - 敖犬霰弹枪（Mastiff）
+  - 复仇女神突击步枪（Nemesis Burst AR）
+- 中文名修正：翼人手枪 → 小帮手、催化剂 → 卡莉斯塔、导能 → 导线管
+
+### 百科 API 缓存策略调整
+
+- `server/routes/encyclopedia.js` 的 `Cache-Control` 从 `max-age=3600` 改为 `no-cache`
+- 修改 JSON 数据后刷新页面即可生效，无需清缓存
+
+### 筛选栏冻结（Sticky Header）
+
+**百科图鉴页** (`Encyclopedia.jsx`)：
+- 标题（百科图鉴）+ Tab 栏（传奇角色/武器数据/武器对比 + 搜索框）+ 子筛选栏（角色定位/武器类别）合并为一个 `sticky top-14` 块
+- 滚动时整个头部冻结在导航栏下方，只有列表内容滚动
+
+**通行证页** (`BattlePass.jsx`)：
+- 赛季信息区 + 筛选按钮（全部/免费/高级/终极/终极+）合并为 `sticky top-14` 块
+- 滚动时头部冻结，只有奖励卡片网格滚动
+
+**导航栏** (`App.jsx`)：
+- `z-index` 从 20 提升到 40，确保始终在页面 sticky 块之上
+
+### Lightbox 统一优化
+
+- **商店页** (`Shop.jsx`)：ShopLightbox 移除右上角 X 按钮，只保留底部居中 ESC 返回按钮
+- **通行证页** (`BattlePass.jsx`)：Lightbox 移除右上角 X 按钮，新增底部居中 ESC 返回按钮
+- 所有 ESC 返回按钮统一样式：`text-sm font-bold`，ESC 标签 `text-xs px-2 py-1`
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `server/data/weapons.json` | 28 把武器 image→.png，新增 Kraber/Mastiff/Nemesis，小帮手改名 |
+| `server/data/legends.json` | 27 个传奇 image→.png，卡莉斯塔/导线管改名 |
+| `server/routes/encyclopedia.js` | Cache-Control 改为 no-cache |
+| `client/src/pages/Encyclopedia.jsx` | 标题+Tab+子筛选合并 sticky |
+| `client/src/pages/BattlePass.jsx` | 赛季信息+筛选 sticky，Lightbox 去 X 加 ESC |
+| `client/src/pages/Shop.jsx` | ShopLightbox 去 X，ESC 按钮加大加粗 |
+| `client/src/App.jsx` | 导航栏 z-index 20→40 |
+| `client/public/weapons/` | 28 张武器缩略图 .png |
+
+---
+
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）

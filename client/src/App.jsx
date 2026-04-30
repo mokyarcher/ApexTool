@@ -71,7 +71,7 @@ function AppContent() {
   return (
     <div className="min-h-full flex flex-col">
       <ParticleNest />
-      <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-20">
+      <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 h-14 flex items-center">
           {/* Left nav */}
           <nav className="flex items-center flex-1 justify-end">

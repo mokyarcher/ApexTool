@@ -6,7 +6,7 @@
       "nameEN": "Wraith",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/wraith.jpg",
+      "image": "/legends/wraith.png",
       "description": "跨维度空袭手，能够利用虚空进行快速转移和开辟安全通道。",
       "passive": {
         "name": "虚空之声",
@@ -38,7 +38,7 @@
       "nameEN": "Bloodhound",
       "role": "侦察兵",
       "roleEN": "Recon",
-      "image": "/legends/bloodhound.jpg",
+      "image": "/legends/bloodhound.png",
       "description": "终极猎人，能够追踪敌人足迹并揭示隐藏的敌人。",
       "passive": {
         "name": "追踪者",
@@ -70,7 +70,7 @@
       "nameEN": "Lifeline",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/lifeline.jpg",
+      "image": "/legends/lifeline.png",
       "description": "战斗医疗兵，使用无人机治疗队友并呼叫高质量物资。",
       "passive": {
         "name": "战斗复活",
@@ -102,7 +102,7 @@
       "nameEN": "Bangalore",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/bangalore.jpg",
+      "image": "/legends/bangalore.png",
       "description": "职业军人，擅长使用烟雾弹掩护和空袭打击。",
       "passive": {
         "name": "疾步",
@@ -136,7 +136,7 @@
       "nameEN": "Pathfinder",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/pathfinder.jpg",
+      "image": "/legends/pathfinder.png",
       "description": "欢快的侦察机器人，利用钩爪进行高机动性移动。",
       "passive": {
         "name": "内幕知识",
@@ -168,7 +168,7 @@
       "nameEN": "Octane",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/octane.jpg",
+      "image": "/legends/octane.png",
       "description": "速度狂魔，用生命值换速度的高速战士。",
       "passive": {
         "name": "急速修复",
@@ -201,7 +201,7 @@
       "nameEN": "Caustic",
       "role": "控场手",
       "roleEN": "Controller",
-      "image": "/legends/caustic.jpg",
+      "image": "/legends/caustic.png",
       "description": "有毒陷阱专家，利用毒气控制区域和削弱敌人。",
       "passive": {
         "name": "毒气幻象",
@@ -236,7 +236,7 @@
       "nameEN": "Gibraltar",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/gibraltar.jpg",
+      "image": "/legends/gibraltar.png",
       "description": "坚不可摧的堡垒战士，用护盾和空袭保护队伍。",
       "passive": {
         "name": "枪盾",
@@ -269,7 +269,7 @@
       "nameEN": "Mirage",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/mirage.jpg",
+      "image": "/legends/mirage.png",
       "description": "全息幻术大师，利用诱饵迷惑敌人。",
       "passive": {
         "name": "现在你看到我了……",
@@ -300,7 +300,7 @@
       "nameEN": "Wattson",
       "role": "控场手",
       "roleEN": "Controller",
-      "image": "/legends/wattson.jpg",
+      "image": "/legends/wattson.png",
       "description": "电网防御专家，利用电栅栏和拦截塔控制区域。",
       "passive": {
         "name": "天才火花",
@@ -334,7 +334,7 @@
       "nameEN": "Crypto",
       "role": "侦察兵",
       "roleEN": "Recon",
-      "image": "/legends/crypto.jpg",
+      "image": "/legends/crypto.png",
       "description": "监视专家，利用无人机侦察敌情和破坏敌方装备。",
       "passive": {
         "name": "神经链接",
@@ -366,7 +366,7 @@
       "nameEN": "Revenant",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/revenant.jpg",
+      "image": "/legends/revenant.png",
       "description": "暗影刺客，擅长攀爬和压制敌人技能。",
       "passive": {
         "name": "刺客本能",
@@ -398,7 +398,7 @@
       "nameEN": "Loba",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/loba.jpg",
+      "image": "/legends/loba.png",
       "description": "高级窃贼，利用传送手环和黑市为队伍搜刮物资。",
       "passive": {
         "name": "慧眼识珠",
@@ -430,7 +430,7 @@
       "nameEN": "Rampart",
       "role": "控场手",
       "roleEN": "Controller",
-      "image": "/legends/rampart.jpg",
+      "image": "/legends/rampart.png",
       "description": "改装专家，利用强化掩体和重机枪控制战场。",
       "passive": {
         "name": "改装装载机",
@@ -461,7 +461,7 @@
       "nameEN": "Horizon",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/horizon.jpg",
+      "image": "/legends/horizon.png",
       "description": "重力操控科学家，利用反重力装置改变战场高度。",
       "passive": {
         "name": "太空行走",
@@ -493,7 +493,7 @@
       "nameEN": "Fuse",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/fuse.jpg",
+      "image": "/legends/fuse.png",
       "description": "爆破专家，携带额外投掷物并发射集束炸弹。",
       "passive": {
         "name": "榴弹手",
@@ -527,7 +527,7 @@
       "nameEN": "Valkyrie",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/valkyrie.jpg",
+      "image": "/legends/valkyrie.png",
       "description": "翱翔天际的飞行员，利用喷气背包实现空中机动。",
       "passive": {
         "name": "VTOL 喷气装置",
@@ -558,7 +558,7 @@
       "nameEN": "Seer",
       "role": "侦察兵",
       "roleEN": "Recon",
-      "image": "/legends/seer.jpg",
+      "image": "/legends/seer.png",
       "description": "艺术感知者，利用微型无人机精准追踪和打断敌人。",
       "passive": {
         "name": "心跳感应器",
@@ -591,7 +591,7 @@
       "nameEN": "Ash",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/ash.jpg",
+      "image": "/legends/ash.png",
       "description": "冷酷的模拟体战士，利用死亡箱追踪敌人和传送门突袭。",
       "passive": {
         "name": "标记死亡",
@@ -625,7 +625,7 @@
       "nameEN": "Mad Maggie",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/mad-maggie.jpg",
+      "image": "/legends/mad-maggie.png",
       "description": "暴力破门专家，擅长破坏掩体和追击敌人。",
       "passive": {
         "name": "军阀之怒",
@@ -659,7 +659,7 @@
       "nameEN": "Newcastle",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/newcastle.jpg",
+      "image": "/legends/newcastle.png",
       "description": "移动堡垒，可以在复活队友时携带护盾移动保护。",
       "passive": {
         "name": "夺旗移动护盾",
@@ -691,7 +691,7 @@
       "nameEN": "Vantage",
       "role": "侦察兵",
       "roleEN": "Recon",
-      "image": "/legends/vantage.jpg",
+      "image": "/legends/vantage.png",
       "description": "狙击手新秀，利用蝙蝠伙伴和自定义狙击枪控制远距离战场。",
       "passive": {
         "name": "侦察者之眼",
@@ -719,11 +719,11 @@
     },
     {
       "id": 23,
-      "name": "催化剂",
+      "name": "卡莉斯塔",
       "nameEN": "Catalyst",
       "role": "控场手",
       "roleEN": "Controller",
-      "image": "/legends/catalyst.jpg",
+      "image": "/legends/catalyst.png",
       "description": "铁磁流体操控者，用黑色液体构建防线和封锁门窗。",
       "passive": {
         "name": "筑垒者",
@@ -757,7 +757,7 @@
       "nameEN": "Ballistic",
       "role": "突击手",
       "roleEN": "Assault",
-      "image": "/legends/ballistic.jpg",
+      "image": "/legends/ballistic.png",
       "description": "老牌枪械大师，携带第三把武器并为队伍强化射击能力。",
       "passive": {
         "name": "背包武器",
@@ -786,11 +786,11 @@
     },
     {
       "id": 25,
-      "name": "导能",
+      "name": "导线管",
       "nameEN": "Conduit",
       "role": "支援",
       "roleEN": "Support",
-      "image": "/legends/conduit.jpg",
+      "image": "/legends/conduit.png",
       "description": "能量导体，以自身生命为代价为队友充能护盾。",
       "passive": {
         "name": "蓄能",
@@ -823,7 +823,7 @@
       "nameEN": "Alter",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/alter.jpg",
+      "image": "/legends/alter.png",
       "description": "虚空行者，利用虚空通道在不同位置之间快速穿梭。",
       "passive": {
         "name": "天赋：虚空之路",
@@ -855,7 +855,7 @@
       "nameEN": "Sparrow",
       "role": "空袭手",
       "roleEN": "Skirmisher",
-      "image": "/legends/sparrow.jpg",
+      "image": "/legends/sparrow.png",
       "description": "灵活的空中战士，利用飞行和俯冲进行高速突击。",
       "passive": {
         "name": "鸟瞰",

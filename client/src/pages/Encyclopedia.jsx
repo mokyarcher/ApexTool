@@ -77,9 +77,9 @@ function LegendCard({ legend }) {
       >
         <div className="w-14 h-14 bg-zinc-800 flex-shrink-0 overflow-hidden">
           <img
-            src={legend.image}
+            src={legend.image.replace('.jpg', '.png')}
             alt={legend.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
             onError={e => { e.target.style.display = 'none'; }}
           />
         </div>
@@ -406,64 +406,64 @@ export default function Encyclopedia() {
 
   return (
     <div>
-      <div className="relative border border-white/[0.06] bg-black/40 overflow-hidden mb-6">
-        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-red-500/[0.03] to-transparent pointer-events-none" />
-        <div className="relative px-6 py-5">
-          <div className="flex items-center gap-3 mb-1">
-            <BookOpen size={22} className="text-red-400" />
-            <h1 className="font-display text-2xl text-white tracking-wide">百科图鉴</h1>
+      <div className="sticky top-14 z-30 bg-zinc-950/95 backdrop-blur-sm -mx-4 px-4 pb-2 border-b border-white/[0.04]">
+        <div className="relative border border-white/[0.06] bg-black/40 overflow-hidden mb-3">
+          <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-red-500/[0.03] to-transparent pointer-events-none" />
+          <div className="relative px-6 py-4">
+            <div className="flex items-center gap-3 mb-1">
+              <BookOpen size={22} className="text-red-400" />
+              <h1 className="font-display text-2xl text-white tracking-wide">百科图鉴</h1>
+            </div>
+            <p className="text-sm text-zinc-500">传奇角色技能详解 · 武器数据对比</p>
           </div>
-          <p className="text-sm text-zinc-500">传奇角色技能详解 · 武器数据对比</p>
         </div>
-      </div>
 
-      <div className="flex items-center gap-2 mb-4">
-        <button
-          onClick={() => { setTab('legends'); setSearch(''); }}
-          className={`px-4 py-2 text-sm font-medium transition-all ${
-            tab === 'legends'
-              ? 'bg-red-500/15 text-red-400 border border-red-500/35'
-              : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
-          }`}
-        >
-          <span className="flex items-center gap-1.5"><Swords size={14} /> 传奇角色</span>
-        </button>
-        <button
-          onClick={() => { setTab('weapons'); setSearch(''); }}
-          className={`px-4 py-2 text-sm font-medium transition-all ${
-            tab === 'weapons'
-              ? 'bg-red-500/15 text-red-400 border border-red-500/35'
-              : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
-          }`}
-        >
-          <span className="flex items-center gap-1.5"><Crosshair size={14} /> 武器数据</span>
-        </button>
-        <button
-          onClick={() => { setTab('compare'); setSearch(''); }}
-          className={`px-4 py-2 text-sm font-medium transition-all ${
-            tab === 'compare'
-              ? 'bg-red-500/15 text-red-400 border border-red-500/35'
-              : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
-          }`}
-        >
-          <span className="flex items-center gap-1.5"><GitCompareArrows size={14} /> 武器对比</span>
-        </button>
+        <div className="flex items-center gap-2 mb-2">
+          <button
+            onClick={() => { setTab('legends'); setSearch(''); }}
+            className={`px-4 py-2 text-sm font-medium transition-all ${
+              tab === 'legends'
+                ? 'bg-red-500/15 text-red-400 border border-red-500/35'
+                : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
+            }`}
+          >
+            <span className="flex items-center gap-1.5"><Swords size={14} /> 传奇角色</span>
+          </button>
+          <button
+            onClick={() => { setTab('weapons'); setSearch(''); }}
+            className={`px-4 py-2 text-sm font-medium transition-all ${
+              tab === 'weapons'
+                ? 'bg-red-500/15 text-red-400 border border-red-500/35'
+                : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
+            }`}
+          >
+            <span className="flex items-center gap-1.5"><Crosshair size={14} /> 武器数据</span>
+          </button>
+          <button
+            onClick={() => { setTab('compare'); setSearch(''); }}
+            className={`px-4 py-2 text-sm font-medium transition-all ${
+              tab === 'compare'
+                ? 'bg-red-500/15 text-red-400 border border-red-500/35'
+                : 'text-zinc-400 hover:text-white border border-transparent hover:bg-white/5'
+            }`}
+          >
+            <span className="flex items-center gap-1.5"><GitCompareArrows size={14} /> 武器对比</span>
+          </button>
 
-        <div className="ml-auto">
-          <input
-            type="text"
-            placeholder="搜索..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="bg-zinc-800/50 border border-white/[0.06] px-3 py-1.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500/40 w-40"
-          />
+          <div className="ml-auto">
+            <input
+              type="text"
+              placeholder="搜索..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="bg-zinc-800/50 border border-white/[0.06] px-3 py-1.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-red-500/40 w-40"
+            />
+          </div>
         </div>
-      </div>
 
-      {tab === 'legends' && (
-        <>
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
+        {tab === 'legends' && (
+          <div className="flex items-center gap-2 flex-wrap">
             {roles.map(r => (
               <button
                 key={r}
@@ -479,23 +479,10 @@ export default function Encyclopedia() {
             ))}
             <span className="text-xs text-zinc-600 ml-2">{filteredLegends.length} 个角色</span>
           </div>
+        )}
 
-          {legendsLoading && <Loader />}
-          {legendsError && <ErrorBox error={legendsError} onRetry={reloadLegends} />}
-          {!legendsLoading && !legendsError && (
-            <div className="space-y-2">
-              {filteredLegends.map(l => <LegendCard key={l.id} legend={l} />)}
-              {filteredLegends.length === 0 && (
-                <div className="text-center text-zinc-500 py-12">没有匹配的角色</div>
-              )}
-            </div>
-          )}
-        </>
-      )}
-
-      {tab === 'weapons' && (
-        <>
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
+        {tab === 'weapons' && (
+          <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={() => setCategoryFilter('all')}
               className={`px-3 py-1 text-xs transition-all ${
@@ -521,11 +508,30 @@ export default function Encyclopedia() {
             ))}
             <span className="text-xs text-zinc-600 ml-2">{filteredWeapons.length} 把武器</span>
           </div>
+        )}
+      </div>
 
+      {tab === 'legends' && (
+        <>
+          {legendsLoading && <Loader />}
+          {legendsError && <ErrorBox error={legendsError} onRetry={reloadLegends} />}
+          {!legendsLoading && !legendsError && (
+            <div className="space-y-2 mt-3">
+              {filteredLegends.map(l => <LegendCard key={l.id} legend={l} />)}
+              {filteredLegends.length === 0 && (
+                <div className="text-center text-zinc-500 py-12">没有匹配的角色</div>
+              )}
+            </div>
+          )}
+        </>
+      )}
+
+      {tab === 'weapons' && (
+        <>
           {weaponsLoading && <Loader />}
           {weaponsError && <ErrorBox error={weaponsError} onRetry={reloadWeapons} />}
           {!weaponsLoading && !weaponsError && (
-            <div className="space-y-2">
+            <div className="space-y-2 mt-3">
               {filteredWeapons.map(w => <WeaponRow key={w.id} weapon={w} />)}
               {filteredWeapons.length === 0 && (
                 <div className="text-center text-zinc-500 py-12">没有匹配的武器</div>

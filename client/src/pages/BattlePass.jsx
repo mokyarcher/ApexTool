@@ -46,13 +46,15 @@ function Lightbox({ src, alt, onClose }) {
       className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`}
       onClick={handleClose}
     >
-      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={handleClose}><X size={28} /></button>
       <img
         src={src}
         alt={alt}
         className={`max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
         onClick={(e) => e.stopPropagation()}
       />
+      <button onClick={handleClose} className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-sm font-bold text-zinc-400 hover:text-white hover:scale-110 transition-all duration-200 cursor-pointer z-10">
+        <span className="chip bg-zinc-700/40 text-zinc-300 border-zinc-600/40 text-xs px-2 py-1">ESC</span> 返回
+      </button>
     </div>
   );
 }
@@ -161,58 +163,60 @@ export default function BattlePass() {
   if (error) return <ErrorBox error={error} onRetry={reload} />;
 
   return (
-    <div className="relative space-y-6">
+    <div className="relative">
 
-      <section className="relative card !rounded-none overflow-hidden">
-        {/* ── Hero section gradient overlay ── */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(168,85,247,0.12),transparent_50%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-950/20 via-transparent to-purple-950/15" />
-        <div className="relative p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
-        <div>
-          <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
-          <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
-          {countdown && (
-            <div className="flex items-center gap-2 mt-2 text-amber-300 font-semibold">
-              <Clock size={16} />
-              <span>剩余时间：{countdown}</span>
+      <div className="sticky top-14 z-30 bg-zinc-950/95 backdrop-blur-sm -mx-4 px-4 pb-3">
+        <section className="relative card !rounded-none overflow-hidden">
+          {/* ── Hero section gradient overlay ── */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(168,85,247,0.12),transparent_50%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-950/20 via-transparent to-purple-950/15" />
+          <div className="relative p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+          <div>
+            <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
+            <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
+            {countdown && (
+              <div className="flex items-center gap-2 mt-2 text-amber-300 font-semibold">
+                <Clock size={16} />
+                <span>剩余时间：{countdown}</span>
+              </div>
+            )}
+            <p className="text-zinc-400 mt-2 max-w-xl">{data.description}</p>
+            <div className="flex gap-3 mt-4 flex-wrap items-center">
+              <TierButton icon={Lock} label="免费" cls="bg-zinc-700/40 text-zinc-200 border-zinc-600/40 hover:bg-zinc-700/60" tipImage="/bp/tier-free.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage="/bp/tier-premium.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage="/bp/tier-ultimate.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage="/bp/tier-ultimate-plus.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <button onClick={() => setShowInfo(true)} className="px-4 py-2 text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
             </div>
-          )}
-          <p className="text-zinc-400 mt-2 max-w-xl">{data.description}</p>
-          <div className="flex gap-3 mt-4 flex-wrap items-center">
-            <TierButton icon={Lock} label="免费" cls="bg-zinc-700/40 text-zinc-200 border-zinc-600/40 hover:bg-zinc-700/60" tipImage="/bp/tier-free.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-            <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage="/bp/tier-premium.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-            <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage="/bp/tier-ultimate.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-            <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage="/bp/tier-ultimate-plus.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-            <button onClick={() => setShowInfo(true)} className="px-4 py-2 text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
           </div>
-        </div>
-        <div className="text-right text-base text-zinc-300 space-y-1.5">
-          <div>开始: <span className="text-white font-semibold text-lg">{data.startDate}</span></div>
-          <div>结束: <span className="text-white font-semibold text-lg">{data.endDate}</span></div>
-          <div className="mt-2 text-xl text-white font-bold">共 {data.rewards.length} 项奖励</div>
-        </div>
-        </div>
-      </section>
+          <div className="text-right text-base text-zinc-300 space-y-1.5">
+            <div>开始: <span className="text-white font-semibold text-lg">{data.startDate}</span></div>
+            <div>结束: <span className="text-white font-semibold text-lg">{data.endDate}</span></div>
+            <div className="mt-2 text-xl text-white font-bold">共 {data.rewards.length} 项奖励</div>
+          </div>
+          </div>
+        </section>
 
-      <div className="flex items-center gap-2">
-        {[
-          { k: 'all', label: '全部' },
-          { k: 'free', label: '免费' },
-          { k: 'premium', label: '高级' },
-          { k: 'ultimate', label: '终极' },
-          { k: 'ultimate_plus', label: '终极+' }
-        ].map((o) => (
-          <button
-            key={o.k}
-            onClick={() => setFilter(o.k)}
-            className={`px-3 py-1.5 text-sm border transition ${
-              filter === o.k ? 'border-apex-red text-white bg-apex-red/15' : 'border-apex-border text-zinc-300 hover:text-white'
-            }`}
-          >
-            {o.label}
-          </button>
-        ))}
-        <div className="ml-auto text-sm text-zinc-400">显示 {filtered.length} / {data.rewards.length}</div>
+        <div className="flex items-center gap-2 mt-3">
+          {[
+            { k: 'all', label: '全部' },
+            { k: 'free', label: '免费' },
+            { k: 'premium', label: '高级' },
+            { k: 'ultimate', label: '终极' },
+            { k: 'ultimate_plus', label: '终极+' }
+          ].map((o) => (
+            <button
+              key={o.k}
+              onClick={() => setFilter(o.k)}
+              className={`px-3 py-1.5 text-sm border transition ${
+                filter === o.k ? 'border-apex-red text-white bg-apex-red/15' : 'border-apex-border text-zinc-300 hover:text-white'
+              }`}
+            >
+              {o.label}
+            </button>
+          ))}
+          <div className="ml-auto text-sm text-zinc-400">显示 {filtered.length} / {data.rewards.length}</div>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
