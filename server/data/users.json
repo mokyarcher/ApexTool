@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mokvuqv17zujjs",
+    "username": "Moky",
+    "password": "$2b$10$f0SElc..nmO7M/JvaWQf0OKV5c4hoWgJQn.Qtk//28LpWpSfZPGc.",
+    "nickname": "Moky",
+    "eaName": "Moky",
+    "avatar": null,
+    "createdAt": "2026-04-30T02:46:52.285Z",
+    "boundUid": "1008064673869",
+    "boundPlatform": "PC"
+  },
+  {
+    "id": "mokw8o8e91k605",
+    "username": "test1",
+    "password": "$2b$10$Vj3rHT7Q3kHf81S1IyuovuSrxRZqwb1n/V8ZBPuA78UqvtlVPEM76",
+    "nickname": "test1",
+    "eaName": "皮特",
+    "avatar": null,
+    "createdAt": "2026-04-30T02:57:42.062Z"
+  }
+]

@@ -601,6 +601,151 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 - 移除重复折扣角标
 - 卡片比例调整为 `1/2`，完整展示图片含价格信息
 
+## 2026-04-30（下午）—— 用户系统 & 个人中心 & 账号绑定
+
+### 用户认证系统（新功能）
+
+**后端** — `server/routes/auth.js`
+- `POST /api/auth/register` — 注册（用户名、密码、昵称、Steam 昵称）
+- `POST /api/auth/login` — 登录，返回 JWT（7 天有效）
+- `GET /api/auth/me` — 获取当前用户信息（JWT 校验）
+- `PUT /api/auth/profile` — 更新个人资料（昵称、Steam 昵称、绑定 UID、绑定平台）
+- 用户数据存储：`server/data/users.json`（JSON 文件）
+- 密码加密：bcryptjs（saltRounds=10）
+- Steam 昵称唯一性校验（注册 + 更新时检查）
+
+**前端认证组件** — `client/src/components/AuthContext.jsx`
+- `AuthProvider` 提供全局认证状态：`user`、`loading`、`login`、`register`、`logout`、`updateProfile`
+- 使用 localStorage 存储 JWT token，页面加载时自动恢复会话
+- `useAuth()` hook 供各页面获取认证状态
+
+**API 层** — `client/src/api.js`
+- 新增 `post()` 辅助函数，自动附带 JWT Authorization header
+- 新增 `api.register()`、`api.login()`、`api.me()`、`api.updateProfile()` 方法
+
+**登录/注册页** — `client/src/pages/Auth.jsx`
+- 登录 / 注册双 Tab 切换
+- 注册表单：用户名、密码、昵称（选填）、Steam 昵称（选填）
+- 密码可见性切换
+- 表单验证 + 错误提示
+- 登录/注册成功后跳转个人中心
+
+**导航栏** — `client/src/App.jsx`
+- 已登录：显示用户头像/昵称，点击跳转个人中心
+- 未登录：显示「登录」按钮
+
+### 个人中心页面（新功能）— `client/src/pages/Profile.jsx`
+
+**基本信息区**：
+- 头像（优先显示游戏头像，无头像时显示 `apex-logo.png`）
+- 昵称、账号名、注册日期
+- Steam 昵称（带解绑按钮）
+- 等级、阶段、平台标签（来自游戏数据）
+
+**游戏战绩区**：
+- 排位信息：大逃杀排位 + 竞技场排位（段位名、段位号、排位分）
+- 核心数据卡片：总击杀、总胜场、总伤害、K/D
+- 当前角色信息（角色名 + 图片 + 追踪器数据）
+- 在线状态（在线/离线 + 当前游戏状态 + 当前角色）
+
+**总击杀算法优化**：
+- 不使用 API 返回的 `specialEvent_kills`（数据不准确）
+- 改为遍历 `stats.legends.all` 中所有传奇角色的 tracker 数据
+- 累加每个角色的 kills / damage / wins（排除赛季数据）得到真实总数
+- K/D 仍使用 API 全局值 `total.kd`
+
+**缓存策略**：
+- 战绩数据缓存到 localStorage（key: `apex_profile_stats:{userId}`）
+- 进入页面时优先读缓存显示
+- 缓存超过 15 分钟自动刷新
+- 手动刷新按钮随时可用
+- 显示「最后更新时间」（相对时间：刚刚更新 / X分钟前 / X小时前）
+
+**编辑资料区**：
+- 可修改昵称、Steam 昵称
+- 保存按钮 + 成功/错误提示
+
+**查看详细战绩按钮**：
+- 青色按钮「📊 查看详细战绩」，点击跳转到战绩查询页
+- 优先使用 UID 跳转（精确匹配），无 UID 则用 Steam 名
+
+### Steam 账号绑定流程
+
+**绑定入口（战绩查询页）**：
+- 搜索玩家后，UID 行旁显示「绑定为我的」按钮
+- 已绑定时显示绿色「✓ 已绑定」标签
+- 绑定操作同时保存到 localStorage 和服务端（`boundUid` + `boundPlatform` 字段）
+- 首次绑定时自动设置用户的 Steam 昵称
+
+**绑定引导（动态引导）**：
+- 当用户已登录但未绑定 Steam 账号时，查看战绩详情 1.5 秒后触发引导
+- 「绑定为我的」按钮显示红色脉冲光晕动画（`guidePulse`）
+- 按钮下方弹出气泡提示（`guideSlideIn` 滑入动画）：
+  - 🎮 **绑定你的游戏账号**
+  - 说明文字 + 「知道了，不再提示」关闭按钮
+  - 上方三角箭头持续弹跳指向按钮（`guideArrowBounce`）
+- 用户绑定后或点击关闭后，引导自动消失
+
+**个人中心 UID 解析优先级**：
+1. `user.boundUid`（服务端，跨设备同步）
+2. `localStorage.apex_saved_uid`（本地，单设备）
+3. 按 Steam 昵称搜索（fallback，取第一个匹配结果）
+
+**解绑功能**：
+- Steam 昵称旁显示「🔗 解绑」按钮
+- 点击弹出确认框：「确定要解除 Steam 账号绑定吗？解绑后个人中心将不再显示战绩数据。」
+- 确认后清除：服务端 eaName + boundUid + boundPlatform，本地缓存 + apex_saved_uid
+
+**同名玩家处理**：
+- 战绩区底部显示黄色提示条：「⚠ 这不是你？同名玩家较多时可能匹配错误。」
+- 「🔍 选择正确账号」按钮，点击跳转到战绩查询页并自动搜索该 Steam 名
+- 战绩查询页支持 `?q=` URL 参数自动触发搜索（`useSearchParams`）
+- 用户从搜索结果中选择正确的自己，再点击「绑定为我的」即可
+
+### 跨设备同步
+
+- `boundUid` 和 `boundPlatform` 存储在服务端用户数据中
+- 任何设备登录同一账号，个人中心都能加载正确的战绩
+- 解决了之前 localStorage 仅在单设备生效的问题
+
+### EA → Steam 全站迁移
+
+- 所有 UI 文本从「EA 用户名」改为「Steam 昵称」
+- 注册表单：「Steam 昵称（选填）」+ 说明文字
+- 个人中心：「Steam: Moky」
+- 服务端错误信息：「该 Steam 昵称已被其他账号绑定」
+- 代码中字段名保持 `eaName` 不变（避免数据迁移）
+
+### CSS 动画（`client/src/index.css`）
+
+| 动画名 | 用途 | 效果 |
+|--------|------|------|
+| `guideSlideIn` | 引导气泡弹出 | 从下方 8px 滑入 + 淡入，0.4s |
+| `guidePulse` | 绑定按钮脉冲 | 红色阴影呼吸光晕，1.5s 循环 |
+| `guideArrowBounce` | 引导箭头弹跳 | 上下 4px 弹跳，1s 循环 |
+
+### 战绩查询页其他改动
+
+- 「保存为我的」按钮重设计：从小字链接改为 UID 行旁的芯片式按钮
+- 按钮样式与 Lv / 阶段 / PC 标签风格一致
+- 导入 `useSearchParams` 支持 URL 参数自动搜索
+- 「快速加载」功能（`loadSaved`）使用保存的名字作为 `originalName` 避免历史记录出现 UID
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `server/routes/auth.js` | 新增认证路由，profile 增加 boundUid/boundPlatform 字段 |
+| `server/index.js` | 挂载 auth 路由 |
+| `server/data/users.json` | 用户数据存储（自动创建） |
+| `client/src/api.js` | 新增 auth API 方法 |
+| `client/src/components/AuthContext.jsx` | 新增全局认证 Context |
+| `client/src/pages/Auth.jsx` | 新增登录/注册页 |
+| `client/src/pages/Profile.jsx` | 新增个人中心页 |
+| `client/src/pages/PlayerStats.jsx` | 绑定功能 + 引导 + URL 参数搜索 |
+| `client/src/App.jsx` | AuthProvider + 认证路由 + 导航栏用户菜单 |
+| `client/src/index.css` | 新增引导动画 keyframes |
+
 ---
 
 ## 待办
@@ -614,6 +759,10 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 - [✔] 玩家战绩查询（UID / 名字深度搜索 / 多匹配选择）
 - [✔] 战绩页全面汉化（段位、数据、角色名）
 - [✔] 查询记录持久化
+- [✔] 用户认证系统（注册、登录、JWT、个人资料）
+- [✔] 个人中心页面（用户信息 + 游戏战绩 + 缓存刷新）
+- [✔] Steam 账号绑定（绑定/解绑/跨设备同步/同名玩家引导）
+- [✔] EA → Steam 全站 UI 迁移
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）

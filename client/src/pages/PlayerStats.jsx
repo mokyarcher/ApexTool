@@ -1,7 +1,10 @@
-import { useState, useCallback } from 'react';
-import { Search, User, Wifi, WifiOff, Shield, Swords, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Search, User, Wifi, WifiOff, Shield, Swords, ChevronDown, ChevronUp, ArrowLeft, BarChart3, Gamepad2 } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Customized, LineChart, Line, CartesianGrid, Legend } from 'recharts';
 import { api } from '../api.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
+import { useAuth } from '../components/AuthContext.jsx';
 
 /* ── Rank badge colors ── */
 const RANK_COLORS = {
@@ -34,6 +37,24 @@ const STAT_CN = {
   kills: '击杀', damage: '伤害', wins: '胜场',
   'Silenced targets': '沉默敌人', 'Teammates lifted': '举起队友',
   'Enemies silenced': '沉默敌人',
+  'Into the void: Time': '虚空行走时间',
+  'Gravity lift: Teammates lifted': '重力电梯: 举起队友',
+  'Grapple: Travel distance': '抓钩移动距离',
+  'Eye: Enemies scanned': '扫描敌人数',
+  'Silence: Enemies silenced': '沉默: 沉默敌人',
+  'Drone: Enemies scanned': '无人机扫描敌人',
+  'Nox Gas: Enemies damaged': '毒气: 伤害敌人',
+  'Decoy: Bamboozles': '诱饵: 迷惑敌人',
+  'Dome: Damage blocked': '护盾: 格挡伤害',
+  'Black Hole: Enemies pulled': '黑洞: 吸引敌人',
+  'Knuckle Cluster: Enemies hit': '爆裂星: 命中敌人',
+  'Missile Swarm: Enemies hit': '导弹群: 命中敌人',
+  'Exhibit: Enemies detected': '展览: 探测敌人',
+  'Piercing Spikes: Enemies damaged': '穿刺尖刺: 伤害敌人',
+  'Smoke: Enemies hit': '烟雾: 命中敌人',
+  'Beast of the Hunt: Kills': '狩猎野兽: 击杀',
+  'Death Totem: Allies saved': '死亡图腾: 拯救队友',
+  'Care Package: Healing given': '补给包: 治疗量',
 };
 /* ── Legend name CN ── */
 const LEGEND_CN = {
@@ -198,6 +219,294 @@ function LegendRow({ name, data, imgAssets, gameInfo }) {
   );
 }
 
+/* ── Chart colors ── */
+const CHART_COLORS = [
+  '#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4',
+  '#3b82f6', '#8b5cf6', '#ec4899', '#14b8a6', '#f43f5e',
+  '#a855f7', '#6366f1', '#10b981', '#f59e0b', '#64748b',
+];
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="bg-zinc-900 border border-white/10 px-3 py-2 text-xs shadow-xl">
+      <div className="text-zinc-300 font-bold mb-1">{label}</div>
+      {payload.map((p, i) => (
+        <div key={i} className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />
+          <span className="text-zinc-400">{p.name}:</span>
+          <span className="text-white font-semibold">{typeof p.value === 'number' ? p.value.toLocaleString() : p.value}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+/* ── Player Charts ── */
+function PlayerCharts({ legends: rawLegends, total }) {
+  const [chartTab, setChartTab] = useState('kills');
+  const [animate, setAnimate] = useState(false);
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    let timer;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !animate) {
+          timer = setTimeout(() => setAnimate(true), 400);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); clearTimeout(timer); };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Extract legend kill/damage/win data
+  const legendStats = useMemo(() => {
+    const stats = [];
+    for (const leg of rawLegends) {
+      const trackers = leg.data || [];
+      const entry = { name: tLegend(leg.name) };
+      let hasData = false;
+      for (const t of trackers) {
+        const n = (t.name || '').toLowerCase();
+        if (n.includes('kill') && !n.includes('season')) { entry.kills = t.value; hasData = true; }
+        if (n.includes('damage') && !n.includes('season')) { entry.damage = t.value; hasData = true; }
+        if (n.includes('win') && !n.includes('season')) { entry.wins = t.value; hasData = true; }
+      }
+      if (hasData) stats.push(entry);
+    }
+    return stats;
+  }, [rawLegends]);
+
+  // Extract season data from total
+  const seasonData = useMemo(() => {
+    if (!total) return [];
+    const seasons = {};
+    for (const [, stat] of Object.entries(total)) {
+      const killMatch = (stat.name || '').match(/BR Season (\d+) kills?/i);
+      const winMatch = (stat.name || '').match(/BR Season (\d+) wins?/i);
+      if (killMatch) {
+        const s = `S${killMatch[1]}`;
+        if (!seasons[s]) seasons[s] = { name: s, sort: parseInt(killMatch[1]) };
+        seasons[s].kills = stat.value;
+      }
+      if (winMatch) {
+        const s = `S${winMatch[1]}`;
+        if (!seasons[s]) seasons[s] = { name: s, sort: parseInt(winMatch[1]) };
+        seasons[s].wins = stat.value;
+      }
+    }
+    return Object.values(seasons).sort((a, b) => a.sort - b.sort);
+  }, [total]);
+
+  // Sort by selected metric
+  const sortedLegends = useMemo(() => {
+    return [...legendStats].sort((a, b) => (b[chartTab] || 0) - (a[chartTab] || 0));
+  }, [legendStats, chartTab]);
+
+  // Pie data for kills distribution
+  const pieData = useMemo(() => {
+    return sortedLegends
+      .filter(l => (l[chartTab] || 0) > 0)
+      .map((l, i) => ({ ...l, value: l[chartTab] || 0, fill: CHART_COLORS[i % CHART_COLORS.length] }));
+  }, [sortedLegends, chartTab]);
+
+  if (legendStats.length === 0 && seasonData.length === 0) return null;
+
+  const tabs = [
+    { key: 'kills', label: '击杀' },
+    { key: 'damage', label: '伤害' },
+    { key: 'wins', label: '胜场' },
+  ];
+
+  return (
+    <section ref={chartRef} className="relative border border-white/5 bg-zinc-950/40 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_2px_30px_rgba(0,0,0,0.4)]" />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-display text-lg text-white font-bold flex items-center gap-2">
+            <BarChart3 size={18} className="text-red-400" />
+            数据统计
+          </h3>
+          {legendStats.length > 0 && (
+            <div className="flex gap-1">
+              {tabs.map(t => (
+                <button
+                  key={t.key}
+                  onClick={() => setChartTab(t.key)}
+                  className={`px-3 py-1 text-xs font-medium transition ${
+                    chartTab === t.key
+                      ? 'bg-red-600/20 text-red-400 border border-red-500/30'
+                      : 'text-zinc-500 hover:text-zinc-300 border border-transparent'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-6">
+          {/* Bar chart: legend comparison */}
+          {sortedLegends.length > 0 && (
+            <div>
+              <div className="text-xs text-zinc-500 mb-2">角色{tabs.find(t => t.key === chartTab)?.label}对比</div>
+              <div style={{ height: Math.max(200, sortedLegends.length * 36) }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={sortedLegends} layout="vertical" margin={{ left: 0, right: 60, top: 0, bottom: 0 }}>
+                    <XAxis type="number" tick={{ fill: '#71717a', fontSize: 11 }} tickFormatter={v => v >= 1000 ? `${(v/1000).toFixed(0)}k` : v} />
+                    <YAxis type="category" dataKey="name" width={80} tick={{ fill: '#d4d4d8', fontSize: 11 }} />
+                    <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
+                    <Bar dataKey={animate ? chartTab : undefined} radius={[0, 2, 2, 0]} maxBarSize={24} isAnimationActive={true} animationDuration={1200} animationEasing="ease-out" label={{ position: 'right', fill: '#a1a1aa', fontSize: 11, formatter: v => typeof v === 'number' ? v.toLocaleString() : v }}>
+                      {sortedLegends.map((_, i) => (
+                        <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} fillOpacity={0.8} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          )}
+
+          {/* Pie + Season charts side by side */}
+          <div className={`grid gap-6 ${seasonData.length > 0 && pieData.length > 0 ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'}`}>
+            {/* Pie chart */}
+            {pieData.length > 1 && (
+              <div>
+                <div className="text-xs text-zinc-500 mb-2">角色{tabs.find(t => t.key === chartTab)?.label}占比</div>
+                <div style={{ height: Math.max(300, pieData.length * 22 + 80) }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={animate ? pieData : []}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={80}
+                        innerRadius={40}
+                        strokeWidth={1}
+                        stroke="#18181b"
+                        startAngle={90}
+                        endAngle={-270}
+                        isAnimationActive={true}
+                        animationDuration={1200}
+                        animationEasing="ease-out"
+                        label={false}
+                        labelLine={false}
+                      >
+                        {pieData.map((entry, i) => (
+                          <Cell key={i} fill={entry.fill} />
+                        ))}
+                      </Pie>
+                      <Tooltip content={<CustomTooltip />} />
+                      {animate && <Customized component={({ formattedGraphicalItems }) => {
+                        const total = pieData.reduce((s, d) => s + d.value, 0);
+                        if (!total) return null;
+                        const RADIAN = Math.PI / 180;
+                        const cxVal = 0.5, cyVal = 0.5;
+                        const or = 80, labelR = or + 18, elbowLen = 18;
+                        const LINE_H = 16;
+                        // Compute raw positions
+                        let cumAngle = 90;
+                        const items = pieData.map((d, i) => {
+                          const sliceAngle = (d.value / total) * 360;
+                          const mid = cumAngle - sliceAngle / 2;
+                          cumAngle -= sliceAngle;
+                          const rad = -mid * RADIAN;
+                          const ox = labelR * Math.cos(rad);
+                          const oy = labelR * Math.sin(rad);
+                          const isRight = Math.cos(rad) >= 0;
+                          const pct = ((d.value / total) * 100).toFixed(1);
+                          return { ...d, mid, ox, oy, isRight, pct, idx: i,
+                            edgeX: or * Math.cos(rad) + 4 * Math.cos(rad),
+                            edgeY: or * Math.sin(rad) + 4 * Math.sin(rad),
+                          };
+                        });
+                        // Split left/right, sort by y, then spread to avoid overlap
+                        const spread = (group) => {
+                          group.sort((a, b) => a.oy - b.oy);
+                          for (let i = 1; i < group.length; i++) {
+                            if (group[i].oy - group[i-1].oy < LINE_H) {
+                              group[i].oy = group[i-1].oy + LINE_H;
+                            }
+                          }
+                          for (let i = group.length - 2; i >= 0; i--) {
+                            if (group[i+1].oy - group[i].oy < LINE_H) {
+                              group[i].oy = group[i+1].oy - LINE_H;
+                            }
+                          }
+                        };
+                        const right = items.filter(i => i.isRight);
+                        const left = items.filter(i => !i.isRight);
+                        spread(right);
+                        spread(left);
+                        const allItems = [...right, ...left];
+                        return (
+                          <g className="pie-labels" style={{ transform: 'translate(50%, 50%)' }}>
+                            {allItems.map((it, i) => {
+                              const elbowX = it.isRight ? labelR + elbowLen : -(labelR + elbowLen);
+                              const textX = it.isRight ? elbowX + 4 : elbowX - 4;
+                              const delay = 1.2 + i * 0.12;
+                              return (
+                                <g key={it.idx} style={{ opacity: 0, animation: `pieLabelIn 0.4s ease-out ${delay}s forwards` }}>
+                                  <polyline
+                                    points={`${it.edgeX},${it.edgeY} ${it.ox},${it.oy} ${elbowX},${it.oy}`}
+                                    fill="none" stroke="#52525b" strokeWidth={1}
+                                  />
+                                  <text x={textX} y={it.oy} fill={it.fill} textAnchor={it.isRight ? 'start' : 'end'} dominantBaseline="central" fontSize={11}>
+                                    {it.name} {it.pct}%
+                                  </text>
+                                </g>
+                              );
+                            })}
+                          </g>
+                        );
+                      }} />
+                      }
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            )}
+
+            {/* Season trend */}
+            {seasonData.length > 1 && (
+              <div>
+                <div className="text-xs text-zinc-500 mb-2">赛季趋势</div>
+                <div style={{ height: 260 }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={seasonData} margin={{ left: 0, right: 10, top: 5, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                      <XAxis dataKey="name" tick={{ fill: '#71717a', fontSize: 11 }} />
+                      <YAxis tick={{ fill: '#71717a', fontSize: 11 }} tickFormatter={v => v >= 1000 ? `${(v/1000).toFixed(0)}k` : v} />
+                      <Tooltip content={<CustomTooltip />} />
+                      {seasonData.some(d => d.kills != null) && (
+                        <Line type="monotone" dataKey={animate ? 'kills' : undefined} name="击杀" stroke="#ef4444" strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} isAnimationActive={true} animationDuration={1500} animationEasing="ease-out" />
+                      )}
+                      {seasonData.some(d => d.wins != null) && (
+                        <Line type="monotone" dataKey={animate ? 'wins' : undefined} name="胜场" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} isAnimationActive={true} animationDuration={1500} animationEasing="ease-out" />
+                      )}
+                      <Legend formatter={(value) => <span className="text-xs text-zinc-400">{value}</span>} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── localStorage helpers ── */
 const SAVED_KEY = 'apex_saved_uid';
 function getSavedUID() {
@@ -235,6 +544,8 @@ function clearAllHistory() {
 
 /* ── Main page ── */
 export default function PlayerStats() {
+  const { user, updateProfile } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
   const [platform, setPlatform] = useState('PC');
   const [data, setData] = useState(null);
@@ -247,8 +558,11 @@ export default function PlayerStats() {
   const [lookupLoading, setLookupLoading] = useState(false);
   const [lastLookupResults, setLastLookupResults] = useState(null);
   const [history, setHistory] = useState(getHistory);
+  const autoSearchDone = useRef(false);
+  const [showBindGuide, setShowBindGuide] = useState(false);
+  const guideTimerRef = useRef(null);
 
-  const doSearch = useCallback(async (q, plat) => {
+  const doSearch = useCallback(async (q, plat, originalName) => {
     q = (q || '').trim();
     if (!q) return;
     setLoading(true);
@@ -265,8 +579,9 @@ export default function PlayerStats() {
         const result = await api.player({ uid: q, platform: plat });
         if (result.error || result.Error) throw new Error(result.error || result.Error);
         setData(result);
-        if (result.global?.uid && result.global?.name) {
-          setHistory(addHistory(result.global.name, result.global.uid, result.global.platform || plat, result.global.level));
+        if (result.global?.uid) {
+          const displayName = originalName || result.global.name || q;
+          setHistory(addHistory(displayName, result.global.uid, result.global.platform || plat, result.global.level));
         }
       } catch (e) {
         setError(e.message || '查询失败');
@@ -287,8 +602,9 @@ export default function PlayerStats() {
           const result = await api.player({ uid: lookup.results[0].uid, platform: lookup.results[0].platform || plat });
           if (result.error || result.Error) throw new Error(result.error || result.Error);
           setData(result);
-          if (result.global?.uid && result.global?.name) {
-            setHistory(addHistory(result.global.name, result.global.uid, result.global.platform || plat, result.global.level));
+          if (result.global?.uid) {
+            const displayName = q || result.global.name;
+            setHistory(addHistory(displayName, result.global.uid, result.global.platform || plat, result.global.level));
           }
         } else if (lookup.results?.length > 1) {
           // Multiple matches → show selection
@@ -308,8 +624,8 @@ export default function PlayerStats() {
 
   const selectLookupResult = useCallback((uid, plat) => {
     setLookupResults(null);
-    doSearch(uid, plat);
-  }, [doSearch]);
+    doSearch(uid, plat, query);
+  }, [doSearch, query]);
 
   const backToResults = useCallback(() => {
     if (lastLookupResults) {
@@ -322,19 +638,51 @@ export default function PlayerStats() {
   const search = useCallback(() => doSearch(query, platform), [query, platform, doSearch]);
   const handleSubmit = (e) => { e.preventDefault(); search(); };
 
+  // Auto-search from URL ?q= param (e.g. from Profile "选择正确账号")
+  useEffect(() => {
+    if (autoSearchDone.current) return;
+    const q = searchParams.get('q');
+    if (q) {
+      autoSearchDone.current = true;
+      setQuery(q);
+      doSearch(q, 'PC');
+      setSearchParams({}, { replace: true });
+    }
+  }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Show bind guide when: logged in, no Steam bound, data loaded, not already saved
+  useEffect(() => {
+    if (guideTimerRef.current) clearTimeout(guideTimerRef.current);
+    if (data && user && !user.eaName && (!saved || saved.uid !== String(data.global?.uid))) {
+      guideTimerRef.current = setTimeout(() => setShowBindGuide(true), 1500);
+    } else {
+      setShowBindGuide(false);
+    }
+    return () => { if (guideTimerRef.current) clearTimeout(guideTimerRef.current); };
+  }, [data, user, saved]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const loadSaved = useCallback(() => {
     if (!saved) return;
-    setQuery(saved.uid);
+    setQuery(saved.name || saved.uid);
     setPlatform(saved.platform || 'PC');
-    doSearch(saved.uid, saved.platform || 'PC');
+    doSearch(saved.uid, saved.platform || 'PC', saved.name);
   }, [saved, doSearch]);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const uid = data?.global?.uid;
     if (!uid) return;
-    const val = { uid: String(uid), name: data.global.name, platform: data.global.platform || platform };
+    const playerName = data.global.name || query;
+    const val = { uid: String(uid), name: playerName, platform: data.global.platform || platform };
     setSavedUID(val);
     setSaved(val);
+    // Sync bound UID + Steam name to server (works across devices)
+    if (user) {
+      try {
+        const updates = { boundUid: String(uid), boundPlatform: data.global.platform || platform };
+        if (!user.eaName && playerName) updates.eaName = playerName;
+        await updateProfile(updates);
+      } catch {}
+    }
   };
 
   const handleRemoveSaved = () => {
@@ -407,17 +755,30 @@ export default function PlayerStats() {
             </button>
           </form>
 
-          {/* Saved UID quick load */}
-          {saved && (
+          {/* Quick buttons row */}
+          {(user?.eaName || saved) && (
             <div className="flex items-center gap-3 mt-3 pt-3 border-t border-white/5">
-              <button
-                onClick={loadSaved}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs bg-zinc-800/80 border border-white/10 text-zinc-300 hover:text-white hover:border-red-500/30 transition"
-              >
-                <User size={13} />
-                <span>快速加载: <b>{saved.name}</b></span>
-              </button>
-              <button onClick={handleRemoveSaved} className="text-xs text-zinc-600 hover:text-zinc-400 transition">清除</button>
+              {user?.eaName && (
+                <button
+                  onClick={() => { setQuery(user.eaName); setPlatform('PC'); doSearch(user.eaName, 'PC'); }}
+                  className="flex items-center gap-2 px-3 py-1.5 text-xs bg-red-600/15 border border-red-500/25 text-red-400 hover:text-red-300 hover:bg-red-600/25 transition"
+                >
+                  <Gamepad2 size={13} />
+                  <span>查询我的战绩</span>
+                </button>
+              )}
+              {saved && (
+                <>
+                  <button
+                    onClick={loadSaved}
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs bg-zinc-800/80 border border-white/10 text-zinc-300 hover:text-white hover:border-red-500/30 transition"
+                  >
+                    <User size={13} />
+                    <span>快速加载: <b>{saved.name}</b></span>
+                  </button>
+                  <button onClick={handleRemoveSaved} className="text-xs text-zinc-600 hover:text-zinc-400 transition">清除</button>
+                </>
+              )}
             </div>
           )}
 
@@ -432,7 +793,7 @@ export default function PlayerStats() {
                 {history.map((h) => (
                   <div key={`${h.name}:${h.uid}`} className="group relative flex items-center">
                     <button
-                      onClick={() => { setQuery(h.uid); setPlatform(h.platform || 'PC'); doSearch(h.uid, h.platform || 'PC'); }}
+                      onClick={() => { setQuery(h.name); setPlatform(h.platform || 'PC'); doSearch(h.uid, h.platform || 'PC', h.name); }}
                       className="px-2.5 py-1 text-xs bg-zinc-800/80 border border-white/5 text-zinc-400 hover:text-white hover:border-red-500/30 transition truncate max-w-[140px]"
                       title={`UID: ${h.uid} | Lv.${h.level || '?'} | ${h.platform || 'PC'}`}
                     >
@@ -577,15 +938,47 @@ export default function PlayerStats() {
                       )}
                       <PlatformBadge platform={data.global?.platform} />
                     </div>
-                    {/* UID display */}
+                    {/* UID + bind */}
                     {data.global?.uid && (
-                      <div className="flex items-center gap-2 mt-2 text-[11px] text-zinc-500">
+                      <div className="relative flex items-center gap-2 mt-2 text-[11px] text-zinc-500 flex-wrap">
                         <span>UID: <span className="text-zinc-400 font-mono select-all">{data.global.uid}</span></span>
-                        {(!saved || saved.uid !== String(data.global.uid)) && (
-                          <button onClick={handleSave} className="text-red-400/70 hover:text-red-300 transition">保存为我的</button>
-                        )}
-                        {saved?.uid === String(data.global.uid) && (
-                          <span className="text-green-500/60">✓ 已保存</span>
+                        <span className="text-zinc-700">|</span>
+                        {(!saved || saved.uid !== String(data.global.uid)) ? (
+                          <span className="relative">
+                            <button
+                              onClick={() => { handleSave(); setShowBindGuide(false); }}
+                              className={`inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-red-400 bg-red-500/10 border border-red-500/25 hover:bg-red-500/20 hover:border-red-500/40 transition ${showBindGuide ? 'guide-pulse' : ''}`}
+                            >
+                              <Shield size={10} /> 绑定为我的
+                            </button>
+                            {/* Animated guide tooltip */}
+                            {showBindGuide && (
+                              <div className="absolute left-0 top-full mt-2 z-40 guide-slide-in" style={{ minWidth: '220px' }}>
+                                <div className="guide-arrow text-red-500 flex justify-start pl-4 -mb-1">
+                                  <svg width="12" height="8" viewBox="0 0 12 8"><polygon points="6,0 12,8 0,8" fill="currentColor" /></svg>
+                                </div>
+                                <div className="bg-zinc-900 border border-red-500/30 shadow-xl shadow-red-500/10 px-3.5 py-2.5">
+                                  <div className="flex items-start gap-2">
+                                    <Gamepad2 size={14} className="text-red-400 mt-0.5 shrink-0" />
+                                    <div>
+                                      <p className="text-xs text-white font-bold mb-1">绑定你的游戏账号</p>
+                                      <p className="text-[11px] text-zinc-400 leading-relaxed">点击「绑定为我的」将此账号设为你的 Steam 账号，即可在个人中心快速查看战绩</p>
+                                    </div>
+                                  </div>
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); setShowBindGuide(false); }}
+                                    className="mt-2 text-[10px] text-zinc-600 hover:text-zinc-400 transition"
+                                  >
+                                    知道了，不再提示
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-green-400 bg-green-500/10 border border-green-500/25">
+                            <Shield size={10} /> ✓ 已绑定
+                          </span>
                         )}
                       </div>
                     )}
@@ -638,6 +1031,9 @@ export default function PlayerStats() {
             </div>
           </section>
 
+          {/* Charts */}
+          <PlayerCharts legends={legends} total={data.total} />
+
           {/* Legend stats */}
           {legends.length > 0 && (
             <section className="relative border border-white/5 bg-zinc-950/40 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
@@ -656,7 +1052,7 @@ export default function PlayerStats() {
 
           {/* API disclaimer */}
           <div className="text-center text-xs text-zinc-600 py-2">
-            数据来自 mozambiquehe.re API · 仅显示游戏内已装备的追踪器数据
+            数据来自 mozambiquehe.re API · 仅显示游戏内已装备的追踪器数据 · 若页面异常请按 Ctrl+Shift+R 强制刷新
           </div>
         </>
       )}

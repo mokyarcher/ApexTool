@@ -109,3 +109,22 @@ body {
   66%  { transform: translate(-2%, 3%) scale(0.97); }
   100% { transform: translate(1%, -1%) scale(1.02); }
 }
+@keyframes pieLabelIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes guideSlideIn {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes guidePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
+  50%      { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+}
+@keyframes guideArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.guide-slide-in { animation: guideSlideIn 0.4s ease-out forwards; }
+.guide-pulse    { animation: guidePulse 1.5s ease-in-out infinite; }
+.guide-arrow    { animation: guideArrowBounce 1s ease-in-out infinite; }

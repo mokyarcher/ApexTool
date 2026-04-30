@@ -1,9 +1,23 @@
 const BASE = import.meta.env.VITE_API_BASE || '/api';
 
+function getToken() {
+  return localStorage.getItem('apex_token');
+}
+
 async function req(path) {
   const r = await fetch(`${BASE}${path}`);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();
+}
+
+async function authReq(path, options = {}) {
+  const token = getToken();
+  const headers = { 'Content-Type': 'application/json', ...options.headers };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const r = await fetch(`${BASE}${path}`, { ...options, headers });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+  return data;
 }
 
 export const api = {
@@ -30,4 +44,10 @@ export const api = {
   legends: () => req('/encyclopedia/legends'),
   weapons: () => req('/encyclopedia/weapons'),
   patchNotes: () => req('/patch-notes'),
+
+  // Auth
+  register: (data) => authReq('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
+  login: (data) => authReq('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
+  me: () => authReq('/auth/me'),
+  updateProfile: (data) => authReq('/auth/profile', { method: 'PUT', body: JSON.stringify(data) }),
 };

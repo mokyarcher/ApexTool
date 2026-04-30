@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { NavLink, Route, Routes, Navigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone } from 'lucide-react';
+import { NavLink, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
+import { AuthProvider, useAuth } from './components/AuthContext.jsx';
 
 const BattlePass = lazy(() => import('./pages/BattlePass.jsx'));
 const Maps = lazy(() => import('./pages/Maps.jsx'));
@@ -12,6 +13,8 @@ const Mythic = lazy(() => import('./pages/Mythic.jsx'));
 const PlayerStats = lazy(() => import('./pages/PlayerStats.jsx'));
 const Encyclopedia = lazy(() => import('./pages/Encyclopedia.jsx'));
 const PatchNotes = lazy(() => import('./pages/PatchNotes.jsx'));
+const Auth = lazy(() => import('./pages/Auth.jsx'));
+const Profile = lazy(() => import('./pages/Profile.jsx'));
 
 const Loading = () => (
   <div className="flex items-center justify-center py-32">
@@ -30,7 +33,37 @@ const navItems = [
   // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
-export default function App() {
+function UserButton() {
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+
+  if (loading) return null;
+
+  if (user) {
+    return (
+      <button
+        onClick={() => navigate('/profile')}
+        className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent ml-1"
+        title="个人中心"
+      >
+        <User size={15} />
+        <span className="hidden sm:inline max-w-[80px] truncate">{user.nickname}</span>
+      </button>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => navigate('/auth')}
+      className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent ml-1"
+    >
+      <LogIn size={15} />
+      <span className="hidden sm:inline">登录</span>
+    </button>
+  );
+}
+
+function AppContent() {
   return (
     <div className="min-h-full flex flex-col">
       <ParticleNest />
@@ -64,6 +97,7 @@ export default function App() {
                 <span className="hidden sm:inline">{label}</span>
               </NavLink>
             ))}
+            <UserButton />
           </nav>
         </div>
       </header>
@@ -81,6 +115,8 @@ export default function App() {
             <Route path="/stats" element={<PlayerStats />} />
             <Route path="/encyclopedia" element={<Encyclopedia />} />
             <Route path="/patch-notes" element={<PatchNotes />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Suspense>
       </main>
@@ -89,5 +125,13 @@ export default function App() {
         数据来源:mozambiquehe.re · 本站为非官方工具 · 商标版权归 Respawn / EA 所有
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
