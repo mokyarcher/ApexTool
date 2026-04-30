@@ -1,6 +1,22 @@
 {
   "patches": [
     {
+      "id": "aftershock-2026-03-23",
+      "title": "Aftershock 活动公告",
+      "titleEN": "Aftershock Event + Midseason Patch Notes",
+      "date": "2026-03-23",
+      "season": "活动公告",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/aftershock-event",
+      "summary": "Aftershock 活动上线，Wildcard 新增 Charged Up 玩法、全员涡旋护盾与 EMP 爆发机制，同时推出全新精英赫姆洛克与活动奖励商店。",
+      "otherChanges": [
+        "全新 Wildcard：Charged Up 上线，所有传奇默认配备 Vortex Shield，可吸收子弹并反弹回击敌人",
+        "新增 EMP Blast 机制，可眩晕敌人并破坏放置物，护盾能量可通过收集 EVO、格挡伤害和 Wild Cards 充能",
+        "加入 9 张电能主题 Wild Cards，包含扩大护盾、降低 EMP 消耗、敌人透视、高能冲刺等效果",
+        "推出全新精英武器 Hemlok Breach AR：全自动、带消音器，并新增 Breach Shot 破门弹模式",
+        "Aftershock 活动商店与奖励轮换开放：3 月 31 日至 5 月 5 日可获取活动物品，奖励商店分阶段轮换发放 Lifeline 皮肤、边框与活动包"
+      ]
+    },
+    {
       "id": "28.1",
       "title": "Breach 中期补丁 (28.1)",
       "titleEN": "Breach Midseason Designer's Notes",
@@ -82,6 +98,72 @@
             "后坐力降低"
           ]
         }
+      ]
+    },
+    {
+      "id": "anti-cheat-2026-03-04",
+      "title": "反作弊进展公告",
+      "titleEN": "Apex Legends™: Anti-Cheat Update",
+      "date": "2026-03-04",
+      "season": "官方公告",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/breach-anti-cheat-update",
+      "summary": "EA 公布新一轮反作弊方向，明确将 XIM、Cronus、Strikepack、Titan 等输入操控设备认定为作弊，并将上线多层检测与永久封禁措施。",
+      "otherChanges": [
+        "官方明确声明：XIM、Cronus、Strikepack、Titan 等通过自动化、改后坐力或篡改输入行为来获取优势的第三方设备属于作弊",
+        "反作弊团队表示，整治此类外设是当前最高优先级之一，并已在持续推进相关检测能力",
+        "正在开发专门针对输入操控硬件的多层检测系统，并强调会区分合法辅助功能设备与作弊外设",
+        "一旦确认使用此类设备作弊，账号将在对局中被移除并直接永久封禁，不接受宽容处理",
+        "官方建议关注 @apexlivecomms 以获取后续封禁数据、反作弊更新与实时公告"
+      ]
+    },
+    {
+      "id": "gundam-2026-03-03",
+      "title": "Apex x 高达 联动活动",
+      "titleEN": "Apex Legends x Gundam Event",
+      "date": "2026-03-03",
+      "season": "联动活动",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/apex-gundam-event",
+      "summary": "Apex Legends 与高达开启联动，Broken Moon Wildcard 变为 Gundam Takeover，加入 Buster Rifle、Bit Staves、新 Wild Cards、8 套联动传奇皮肤与 2 把神话近战。",
+      "otherChanges": [
+        "联动 Wildcard：Gundam Takeover 上线，Broken Moon 地图出现被摧毁的机体、可攀爬大型雕像和空中战舰交火场景",
+        "空投加入 Buster Rifle，可升空侦察、透视扫描敌人，并发射可穿透掩体且落点爆炸的激光束",
+        "Bit Staves 可在推进时当作护盾吸收伤害，也能切换为无人机指令进行巡逻、侦查和攻击",
+        "新增联动 Wild Cards，包含磁力近战拉拽、导弹空袭标记、自爆反扑、倒地进入虚空后 1 HP 复活等效果",
+        "推出 8 套高达主题传奇皮肤、8 款联动武器皮肤，以及 Epyon Heat Rod / Beam Saber 两把高达主题神话通用近战"
+      ]
+    },
+    {
+      "id": "roadmap-2026-02-12",
+      "title": "Apex 2026 年度路线图",
+      "titleEN": "Apex Legends: The Road Ahead",
+      "date": "2026-02-12",
+      "season": "路线图",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/2026-roadmap",
+      "summary": "EA 公布 2026 年 Apex 发展路线：持续 QoL 更新、强化反作弊与匹配、S29 和 S32 将推出新传奇，S30/S31 有传奇重做，S32 还将重构传奇职业系统。",
+      "otherChanges": [
+        "全年持续进行体验优化，包括生活质量改进、传奇平衡调整、音频系统优化，以及更频繁的小型热更新",
+        "官方将继续强化竞技完整性，重点投入反作弊、匹配机制和服务器表现提升",
+        "计划在 S29 与 S32 推出两位新传奇，并在 S30 / S31 对现有传奇进行重做",
+        "S32 预定在新传奇之外同步重构传奇职业系统，改变队伍搭配逻辑",
+        "Wildcard 将在 2026 年每赛季持续举办活动，S30 起预计每个赛季两个 Wildcard 活动，每个 Split 各一个",
+        "地图方面将优化 POI、掩体和轮转路线，年内还会更新 World's Edge，并推出一次重磅地图更新",
+        "S30 预计重做对局内搜刮体验，S31 还会推出一种使用既有人气武器的全新方式"
+      ]
+    },
+    {
+      "id": "anniversary-2026-02-10",
+      "title": "Apex 七周年庆典",
+      "titleEN": "Celebrate 7 Years of Apex",
+      "date": "2026-02-10",
+      "season": "周年活动",
+      "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/7-year-anniversary",
+      "summary": "七周年活动开启，推出社区共创奖励路线、4 周解锁 4 位传奇挑战、36 件活动物品以及全新神话和平捍卫者 Riptide Predator。",
+      "otherChanges": [
+        "社区共创奖励路线开放，完成每日与每周挑战可解锁由社区创作者参与设计的武器皮肤、传奇皮肤、边框和追踪器",
+        "周年活动期间连续 4 周开放 4 套挑战，完成对应任务可永久解锁当周传奇，并额外获得通行证星星",
+        "里程碑活动共包含 36 件活动物品，涵盖 Alter、恶灵、纽卡斯尔、Sparrow、暴雷、兰伯特等传奇皮肤与多款武器皮肤",
+        "推出全新神话和平捍卫者 Riptide Predator，可继续用 Exotic Shards 解锁 Bone Warden、Violet Undertow、Blood in the Water 三种变体",
+        "活动进度奖励还可保底获得 Reactive Weapon Pack；若已集齐全部反应式武器，则改为发放 50 Exotic Shards"
       ]
     },
     {
