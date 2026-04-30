@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 export default function ParticleNest({
-  count = 90,
+  count = 54,
   color = '200,30,30',
   lineWidth = 0.5,
   maxDist = 85,
@@ -45,7 +45,7 @@ export default function ParticleNest({
     }
 
     const DAMPING = 0.92;
-    const ATTRACT_FORCE = 0.004;
+    const ATTRACT_FORCE = 0.002;
     const REPEL_DIST = 50;
     const REPEL_FORCE = 0.6;
 

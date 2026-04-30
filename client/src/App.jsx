@@ -47,7 +47,7 @@ function UserButton() {
     return (
       <button
         onClick={() => navigate('/profile')}
-        className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent ml-1"
+        className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-red-400 hover:bg-white/5 border border-transparent ml-1"
         title="个人中心"
       >
         <User size={15} />
@@ -59,7 +59,7 @@ function UserButton() {
   return (
     <button
       onClick={() => navigate('/auth')}
-      className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent ml-1"
+      className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 text-zinc-400 hover:text-red-400 hover:bg-white/5 border border-transparent ml-1"
     >
       <LogIn size={15} />
       <span className="hidden sm:inline">登录</span>
@@ -84,7 +84,7 @@ function AppContent() {
                   `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
                     isActive
                       ? 'bg-white/10 text-white shadow-sm shadow-red-500/10'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      : 'text-zinc-400 hover:text-red-400 hover:bg-white/5'
                   }`
                 }
               >
@@ -97,13 +97,13 @@ function AppContent() {
           </nav>
 
           {/* Center logo */}
-          <NavLink to="/" className="flex items-center gap-2.5 mx-6 shrink-0">
+          <NavLink to="/" className="flex items-center gap-2.5 mx-6 shrink-0 group">
             <div className="w-8 h-8 grid place-items-center bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/25">
               <Gamepad2 size={17} />
             </div>
             <div>
-              <div className="font-display text-xl leading-none text-white tracking-wide">APEX TOOL</div>
-              <div className="text-[10px] text-zinc-500 -mt-px tracking-wider">赛季工具站</div>
+              <div className="font-display text-xl leading-none text-white tracking-wide transition-colors duration-200 group-hover:text-red-400">APEX TOOL</div>
+              <div className="text-[10px] text-zinc-500 -mt-px tracking-wider transition-colors duration-200 group-hover:text-red-400/70">赛季工具站</div>
             </div>
           </NavLink>
 
@@ -118,7 +118,7 @@ function AppContent() {
                   `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
                     isActive
                       ? 'bg-white/10 text-white shadow-sm shadow-red-500/10'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      : 'text-zinc-400 hover:text-red-400 hover:bg-white/5'
                   }`
                 }
               >
