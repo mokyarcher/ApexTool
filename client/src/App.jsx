@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn } from 'lucide-react';
+import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
 import { AuthProvider, useAuth } from './components/AuthContext.jsx';
 
@@ -15,6 +15,7 @@ const Encyclopedia = lazy(() => import('./pages/Encyclopedia.jsx'));
 const PatchNotes = lazy(() => import('./pages/PatchNotes.jsx'));
 const Auth = lazy(() => import('./pages/Auth.jsx'));
 const Profile = lazy(() => import('./pages/Profile.jsx'));
+const ApexMBTI = lazy(() => import('./pages/ApexMBTI.jsx'));
 
 const Loading = () => (
   <div className="flex items-center justify-center py-32">
@@ -30,6 +31,7 @@ const navItems = [
   { to: '/stats', label: '战绩查询', icon: Search },
   { to: '/encyclopedia', label: '百科', icon: BookOpen },
   { to: '/patch-notes', label: '更新', icon: Megaphone },
+  { to: '/mbti', label: '人格测试', icon: Sparkles },
   // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
@@ -117,6 +119,7 @@ function AppContent() {
             <Route path="/patch-notes" element={<PatchNotes />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/mbti" element={<ApexMBTI />} />
           </Routes>
         </Suspense>
       </main>
