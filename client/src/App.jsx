@@ -23,16 +23,18 @@ const Loading = () => (
   </div>
 );
 
-const navItems = [
+const navLeft = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
   { to: '/shop', label: '商店', icon: ShoppingBag },
-  { to: '/mythic', label: '神话级', icon: Flame, mythic: true },
-  { to: '/coins', label: '金币比例', icon: Coins },
-  { to: '/stats', label: '战绩查询', icon: Search },
-  { to: '/encyclopedia', label: '百科', icon: BookOpen },
+  { to: '/mythic', label: '神话级', icon: Flame },
   { to: '/patch-notes', label: '更新', icon: Megaphone },
+  { to: '/coins', label: '金币比例', icon: Coins },
+];
+
+const navRight = [
+  { to: '/encyclopedia', label: '百科', icon: BookOpen },
+  { to: '/stats', label: '战绩查询', icon: Search },
   { to: '/mbti', label: '人格测试', icon: Sparkles },
-  // { to: '/crafting', label: '制造轮换', icon: Hammer }
 ];
 
 function UserButton() {
@@ -70,8 +72,32 @@ function AppContent() {
     <div className="min-h-full flex flex-col">
       <ParticleNest />
       <header className="border-b border-white/[0.06] bg-black/50 backdrop-blur-xl sticky top-0 z-20">
-        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center">
+          {/* Left nav */}
+          <nav className="flex items-center flex-1 justify-end">
+            {navLeft.map(({ to, label, icon: Icon }, i) => (
+              <>
+              <NavLink
+                key={to}
+                to={to}
+                className={({ isActive }) =>
+                  `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
+                    isActive
+                      ? 'bg-white/10 text-white shadow-sm shadow-red-500/10'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                  }`
+                }
+              >
+                <Icon size={15} />
+                <span className="hidden sm:inline">{label}</span>
+              </NavLink>
+              {i < navLeft.length - 1 && <span className="w-px h-4 bg-red-500/40" />}
+            </>
+            ))}
+          </nav>
+
+          {/* Center logo */}
+          <NavLink to="/" className="flex items-center gap-2.5 mx-6 shrink-0">
             <div className="w-8 h-8 grid place-items-center bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/25">
               <Gamepad2 size={17} />
             </div>
@@ -79,26 +105,30 @@ function AppContent() {
               <div className="font-display text-xl leading-none text-white tracking-wide">APEX TOOL</div>
               <div className="text-[10px] text-zinc-500 -mt-px tracking-wider">赛季工具站</div>
             </div>
-          </div>
-          <nav className="flex items-center gap-1">
-            {navItems.map(({ to, label, icon: Icon, mythic }) => (
+          </NavLink>
+
+          {/* Right nav */}
+          <nav className="flex items-center flex-1">
+            {navRight.map(({ to, label, icon: Icon }, i) => (
+              <>
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  mythic
-                    ? `flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold transition-all duration-200 ${isActive ? 'text-red-400 bg-red-500/15 border border-red-500/35 shadow-sm shadow-red-500/20' : 'text-red-400/80 hover:text-red-300 hover:bg-red-500/8 border border-transparent'}`
-                    : `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
-                        isActive
-                          ? 'bg-white/10 text-white border border-white/15 shadow-sm shadow-red-500/10'
-                          : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent'
-                      }`
+                  `flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all duration-200 ${
+                    isActive
+                      ? 'bg-white/10 text-white shadow-sm shadow-red-500/10'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                  }`
                 }
               >
                 <Icon size={15} />
                 <span className="hidden sm:inline">{label}</span>
               </NavLink>
+              {i < navRight.length - 1 && <span className="w-px h-4 bg-red-500/40" />}
+              </>
             ))}
+            <span className="w-px h-4 bg-red-500/40" />
             <UserButton />
           </nav>
         </div>
