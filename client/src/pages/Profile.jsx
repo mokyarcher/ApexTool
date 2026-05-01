@@ -31,6 +31,16 @@ const RANK_COLORS = {
   Gold: 'text-yellow-400', Platinum: 'text-cyan-300', Diamond: 'text-blue-400',
   Master: 'text-purple-400', Predator: 'text-red-400',
 };
+const RANK_BORDER = {
+  Rookie: 'border-l-zinc-500', Bronze: 'border-l-amber-700', Silver: 'border-l-zinc-300',
+  Gold: 'border-l-yellow-500', Platinum: 'border-l-cyan-400', Diamond: 'border-l-blue-400',
+  Master: 'border-l-purple-500', Predator: 'border-l-red-500',
+};
+const RANK_GLOW = {
+  Rookie: '', Bronze: '', Silver: '',
+  Gold: 'shadow-yellow-500/10', Platinum: 'shadow-cyan-400/10', Diamond: 'shadow-blue-400/15',
+  Master: 'shadow-purple-500/15', Predator: 'shadow-red-500/20',
+};
 const RANK_CN = {
   Rookie: '新手', Bronze: '青铜', Silver: '白银', Gold: '黄金',
   Platinum: '铂金', Diamond: '钻石', Master: '大师', Predator: '猎杀者',
@@ -187,7 +197,6 @@ export default function Profile() {
   if (computed.kills != null) statCards.push({ label: '总击杀', value: computed.kills, icon: Skull });
   if (computed.wins != null) statCards.push({ label: '总胜场', value: computed.wins, icon: Trophy });
   if (computed.damage != null) statCards.push({ label: '总伤害', value: computed.damage, icon: Target });
-  if (total?.kd) statCards.push({ label: 'K/D', value: total.kd.value, icon: Swords });
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
@@ -233,12 +242,50 @@ export default function Profile() {
               </div>
               {/* Level info from stats */}
               {g && (
-                <div className="flex items-center gap-3 mt-2 text-xs">
-                  <span className="px-1.5 py-0.5 bg-zinc-800 border border-white/10 text-zinc-300">Lv.{g.level}</span>
+                <div className="flex items-center gap-2 mt-2 flex-wrap">
+                  <span className={`chip relative group cursor-help ${
+                    ({
+                      0: 'bg-emerald-900/50 border-emerald-500/40 text-emerald-300',
+                      1: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+                      2: 'bg-purple-900/50 border-purple-500/40 text-purple-300',
+                      3: 'bg-amber-900/50 border-amber-500/40 text-amber-300',
+                    }[g.levelPrestige] || 'bg-red-900/50 border-red-500/40 text-red-300')
+                  }`}>
+                    Lv.{g.level || '?'}
+                    {g.levelPrestige > 0 && (
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block z-30">
+                        <div className="bg-zinc-900 border border-white/10 shadow-xl px-3 py-2 text-[11px] text-zinc-300 whitespace-nowrap">
+                          累计等级 Lv.{g.levelPrestige * 500 + (g.level || 0)}
+                        </div>
+                      </div>
+                    )}
+                  </span>
                   {g.levelPrestige > 0 && (
-                    <span className="px-1.5 py-0.5 bg-zinc-800 border border-white/10 text-amber-400">前段 {g.levelPrestige}</span>
+                    <span className={`chip relative group cursor-help ${({
+                      1: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+                      2: 'bg-purple-900/50 border-purple-500/40 text-purple-300',
+                      3: 'bg-amber-900/50 border-amber-500/40 text-amber-300',
+                    }[g.levelPrestige] || 'bg-red-900/50 border-red-500/40 text-red-300')}`}>
+                      阶段 {g.levelPrestige + 1}
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block z-30">
+                        <div className="bg-zinc-900 border border-white/10 shadow-xl px-3 py-2 text-[11px] text-zinc-300 whitespace-nowrap space-y-0.5">
+                          {Array.from({ length: g.levelPrestige + 1 }, (_, i) => (
+                            <div key={i} className={i === g.levelPrestige ? 'text-amber-300 font-bold' : 'text-zinc-500'}>
+                              Lv.{i * 500 + 1} - Lv.{(i + 1) * 500}　阶段 {i + 1} {i === g.levelPrestige ? ' ◀ 当前' : ''}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </span>
                   )}
-                  <span className="px-1.5 py-0.5 bg-zinc-800 border border-white/10 text-blue-400">{g.platform || 'PC'}</span>
+                  <span className={`chip ${({
+                    PC: 'bg-blue-900/50 border-blue-500/40 text-blue-300',
+                    PS4: 'bg-indigo-900/50 border-indigo-500/40 text-indigo-300',
+                    X1: 'bg-emerald-900/50 border-emerald-500/40 text-emerald-300',
+                    SWITCH: 'bg-red-900/50 border-red-500/40 text-red-300',
+                  }[g.platform] || 'bg-zinc-800 border-zinc-600/40 text-zinc-300')}`}>
+                    {{ PC: 'PC', PS4: 'PS', X1: 'Xbox', SWITCH: 'NS' }[g.platform] || g.platform || 'PC'}
+                  </span>
                 </div>
               )}
             </div>
@@ -249,7 +296,8 @@ export default function Profile() {
       {/* Game Stats */}
       {user.eaName && (
         <section className="relative border border-white/5 bg-zinc-950/60 shadow-2xl shadow-black/30 backdrop-blur-sm overflow-hidden">
-          <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+          <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(239,68,68,0.06),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(59,130,246,0.04),transparent_50%)]" />
           <div className="relative z-10 p-6 space-y-5">
             {/* Header with refresh */}
             <div className="flex items-center justify-between">
@@ -288,29 +336,35 @@ export default function Profile() {
                 {/* Rank cards */}
                 <div className="grid grid-cols-2 gap-3">
                   {rankName && (
-                    <div className="bg-zinc-900/60 border border-white/5 p-3">
-                      <div className="text-[10px] text-zinc-500 mb-1">大逃杀排位</div>
-                      <div className="flex items-center gap-2">
-                        {g.rank?.rankImg && <img src={g.rank.rankImg} alt="" className="w-8 h-8" />}
-                        <div>
-                          <div className={`text-sm font-bold ${RANK_COLORS[rankName] || 'text-white'}`}>
-                            {RANK_CN[rankName] || rankName} #{rankDiv}
+                    <div className={`relative bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] border-l-2 ${RANK_BORDER[rankName] || 'border-l-zinc-500'} p-4 hover:border-white/15 transition-all shadow-lg ${RANK_GLOW[rankName] || ''} overflow-hidden`}>
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/[0.02] to-transparent" />
+                      <div className="relative">
+                        <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider">大逃杀排位</div>
+                        <div className="flex items-center gap-3">
+                          {g.rank?.rankImg && <img src={g.rank.rankImg} alt="" className="w-10 h-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]" />}
+                          <div>
+                            <div className={`text-base font-bold ${RANK_COLORS[rankName] || 'text-white'}`}>
+                              {RANK_CN[rankName] || rankName} #{rankDiv}
+                            </div>
+                            <div className="text-[11px] text-zinc-400">{rankScore?.toLocaleString()} 排位分</div>
                           </div>
-                          <div className="text-[10px] text-zinc-500">{rankScore?.toLocaleString()} 排位分</div>
                         </div>
                       </div>
                     </div>
                   )}
                   {arenaName && (
-                    <div className="bg-zinc-900/60 border border-white/5 p-3">
-                      <div className="text-[10px] text-zinc-500 mb-1">竞技场排位</div>
-                      <div className="flex items-center gap-2">
-                        {g.arena?.rankImg && <img src={g.arena.rankImg} alt="" className="w-8 h-8" />}
-                        <div>
-                          <div className={`text-sm font-bold ${RANK_COLORS[arenaName] || 'text-white'}`}>
-                            {RANK_CN[arenaName] || arenaName} #{arenaDiv}
+                    <div className={`relative bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] border-l-2 ${RANK_BORDER[arenaName] || 'border-l-zinc-500'} p-4 hover:border-white/15 transition-all shadow-lg ${RANK_GLOW[arenaName] || ''} overflow-hidden`}>
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/[0.02] to-transparent" />
+                      <div className="relative">
+                        <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider">竞技场排位</div>
+                        <div className="flex items-center gap-3">
+                          {g.arena?.rankImg && <img src={g.arena.rankImg} alt="" className="w-10 h-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]" />}
+                          <div>
+                            <div className={`text-base font-bold ${RANK_COLORS[arenaName] || 'text-white'}`}>
+                              {RANK_CN[arenaName] || arenaName} #{arenaDiv}
+                            </div>
+                            <div className="text-[11px] text-zinc-400">{arenaScore?.toLocaleString()} 排位分</div>
                           </div>
-                          <div className="text-[10px] text-zinc-500">{arenaScore?.toLocaleString()} 排位分</div>
                         </div>
                       </div>
                     </div>
@@ -319,14 +373,17 @@ export default function Profile() {
 
                 {/* Key stat cards */}
                 {statCards.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-3 gap-3">
                     {statCards.map(s => (
-                      <div key={s.label} className="bg-zinc-900/60 border border-white/5 p-3">
-                        <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 mb-1">
-                          <s.icon size={11} /> {s.label}
-                        </div>
-                        <div className="text-lg font-bold text-white">
-                          {typeof s.value === 'number' ? s.value.toLocaleString() : s.value}
+                      <div key={s.label} className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] border-l-2 border-l-red-500/60 p-4 hover:border-red-500/25 transition-all shadow-lg shadow-red-500/[0.03] group overflow-hidden">
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-500/[0.03] to-transparent" />
+                        <div className="relative">
+                          <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">
+                            <s.icon size={12} className="text-red-400/70 group-hover:text-red-400 transition-colors" /> {s.label}
+                          </div>
+                          <div className="text-xl font-bold text-white">
+                            {typeof s.value === 'number' ? s.value.toLocaleString() : s.value}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -335,11 +392,11 @@ export default function Profile() {
 
                 {/* Selected legend */}
                 {selectedLegend && (
-                  <div className="bg-zinc-900/60 border border-white/5 p-3">
-                    <div className="text-[10px] text-zinc-500 mb-2">当前角色</div>
+                  <div className="bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] p-4">
+                    <div className="text-[10px] text-zinc-500 mb-2 uppercase tracking-wider">当前角色</div>
                     <div className="flex items-center gap-3">
                       {selectedLegend.ImgAssets?.icon && (
-                        <img src={selectedLegend.ImgAssets.icon} alt="" className="w-10 h-10" />
+                        <img src={selectedLegend.ImgAssets.icon} alt="" className="w-10 h-10 drop-shadow-lg" />
                       )}
                       <div>
                         <div className="text-sm font-bold text-white">{selectedLegend.LegendName}</div>

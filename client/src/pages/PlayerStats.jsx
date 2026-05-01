@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Search, User, Wifi, WifiOff, Shield, Swords, ChevronDown, ChevronUp, ArrowLeft, BarChart3, Gamepad2 } from 'lucide-react';
+import { Search, User, Wifi, WifiOff, Shield, Swords, ChevronDown, ChevronUp, ArrowLeft, BarChart3, Gamepad2, Skull, Trophy, Target } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Customized, LineChart, Line, CartesianGrid, Legend } from 'recharts';
 import { api } from '../api.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -24,6 +24,16 @@ const RANK_CN = {
   Rookie: '新手', Bronze: '青铜', Silver: '白银', Gold: '黄金',
   Platinum: '铂金', Diamond: '钻石', Master: '大师',
   'Apex Predator': '猎杀者', Unranked: '未定级',
+};
+const RANK_BORDER = {
+  Rookie: 'border-l-zinc-500', Bronze: 'border-l-amber-700', Silver: 'border-l-zinc-300',
+  Gold: 'border-l-yellow-500', Platinum: 'border-l-cyan-400', Diamond: 'border-l-blue-400',
+  Master: 'border-l-purple-500', 'Apex Predator': 'border-l-red-500', Unranked: 'border-l-zinc-600',
+};
+const RANK_GLOW = {
+  Rookie: '', Bronze: '', Silver: '',
+  Gold: 'shadow-yellow-500/10', Platinum: 'shadow-cyan-400/10', Diamond: 'shadow-blue-400/15',
+  Master: 'shadow-purple-500/15', 'Apex Predator': 'shadow-red-500/20', Unranked: '',
 };
 
 /* ── Stat name CN ── */
@@ -120,21 +130,24 @@ function StatusDot({ realtime }) {
 function RankCard({ title, icon: Icon, rank }) {
   if (!rank) return null;
   const colorCls = RANK_COLORS[rank.rankName] || RANK_COLORS.Unranked;
+  const borderCls = RANK_BORDER[rank.rankName] || 'border-l-zinc-600';
+  const glowCls = RANK_GLOW[rank.rankName] || '';
   return (
-    <div className="flex items-center gap-3 p-3 bg-zinc-900/50 border border-white/5">
-      <div className="w-12 h-12 shrink-0">
+    <div className={`relative flex items-center gap-3 p-4 bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] border-l-2 ${borderCls} hover:border-white/15 transition-all shadow-lg ${glowCls} overflow-hidden`}>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/[0.02] to-transparent" />
+      <div className="relative w-12 h-12 shrink-0">
         {rank.rankImg ? (
-          <img src={rank.rankImg} alt={rank.rankName} className="w-full h-full object-contain" />
+          <img src={rank.rankImg} alt={rank.rankName} className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]" />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-zinc-800"><Icon size={20} className="text-zinc-500" /></div>
         )}
       </div>
-      <div className="flex-1 min-w-0">
-        <div className="text-xs text-zinc-500 uppercase tracking-wider">{title}</div>
-        <div className={`text-sm font-bold ${colorCls.split(' ')[0]}`}>
+      <div className="relative flex-1 min-w-0">
+        <div className="text-[10px] text-zinc-500 uppercase tracking-wider">{title}</div>
+        <div className={`text-base font-bold ${colorCls.split(' ')[0]}`}>
           {RANK_CN[rank.rankName] || rank.rankName} {rank.rankDiv !== undefined && rank.rankDiv > 0 ? `#${rank.rankDiv}` : ''}
         </div>
-        <div className="text-xs text-zinc-400 mt-0.5">{rank.rankScore} 排位分</div>
+        <div className="text-[11px] text-zinc-400 mt-0.5">{rank.rankScore} 排位分</div>
       </div>
     </div>
   );
@@ -1015,17 +1028,38 @@ export default function PlayerStats() {
                     <RankCard title="大逃杀排位" icon={Shield} rank={data.global?.rank} />
                     <RankCard title="竞技场排位" icon={Swords} rank={data.global?.arena} />
                   </div>
-                  {/* Total stats */}
-                  {data.total && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {Object.entries(data.total).map(([key, stat]) => (
-                        <div key={key} className="bg-zinc-900/50 p-3 border border-white/5">
-                          <div className="text-[11px] text-zinc-500">{tStat(stat.name || key)}</div>
-                          <div className="text-lg font-bold text-white">{typeof stat.value === 'number' ? stat.value.toLocaleString() : stat.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {/* Total stats - computed from all legends */}
+                  {(() => {
+                    let kills = 0, damage = 0, wins = 0;
+                    let hasK = false, hasD = false, hasW = false;
+                    for (const leg of legends) {
+                      for (const t of (leg.data || [])) {
+                        const n = (t.name || '').toLowerCase();
+                        if (n.includes('kill') && !n.includes('season')) { kills += (t.value || 0); hasK = true; }
+                        if (n.includes('damage') && !n.includes('season')) { damage += (t.value || 0); hasD = true; }
+                        if (n.includes('win') && !n.includes('season')) { wins += (t.value || 0); hasW = true; }
+                      }
+                    }
+                    const items = [];
+                    if (hasK) items.push({ label: '总击杀', value: kills, icon: Skull });
+                    if (hasD) items.push({ label: '总伤害', value: damage, icon: Target });
+                    if (hasW) items.push({ label: '总胜场', value: wins, icon: Trophy });
+                    return items.length > 0 ? (
+                      <div className="grid grid-cols-3 gap-3">
+                        {items.map(s => (
+                          <div key={s.label} className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-950/60 border border-white/[0.08] border-l-2 border-l-red-500/60 p-4 hover:border-red-500/25 transition-all shadow-lg shadow-red-500/[0.03] group overflow-hidden">
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-500/[0.03] to-transparent" />
+                            <div className="relative">
+                              <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 uppercase tracking-wider mb-1.5">
+                                <s.icon size={12} className="text-red-400/70" /> {s.label}
+                              </div>
+                              <div className="text-xl font-bold text-white">{s.value.toLocaleString()}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null;
+                  })()}
                 </div>
               </div>
             </div>
