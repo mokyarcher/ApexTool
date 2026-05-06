@@ -347,22 +347,11 @@ function DoubleStrikeModal({ item, onClose }) {
 
           {/* Bottom: price + buttons */}
           <div className="space-y-3">
-            <div className="text-sm text-red-500 font-bold">金币不足</div>
             {/* Price bar */}
             <div className="flex items-center gap-4 bg-zinc-800/80 px-5 py-3 border border-zinc-600/50">
               <span className="text-white font-bold text-base">{item.discount}% 折扣</span>
               <span className="line-through text-zinc-500 text-base flex items-center gap-1"><Coins size={14} /> {item.originalPrice.toLocaleString()}</span>
               <span className="text-amber-300 font-bold text-base flex items-center gap-1"><Coins size={14} /> {item.salePrice.toLocaleString()}</span>
-            </div>
-            {/* Action buttons */}
-            <div className="flex gap-3">
-              <button className="flex-1 bg-zinc-700/60 hover:bg-zinc-600/60 border border-zinc-600/50 py-2.5 text-center text-sm text-zinc-300 transition">
-                <div className="flex items-center justify-center gap-1.5"><Gift size={14} /> 赠礼</div>
-                <div className="text-xs text-zinc-500 mt-0.5">需要登录验证</div>
-              </button>
-              <button className="flex-1 bg-amber-600/80 hover:bg-amber-500/80 border border-amber-500/50 py-2.5 text-center text-sm text-white font-semibold transition">
-                获得 APEX 金币
-              </button>
             </div>
             {/* ESC / 返回 */}
             <button onClick={onClose} className="flex items-center gap-2 text-sm font-bold text-zinc-400 hover:text-white hover:scale-110 pt-1 transition-all duration-200 cursor-pointer origin-left">
