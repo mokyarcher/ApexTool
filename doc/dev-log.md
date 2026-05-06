@@ -2,6 +2,26 @@
 
 ## 2026-05-06
 
+### 更新公告数据 - 同步 S29 Overclocked 官方内容
+
+同步 EA 官方最新 Apex Legends 新闻与补丁公告。
+
+**新增条目**：
+- `Apex Legends™: Overclocked Patch Notes`（2026-05-04）
+- `Overclocked Designer’s Notes`（2026-05-01）
+- `New Updates Coming with Apex Legends™: Overclocked`（2026-04-30）
+
+**内容范围**：
+- S29 Overclocked 正式赛季补丁
+- 新传奇 Axle
+- Deathbox Respawns 死亡盒复活机制
+- Chain Healing 连续治疗机制
+- Vantage、Conduit、Alter、Ash 传奇调整
+- L-STAR、C.A.R.、Hemlok Breach AR、轻型弹药等武器与物资调整
+- 地图轮换、Trident / Ziprail 改动、排位和 QoL 更新
+
+---
+
 ### 通行证页面 - 多赛季历史奖励浏览
 
 支持查看历史赛季通行证奖励，用户可在界面切换不同赛季。
