@@ -1,5 +1,34 @@
 # ApexTool 开发记录
 
+## 2026-05-06
+
+### 通行证页面 - 多赛季历史奖励浏览
+
+支持查看历史赛季通行证奖励，用户可在界面切换不同赛季。
+
+**数据结构迁移**：
+- 从单文件 `battlepass.json` 改为按赛季分文件：`server/data/battlepass/s{X}-{Y}.json`
+- 新增赛季索引：`server/data/battlepass/seasons.json`（含 `current` 标记）
+- 图片按赛季分目录：`client/public/bp/s{X}-{Y}/`，通用档位图保留在 `/bp/` 根目录
+
+**后端改动**：
+- `GET /api/battlepass/seasons` — 返回赛季列表
+- `GET /api/battlepass?season=s28-2` — 按赛季加载数据，默认加载当前赛季
+- 路径安全处理，防止目录遍历
+
+**前端改动**：
+- 通行证页面右上角新增「切换赛季」下拉选择器
+- 当前赛季显示「当前」标签，历史赛季显示「历史赛季」标签
+- 切换赛季时自动重新加载数据，重置筛选器
+- 点击外部自动关闭下拉菜单
+
+**新赛季更新步骤**：
+1. 创建 `server/data/battlepass/s{X}-{Y}.json`，图片路径使用 `/bp/s{X}-{Y}/...`
+2. 将图片放入 `client/public/bp/s{X}-{Y}/` 和 `full/`
+3. 更新 `seasons.json`：修改 `current`，在 `seasons` 数组头部添加新条目
+
+---
+
 ## 2026-04-23
 
 ### 商店页面 - 新增特殊售卖板块

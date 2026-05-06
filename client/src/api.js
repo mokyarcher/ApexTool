@@ -22,7 +22,8 @@ async function authReq(path, options = {}) {
 
 export const api = {
   maps: () => req('/maps'),
-  battlepass: () => req('/battlepass'),
+  battlepass: (season) => req(season ? `/battlepass?season=${season}` : '/battlepass'),
+  bpSeasons: () => req('/battlepass/seasons'),
   coins: () => req('/coins'),
   crafting: () => req('/crafting'),
   shop: () => req('/shop'),

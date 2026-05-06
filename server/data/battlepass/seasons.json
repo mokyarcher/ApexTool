@@ -1,0 +1,23 @@
+{
+  "current": "s28-2",
+  "seasons": [
+    {
+      "id": "s28-2",
+      "season": 28,
+      "split": 2,
+      "name": "全面击破",
+      "nameEN": "Breakout",
+      "startDate": "2026-03-25",
+      "endDate": "2026-05-06"
+    },
+    {
+      "id": "s28-1",
+      "season": 28,
+      "split": 1,
+      "name": "Breach",
+      "nameEN": "Breach",
+      "startDate": "2026-02-09",
+      "endDate": "2026-03-24"
+    }
+  ]
+}

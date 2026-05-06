@@ -1,5 +1,5 @@
-import { useMemo, useState, useEffect, useCallback } from 'react';
-import { Star, Lock, Gift, Package, Sparkles, Coins, Wrench, Crown, Zap, ShieldCheck, X, Info, Clock } from 'lucide-react';
+import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
+import { Star, Lock, Gift, Package, Sparkles, Coins, Wrench, Crown, Zap, ShieldCheck, X, Info, Clock, ChevronDown, History } from 'lucide-react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -132,11 +132,36 @@ function RewardCard({ r, onImageClick }) {
 }
 
 export default function BattlePass() {
-  const { data, loading, error, reload } = useFetch(api.battlepass, []);
-  const [filter, setFilter] = useState('all'); // all | free | premium | ultimate | ultimate_plus
+  const [seasonId, setSeasonId] = useState(null);
+  const [seasons, setSeasons] = useState(null);
+  const [showSeasonPicker, setShowSeasonPicker] = useState(false);
+  const pickerRef = useRef(null);
+
+  // Load seasons list on mount
+  useEffect(() => {
+    api.bpSeasons().then(s => {
+      setSeasons(s);
+      setSeasonId(s.current);
+    }).catch(() => {});
+  }, []);
+
+  // Close season picker on outside click
+  useEffect(() => {
+    if (!showSeasonPicker) return;
+    const handler = (e) => { if (pickerRef.current && !pickerRef.current.contains(e.target)) setShowSeasonPicker(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [showSeasonPicker]);
+
+  const fetcher = useCallback(() => seasonId ? api.battlepass(seasonId) : Promise.resolve(null), [seasonId]);
+  const { data, loading, error, reload } = useFetch(fetcher, [seasonId]);
+  const [filter, setFilter] = useState('all');
   const [lightbox, setLightbox] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
   const [countdown, setCountdown] = useState('');
+
+  const isCurrent = seasons && seasonId === seasons.current;
+  const currentSeasonMeta = seasons?.seasons?.find(s => s.id === seasonId);
 
   useEffect(() => {
     if (!data) return;
@@ -159,7 +184,7 @@ export default function BattlePass() {
     return data.rewards.filter((r) => r.tier === filter);
   }, [data, filter]);
 
-  if (loading) return <Loader />;
+  if (loading || !data) return <Loader />;
   if (error) return <ErrorBox error={error} onRetry={reload} />;
 
   return (
@@ -172,7 +197,10 @@ export default function BattlePass() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-950/20 via-transparent to-purple-950/15" />
           <div className="relative p-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
           <div>
-            <div className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</div>
+            <div className="flex items-center gap-3">
+              <span className="text-zinc-400 text-sm">Season {data.season} · {data.splitId}</span>
+              {!isCurrent && <span className="text-xs px-2 py-0.5 bg-zinc-700/60 text-zinc-400 border border-zinc-600/40">历史赛季</span>}
+            </div>
             <h1 className="font-display text-4xl md:text-5xl text-white leading-none mt-1">{data.name}</h1>
             {countdown && (
               <div className="flex items-center gap-2 mt-2 text-amber-300 font-semibold">
@@ -190,6 +218,38 @@ export default function BattlePass() {
             </div>
           </div>
           <div className="text-right text-base text-zinc-300 space-y-1.5">
+            {/* Season selector */}
+            {seasons && seasons.seasons.length > 1 && (
+              <div className="relative mb-2" ref={pickerRef}>
+                <button
+                  onClick={() => setShowSeasonPicker(!showSeasonPicker)}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm border border-zinc-600/50 bg-zinc-800/60 hover:bg-zinc-700/60 text-zinc-300 hover:text-white transition cursor-pointer"
+                >
+                  <History size={14} />
+                  切换赛季
+                  <ChevronDown size={14} className={`transition-transform ${showSeasonPicker ? 'rotate-180' : ''}`} />
+                </button>
+                {showSeasonPicker && (
+                  <div className="absolute right-0 top-full mt-1 z-50 w-64 bg-zinc-900/98 border border-zinc-700/60 backdrop-blur-xl shadow-2xl shadow-black/50 max-h-72 overflow-y-auto">
+                    {seasons.seasons.map(s => (
+                      <button
+                        key={s.id}
+                        onClick={() => { setSeasonId(s.id); setShowSeasonPicker(false); setFilter('all'); }}
+                        className={`w-full text-left px-4 py-2.5 text-sm transition hover:bg-white/5 flex items-center justify-between ${
+                          s.id === seasonId ? 'text-red-400 bg-red-500/10' : 'text-zinc-300'
+                        }`}
+                      >
+                        <div>
+                          <div className="font-semibold">S{s.season}.{s.split} {s.name}</div>
+                          <div className="text-xs text-zinc-500 mt-0.5">{s.startDate} ~ {s.endDate}</div>
+                        </div>
+                        {s.id === seasons.current && <span className="text-xs px-1.5 py-0.5 bg-red-500/20 text-red-400 border border-red-500/30">当前</span>}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
             <div>开始: <span className="text-white font-semibold text-lg">{data.startDate}</span></div>
             <div>结束: <span className="text-white font-semibold text-lg">{data.endDate}</span></div>
             <div className="mt-2 text-xl text-white font-bold">共 {data.rewards.length} 项奖励</div>
@@ -227,7 +287,7 @@ export default function BattlePass() {
 
       {lightbox && (
         <Lightbox
-          src={lightbox.image.startsWith('/bp/tier-') ? lightbox.image : lightbox.image.replace('/bp/', '/bp/full/')}
+          src={lightbox.image.startsWith('/bp/tier-') ? lightbox.image : lightbox.image.replace(/(\/bp\/[^/]+\/)/, '$1full/')}
           alt={lightbox.nameCN || lightbox.name}
           onClose={() => setLightbox(null)}
         />
