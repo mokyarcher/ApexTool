@@ -880,6 +880,37 @@
         "cooldown": 150,
         "damage": "50-70"
       }
+    },
+    {
+      "id": 28,
+      "name": "艾克赛尔",
+      "nameEN": "Axle",
+      "role": "空袭手",
+      "roleEN": "Skirmisher",
+      "image": "/legends/axle.png",
+      "description": "高速机动型传奇，围绕滑铲、速度门和搜敌无人机控制战场节奏。",
+      "passive": {
+        "name": "漂移",
+        "nameEN": "Drift",
+        "description": "滑铲时拥有更高速度和更强操控性。",
+        "details": "艾克赛尔滑铲时比其他传奇更快，并拥有更强的横向控制能力，适合高速转点、规避射击和寻找进攻角度。",
+        "cooldown": null
+      },
+      "tactical": {
+        "name": "氮气门",
+        "nameEN": "Nitro Gate",
+        "description": "部署一道速度门，让经过的玩家进入强化滑铲状态。",
+        "details": "穿过氮气门会强制进入高速滑铲，获得更高速度和横向控制，效果最多持续 5 秒。主动停止滑铲会结束效果，可通过快速兔跳维持。速度门不区分敌我，友军和敌人都能触发，但艾克赛尔拥有更强滑铲操控优势。",
+        "cooldown": null,
+        "duration": 5
+      },
+      "ultimate": {
+        "name": "启动冲刺",
+        "nameEN": "Kickstart",
+        "description": "发射搜敌无人机，命中后击飞并干扰目标。",
+        "details": "无人机贴地直线前进，并在宽视野内扫描敌人。发现目标后会追踪靠近并进入爆炸范围；若敌人无法逃离或摧毁无人机，会被击飞到空中、短暂暴露、受到爆炸伤害并被短暂眩晕。",
+        "cooldown": null
+      }
     }
   ]
 }

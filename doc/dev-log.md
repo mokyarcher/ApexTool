@@ -6,6 +6,11 @@
 
 同步 EA 官方最新 Apex Legends 新闻与补丁公告。
 
+**百科数据同步**：
+- 新增英雄 `艾克赛尔 / Axle`
+- 录入被动「漂移」、战术「氮气门」、终极「启动冲刺」
+- 图片路径预留为 `/legends/axle.png`，后续补图即可展示
+
 **新增条目**：
 - `Apex Legends™: Overclocked Patch Notes`（2026-05-04）
 - `Overclocked Designer’s Notes`（2026-05-01）
