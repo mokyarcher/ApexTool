@@ -155,7 +155,15 @@ function AppContent() {
       </main>
 
       <footer className="border-t border-apex-border py-4 text-center text-xs text-zinc-500">
-        数据来源:mozambiquehe.re · 本站为非官方工具 · 商标版权归 Respawn / EA 所有
+        <div>数据来源:mozambiquehe.re · 本站为非官方工具 · 商标版权归 Respawn / EA 所有</div>
+        <a
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-block transition-colors hover:text-red-400"
+        >
+          鄂ICP备2026015426号
+        </a>
       </footer>
     </div>
   );
