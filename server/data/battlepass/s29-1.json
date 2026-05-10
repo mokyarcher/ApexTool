@@ -1,14 +1,14 @@
 {
   "season": 29,
   "splitId": "29.1",
-  "name": "第29赛季上半赛段",
-  "nameEN": "Season 29 Split 1",
+  "name": "超频",
+  "nameEN": "Overclocked",
   "startDate": "2026-05-06",
   "endDate": "2026-06-17",
   "pricePremium": 950,
   "priceUltimate": 8800,
   "priceUltimatePlus": 13800,
-  "description": "第 29 赛季第 1 赛段战斗通行证。",
+  "description": "第 29 赛季第 1 赛段战斗通行证「超频」。",
   "rewards": [
     { "level": 1, "tier": "premium", "type": "skin", "rarity": "epic", "name": "Alter: Honeycomb Signal", "nameCN": "艾克赛尔-蜂窝信号", "image": "/bp/s29-1/1-1.jpg" },
     { "level": 1, "tier": "premium", "type": "skin", "rarity": "epic", "name": "Flatline: Fully Charged", "nameCN": "平行步枪-精力充沛", "image": "/bp/s29-1/1-2.jpg" },
