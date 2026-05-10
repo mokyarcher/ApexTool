@@ -1,6 +1,15 @@
 {
-  "current": "s28-2",
+  "current": "s29-1",
   "seasons": [
+    {
+      "id": "s29-1",
+      "season": 29,
+      "split": 1,
+      "name": "第29赛季上半赛段",
+      "nameEN": "Season 29 Split 1",
+      "startDate": "2026-05-06",
+      "endDate": "2026-06-17"
+    },
     {
       "id": "s28-2",
       "season": 28,
