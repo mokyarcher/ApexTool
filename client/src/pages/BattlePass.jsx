@@ -187,11 +187,13 @@ export default function BattlePass() {
   if (loading || !data) return <Loader />;
   if (error) return <ErrorBox error={error} onRetry={reload} />;
 
+  const bpDir = `/bp/s${data.splitId.replace(/\./g, '-')}`;
+
   return (
     <div className="relative">
 
       <div className="sticky top-14 z-30 bg-zinc-950/95 backdrop-blur-sm -mx-4 px-4 pb-3">
-        <section className="relative card !rounded-none overflow-hidden">
+        <section className="relative card !rounded-none">
           {/* ── Hero section gradient overlay ── */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(168,85,247,0.12),transparent_50%)]" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-red-950/20 via-transparent to-purple-950/15" />
@@ -210,10 +212,10 @@ export default function BattlePass() {
             )}
             <p className="text-zinc-400 mt-2 max-w-xl">{data.description}</p>
             <div className="flex gap-3 mt-4 flex-wrap items-center">
-              <TierButton icon={Lock} label="免费" cls="bg-zinc-700/40 text-zinc-200 border-zinc-600/40 hover:bg-zinc-700/60" tipImage="/bp/tier-free.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-              <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage="/bp/tier-premium.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-              <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage="/bp/tier-ultimate.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
-              <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage="/bp/tier-ultimate-plus.jpg" onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={Lock} label="免费" cls="bg-zinc-700/40 text-zinc-200 border-zinc-600/40 hover:bg-zinc-700/60" tipImage={`${bpDir}/tier-free.jpg`} onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={Star} label={`高级 ${data.pricePremium} 币`} cls="bg-red-500/15 text-red-200 border-red-500/40 hover:bg-red-500/25" tipImage={`${bpDir}/tier-premium.jpg`} onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={ShieldCheck} label={`终极 ¥${(data.priceUltimate / 100).toFixed(0)}`} cls="bg-purple-600/20 text-purple-200 border-purple-500/40 hover:bg-purple-600/30" tipImage={`${bpDir}/tier-ultimate.jpg`} onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
+              <TierButton icon={Crown} label={`终极+ ¥${(data.priceUltimatePlus / 100).toFixed(0)}`} cls="bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30" tipImage={`${bpDir}/tier-ultimate-plus.jpg`} onImageClick={(src, alt) => setLightbox({ image: src, name: alt })} />
               <button onClick={() => setShowInfo(true)} className="px-4 py-2 text-sm font-semibold bg-sky-600/20 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer flex items-center gap-1.5 hover:brightness-125 hover:shadow-lg hover:shadow-sky-500/15 hover:-translate-y-0.5 active:translate-y-0"><Info size={15} />奖励对比</button>
             </div>
           </div>
@@ -287,7 +289,7 @@ export default function BattlePass() {
 
       {lightbox && (
         <Lightbox
-          src={lightbox.image.startsWith('/bp/tier-') ? lightbox.image : lightbox.image.replace(/(\/bp\/[^/]+\/)/, '$1full/')}
+          src={lightbox.image.includes('/tier-') ? lightbox.image : lightbox.image.replace(/(\/bp\/[^/]+\/)/, '$1full/')}
           alt={lightbox.nameCN || lightbox.name}
           onClose={() => setLightbox(null)}
         />
@@ -295,7 +297,7 @@ export default function BattlePass() {
 
       {showInfo && (
         <Lightbox
-          src="/bp/tier-info.jpg"
+          src={`${bpDir}/tier-info.jpg`}
           alt="通行证档位详细信息"
           onClose={() => setShowInfo(false)}
         />
