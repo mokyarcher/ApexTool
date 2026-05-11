@@ -164,6 +164,23 @@ function buildKnowledgeContext(messages) {
   return contexts.filter(Boolean).join('\n\n');
 }
 
+function inferNav(messages) {
+  const last = [...messages].reverse().find((m) => m.role === 'user')?.content || '';
+  if (/绿币|奇异碎片|奇异商店|exotic\s*shards?|exotic\s*shop/i.test(last)) return '/shop#exotic';
+  if (/复刻|改色|recolor/i.test(last)) return '/shop#recolor';
+  if (/高级商店|高级|premium/i.test(last)) return '/shop#premium';
+  if (/双倍打击|double\s*strike/i.test(last)) return '/shop#double-strike';
+  if (/精选|捆绑包|featured|bundle/i.test(last)) return '/shop#featured-bundle';
+  if (/商店|shop|上架|商品/i.test(last)) return '/shop';
+  if (/通行证|战斗通行证|battle\s*pass/i.test(last)) return '/battlepass';
+  if (/神话|传家宝|威望|近战|mythic|heirloom/i.test(last)) return '/mythic';
+  if (/更新|公告|补丁|patch|最近|最新/i.test(last)) return '/patch-notes';
+  if (/金币|充值|比例|coins?/i.test(last)) return '/coins';
+  if (/百科|传奇|武器|encyclopedia/i.test(last)) return '/encyclopedia';
+  if (/战绩|查询|stats?/i.test(last)) return '/stats';
+  return null;
+}
+
 // Rate limit: simple in-memory per-IP
 const rateMap = new Map();
 const RATE_LIMIT = 20; // requests per minute
@@ -207,6 +224,7 @@ router.post('/chat', async (req, res) => {
 
   const trimmed = messages.slice(-10);
   const knowledgeContext = buildKnowledgeContext(trimmed);
+  const inferredNav = inferNav(trimmed);
 
   try {
     const response = await fetch(LONGCAT_URL, {
@@ -242,6 +260,8 @@ router.post('/chat', async (req, res) => {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
+    let fullText = '';
+    let hasNav = false;
 
     while (true) {
       const { done, value } = await reader.read();
@@ -259,12 +279,17 @@ router.post('/chat', async (req, res) => {
               const json = JSON.parse(data);
               const content = json.choices?.[0]?.delta?.content;
               if (content) {
+                fullText += content;
+                if (/\[NAV:\/[^\]]+\]/.test(fullText)) hasNav = true;
                 res.write(`data: ${JSON.stringify({ content })}\n\n`);
               }
             } catch { /* skip malformed chunks */ }
           }
         }
       }
+    }
+    if (inferredNav && !hasNav) {
+      res.write(`data: ${JSON.stringify({ content: `[NAV:${inferredNav}]` })}\n\n`);
     }
     res.end();
   } catch (err) {
