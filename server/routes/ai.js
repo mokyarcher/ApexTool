@@ -234,39 +234,72 @@ function summarizePlayer(data, requestedQuery) {
 }
 
 async function fetchPlayerContext(playerQuery) {
-  if (!playerQuery) return { context: '', nav: null };
+  if (!playerQuery) return { context: '', nav: null, playerCards: null };
   const key = process.env.APEX_API_KEY?.trim();
   const statsNav = `/stats?q=${encodeURIComponent(playerQuery.query)}`;
   if (!key) {
     return {
       context: `## 玩家战绩查询结果\n本站未配置 APEX_API_KEY，暂时无法直接查询玩家「${playerQuery.query}」的战绩。可引导用户前往战绩查询页手动查询。`,
-      nav: statsNav,
+      nav: statsNav, playerCards: null,
     };
   }
+
+  // UID search: direct bridge query
+  if (playerQuery.isUid) {
+    try {
+      const params = new URLSearchParams({ auth: key, platform: playerQuery.platform });
+      params.set('uid', playerQuery.query);
+      const resp = await fetch(`${APEX_API_BASE}/bridge?${params}`);
+      if (!resp.ok) return { context: `## 玩家战绩查询结果\n查询 UID「${playerQuery.query}」失败（HTTP ${resp.status}）。`, nav: statsNav, playerCards: null };
+      const data = await resp.json();
+      if (data.Error) return { context: `## 玩家战绩查询结果\n未找到 UID「${playerQuery.query}」：${data.Error}`, nav: statsNav, playerCards: null };
+      return { context: summarizePlayer(data, playerQuery.query), nav: statsNav, playerCards: null };
+    } catch (err) {
+      return { context: `## 玩家战绩查询结果\n查询出错：${err.message}`, nav: statsNav, playerCards: null };
+    }
+  }
+
+  // Name search: use internal lookup API to get all matches
   try {
-    const params = new URLSearchParams({ auth: key, platform: playerQuery.platform });
-    if (playerQuery.isUid) params.set('uid', playerQuery.query);
-    else params.set('player', playerQuery.query);
-    const resp = await fetch(`${APEX_API_BASE}/bridge?${params}`);
-    if (!resp.ok) {
+    const PORT = process.env.PORT || 4000;
+    const lookupResp = await fetch(`http://127.0.0.1:${PORT}/api/player/lookup?name=${encodeURIComponent(playerQuery.query)}&platform=${playerQuery.platform}`);
+    if (!lookupResp.ok) {
+      return { context: `## 玩家战绩查询结果\n搜索玩家「${playerQuery.query}」失败。`, nav: statsNav, playerCards: null };
+    }
+    const lookup = await lookupResp.json();
+    const results = lookup.results || [];
+
+    if (results.length === 0) {
+      return { context: `## 玩家战绩查询结果\n未找到玩家「${playerQuery.query}」，建议确认名字拼写或改用 UID 查询。`, nav: statsNav, playerCards: null };
+    }
+    if (results.length === 1) {
+      // Single match: fetch full stats via bridge
+      try {
+        const params = new URLSearchParams({ auth: key, platform: results[0].platform || playerQuery.platform });
+        params.set('uid', results[0].uid);
+        const resp = await fetch(`${APEX_API_BASE}/bridge?${params}`);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (!data.Error) return { context: summarizePlayer(data, playerQuery.query), nav: statsNav, playerCards: null };
+        }
+      } catch { /* fall through */ }
       return {
-        context: `## 玩家战绩查询结果\n查询玩家「${playerQuery.query}」失败：上游接口返回 HTTP ${resp.status}。建议用户前往战绩查询页手动确认玩家名、UID 或平台。`,
-        nav: statsNav,
+        context: `## 玩家战绩查询结果\n找到玩家「${results[0].name}」（UID: ${results[0].uid}，平台: ${results[0].platform}，Lv.${results[0].level || '?'}）`,
+        nav: statsNav, playerCards: null,
       };
     }
-    const data = await resp.json();
-    if (data.Error) {
-      return {
-        context: `## 玩家战绩查询结果\n未找到玩家「${playerQuery.query}」：${data.Error}。建议用户尝试 UID 查询，或确认平台是否正确。`,
-        nav: statsNav,
-      };
-    }
-    return { context: summarizePlayer(data, playerQuery.query), nav: statsNav };
-  } catch (err) {
+
+    // Multiple matches: return cards for user selection
+    const summary = results.slice(0, 10).map((r, i) =>
+      `${i + 1}. ${r.name}（UID: ${r.uid}，平台: ${r.platform}，Lv.${r.level || '?'}${r.rp ? `，${r.rp} RP` : ''}）`
+    ).join('\n');
     return {
-      context: `## 玩家战绩查询结果\n查询玩家「${playerQuery.query}」时出错：${err.message}。建议用户前往战绩查询页手动查询。`,
-      nav: statsNav,
+      context: `## 玩家战绩查询结果\n搜索「${playerQuery.query}」找到 ${results.length} 个同名玩家，已在聊天窗口展示选择卡片。请告诉用户在下方点击选择正确的账号，选择后可查看详细战绩。\n${summary}`,
+      nav: null,
+      playerCards: results.slice(0, 10).map(r => ({ uid: r.uid, name: r.name, platform: r.platform, level: r.level, prestige: r.prestige, legend: r.legend, rp: r.rp, rankImg: r.rankImg })),
     };
+  } catch (err) {
+    return { context: `## 玩家战绩查询结果\n查询出错：${err.message}`, nav: statsNav, playerCards: null };
   }
 }
 
@@ -348,6 +381,10 @@ router.post('/chat', async (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
+
+    if (playerResult.playerCards) {
+      res.write(`data: ${JSON.stringify({ playerCards: playerResult.playerCards })}\n\n`);
+    }
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();

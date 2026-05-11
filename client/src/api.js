@@ -78,6 +78,7 @@ export const api = {
           if (data === '[DONE]') return;
           try {
             const json = JSON.parse(data);
+            if (json.playerCards) yield { type: 'playerCards', players: json.playerCards };
             if (json.content) yield json.content;
           } catch { /* skip */ }
         }

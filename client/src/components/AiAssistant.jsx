@@ -27,6 +27,7 @@ export default function AiAssistant() {
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [pendingNav, setPendingNav] = useState(null);
+  const [playerCards, setPlayerCards] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
   const abortRef = useRef(null);
@@ -59,6 +60,7 @@ export default function AiAssistant() {
     setInput('');
     setStreaming(true);
     setPendingNav(null);
+    setPlayerCards(null);
 
     const assistantMsg = { role: 'assistant', content: '' };
     setMessages([...newMessages, assistantMsg]);
@@ -71,6 +73,10 @@ export default function AiAssistant() {
       const stream = api.aiChat(chatHistory);
       let full = '';
       for await (const chunk of stream) {
+        if (typeof chunk === 'object' && chunk.type === 'playerCards') {
+          setPlayerCards(chunk.players);
+          continue;
+        }
         full += chunk;
         setMessages(prev => {
           const copy = [...prev];
@@ -161,6 +167,38 @@ export default function AiAssistant() {
               </div>
             </div>
           ))}
+
+          {/* Player selection cards */}
+          {playerCards && !streaming && (
+            <div className="space-y-2">
+              <div className="text-xs text-zinc-500 text-center">点击选择正确的账号：</div>
+              <div className="space-y-1.5">
+                {playerCards.map((p) => (
+                  <button
+                    key={p.uid}
+                    onClick={() => { setPlayerCards(null); sendMessage(`查 ${p.uid} 战绩`); }}
+                    className="w-full flex items-center gap-3 p-2.5 bg-zinc-900/60 border border-white/5 hover:border-red-500/40 hover:bg-zinc-900/80 transition-all text-left group"
+                  >
+                    {p.rankImg ? (
+                      <img src={p.rankImg} alt="" className="w-8 h-8 object-contain shrink-0" />
+                    ) : (
+                      <div className="w-8 h-8 bg-zinc-800 grid place-items-center shrink-0"><User size={14} className="text-zinc-600" /></div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-white font-bold truncate group-hover:text-red-400 transition-colors">{p.name}</div>
+                      <div className="flex items-center gap-2 text-[11px] text-zinc-500 mt-0.5">
+                        <span className="bg-zinc-800 px-1.5 py-0.5">{p.platform}</span>
+                        {p.level && <span>Lv.{p.level}{p.prestige && p.prestige !== '0' ? ` (阶段${Number(p.prestige) + 1})` : ''}</span>}
+                        {p.rp && <span className="text-amber-500/80 font-bold">{p.rp} RP</span>}
+                      </div>
+                      {p.legend && <div className="text-[10px] text-zinc-600 mt-0.5">{p.legend}</div>}
+                    </div>
+                    <ArrowRight size={14} className="text-zinc-600 group-hover:text-red-400 shrink-0 transition-colors" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Navigation button */}
           {pendingNav && !streaming && (
