@@ -35,7 +35,7 @@ function CardShine() {
 }
 
 /* ── Paginated horizontal scroll with side arrow buttons ── */
-function PagedRow({ children, itemsPerPage = 5 }) {
+function PagedRow({ children, itemsPerPage = 5, onPageChange }) {
   const items = Array.isArray(children) ? children : [children];
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [page, setPage] = useState(0);
@@ -48,6 +48,7 @@ function PagedRow({ children, itemsPerPage = 5 }) {
     setDirection(p > page ? 1 : -1);
     setPage(p);
     setAnimKey((k) => k + 1);
+    onPageChange?.(p);
   }
 
   return (
@@ -622,13 +623,15 @@ export default function Mythic() {
   const [modelViewer, setModelViewer] = useState(null);
   const [meleeSet, setMeleeSet] = useState(null);
   const [prestigeDetail, setPrestigeDetail] = useState(null);
+  const [heirloomPage, setHeirloomPage] = useState(0);
 
-  // Preload all model files in background after page renders
+  // Preload only the current page's heirloom model files
   useEffect(() => {
-    if (!data) return;
-    const urls = new Set();
-    data.heirlooms?.items?.forEach((i) => i.model && urls.add(i.model));
-    data.universalMelee?.items?.forEach((s) => s.variants?.forEach((v) => v.model && urls.add(v.model)));
+    if (!data?.heirlooms?.items) return;
+    const perPage = 5;
+    const start = heirloomPage * perPage;
+    const pageItems = data.heirlooms.items.slice(start, start + perPage);
+    const urls = pageItems.filter(i => i.model).map(i => i.model);
     let cancelled = false;
     const preload = async () => {
       for (const url of urls) {
@@ -636,9 +639,9 @@ export default function Mythic() {
         try { await fetch(url); } catch { /* ignore */ }
       }
     };
-    const timer = setTimeout(preload, 1000);
+    const timer = setTimeout(preload, 300);
     return () => { cancelled = true; clearTimeout(timer); };
-  }, [data]);
+  }, [data, heirloomPage]);
 
   if (loading) return <Loader />;
   if (error) return <ErrorBox error={error} onRetry={reload} />;
@@ -662,7 +665,7 @@ export default function Mythic() {
       {heirlooms && (
         <MythicSection>
           <MythicSectionHeader title={heirlooms.name} shards={heirlooms.currency.shards} count={heirlooms.items.length} />
-          <PagedRow itemsPerPage={5}>
+          <PagedRow itemsPerPage={5} onPageChange={setHeirloomPage}>
             {heirlooms.items.map((item) => (
               <HeirloomCard key={item.id} item={item} onClick={() => item.model ? setModelViewer(item) : openLightbox(item.image, item.name)} />
             ))}
