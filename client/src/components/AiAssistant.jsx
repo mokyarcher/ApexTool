@@ -150,10 +150,10 @@ export default function AiAssistant() {
           {messages.length > 1 && (
             <button
               onClick={clearChat}
-              className="w-7 h-7 grid place-items-center text-zinc-500 hover:text-red-400 transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-[11px] text-zinc-400 bg-zinc-800/80 border border-white/10 hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-all"
               title="清除记录"
             >
-              <Trash2 size={14} />
+              <Trash2 size={12} /> 清除
             </button>
           )}
           <div className="flex items-center gap-1 text-[10px] text-green-400">
