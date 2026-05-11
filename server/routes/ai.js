@@ -290,11 +290,8 @@ async function fetchPlayerContext(playerQuery) {
     }
 
     // Multiple matches: return cards for user selection
-    const summary = results.slice(0, 10).map((r, i) =>
-      `${i + 1}. ${r.name}（UID: ${r.uid}，平台: ${r.platform}，Lv.${r.level || '?'}${r.rp ? `，${r.rp} RP` : ''}）`
-    ).join('\n');
     return {
-      context: `## 玩家战绩查询结果\n搜索「${playerQuery.query}」找到 ${results.length} 个同名玩家，已在聊天窗口展示选择卡片。请告诉用户在下方点击选择正确的账号，选择后可查看详细战绩。\n${summary}`,
+      context: `## 玩家战绩查询结果\n搜索「${playerQuery.query}」找到 ${results.length} 个同名玩家，选择卡片已展示在聊天窗口中。请简短告诉用户"在下方选择正确的账号即可查看详细战绩"，不要列出玩家列表。`,
       nav: null,
       playerCards: results.slice(0, 10).map(r => ({ uid: r.uid, name: r.name, platform: r.platform, level: r.level, prestige: r.prestige, legend: r.legend, rp: r.rp, rankImg: r.rankImg })),
     };
