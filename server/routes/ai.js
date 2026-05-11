@@ -6,6 +6,7 @@ import { Router } from 'express';
 const router = Router();
 
 const LONGCAT_URL = 'https://api.longcat.chat/openai/v1/chat/completions';
+const APEX_API_BASE = 'https://api.mozambiquehe.re';
 const MODEL = process.env.LONGCAT_MODEL || 'LongCat-Flash-Chat';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +19,8 @@ const SYSTEM_PROMPT = `你是 APEX TOOL 赛季工具站的 AI 助手，名叫「
 2. 如果站内上下文已经包含答案，不要引入外部资料，不要凭记忆补充。
 3. 如果站内上下文没有相关资料，必须明确说“本站暂未收录这部分信息”，然后再用谨慎语气补充通用知识。
 4. 不确定时不要编造具体赛季、日期、传奇、武器、商店内容。
-5. 回答“最近更新/最新公告/当前赛季/商店上架”等问题时，必须以站内资源库上下文为准。
+5. 回答“最近更新/最新公告/当前赛季/商店上架/玩家战绩”等问题时，必须以站内资源库上下文为准。
+6. 如果站内资源库上下文包含“玩家战绩查询结果”，可以直接摘要等级、平台、在线状态、排位等信息；不要编造 K/D、击杀、伤害等上下文未提供的数据。
 
 ## 网站页面
 - /battlepass — 通行证：查看当前赛季战斗通行证奖励
@@ -181,6 +183,93 @@ function inferNav(messages) {
   return null;
 }
 
+function extractPlayerQuery(messages) {
+  const last = [...messages].reverse().find((m) => m.role === 'user')?.content?.trim() || '';
+  if (!/(战绩|查分|排位|等级|玩家|stats?)/i.test(last)) return null;
+  const platformMap = [
+    [/switch|ns|任天堂/i, 'SWITCH'],
+    [/xbox|x1/i, 'X1'],
+    [/ps5|ps4|psn|playstation|主机/i, 'PS4'],
+    [/pc|steam|橘子|origin|ea/i, 'PC'],
+  ];
+  const platform = platformMap.find(([re]) => re.test(last))?.[1] || 'PC';
+  let query = last
+    .replace(/(帮我|帮忙|可以|能不能|能|请|一下|看看|看下|查询|查|战绩|查分|排位|等级|玩家|的|吗|呀|呢|吧)/g, ' ')
+    .replace(/(pc|steam|橘子|origin|ea|ps5|ps4|psn|playstation|主机|xbox|x1|switch|ns|任天堂)/ig, ' ')
+    .replace(/[，。！？?！:：]/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)[0];
+  const uid = last.match(/\b\d{5,}\b/)?.[0];
+  if (uid) query = uid;
+  if (!query || query.length < 2) return null;
+  return { query, platform, isUid: /^\d{5,}$/.test(query) };
+}
+
+function rankText(rank) {
+  if (!rank) return '暂无';
+  const name = rank.rankName || '未知段位';
+  const score = rank.rankScore !== undefined ? `${rank.rankScore} RP` : '';
+  const div = rank.rankDiv !== undefined && rank.rankDiv > 0 ? ` #${rank.rankDiv}` : '';
+  return `${name}${div}${score ? `（${score}）` : ''}`;
+}
+
+function summarizePlayer(data, requestedQuery) {
+  const global = data?.global;
+  if (!global) return '';
+  const state = data.realtime?.isInGame === 1
+    ? `游戏中${data.realtime.selectedLegend ? `，当前传奇：${data.realtime.selectedLegend}` : ''}`
+    : data.realtime?.isOnline === 1 ? '在线' : '离线';
+  return [
+    '## 玩家战绩查询结果（来自本站战绩接口 / mozambiquehe.re）',
+    `查询对象：${requestedQuery}`,
+    `玩家名：${global.name || '未知'}`,
+    `UID：${global.uid || '未知'}`,
+    `平台：${global.platform || '未知'}`,
+    `等级：Lv.${global.level ?? '?'}${global.levelPrestige > 0 ? `，阶段 ${global.levelPrestige + 1}` : ''}`,
+    `状态：${state}`,
+    `大逃杀排位：${rankText(global.rank)}`,
+    `竞技场排位：${rankText(global.arena)}`,
+  ].join('\n');
+}
+
+async function fetchPlayerContext(playerQuery) {
+  if (!playerQuery) return { context: '', nav: null };
+  const key = process.env.APEX_API_KEY?.trim();
+  const statsNav = `/stats?q=${encodeURIComponent(playerQuery.query)}`;
+  if (!key) {
+    return {
+      context: `## 玩家战绩查询结果\n本站未配置 APEX_API_KEY，暂时无法直接查询玩家「${playerQuery.query}」的战绩。可引导用户前往战绩查询页手动查询。`,
+      nav: statsNav,
+    };
+  }
+  try {
+    const params = new URLSearchParams({ auth: key, platform: playerQuery.platform });
+    if (playerQuery.isUid) params.set('uid', playerQuery.query);
+    else params.set('player', playerQuery.query);
+    const resp = await fetch(`${APEX_API_BASE}/bridge?${params}`);
+    if (!resp.ok) {
+      return {
+        context: `## 玩家战绩查询结果\n查询玩家「${playerQuery.query}」失败：上游接口返回 HTTP ${resp.status}。建议用户前往战绩查询页手动确认玩家名、UID 或平台。`,
+        nav: statsNav,
+      };
+    }
+    const data = await resp.json();
+    if (data.Error) {
+      return {
+        context: `## 玩家战绩查询结果\n未找到玩家「${playerQuery.query}」：${data.Error}。建议用户尝试 UID 查询，或确认平台是否正确。`,
+        nav: statsNav,
+      };
+    }
+    return { context: summarizePlayer(data, playerQuery.query), nav: statsNav };
+  } catch (err) {
+    return {
+      context: `## 玩家战绩查询结果\n查询玩家「${playerQuery.query}」时出错：${err.message}。建议用户前往战绩查询页手动查询。`,
+      nav: statsNav,
+    };
+  }
+}
+
 // Rate limit: simple in-memory per-IP
 const rateMap = new Map();
 const RATE_LIMIT = 20; // requests per minute
@@ -224,7 +313,10 @@ router.post('/chat', async (req, res) => {
 
   const trimmed = messages.slice(-10);
   const knowledgeContext = buildKnowledgeContext(trimmed);
-  const inferredNav = inferNav(trimmed);
+  const playerQuery = extractPlayerQuery(trimmed);
+  const playerResult = await fetchPlayerContext(playerQuery);
+  const fullKnowledgeContext = [knowledgeContext, playerResult.context].filter(Boolean).join('\n\n');
+  const inferredNav = playerResult.nav || inferNav(trimmed);
 
   try {
     const response = await fetch(LONGCAT_URL, {
@@ -237,7 +329,7 @@ router.post('/chat', async (req, res) => {
         model: MODEL,
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'system', content: `以下是站内资源库上下文，请优先使用：\n\n${knowledgeContext}` },
+          { role: 'system', content: `以下是站内资源库上下文，请优先使用：\n\n${fullKnowledgeContext}` },
           ...trimmed,
         ],
         max_tokens: 500,
