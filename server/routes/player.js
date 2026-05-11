@@ -37,6 +37,17 @@ router.get('/', async (req, res, next) => {
       return res.status(404).json({ error: data.Error });
     }
 
+    // Patch missing legend icons with local images from /legends/
+    if (data.legends?.all) {
+      for (const [name, legend] of Object.entries(data.legends.all)) {
+        if (!legend.ImgAssets?.icon) {
+          const slug = name.toLowerCase().replace(/[_ ]/g, '-');
+          if (!legend.ImgAssets) legend.ImgAssets = {};
+          legend.ImgAssets.icon = `/legends/${slug}.png`;
+        }
+      }
+    }
+
     setCache(cacheKey, data, CACHE_TTL);
     res.json(data);
   } catch (err) {
