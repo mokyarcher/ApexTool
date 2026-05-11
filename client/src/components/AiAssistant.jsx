@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles, ArrowRight } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles, ArrowRight, Trash2 } from 'lucide-react';
 import { api } from '../api.js';
 
 const WELCOME_MSG = {
@@ -40,6 +40,13 @@ export default function AiAssistant() {
 
   useEffect(() => { scrollToBottom(); }, [messages, scrollToBottom]);
   useEffect(() => { if (open) inputRef.current?.focus(); }, [open]);
+
+  function clearChat() {
+    setMessages([WELCOME_MSG]);
+    setPendingNav(null);
+    setPlayerCards(null);
+    setInput('');
+  }
 
   function doNav(path) {
     const [pathname, hash] = path.split('#');
@@ -140,6 +147,15 @@ export default function AiAssistant() {
             <div className="text-sm font-bold text-white">探路者 AI</div>
             <div className="text-[11px] text-zinc-500">APEX TOOL 智能助手</div>
           </div>
+          {messages.length > 1 && (
+            <button
+              onClick={clearChat}
+              className="w-7 h-7 grid place-items-center text-zinc-500 hover:text-red-400 transition-colors"
+              title="清除记录"
+            >
+              <Trash2 size={14} />
+            </button>
+          )}
           <div className="flex items-center gap-1 text-[10px] text-green-400">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             在线
