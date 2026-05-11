@@ -16,9 +16,10 @@ const QUICK_ACTIONS = [
 ];
 
 function parseNav(text) {
-  const match = text.match(/\[NAV:(\/[^\]]*)\]/);
-  if (!match) return { clean: text, path: null };
-  return { clean: text.replace(/\[NAV:\/[^\]]*\]/g, '').trim(), path: match[1] };
+  const matches = [...text.matchAll(/\[NAV:(\/[^\]]*)\]/g)];
+  if (matches.length === 0) return { clean: text, path: null };
+  const path = matches[matches.length - 1][1];
+  return { clean: text.replace(/\[NAV:\/[^\]]*\]/g, '').trim(), path };
 }
 
 export default function AiAssistant() {
@@ -207,7 +208,7 @@ export default function AiAssistant() {
                 onClick={() => doNav(pendingNav)}
                 className="flex items-center gap-2 px-4 py-2 bg-red-600/20 border border-red-500/30 text-red-400 text-sm font-medium hover:bg-red-600/30 hover:border-red-500/50 transition-all"
               >
-                <ArrowRight size={14} /> 前往页面
+                <ArrowRight size={14} /> {pendingNav.startsWith('/stats') ? '查看详细战绩' : '前往页面'}
               </button>
             </div>
           )}

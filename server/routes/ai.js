@@ -414,7 +414,9 @@ router.post('/chat', async (req, res) => {
         }
       }
     }
-    if (inferredNav && !hasNav) {
+    if (playerResult.nav) {
+      res.write(`data: ${JSON.stringify({ content: `[NAV:${playerResult.nav}]` })}\n\n`);
+    } else if (inferredNav && !hasNav) {
       res.write(`data: ${JSON.stringify({ content: `[NAV:${inferredNav}]` })}\n\n`);
     }
     res.write('data: [DONE]\n\n');
