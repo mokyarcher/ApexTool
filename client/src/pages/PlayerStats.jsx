@@ -170,7 +170,7 @@ function LegendRow({ name, data, imgAssets, gameInfo }) {
             <img
               src={imgAssets.icon}
               alt={name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.querySelector('.legend-fallback')?.classList.remove('hidden'); }}
             />
           ) : null}
