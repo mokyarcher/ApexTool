@@ -67,18 +67,17 @@ export default function RankedLeaderboard() {
       </div>
 
       <div className="card overflow-hidden">
-        <div className="hidden md:grid grid-cols-[72px_1fr_130px_110px_90px] gap-4 px-4 py-3 text-xs text-zinc-500 border-b border-white/10">
+        <div className="hidden md:grid grid-cols-[72px_1fr_180px_100px] gap-4 px-5 py-3 text-xs text-zinc-500 border-b border-white/10">
           <div>排名</div>
           <div>玩家</div>
-          <div>RP</div>
-          <div>状态</div>
+          <div className="text-right">Rank 分</div>
           <div>输入</div>
         </div>
         <div className="divide-y divide-white/[0.06]">
           {filtered.map((player) => {
             const InputIcon = player.input === '手柄' ? Gamepad2 : Keyboard;
             return (
-              <div key={player.uid} className="grid grid-cols-[56px_1fr] md:grid-cols-[72px_1fr_130px_110px_90px] gap-3 md:gap-4 items-center px-4 py-3 hover:bg-white/[0.03] transition">
+              <div key={player.uid} className="grid grid-cols-[56px_1fr] md:grid-cols-[72px_1fr_180px_100px] gap-3 md:gap-4 items-center px-5 py-4 hover:bg-white/[0.03] transition">
                 <div className={`font-display text-2xl ${rankColor(player.rank)}`}>#{player.rank}</div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 min-w-0">
@@ -94,10 +93,12 @@ export default function RankedLeaderboard() {
                   <div className="text-xs text-zinc-500 mt-1">UID {player.uid}{player.level ? ` · 等级 ${player.level}` : ''}</div>
                 </div>
                 <div className="md:text-right">
-                  <div className="text-white text-xl font-bold">{player.rp.toLocaleString()}</div>
-                  {player.change ? <div className="text-xs text-emerald-400">+{player.change.toLocaleString()}</div> : null}
+                  <div className="inline-flex flex-col items-end px-3 py-2 bg-red-500/10 border border-red-500/20 min-w-[132px]">
+                    <div className="text-[10px] text-red-300/80 tracking-wider uppercase">Rank Score</div>
+                    <div className="text-white text-2xl font-display leading-none mt-1">{player.rp.toLocaleString()}</div>
+                    {player.change ? <div className="text-xs text-emerald-400 mt-1">+{player.change.toLocaleString()}</div> : null}
+                  </div>
                 </div>
-                <div className={player.online ? 'text-emerald-300 text-sm' : 'text-zinc-500 text-sm'}>{player.online ? '在线' : '离线'}</div>
                 <div className="flex items-center gap-1.5 text-zinc-400 text-sm">
                   <InputIcon size={15} /> {player.input}
                 </div>
