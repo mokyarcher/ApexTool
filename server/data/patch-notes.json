@@ -13,17 +13,17 @@
           "legend": "Axle",
           "legendEN": "Axle",
           "changes": [
-            "新传奇加入 Apex 游戏，定位为 Skirmisher",
-            "被动 Drift：滑铲时拥有更高速度与更强横向控制",
-            "战术 Nitro Gate：部署速度门，让通过者进入高速滑铲状态，效果对友军和敌人均生效",
-            "终极 Kickstart：发射自动搜敌无人机，命中后击飞、伤害、短暂眩晕并暴露敌人"
+            "新传奇加入 Apex 游戏，定位为游击位（Skirmisher）",
+            "被动漂移（Drift）：滑铲时拥有更高速度与更强横向控制",
+            "战术硝化门（Nitro Gate）：部署速度门，让通过者进入高速滑铲状态，效果对友军和敌人均生效",
+            "终极启动（Kickstart）：发射自动搜敌无人机，命中后击飞、伤害、短暂眩晕并暴露敌人"
           ]
         },
         {
           "legend": "万蒂奇",
           "legendEN": "Vantage",
           "changes": [
-            "Spotter's Lens 追踪队伍时可生成 70% 终极弹药，单队伍 10 秒冷却",
+            "观察者透镜（Spotter's Lens）追踪队伍时可生成 70% 终极弹药，单队伍 10 秒冷却",
             "战术技能离开后不再受到硬着陆影响，速度、二段跳距离和落点减速表现增强，冷却从 20 秒降至 17 秒",
             "终极技能新增侧置 2x 瞄具，开镜、换弹和武器操作速度提升，默认普通瞄具倍率提高至 4x"
           ]
@@ -32,9 +32,9 @@
           "legend": "导线管",
           "legendEN": "Conduit",
           "changes": [
-            "被动触发时朝 Skirmisher 奔跑额外获得 5% 移速",
+            "被动触发时朝游击位（Skirmisher）奔跑额外获得 5% 移速",
             "战术技能基础获得两次充能，恢复时长从 9 秒降至 6 秒，恢复量从 20/s 降至 15/s，冷却调整为 27 秒",
-            "移除旧升级，新增 Instant Barrier 与 Enduring Barrier，强化临时护盾立即收益与抗打断能力"
+            "移除旧升级，新增瞬时屏障（Instant Barrier）与持久屏障（Enduring Barrier），强化临时护盾立即收益与抗打断能力"
           ]
         },
         {
@@ -43,7 +43,7 @@
           "changes": [
             "战术冷却从 20 秒提高至 25 秒",
             "终极范围从 300 米降至 250 米，召回时间和队友召回时间增加，追击传送门开启时间降低",
-            "Void Breacher 升级移动速度加成从 30% 降至 15%"
+            "虚空突破者（Void Breacher）升级移动速度加成从 30% 降至 15%"
           ]
         },
         {
@@ -62,7 +62,7 @@
           "changes": [
             "进入空投武器轮换",
             "伤害从 19 提高至 20",
-            "新增 Redline Hop-Up：接近过热时提高伤害和弹体大小"
+            "新增红线配件（Redline Hop-Up）：接近过热时提高伤害和弹体大小"
           ]
         },
         {
@@ -70,7 +70,7 @@
           "weaponEN": "C.A.R. SMG",
           "changes": [
             "回归地面战利品",
-            "移除 Galvanic Gavel Hop-Up",
+            "移除电流重锤配件（Galvanic Gavel Hop-Up）",
             "蓝色弹匣容量从 25 提高至 26，紫色和金色弹匣从 28 提高至 30"
           ]
         },
@@ -78,9 +78,9 @@
           "weapon": "赫姆洛克 Breach AR",
           "weaponEN": "Hemlok Breach AR",
           "changes": [
-            "Breach Charge 冷却从 15 秒提高至 25 秒",
-            "Breach Charge 现在可驱散毒气和烟雾",
-            "继承此前热修：伤害、弹匣、后坐力和腰射扩散削弱，奖杯系统可正确拦截 Breach Charge"
+            "破袭弹（Breach Charge）冷却从 15 秒提高至 25 秒",
+            "破袭弹（Breach Charge）现在可驱散毒气和烟雾",
+            "继承此前热修：伤害、弹匣、后坐力和腰射扩散削弱，奖杯系统可正确拦截破袭弹（Breach Charge）"
           ]
         },
         {
@@ -92,8 +92,8 @@
         }
       ],
       "otherChanges": [
-        "新增 Deathbox Respawns：可直接从队友死亡盒复活，过程高风险、声音明显且耗时 7 秒，后续死亡会增加锁定时间",
-        "新增 Chain Healing：治疗时可预排队下一个治疗物品，设置支持 Off、Single 和 Auto",
+        "新增死亡盒复活（Deathbox Respawns）：可直接从队友死亡盒复活，过程高风险、声音明显且耗时 7 秒，后续死亡会增加锁定时间",
+        "新增连续治疗（Chain Healing）：治疗时可预排队下一个治疗物品，设置支持关闭（Off）、单次（Single）和自动（Auto）",
         "匹配调整：后续本赛段将给单排玩家更友好的匹配环境，并继续优化高分段排队质量与部分地区非排位 Bot 补位测试",
         "音频 QoL：提升语音聊天清晰度，并可单独调整每位队友语音音量",
         "地图改动：Storm Point 与 Olympus 移除 Trident，Broken Moon 移除大多数跨 POI Ziprail 并增加新的转点选项",
@@ -128,9 +128,9 @@
       "sourceUrl": "https://www.ea.com/games/apex-legends/apex-legends/news/overclocked-game-updates",
       "summary": "EA 提前公开 S29 Overclocked 主要内容：新传奇 Axle、死亡盒复活、连续治疗、传奇增强，以及 S32 重大排位更新计划。",
       "otherChanges": [
-        "新传奇 Axle 以高速滑铲、Nitro Gate 加速门和 Kickstart 搜敌无人机为核心玩法",
-        "Deathbox Respawns 允许玩家直接从队友死亡盒复活，是高风险高回报的替代复活方式",
-        "Chain Healing 支持在当前治疗结束后自动接续治疗，默认 Single 模式允许排队一次治疗",
+        "新传奇 Axle 以高速滑铲、硝化门（Nitro Gate）加速门和启动（Kickstart）搜敌无人机为核心玩法",
+        "死亡盒复活（Deathbox Respawns）允许玩家直接从队友死亡盒复活，是高风险高回报的替代复活方式",
+        "连续治疗（Chain Healing）支持在当前治疗结束后自动接续治疗，默认单次（Single）模式允许排队一次治疗",
         "Overclocked 赛季将增强 Vantage 和 Conduit，使两位传奇更适应快节奏作战",
         "官方路线图新增说明：S32 将推出重大排位更新，排位模式将有新的外观和体验"
       ]
