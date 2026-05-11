@@ -10,7 +10,7 @@
       "summary": "S29 Overclocked 上线，新传奇 Axle 加入游戏，新增死亡盒复活与连续治疗机制，并调整匹配、音频、传奇、武器、地图和排位系统。",
       "legendChanges": [
         {
-          "legend": "Axle",
+          "legend": "艾克赛尔",
           "legendEN": "Axle",
           "changes": [
             "新传奇加入 Apex 游戏，定位为游击位（Skirmisher）",
@@ -38,7 +38,7 @@
           ]
         },
         {
-          "legend": "Alter",
+          "legend": "变幻",
           "legendEN": "Alter",
           "changes": [
             "战术冷却从 20 秒提高至 25 秒",
