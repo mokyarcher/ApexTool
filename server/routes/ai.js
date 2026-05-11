@@ -399,7 +399,7 @@ router.post('/chat', async (req, res) => {
         if (line.startsWith('data: ')) {
           const data = line.slice(6).trim();
           if (data === '[DONE]') {
-            res.write('data: [DONE]\n\n');
+            // Don't forward yet; inject NAV first after loop
           } else {
             try {
               const json = JSON.parse(data);
@@ -417,6 +417,7 @@ router.post('/chat', async (req, res) => {
     if (inferredNav && !hasNav) {
       res.write(`data: ${JSON.stringify({ content: `[NAV:${inferredNav}]` })}\n\n`);
     }
+    res.write('data: [DONE]\n\n');
     res.end();
   } catch (err) {
     console.error('AI chat error:', err);
