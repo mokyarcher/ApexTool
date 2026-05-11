@@ -45,6 +45,7 @@ export const api = {
   legends: () => req('/encyclopedia/legends'),
   weapons: () => req('/encyclopedia/weapons'),
   patchNotes: () => req('/patch-notes'),
+  rankedLeaderboard: () => req('/ranked-leaderboard'),
 
   // Auth
   register: (data) => authReq('/auth/register', { method: 'POST', body: JSON.stringify(data) }),

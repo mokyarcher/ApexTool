@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles } from 'lucide-react';
+import { Trophy, Coins, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles, Medal } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
 import { AuthProvider, useAuth } from './components/AuthContext.jsx';
 import AiAssistant from './components/AiAssistant.jsx';
@@ -17,6 +17,7 @@ const PatchNotes = lazy(() => import('./pages/PatchNotes.jsx'));
 const Auth = lazy(() => import('./pages/Auth.jsx'));
 const Profile = lazy(() => import('./pages/Profile.jsx'));
 const ApexMBTI = lazy(() => import('./pages/ApexMBTI.jsx'));
+const RankedLeaderboard = lazy(() => import('./pages/RankedLeaderboard.jsx'));
 
 const Loading = () => (
   <div className="flex items-center justify-center py-32">
@@ -34,6 +35,7 @@ const navLeft = [
 
 const navRight = [
   { to: '/encyclopedia', label: '百科', icon: BookOpen },
+  { to: '/leaderboard', label: '排行榜', icon: Medal },
   { to: '/stats', label: '战绩查询', icon: Search },
   { to: '/mbti', label: '人格测试', icon: Sparkles },
 ];
@@ -146,6 +148,7 @@ function AppContent() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/mythic" element={<Mythic />} />
             <Route path="/stats" element={<PlayerStats />} />
+            <Route path="/leaderboard" element={<RankedLeaderboard />} />
             <Route path="/encyclopedia" element={<Encyclopedia />} />
             <Route path="/patch-notes" element={<PatchNotes />} />
             <Route path="/auth" element={<Auth />} />
