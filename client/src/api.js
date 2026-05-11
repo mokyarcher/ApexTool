@@ -51,4 +51,37 @@ export const api = {
   login: (data) => authReq('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
   me: () => authReq('/auth/me'),
   updateProfile: (data) => authReq('/auth/profile', { method: 'PUT', body: JSON.stringify(data) }),
+
+  // AI Assistant (streaming)
+  aiChat: async function* (messages) {
+    const r = await fetch(`${BASE}/ai/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages }),
+    });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${r.status}`);
+    }
+    const reader = r.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6).trim();
+          if (data === '[DONE]') return;
+          try {
+            const json = JSON.parse(data);
+            if (json.content) yield json.content;
+          } catch { /* skip */ }
+        }
+      }
+    }
+  },
 };

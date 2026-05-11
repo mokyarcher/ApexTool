@@ -3,6 +3,7 @@ import { NavLink, Route, Routes, Navigate, useNavigate } from 'react-router-dom'
 import { Trophy, Coins, Hammer, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
 import { AuthProvider, useAuth } from './components/AuthContext.jsx';
+import AiAssistant from './components/AiAssistant.jsx';
 
 const BattlePass = lazy(() => import('./pages/BattlePass.jsx'));
 const Maps = lazy(() => import('./pages/Maps.jsx'));
@@ -165,6 +166,7 @@ function AppContent() {
           鄂ICP备2026015426号
         </a>
       </footer>
+      <AiAssistant />
     </div>
   );
 }

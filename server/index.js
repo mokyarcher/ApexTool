@@ -10,6 +10,7 @@ import playerRouter from './routes/player.js';
 import encyclopediaRouter from './routes/encyclopedia.js';
 import patchNotesRouter from './routes/patchNotes.js';
 import authRouter from './routes/auth.js';
+import aiRouter from './routes/ai.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -30,6 +31,7 @@ app.use('/api/player', playerRouter);
 app.use('/api/encyclopedia', encyclopediaRouter);
 app.use('/api/patch-notes', patchNotesRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/ai', aiRouter);
 
 app.use((err, _req, res, _next) => {
   console.error(err);
