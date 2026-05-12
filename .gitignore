@@ -11,3 +11,6 @@ client/public/mythic/**/*.zip
 client/public/mythic/**/*-bak.glb
 # Debug files
 server/debug-*.html
+# Leaderboard temp HTML (source for import script)
+leaderboard.html
+leaderboard_files/
