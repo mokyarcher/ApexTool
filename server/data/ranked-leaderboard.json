@@ -2,17 +2,17 @@
   "title": "Apex 实时排位排行榜（BR/PC）",
   "source": "Apex Legends Status",
   "sourceUrl": "https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC",
-  "importedAt": "2026-05-12T01:23:03.414Z",
+  "importedAt": "2026-05-12T01:32:46.352Z",
   "count": 50,
   "players": [
     {
       "rank": 1,
       "uid": "1005716934920",
       "name": "Twitch.tv/EnemyApex",
-      "rp": 43746,
+      "rp": 43753,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "手柄",
@@ -25,7 +25,7 @@
       "rank": 2,
       "uid": "1009382942244",
       "name": "Rosey",
-      "rp": 39488,
+      "rp": 39637,
       "change": 0,
       "level": 0,
       "online": false,
@@ -57,7 +57,7 @@
       "rank": 4,
       "uid": "1007058010095",
       "name": "PXL Bzbblegum",
-      "rp": 32892,
+      "rp": 32899,
       "change": 0,
       "level": 0,
       "online": false,
@@ -76,7 +76,7 @@
       "rp": 28369,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "DK",
       "input": "手柄",
@@ -137,7 +137,7 @@
       "rank": 9,
       "uid": "1018168155489",
       "name": "SomnusRequiem",
-      "rp": 27239,
+      "rp": 27149,
       "change": 0,
       "level": 0,
       "online": false,
@@ -201,7 +201,7 @@
       "rank": 13,
       "uid": "1013100789398",
       "name": "VP ozzzus7",
-      "rp": 25590,
+      "rp": 25877,
       "change": 0,
       "level": 0,
       "online": false,
@@ -268,7 +268,7 @@
       "rp": 24222,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "GB",
       "input": "键鼠",
@@ -348,7 +348,7 @@
       "rp": 23652,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "DE",
       "input": "手柄",
@@ -711,6 +711,22 @@
     },
     {
       "rank": 45,
+      "uid": "1009099730555",
+      "name": "ELITE iHenchman",
+      "rp": 21661,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 46,
       "uid": "1007677647640",
       "name": "TL_Sikezz",
       "rp": 21635,
@@ -726,7 +742,7 @@
       }
     },
     {
-      "rank": 46,
+      "rank": 47,
       "uid": "1009886005187",
       "name": "xSorrai",
       "rp": 21440,
@@ -742,7 +758,7 @@
       }
     },
     {
-      "rank": 47,
+      "rank": 48,
       "uid": "1011009983794",
       "name": "st_nikop",
       "rp": 21436,
@@ -758,35 +774,19 @@
       }
     },
     {
-      "rank": 48,
+      "rank": 49,
       "uid": "1008679305032",
       "name": "TTXTR",
       "rp": 21376,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "手柄",
       "links": {
         "twitch": "/core/out?type=twitch&id=ttxtr",
         "twitter": "https://twitter.com/XTTXTR"
-      }
-    },
-    {
-      "rank": 49,
-      "uid": "1009099730555",
-      "name": "ELITE iHenchman",
-      "rp": 21374,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
       }
     },
     {
