@@ -113,8 +113,8 @@ export default function RankedLeaderboard() {
                   </div>
                   <div className="text-right">
                     <div className="text-white text-lg font-display leading-none">{player.rp.toLocaleString()} <span className="text-xs text-zinc-400">RP</span></div>
-                    {player.rpChange > 0 && <div className="text-xs font-bold text-emerald-400 mt-0.5">+{player.rpChange.toLocaleString()} RP</div>}
-                    {player.rpChange < 0 && <div className="text-xs font-bold text-red-400 mt-0.5">{player.rpChange.toLocaleString()} RP</div>}
+                    {player.rpChange > 0 && <div className="text-xs font-bold text-emerald-400 mt-0.5">+{player.rpChange.toLocaleString()} <span className="text-[10px] font-normal text-emerald-400/60">RP</span></div>}
+                    {player.rpChange < 0 && <div className="text-xs font-bold text-red-400 mt-0.5">{player.rpChange.toLocaleString()} <span className="text-[10px] font-normal text-red-400/60">RP</span></div>}
                   </div>
                   <div className="flex items-center gap-1 text-zinc-400 text-xs">
                     <InputIcon size={14} /> {player.input}
