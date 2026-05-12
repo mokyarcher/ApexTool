@@ -71,8 +71,9 @@ export default function RankedLeaderboard() {
         </div>
 
         <div className="card overflow-hidden">
-          <div className="hidden md:grid grid-cols-[56px_1fr_140px_80px] gap-3 px-4 py-2.5 text-xs text-zinc-500 border-b border-white/10">
+          <div className="hidden md:grid grid-cols-[56px_36px_1fr_140px_80px] gap-3 px-4 py-2.5 text-xs text-zinc-500 border-b border-white/10">
             <div>#</div>
+            <div></div>
             <div>玩家</div>
             <div className="text-right">Rank 分</div>
             <div>输入</div>
@@ -81,11 +82,11 @@ export default function RankedLeaderboard() {
             {filtered.map((player) => {
               const InputIcon = player.input === '手柄' ? Gamepad2 : Keyboard;
               return (
-                <div key={player.uid} className="grid grid-cols-[48px_1fr] md:grid-cols-[56px_1fr_140px_80px] gap-2 md:gap-3 items-center px-4 py-3 hover:bg-white/[0.03] transition">
+                <div key={player.uid} className="grid grid-cols-[48px_36px_1fr] md:grid-cols-[56px_36px_1fr_140px_80px] gap-2 md:gap-3 items-center px-4 py-3 hover:bg-white/[0.03] transition">
                   <div className={`font-display text-xl ${rankColor(player.rank)}`}>#{player.rank}</div>
+                  <img src="/ranks/apex-predator.png" alt="Apex Predator" className="h-8 w-8 object-contain" />
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
-                      <img src="/ranks/apex-predator.png" alt="Apex Predator" className="h-5 w-5 shrink-0 object-contain" />
                       <span className="font-bold text-white truncate text-sm">{player.name}</span>
                       {player.country && <img src={`https://flagcdn.com/w40/${player.country.toLowerCase()}.png`} alt={player.country} className="h-3 w-auto shrink-0" title={player.country} />}
                       {player.links.twitter && (
