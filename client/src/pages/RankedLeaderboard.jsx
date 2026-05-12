@@ -100,7 +100,7 @@ export default function RankedLeaderboard() {
                   <img src={rankIcon} alt={rankLabel} title={rankLabel} className="h-8 w-8 object-contain" />
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className={`font-bold truncate text-sm ${player.name === 'NONE' ? 'text-zinc-500' : 'text-white'}`}>{player.name}</span>
+                      <span className={`font-bold truncate text-sm ${player.name === 'NONE' ? 'text-zinc-500' : player.rank === 1 ? 'text-red-500' : player.rank === 2 ? 'text-amber-400' : player.rank === 3 ? 'text-purple-400' : 'text-white'}`}>{player.name}</span>
                       {player.country && <img src={`https://flagcdn.com/w40/${player.country.toLowerCase()}.png`} alt={player.country} className="h-3 w-auto shrink-0" title={player.country} />}
                       {player.links.twitter && (
                         <a href={player.links.twitter} target="_blank" rel="noreferrer" className="text-sky-300 hover:text-sky-200 shrink-0"><ExternalLink size={12} /></a>
