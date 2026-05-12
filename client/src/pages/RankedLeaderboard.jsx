@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, ExternalLink, Gamepad2, Keyboard, Radio, Search, Shield, TrendingDown, TrendingUp, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
 import { Loader, ErrorBox } from '../components/Loader.jsx';
@@ -23,6 +24,7 @@ function rankColor(rank) {
 const PAGE_SIZE = 50;
 
 export default function RankedLeaderboard() {
+  const navigate = useNavigate();
   const { data, loading, error, reload } = useFetch(api.rankedLeaderboard, []);
   const [predator, setPredator] = useState(null);
   const [query, setQuery] = useState('');
@@ -46,7 +48,9 @@ export default function RankedLeaderboard() {
 
   const pcPred = predator?.RP?.PC;
   const topRP = players[0]?.rp || 0;
-  const lastRP = players[players.length - 1]?.rp || 0;
+  const lastPlayer = players.length ? players.reduce((max, p) => (p.rank > max.rank ? p : max), players[0]) : null;
+  const lastRP = lastPlayer?.rp || 0;
+  const lastRank = lastPlayer?.rank || players.length;
   const avgRP = players.length ? Math.round(players.reduce((s, p) => s + p.rp, 0) / players.length) : 0;
 
   return (
@@ -100,7 +104,13 @@ export default function RankedLeaderboard() {
                   <img src={rankIcon} alt={rankLabel} title={rankLabel} className="h-8 w-8 object-contain" />
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className={`font-bold truncate text-sm ${player.name === 'NONE' ? 'text-zinc-500' : player.rank === 1 ? 'text-red-500' : player.rank === 2 ? 'text-amber-400' : player.rank === 3 ? 'text-purple-400' : 'text-white'}`}>{player.name}</span>
+                      <button
+                        onClick={() => navigate(`/stats?q=${encodeURIComponent(player.uid)}`)}
+                        className={`font-bold truncate text-sm hover:underline cursor-pointer bg-transparent border-none p-0 ${player.name === 'NONE' ? 'text-zinc-500' : player.rank === 1 ? 'text-red-500' : player.rank === 2 ? 'text-amber-400' : player.rank === 3 ? 'text-purple-400' : 'text-white'}`}
+                        title="点击查看战绩详情"
+                      >
+                        {player.name}
+                      </button>
                       {player.country && <img src={`https://flagcdn.com/w40/${player.country.toLowerCase()}.png`} alt={player.country} className="h-3 w-auto shrink-0" title={player.country} />}
                       {player.links.twitter && (
                         <a href={player.links.twitter} target="_blank" rel="noreferrer" className="text-sky-300 hover:text-sky-200 shrink-0"><ExternalLink size={12} /></a>
@@ -182,7 +192,7 @@ export default function RankedLeaderboard() {
               <span className="text-white font-display text-lg">{topRP.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-baseline">
-              <span className="text-xs text-zinc-500">#{players.length} 最低分</span>
+              <span className="text-xs text-zinc-500">#{lastRank} 最低分</span>
               <span className="text-white font-display text-lg">{lastRP.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-baseline">
@@ -190,7 +200,7 @@ export default function RankedLeaderboard() {
               <span className="text-white font-display text-lg">{avgRP.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-baseline">
-              <span className="text-xs text-zinc-500">分差 (#1 vs #{players.length})</span>
+              <span className="text-xs text-zinc-500">分差 (#1 vs #{lastRank})</span>
               <span className="text-amber-300 font-display text-lg">{(topRP - lastRP).toLocaleString()}</span>
             </div>
           </div>
