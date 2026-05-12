@@ -86,7 +86,7 @@ export default function RankedLeaderboard() {
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
                       <span className="font-bold text-white truncate text-sm">{player.name}</span>
-                      {player.country && <span className="text-[10px] px-1 py-0.5 bg-white/10 text-zinc-300 leading-none">{player.country}</span>}
+                      {player.country && <img src={`https://flagcdn.com/w20/${player.country.toLowerCase()}.png`} alt={player.country} className="h-3.5 shrink-0" title={player.country} />}
                       {player.links.twitter && (
                         <a href={player.links.twitter} target="_blank" rel="noreferrer" className="text-sky-300 hover:text-sky-200 shrink-0"><ExternalLink size={12} /></a>
                       )}
