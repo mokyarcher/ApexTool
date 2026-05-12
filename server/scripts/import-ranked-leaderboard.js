@@ -58,7 +58,7 @@ const players = rows.map((row, index) => {
   const playerCell = cells[2] || '';
   const rpCell = cells[3] || '';
   const uid = firstMatch(playerCell, /profile\/uid\/[^/]+\/([0-9]+)/i) || firstMatch(playerCell, /load(?:Sum|Perf)\(&#39;([0-9]+)&#39;\)/i) || `unknown-${index}`;
-  const name = cleanText(firstMatch(playerCell, /<a[^>]*profile\/uid[^>]*>([\s\S]*?)<\/a>/i)) || '- Hidden -';
+  const name = cleanText(firstMatch(playerCell, /<a[^>]*profile\/uid[^>]*>([\s\S]*?)<\/a>/i)) || 'NONE';
   const rank = toNumber(firstMatch(rankCell, /<span[^>]*font-size:\s*25px[^>]*>([\s\S]*?)<\/span>/i)) || index + 1;
   const rp = toNumber(firstMatch(rpCell, /<span[^>]*font-size:\s*20px[^>]*>([\s\S]*?)<\/span>/i));
   const changeRaw = cleanText(firstMatch(rpCell, /<p[\s\S]*?<\/p>/i));
