@@ -1,0 +1,12 @@
+{
+  "name": "apex-ranked-leaderboard-updater",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "save": "node save-leaderboard.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  }
+}

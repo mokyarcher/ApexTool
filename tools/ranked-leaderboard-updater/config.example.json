@@ -1,0 +1,10 @@
+{
+  "url": "https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC",
+  "localHtml": "leaderboard.html",
+  "serverUser": "root",
+  "serverHost": "YOUR_SERVER_IP",
+  "serverPort": 22,
+  "remoteProjectPath": "/opt/projects/ApexTool",
+  "remoteHtmlPath": "/opt/projects/ApexTool/leaderboard.html",
+  "autoPublish": true
+}
