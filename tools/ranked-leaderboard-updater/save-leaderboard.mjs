@@ -32,13 +32,32 @@ await page.goto(config.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
 
 try {
   await page.waitForSelector('#liveTable tbody tr', { timeout: 300000 });
-  console.log('Leaderboard table detected! Saving HTML...');
+  console.log('Leaderboard table detected!');
 } catch {
   console.warn('Timed out waiting for leaderboard table. Saving current HTML anyway.');
 }
 
-// Wait a moment for any remaining data to render
-await new Promise((r) => setTimeout(r, 2000));
+// Expand DataTable to show ALL rows instead of just 50
+console.log('Expanding table to show all rows...');
+const rowCount = await page.evaluate(() => {
+  try {
+    const table = $('#liveTable').DataTable();
+    const total = table.rows().count();
+    table.page.len(total).draw();
+    return total;
+  } catch (e) {
+    return -1;
+  }
+});
+
+if (rowCount > 0) {
+  console.log(`Table expanded: ${rowCount} total rows`);
+} else {
+  console.warn('Could not expand table. Saving current page only.');
+}
+
+// Wait for DOM to update after expanding
+await new Promise((r) => setTimeout(r, 3000));
 
 const html = await page.content();
 fs.writeFileSync(htmlPath, html, 'utf8');
