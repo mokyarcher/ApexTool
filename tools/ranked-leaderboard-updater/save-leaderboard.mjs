@@ -2,8 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { chromium } from 'playwright';
-import readline from 'readline/promises';
-import { stdin as input, stdout as output } from 'process';
 
 const toolDir = path.dirname(fileURLToPath(import.meta.url));
 const configPath = path.join(toolDir, 'config.json');
@@ -16,8 +14,6 @@ if (!fs.existsSync(configPath)) {
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const htmlPath = path.resolve(toolDir, config.localHtml || 'leaderboard.html');
 const userDataDir = path.join(toolDir, '.browser-profile');
-const rl = readline.createInterface({ input, output });
-
 const browser = await chromium.launchPersistentContext(userDataDir, {
   headless: false,
   viewport: { width: 1400, height: 900 },
@@ -25,23 +21,27 @@ const browser = await chromium.launchPersistentContext(userDataDir, {
 });
 
 const page = browser.pages()[0] || await browser.newPage();
+
+console.log('');
+console.log('Opening leaderboard page...');
+console.log('If Cloudflare verification appears, complete it manually.');
+console.log('Script will auto-detect when the leaderboard table loads (up to 5 minutes).');
+console.log('');
+
 await page.goto(config.url, { waitUntil: 'domcontentloaded', timeout: 120000 });
 
-console.log('');
-console.log('Browser opened. If Cloudflare or captcha appears, complete it manually.');
-console.log('Wait until the leaderboard table is visible, then return here and press Enter.');
-console.log('');
-await rl.question('Press Enter after the leaderboard is fully loaded...');
-
 try {
-  await page.waitForSelector('#liveTable tbody tr', { timeout: 10000 });
+  await page.waitForSelector('#liveTable tbody tr', { timeout: 300000 });
+  console.log('Leaderboard table detected! Saving HTML...');
 } catch {
-  console.warn('Could not detect #liveTable rows. Saving current HTML anyway.');
+  console.warn('Timed out waiting for leaderboard table. Saving current HTML anyway.');
 }
+
+// Wait a moment for any remaining data to render
+await new Promise((r) => setTimeout(r, 2000));
 
 const html = await page.content();
 fs.writeFileSync(htmlPath, html, 'utf8');
 console.log(`Saved leaderboard HTML to: ${htmlPath}`);
 
 await browser.close();
-rl.close();
