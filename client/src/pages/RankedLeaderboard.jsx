@@ -35,7 +35,7 @@ export default function RankedLeaderboard() {
   }, [players, query]);
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  const predThreshold = predator?.RP?.PC?.val || Infinity;
+  const predLimit = predator?.RP?.PC?.foundRank > 0 ? predator.RP.PC.foundRank : 750;
 
   useEffect(() => {
     api.predator().then(setPredator).catch(() => {});
@@ -87,7 +87,7 @@ export default function RankedLeaderboard() {
           <div className="divide-y divide-white/[0.06]">
             {paged.map((player) => {
               const InputIcon = player.input === '手柄' ? Gamepad2 : Keyboard;
-              const isPred = player.rp >= predThreshold;
+              const isPred = player.rank <= predLimit;
               const rankIcon = isPred ? '/ranks/apex-predator.png' : '/ranks/master.png';
               const rankLabel = isPred ? 'Apex Predator' : 'Master';
               return (
