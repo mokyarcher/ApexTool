@@ -12,6 +12,7 @@ import patchNotesRouter from './routes/patchNotes.js';
 import authRouter from './routes/auth.js';
 import aiRouter from './routes/ai.js';
 import rankedLeaderboardRouter from './routes/rankedLeaderboard.js';
+import predatorRouter from './routes/predator.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -34,6 +35,7 @@ app.use('/api/patch-notes', patchNotesRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/ai', aiRouter);
 app.use('/api/ranked-leaderboard', rankedLeaderboardRouter);
+app.use('/api/predator', predatorRouter);
 
 app.use((err, _req, res, _next) => {
   console.error(err);

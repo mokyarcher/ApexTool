@@ -1,0 +1,76 @@
+document.addEventListener("DOMContentLoaded", function() {
+    bindPlatforms()
+    bindForms()
+})
+
+const toProfile = (user, platform) => {
+    if(window.location.href !== "https://apexlegendsstatus.com/searchBySpectatorID") {
+        if (user != null && user != "" && platform != null && platform != "") {
+            trackProfileSearch(window.location.pathname)
+
+            if (window.location.href === "https://apexlegendsstatus.com/account/claim" || window.location.href === "https://www.apexlegendsstatus.com/account/claim") {
+                window.location.href = `/account/claim&platform=${platform}&name=${user}`
+            } else {
+
+                if(platform === "X1" || true){ //Temp bypass
+                    user = user.replace(/#/g, "-");
+                }
+
+                window.location.href = `/profile/${platform}/${user}`
+            }
+        }
+    }else{
+        window.location.href = `/specIDConvert?sid=${user}`
+    }
+}
+
+function bindPlatforms() {
+    const platforms = document.querySelectorAll(".platform__icon")
+
+    platforms.forEach(platform => platform.removeEventListener("click", setPlatform))
+    platforms.forEach(platform => platform.addEventListener("click", setPlatform))
+}
+
+function bindForms() {
+    const profileForms = document.querySelectorAll(".player-form")
+
+    profileForms.forEach(profileForm => profileForm.removeEventListener("submit", setForm))
+    profileForms.forEach(profileForm => profileForm.addEventListener("submit", setForm))
+}
+
+function setForm(event) {
+    event.preventDefault()
+
+    const playerName = this.querySelector("#playerName").value
+
+    //Check if dataset.platform is set
+    try{
+
+        const playerPlatform = this.querySelector(".platform__icon.active").dataset.platform
+        toProfile(playerName, playerPlatform)
+
+    } catch (e) {
+
+        console.log("No platform selected")
+        toProfile(playerName, "UNSET")
+
+    }
+}
+
+function setPlatform(event) {
+    event.preventDefault()
+
+    const parent = this.closest("form")
+    const currentActive = parent.querySelector(".platform__icon.active")
+
+    currentActive.classList.remove("active")
+    this.classList.add("active")
+}
+
+function trackProfileSearch(label) {
+    if (typeof gtag !== "function") return
+
+    gtag("event", "Profile Search", {
+        "event_category" : label
+    })
+}

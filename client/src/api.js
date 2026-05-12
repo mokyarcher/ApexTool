@@ -46,6 +46,7 @@ export const api = {
   weapons: () => req('/encyclopedia/weapons'),
   patchNotes: () => req('/patch-notes'),
   rankedLeaderboard: () => req('/ranked-leaderboard'),
+  predator: () => req('/predator'),
 
   // Auth
   register: (data) => authReq('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
