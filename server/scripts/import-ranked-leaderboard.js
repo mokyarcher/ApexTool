@@ -48,6 +48,18 @@ if (!fs.existsSync(inputFile)) {
   process.exit(1);
 }
 
+// Load previous data for comparison
+let prevMap = {};
+if (fs.existsSync(outputFile)) {
+  try {
+    const prev = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+    for (const p of prev.players || []) {
+      prevMap[p.uid] = { rp: p.rp, rank: p.rank };
+    }
+    console.log(`Loaded ${Object.keys(prevMap).length} previous player records for comparison`);
+  } catch { /* ignore corrupt file */ }
+}
+
 const html = stripGoogleTranslate(fs.readFileSync(inputFile, 'utf8'));
 const tbody = firstMatch(html, /<tbody[^>]*>([\s\S]*?)<\/tbody>/i);
 const rows = [...tbody.matchAll(/<tr[\s\S]*?<\/tr>/gi)].map((match) => match[0]);
@@ -85,6 +97,18 @@ const players = rows.map((row, index) => {
     links: { twitch, twitter },
   };
 }).filter((player) => player.rp > 0);
+
+// Calculate changes vs previous data
+for (const p of players) {
+  const prev = prevMap[p.uid];
+  if (prev) {
+    p.rpChange = p.rp - prev.rp;
+    p.rankChange = prev.rank - p.rank; // positive = moved up
+  } else {
+    p.rpChange = 0;
+    p.rankChange = 0;
+  }
+}
 
 const payload = {
   title: 'Apex 实时排位排行榜（BR/PC）',
