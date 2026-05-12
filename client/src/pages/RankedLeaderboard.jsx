@@ -85,6 +85,7 @@ export default function RankedLeaderboard() {
                   <div className={`font-display text-xl ${rankColor(player.rank)}`}>#{player.rank}</div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
+                      <img src="/ranks/apex-predator.png" alt="Apex Predator" className="h-5 w-5 shrink-0 object-contain" />
                       <span className="font-bold text-white truncate text-sm">{player.name}</span>
                       {player.country && <img src={`https://flagcdn.com/w40/${player.country.toLowerCase()}.png`} alt={player.country} className="h-3 w-auto shrink-0" title={player.country} />}
                       {player.links.twitter && (
