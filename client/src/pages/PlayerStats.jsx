@@ -81,6 +81,14 @@ const LEGEND_CN = {
 };
 function tLegend(name) { return LEGEND_CN[name] || name; }
 
+const LOCAL_LEGEND_ICON = {
+  Alter: '/legends/alter.png',
+  Axle: '/legends/axle.png',
+};
+function legendIcon(name, imgAssets) {
+  return LOCAL_LEGEND_ICON[name] || imgAssets?.icon;
+}
+
 function tStat(name) {
   if (!name) return name;
   if (STAT_CN[name]) return STAT_CN[name];
@@ -158,6 +166,7 @@ function LegendRow({ name, data, imgAssets, gameInfo }) {
   const [open, setOpen] = useState(false);
   const trackers = data || [];
   if (trackers.length === 0 && !gameInfo) return null;
+  const icon = legendIcon(name, imgAssets);
 
   return (
     <div className="border border-white/5 bg-zinc-950/40 overflow-hidden">
@@ -166,9 +175,9 @@ function LegendRow({ name, data, imgAssets, gameInfo }) {
         onClick={() => setOpen(!open)}
       >
         <div className="w-14 h-14 shrink-0 bg-zinc-800/60 overflow-hidden flex items-center justify-center">
-          {imgAssets?.icon ? (
+          {icon ? (
             <img
-              src={imgAssets.icon}
+              src={icon}
               alt={name}
               className="w-full h-full object-cover object-top"
               onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.querySelector('.legend-fallback')?.classList.remove('hidden'); }}
@@ -177,7 +186,7 @@ function LegendRow({ name, data, imgAssets, gameInfo }) {
           <img
             src="/apex-logo.png"
             alt=""
-            className={`legend-fallback w-8 h-8 object-contain ${imgAssets?.icon ? 'hidden' : ''}`}
+            className={`legend-fallback w-8 h-8 object-contain ${icon ? 'hidden' : ''}`}
           />
         </div>
         <div className="flex-1 min-w-0">
