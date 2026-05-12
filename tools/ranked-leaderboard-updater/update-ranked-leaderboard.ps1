@@ -66,7 +66,7 @@ try {
 
   $remoteProjectPath = $config.remoteProjectPath
   $remoteHtmlPath = $config.remoteHtmlPath
-  $remoteCommand = "cd $remoteProjectPath && node server/scripts/import-ranked-leaderboard.js $remoteHtmlPath && npm --prefix client run build && git add server/data/ranked-leaderboard.json && (git commit -m 'chore: update ranked leaderboard data' || true) && git push origin main && pm2 restart apex-server --update-env"
+  $remoteCommand = "cd $remoteProjectPath && node server/scripts/import-ranked-leaderboard.js $remoteHtmlPath && npm --prefix client run build && git add server/data/ranked-leaderboard.json && (git commit -m 'chore: update ranked leaderboard data' || true) && (git pull --rebase origin main || true) && (git push origin main || true) && pm2 restart apex-server --update-env"
 
   Write-Host "Importing and publishing on server..." -ForegroundColor Cyan
   ssh -p $serverPort $server $remoteCommand
