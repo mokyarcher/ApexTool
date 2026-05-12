@@ -2,14 +2,14 @@
   "title": "Apex 实时排位排行榜（BR/PC）",
   "source": "Apex Legends Status",
   "sourceUrl": "https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC",
-  "importedAt": "2026-05-11T11:58:35.300Z",
+  "importedAt": "2026-05-12T01:23:03.414Z",
   "count": 50,
   "players": [
     {
       "rank": 1,
       "uid": "1005716934920",
       "name": "Twitch.tv/EnemyApex",
-      "rp": 42138,
+      "rp": 43746,
       "change": 0,
       "level": 0,
       "online": false,
@@ -17,17 +17,17 @@
       "country": "",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=enemyapex",
+        "twitch": "/core/out?type=twitch&id=enemyapex",
         "twitter": "https://twitter.com/Enemy_APEX"
       }
     },
     {
       "rank": 2,
       "uid": "1009382942244",
-      "name": "罗西",
-      "rp": 38187,
+      "name": "Rosey",
+      "rp": 39488,
       "change": 0,
-      "level": 4122,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -39,60 +39,60 @@
     },
     {
       "rank": 3,
+      "uid": "1010264518925",
+      "name": "toukettv",
+      "rp": 33006,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "NO",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=toukettv",
+        "twitter": "https://twitter.com/Touke_Olli"
+      }
+    },
+    {
+      "rank": 4,
       "uid": "1007058010095",
       "name": "PXL Bzbblegum",
-      "rp": 29408,
+      "rp": 32892,
       "change": 0,
-      "level": 4288,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "DE",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=bubblegum",
+        "twitch": "/core/out?type=twitch&id=bubblegum",
         "twitter": "https://twitter.com/bzbblegums"
       }
     },
     {
-      "rank": 4,
-      "uid": "1010264518925",
-      "name": "toukettv",
-      "rp": 29317,
+      "rank": 5,
+      "uid": "1008519177823",
+      "name": "tkaimz",
+      "rp": 28369,
       "change": 0,
-      "level": 3022,
+      "level": 0,
       "online": true,
       "statusText": "",
-      "country": "NO",
-      "input": "键鼠",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=toukettv",
-        "twitter": "https://twitter.com/Touke_Olli"
-      }
-    },
-    {
-      "rank": 5,
-      "uid": "1007615832298",
-      "name": "xTwrTx",
-      "rp": 27443,
-      "change": 0,
-      "level": 2654,
-      "online": false,
-      "statusText": "",
-      "country": "",
+      "country": "DK",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=wqtagashi_",
-        "twitter": "https://twitter.com/wqtagashi_"
+        "twitch": "/core/out?type=twitch&id=Tkaimz",
+        "twitter": ""
       }
     },
     {
       "rank": 6,
-      "uid": "1012782150508",
-      "name": "FL izzxxv",
-      "rp": 27017,
+      "uid": "1012228672676",
+      "name": "sato_kohai",
+      "rp": 28187,
       "change": 0,
-      "level": 3070,
-      "online": true,
+      "level": 0,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -103,43 +103,43 @@
     },
     {
       "rank": 7,
-      "uid": "1008519177823",
-      "name": "tkaimz",
-      "rp": 26932,
-      "change": 0,
-      "level": 3031,
-      "online": false,
-      "statusText": "",
-      "country": "DK",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=Tkaimz",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 8,
       "uid": "1008819110967",
-      "name": "莲花涅苏",
-      "rp": 25828,
+      "name": "LotusNessu",
+      "rp": 27839,
       "change": 0,
-      "level": 1104,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "FI",
       "input": "键鼠",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=lootusnessu",
+        "twitch": "/core/out?type=twitch&id=lootusnessu",
         "twitter": ""
       }
     },
     {
-      "rank": 9,
-      "uid": "1012228672676",
-      "name": "佐藤小海",
-      "rp": 25095,
+      "rank": 8,
+      "uid": "1007615832298",
+      "name": "xTwrTx",
+      "rp": 27443,
       "change": 0,
-      "level": 2263,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=wqtagashi_",
+        "twitter": "https://twitter.com/wqtagashi_"
+      }
+    },
+    {
+      "rank": 9,
+      "uid": "1018168155489",
+      "name": "SomnusRequiem",
+      "rp": 27239,
+      "change": 0,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -153,55 +153,23 @@
       "rank": 10,
       "uid": "1024137146815",
       "name": "twitch.tv/xLily_s",
-      "rp": 24145,
+      "rp": 27023,
       "change": 0,
-      "level": 613,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "JP",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=@xlily_s",
+        "twitch": "/core/out?type=twitch&id=@xlily_s",
         "twitter": "https://twitter.com/@xLilySylph"
       }
     },
     {
       "rank": 11,
-      "uid": "1013252367278",
-      "name": "新时代即将到来",
-      "rp": 24113,
-      "change": 0,
-      "level": 3629,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=mgclutch",
-        "twitter": "https://twitter.com/MgClutchh"
-      }
-    },
-    {
-      "rank": 12,
-      "uid": "1008105896112",
-      "name": "尼普·库列夫",
-      "rp": 24069,
-      "change": 0,
-      "level": 1440,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 13,
-      "uid": "1018168155489",
-      "name": "- 空名称 -",
-      "rp": 23981,
+      "uid": "1012782150508",
+      "name": "FL izzxxv",
+      "rp": 27017,
       "change": 0,
       "level": 0,
       "online": false,
@@ -214,10 +182,26 @@
       }
     },
     {
-      "rank": 14,
+      "rank": 12,
+      "uid": "1013252367278",
+      "name": "VC MgClutch",
+      "rp": 26322,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=mgclutch",
+        "twitter": "https://twitter.com/MgClutchh"
+      }
+    },
+    {
+      "rank": 13,
       "uid": "1013100789398",
       "name": "VP ozzzus7",
-      "rp": 23316,
+      "rp": 25590,
       "change": 0,
       "level": 0,
       "online": false,
@@ -225,12 +209,252 @@
       "country": "RU",
       "input": "键鼠",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=7ozzzus",
+        "twitch": "/core/out?type=twitch&id=7ozzzus",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 14,
+      "uid": "1006108115780",
+      "name": "riiaassxx ttv",
+      "rp": 25308,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "CH",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
         "twitter": ""
       }
     },
     {
       "rank": 15,
+      "uid": "1008820215323",
+      "name": "JumboMhaTuaYai",
+      "rp": 24918,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 16,
+      "uid": "1013265973206",
+      "name": "Twitch.tv/vReyzh",
+      "rp": 24271,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "GB",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=vReyzh",
+        "twitter": "https://twitter.com/vReyzh"
+      }
+    },
+    {
+      "rank": 17,
+      "uid": "1000727348887",
+      "name": "twitch.tv/enviapex",
+      "rp": 24222,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "GB",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 18,
+      "uid": "1008105896112",
+      "name": "NIP KUREV",
+      "rp": 24069,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 19,
+      "uid": "1009853962461",
+      "name": "RLZ smb",
+      "rp": 24065,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=simuboo",
+        "twitter": "https://twitter.com/simubo"
+      }
+    },
+    {
+      "rank": 20,
+      "uid": "1008873162246",
+      "name": "Radiant Transfer",
+      "rp": 23792,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 21,
+      "uid": "1000050911301",
+      "name": "tttcheekyttt",
+      "rp": 23770,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=tttcheekyttt",
+        "twitter": "https://twitter.com/tttcheekyttt"
+      }
+    },
+    {
+      "rank": 22,
+      "uid": "1003402742778",
+      "name": "NODE_Kuro",
+      "rp": 23652,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "DE",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=kurokeyy",
+        "twitter": "https://twitter.com/k3xry"
+      }
+    },
+    {
+      "rank": 23,
+      "uid": "1008971030451",
+      "name": "HACH",
+      "rp": 23593,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 24,
+      "uid": "1013535542725",
+      "name": "SRL Leah",
+      "rp": 23444,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 25,
+      "uid": "1012309167322",
+      "name": "VC ChaoticMuch",
+      "rp": 23387,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 26,
+      "uid": "1000474192304",
+      "name": "GEN Z1CKKY",
+      "rp": 23335,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "TH",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=z1ckky",
+        "twitter": "https://twitter.com/Z1CKKY"
+      }
+    },
+    {
+      "rank": 27,
+      "uid": "1006623034196",
+      "name": "EMAN0N LOW",
+      "rp": 23307,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 28,
+      "uid": "1004487634023",
+      "name": "ethanbandz",
+      "rp": 23015,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 29,
       "uid": "1006714084273",
       "name": "TL PanicApex",
       "rp": 22992,
@@ -241,12 +465,12 @@
       "country": "US",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=PanicApex",
+        "twitch": "/core/out?type=twitch&id=PanicApex",
         "twitter": "https://twitter.com/PanicApex"
       }
     },
     {
-      "rank": 16,
+      "rank": 30,
       "uid": "1010451663780",
       "name": "CHN J",
       "rp": 22908,
@@ -262,10 +486,10 @@
       }
     },
     {
-      "rank": 17,
-      "uid": "1008971030451",
-      "name": "HACH",
-      "rp": 22585,
+      "rank": 31,
+      "uid": "1008877725281",
+      "name": "CR Ras",
+      "rp": 22741,
       "change": 0,
       "level": 0,
       "online": false,
@@ -273,12 +497,60 @@
       "country": "",
       "input": "键鼠",
       "links": {
-        "twitch": "",
+        "twitch": "/core/out?type=twitch&id=Ras_sama",
+        "twitter": "https://twitter.com/Ras9915"
+      }
+    },
+    {
+      "rank": 32,
+      "uid": "1007848623124",
+      "name": "ORC Noelsang",
+      "rp": 22692,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "TH",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=noelsang",
         "twitter": ""
       }
     },
     {
-      "rank": 18,
+      "rank": 33,
+      "uid": "1010635375686",
+      "name": "RC 4rufa",
+      "rp": 22680,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=4rufq",
+        "twitter": "https://twitter.com/4rufq"
+      }
+    },
+    {
+      "rank": 34,
+      "uid": "1003404537548",
+      "name": "RC 1tappy",
+      "rp": 22579,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=iseki_jp",
+        "twitter": "https://twitter.com/1TAPPYTHEWORLD"
+      }
+    },
+    {
+      "rank": 35,
       "uid": "2263189683",
       "name": "VO_FluentTTV",
       "rp": 22512,
@@ -289,47 +561,15 @@
       "country": "US",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=vo_fluent",
+        "twitch": "/core/out?type=twitch&id=vo_fluent",
         "twitter": "https://twitter.com/lfluent"
       }
     },
     {
-      "rank": 19,
-      "uid": "1003402742778",
-      "name": "NODE_Kuro",
-      "rp": 22408,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "DE",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=kurokeyy",
-        "twitter": "https://twitter.com/k3xry"
-      }
-    },
-    {
-      "rank": 20,
-      "uid": "1012309167322",
-      "name": "VC ChaoticMuch",
-      "rp": 22356,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 21,
-      "uid": "1008873162246",
-      "name": "NFX gavomk",
-      "rp": 22282,
+      "rank": 36,
+      "uid": "1007953014357",
+      "name": "ORC aflow",
+      "rp": 22328,
       "change": 0,
       "level": 0,
       "online": false,
@@ -337,28 +577,28 @@
       "country": "",
       "input": "键鼠",
       "links": {
+        "twitch": "/core/out?type=twitch&id=aflowwww",
+        "twitter": "https://twitter.com/aflowfn"
+      }
+    },
+    {
+      "rank": 37,
+      "uid": "1006434276843",
+      "name": "N1ght",
+      "rp": 22298,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "键鼠",
+      "links": {
         "twitch": "",
         "twitter": ""
       }
     },
     {
-      "rank": 22,
-      "uid": "1007848623124",
-      "name": "ORC Noelsang",
-      "rp": 22203,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "TH",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=noelsang",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 23,
+      "rank": 38,
       "uid": "1009008912024",
       "name": "Bolin1230",
       "rp": 22198,
@@ -374,39 +614,23 @@
       }
     },
     {
-      "rank": 24,
-      "uid": "1010635375686",
-      "name": "RC 4rufa",
-      "rp": 22105,
+      "rank": 39,
+      "uid": "1008770353782",
+      "name": "XetiQ",
+      "rp": 22046,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
-      "country": "JP",
+      "country": "US",
       "input": "手柄",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=4rufq",
-        "twitter": "https://twitter.com/4rufq"
+        "twitch": "/core/out?type=twitch&id=xetiqlol",
+        "twitter": "https://twitter.com/xetiq"
       }
     },
     {
-      "rank": 25,
-      "uid": "1013265973206",
-      "name": "Twitch.tv/vReyzh",
-      "rp": 22092,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "GB",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=vReyzh",
-        "twitter": "https://twitter.com/vReyzh"
-      }
-    },
-    {
-      "rank": 26,
+      "rank": 40,
       "uid": "1009120900882",
       "name": "DF_3Mz_o",
       "rp": 22027,
@@ -422,188 +646,12 @@
       }
     },
     {
-      "rank": 27,
-      "uid": "1000050911301",
-      "name": "tttcheekyttt",
-      "rp": 21952,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=tttcheekyttt",
-        "twitter": "https://twitter.com/tttcheekyttt"
-      }
-    },
-    {
-      "rank": 28,
-      "uid": "1008820215323",
-      "name": "JumboMhaTuaYai",
-      "rp": 21860,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 29,
-      "uid": "1009853962461",
-      "name": "RLZ smb",
-      "rp": 21764,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "JP",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=simuboo",
-        "twitter": "https://twitter.com/simubo"
-      }
-    },
-    {
-      "rank": 30,
-      "uid": "1007953014357",
-      "name": "ORC aflow",
-      "rp": 21674,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=aflowwww",
-        "twitter": "https://twitter.com/aflowfn"
-      }
-    },
-    {
-      "rank": 31,
-      "uid": "1004487634023",
-      "name": "ethanbandz",
-      "rp": 21613,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 32,
-      "uid": "1007677647640",
-      "name": "TL PROBABLY HAVE PACKET LOSS",
-      "rp": 21589,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=sikezz",
-        "twitter": "https://twitter.com/sSikezz"
-      }
-    },
-    {
-      "rank": 33,
-      "uid": "1006108115780",
-      "name": "riiaassxx ttv",
-      "rp": 21573,
-      "change": 0,
-      "level": 2389,
-      "online": false,
-      "statusText": "",
-      "country": "CH",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 34,
-      "uid": "1006623034196",
-      "name": "EMAN0N 低",
-      "rp": 21324,
-      "change": 0,
-      "level": 2283,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "手柄",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 35,
-      "uid": "1000474192304",
-      "name": "Z世代",
-      "rp": 21276,
-      "change": 0,
-      "level": 2072,
-      "online": false,
-      "statusText": "",
-      "country": "TH",
-      "input": "键鼠",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=z1ckky",
-        "twitter": "https://twitter.com/Z1CKKY"
-      }
-    },
-    {
-      "rank": 36,
-      "uid": "1010152055016",
-      "name": "利尔弗雷德森9",
-      "rp": 21253,
-      "change": 0,
-      "level": 3606,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 37,
+      "rank": 41,
       "uid": "1008936500071",
       "name": "Wesley_Pary",
-      "rp": 21128,
+      "rp": 21987,
       "change": 0,
-      "level": 1605,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 38,
-      "uid": "1010542465466",
-      "name": "苏比诺",
-      "rp": 21095,
-      "change": 0,
-      "level": 3805,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -611,63 +659,15 @@
       "links": {
         "twitch": "",
         "twitter": ""
-      }
-    },
-    {
-      "rank": 39,
-      "uid": "1015056557108",
-      "name": "多一学",
-      "rp": 21085,
-      "change": 0,
-      "level": 1939,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      }
-    },
-    {
-      "rank": 40,
-      "uid": "1007044685661",
-      "name": "发光的",
-      "rp": 21066,
-      "change": 0,
-      "level": 4295,
-      "online": false,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": "https://twitter.com/@Luminous0106"
-      }
-    },
-    {
-      "rank": 41,
-      "uid": "1008877725281",
-      "name": "CR Ras",
-      "rp": 20986,
-      "change": 0,
-      "level": 1202,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=Ras_sama",
-        "twitter": "https://twitter.com/Ras9915"
       }
     },
     {
       "rank": 42,
-      "uid": "1008961318819",
-      "name": "谜语 Acca",
-      "rp": 20986,
+      "uid": "1005060014122",
+      "name": "Alliance_Akku",
+      "rp": 21949,
       "change": 0,
-      "level": 1490,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -679,30 +679,30 @@
     },
     {
       "rank": 43,
-      "uid": "1006219537205",
-      "name": "谜题梅尔斯特拉",
-      "rp": 20927,
+      "uid": "1009258215099",
+      "name": "4rmy_o",
+      "rp": 21759,
       "change": 0,
-      "level": 1971,
-      "online": true,
+      "level": 0,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=meltstera",
-        "twitter": "https://twitter.com/Meltstera"
+        "twitch": "",
+        "twitter": ""
       }
     },
     {
       "rank": 44,
-      "uid": "1000727348887",
-      "name": "求主垂怜",
-      "rp": 20889,
+      "uid": "1010542465466",
+      "name": "subpino",
+      "rp": 21661,
       "change": 0,
-      "level": 2741,
+      "level": 0,
       "online": false,
       "statusText": "",
-      "country": "GB",
+      "country": "",
       "input": "键鼠",
       "links": {
         "twitch": "",
@@ -711,27 +711,27 @@
     },
     {
       "rank": 45,
-      "uid": "1013535542725",
-      "name": "SRL Leah",
-      "rp": 20861,
+      "uid": "1007677647640",
+      "name": "TL_Sikezz",
+      "rp": 21635,
       "change": 0,
-      "level": 1367,
+      "level": 0,
       "online": true,
       "statusText": "",
       "country": "",
-      "input": "键鼠",
+      "input": "手柄",
       "links": {
-        "twitch": "",
-        "twitter": ""
+        "twitch": "/core/out?type=twitch&id=sikezz",
+        "twitter": "https://twitter.com/sSikezz"
       }
     },
     {
       "rank": 46,
-      "uid": "1001969782844",
-      "name": "KentoBoss | YoutubeTikTok",
-      "rp": 20855,
+      "uid": "1009886005187",
+      "name": "xSorrai",
+      "rp": 21440,
       "change": 0,
-      "level": 5260,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -743,66 +743,66 @@
     },
     {
       "rank": 47,
-      "uid": "1010607808234",
-      "name": "StryderEz",
-      "rp": 20841,
+      "uid": "1011009983794",
+      "name": "st_nikop",
+      "rp": 21436,
       "change": 0,
-      "level": 3204,
-      "online": false,
-      "statusText": "",
-      "country": "MX",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=stryderez",
-        "twitter": "https://twitter.com/stryderez"
-      }
-    },
-    {
-      "rank": 48,
-      "uid": "1000499194745",
-      "name": "克莱恩",
-      "rp": 20829,
-      "change": 0,
-      "level": 1404,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=ClaneSZN",
-        "twitter": "https://twitter.com/ClaneSZN"
-      }
-    },
-    {
-      "rank": 49,
-      "uid": "1003404537548",
-      "name": "RC 1tappy",
-      "rp": 20780,
-      "change": 0,
-      "level": 3778,
+      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
       "links": {
-        "twitch": "https://apexlegendsstatus.com/core/out?type=twitch&id=iseki_jp",
-        "twitter": "https://twitter.com/1TAPPYTHEWORLD"
+        "twitch": "",
+        "twitter": ""
       }
     },
     {
-      "rank": 50,
-      "uid": "1006434276843",
-      "name": "LFT_N1ght",
-      "rp": 20735,
+      "rank": 48,
+      "uid": "1008679305032",
+      "name": "TTXTR",
+      "rp": 21376,
       "change": 0,
-      "level": 2193,
+      "level": 0,
       "online": true,
       "statusText": "",
-      "country": "JP",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=ttxtr",
+        "twitter": "https://twitter.com/XTTXTR"
+      }
+    },
+    {
+      "rank": 49,
+      "uid": "1009099730555",
+      "name": "ELITE iHenchman",
+      "rp": 21374,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
       "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
+      }
+    },
+    {
+      "rank": 50,
+      "uid": "1006219537205",
+      "name": "Riddle Meltstera",
+      "rp": 21336,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=meltstera",
+        "twitter": "https://twitter.com/Meltstera"
       }
     }
   ]
