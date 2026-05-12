@@ -2,8 +2,8 @@
   "title": "Apex 实时排位排行榜（BR/PC）",
   "source": "Apex Legends Status",
   "sourceUrl": "https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC",
-  "importedAt": "2026-05-12T07:12:04.547Z",
-  "count": 715,
+  "importedAt": "2026-05-12T07:13:25.565Z",
+  "count": 716,
   "players": [
     {
       "rank": 1,
@@ -45,7 +45,7 @@
       "rank": 3,
       "uid": "1010264518925",
       "name": "toukettv",
-      "rp": 33354,
+      "rp": 33703,
       "change": 0,
       "level": 0,
       "online": true,
@@ -56,7 +56,7 @@
         "twitch": "/core/out?type=twitch&id=toukettv",
         "twitter": "https://twitter.com/Touke_Olli"
       },
-      "rpChange": 0,
+      "rpChange": 349,
       "rankChange": 0
     },
     {
@@ -84,7 +84,7 @@
       "rp": 29217,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "DK",
       "input": "手柄",
@@ -138,7 +138,7 @@
       "rp": 28228,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -349,9 +349,27 @@
     },
     {
       "rank": 20,
+      "uid": "1010635375686",
+      "name": "RC 4rufa",
+      "rp": 23950,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=4rufq",
+        "twitter": "https://twitter.com/4rufq"
+      },
+      "rpChange": 0,
+      "rankChange": 1
+    },
+    {
+      "rank": 21,
       "uid": "1009853962461",
       "name": "RLZ smb",
-      "rp": 23962,
+      "rp": 23885,
       "change": 0,
       "level": 0,
       "online": true,
@@ -362,26 +380,8 @@
         "twitch": "/core/out?type=twitch&id=simuboo",
         "twitter": "https://twitter.com/simubo"
       },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 21,
-      "uid": "1010635375686",
-      "name": "RC 4rufa",
-      "rp": 23950,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "JP",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=4rufq",
-        "twitter": "https://twitter.com/4rufq"
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -77,
+      "rankChange": -1
     },
     {
       "rank": 22,
@@ -588,7 +588,7 @@
       "rp": 23002,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -603,10 +603,10 @@
       "rank": 34,
       "uid": "1006434276843",
       "name": "N1ght",
-      "rp": 22923,
+      "rp": 22986,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "JP",
       "input": "键鼠",
@@ -614,7 +614,7 @@
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
+      "rpChange": 63,
       "rankChange": 0
     },
     {
@@ -799,24 +799,6 @@
     },
     {
       "rank": 45,
-      "uid": "1009258215099",
-      "name": "4rmy_o",
-      "rp": 21665,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 46,
       "uid": "1010542465466",
       "name": "subpino",
       "rp": 21661,
@@ -831,10 +813,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 47,
+      "rank": 46,
       "uid": "1015056557108",
       "name": "duoyixue",
       "rp": 21656,
@@ -849,16 +831,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 48,
-      "uid": "1009886005187",
-      "name": "xSorrai",
-      "rp": 21376,
+      "rank": 47,
+      "uid": "1009258215099",
+      "name": "4rmy_o",
+      "rp": 21584,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -866,11 +848,47 @@
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -81,
+      "rankChange": -2
+    },
+    {
+      "rank": 48,
+      "uid": "1008245048723",
+      "name": "AresWR",
+      "rp": 21584,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "US",
+      "input": "手柄",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 316,
+      "rankChange": 6
     },
     {
       "rank": 49,
+      "uid": "1009886005187",
+      "name": "xSorrai",
+      "rp": 21437,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 61,
+      "rankChange": -1
+    },
+    {
+      "rank": 50,
       "uid": "1010607808234",
       "name": "StryderEz",
       "rp": 21368,
@@ -885,10 +903,10 @@
         "twitter": "https://twitter.com/stryderez"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 50,
+      "rank": 51,
       "uid": "1003510957878",
       "name": "@Teddy_VW",
       "rp": 21342,
@@ -903,10 +921,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 51,
+      "rank": 52,
       "uid": "1006219537205",
       "name": "Riddle Meltstera",
       "rp": 21336,
@@ -921,25 +939,7 @@
         "twitter": "https://twitter.com/Meltstera"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 52,
-      "uid": "1011009983794",
-      "name": "st_nikop",
-      "rp": 21315,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 53,
@@ -961,24 +961,6 @@
     },
     {
       "rank": 54,
-      "uid": "1008245048723",
-      "name": "AresWR",
-      "rp": 21268,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 55,
       "uid": "1010152055016",
       "name": "Lilfredson9",
       "rp": 21253,
@@ -993,7 +975,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 55,
+      "uid": "1011009983794",
+      "name": "st_nikop",
+      "rp": 21238,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -77,
+      "rankChange": -3
     },
     {
       "rank": 56,
@@ -1087,6 +1087,24 @@
     },
     {
       "rank": 61,
+      "uid": "1009911822751",
+      "name": "炅龟",
+      "rp": 20831,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 175,
+      "rankChange": 4
+    },
+    {
+      "rank": 62,
       "uid": "1010608223121",
       "name": "ELITE KIND4",
       "rp": 20818,
@@ -1101,10 +1119,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 62,
+      "rank": 63,
       "uid": "1001969782844",
       "name": "KentoBoss | YoutubeTikTok",
       "rp": 20733,
@@ -1119,16 +1137,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 63,
+      "rank": 64,
       "uid": "1009067354649",
       "name": "Gsnkryu",
       "rp": 20720,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "手柄",
@@ -1137,10 +1155,10 @@
         "twitter": "https://twitter.com/Gsnkryu"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 64,
+      "rank": 65,
       "uid": "1000499194745",
       "name": "Clane",
       "rp": 20670,
@@ -1155,25 +1173,7 @@
         "twitter": "https://twitter.com/ClaneSZN"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 65,
-      "uid": "1009911822751",
-      "name": "炅龟",
-      "rp": 20656,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 66,
@@ -1236,7 +1236,7 @@
       "rp": 20583,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -1488,7 +1488,7 @@
       "rp": 19960,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "JP",
       "input": "键鼠",
@@ -1506,7 +1506,7 @@
       "rp": 19918,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -1542,7 +1542,7 @@
       "rp": 19800,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -1555,6 +1555,24 @@
     },
     {
       "rank": 87,
+      "uid": "1009119934631",
+      "name": "Zitro",
+      "rp": 19746,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "DE",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 29,
+      "rankChange": 1
+    },
+    {
+      "rank": 88,
       "uid": "1011038384612",
       "name": "Spongeetl",
       "rp": 19725,
@@ -1569,25 +1587,7 @@
         "twitter": "https://twitter.com/spongetl"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 88,
-      "uid": "1009119934631",
-      "name": "Zitro",
-      "rp": 19717,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "DE",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 89,
@@ -1650,7 +1650,7 @@
       "rp": 19639,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "US",
       "input": "手柄",
@@ -1681,6 +1681,24 @@
     },
     {
       "rank": 94,
+      "uid": "1007833665108",
+      "name": "A1ert3",
+      "rp": 19584,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 94,
+      "rankChange": 5
+    },
+    {
+      "rank": 95,
       "uid": "1009584772536",
       "name": "TIE_Pinotr",
       "rp": 19550,
@@ -1695,10 +1713,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 95,
+      "rank": 96,
       "uid": "1009312190917",
       "name": "kapp",
       "rp": 19549,
@@ -1713,10 +1731,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 96,
+      "rank": 97,
       "uid": "1012935701292",
       "name": "NMSS sacred",
       "rp": 19533,
@@ -1731,10 +1749,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 97,
+      "rank": 98,
       "uid": "1002654942758",
       "name": "NMSS Albralelie",
       "rp": 19519,
@@ -1749,10 +1767,10 @@
         "twitter": "https://twitter.com/TSM_Albralelie"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 98,
+      "rank": 99,
       "uid": "1009443855124",
       "name": "AJXNTHI",
       "rp": 19501,
@@ -1767,46 +1785,10 @@
         "twitter": "https://twitter.com/ajxnthi"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 99,
-      "uid": "1007833665108",
-      "name": "A1ert3",
-      "rp": 19490,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 100,
-      "uid": "1012677552858",
-      "name": "SBI_VOLzZ",
-      "rp": 19474,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 101,
       "uid": "1008935753684",
       "name": "E36 ILY",
       "rp": 19464,
@@ -1821,7 +1803,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 101,
+      "uid": "1012677552858",
+      "name": "SBI_VOLzZ",
+      "rp": 19429,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -45,
+      "rankChange": -1
     },
     {
       "rank": 102,
@@ -1830,7 +1830,7 @@
       "rp": 19409,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -1861,6 +1861,24 @@
     },
     {
       "rank": 104,
+      "uid": "1008569849017",
+      "name": "Glassssssssses",
+      "rp": 19331,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 94,
+      "rankChange": 6
+    },
+    {
+      "rank": 105,
       "uid": "1009267190571",
       "name": "W-L-A2",
       "rp": 19303,
@@ -1875,10 +1893,28 @@
         "twitter": "https://twitter.com/Walking___L"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 105,
+      "rank": 106,
+      "uid": "1010236157105",
+      "name": "Milkty2525omg",
+      "rp": 19302,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 113,
+      "rankChange": 8
+    },
+    {
+      "rank": 107,
       "uid": "1009457481311",
       "name": "bdtaniko",
       "rp": 19286,
@@ -1893,10 +1929,10 @@
         "twitter": "https://twitter.com/bdtanikoo"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 106,
+      "rank": 108,
       "uid": "2458185955",
       "name": "Oriolessss",
       "rp": 19266,
@@ -1911,10 +1947,10 @@
         "twitter": "https://twitter.com/Orioles_410"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 107,
+      "rank": 109,
       "uid": "1014401855942",
       "name": "kingkilla845",
       "rp": 19253,
@@ -1929,10 +1965,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 108,
+      "rank": 110,
       "uid": "1009054250021",
       "name": "krapouille",
       "rp": 19252,
@@ -1947,10 +1983,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 109,
+      "rank": 111,
       "uid": "1007297776538",
       "name": "MiraBoom",
       "rp": 19245,
@@ -1965,28 +2001,10 @@
         "twitter": "https://twitter.com/@MiraBom_fps"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 110,
-      "uid": "1008569849017",
-      "name": "Glassssssssses",
-      "rp": 19237,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 111,
+      "rank": 112,
       "uid": "1011722153087",
       "name": "neko",
       "rp": 19234,
@@ -2001,10 +2019,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 112,
+      "rank": 113,
       "uid": "1012896735155",
       "name": "7rvz",
       "rp": 19234,
@@ -2019,10 +2037,10 @@
         "twitter": "https://twitter.com/yrvz72"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 113,
+      "rank": 114,
       "uid": "1016174998344",
       "name": "Solus",
       "rp": 19233,
@@ -2037,25 +2055,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 114,
-      "uid": "1010236157105",
-      "name": "Milkty2525omg",
-      "rp": 19189,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 115,
@@ -2167,24 +2167,6 @@
     },
     {
       "rank": 121,
-      "uid": "1009314581266",
-      "name": "Juicyshmooves",
-      "rp": 19121,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=juicyshmooves",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 122,
       "uid": "1008474773110",
       "name": "KN_Kan0n",
       "rp": 19116,
@@ -2199,10 +2181,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 123,
+      "rank": 122,
       "uid": "1005911887174",
       "name": "GROW_Lible_Ace",
       "rp": 19104,
@@ -2217,10 +2199,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 124,
+      "rank": 123,
       "uid": "2853348913",
       "name": "Awons",
       "rp": 19093,
@@ -2235,10 +2217,10 @@
         "twitter": "https://twitter.com/Awons_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 125,
+      "rank": 124,
       "uid": "1009117910083",
       "name": "bokiiyu",
       "rp": 19052,
@@ -2253,10 +2235,10 @@
         "twitter": "https://twitter.com/bokiiyu_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 126,
+      "rank": 125,
       "uid": "1009243432782",
       "name": "LTX RIGHT",
       "rp": 19047,
@@ -2271,28 +2253,10 @@
         "twitter": "https://twitter.com/RightFearIess"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 127,
-      "uid": "1008729761283",
-      "name": "Flinzar",
-      "rp": 19041,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=Flinzar",
-        "twitter": "https://twitter.com/Flinzarr"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 128,
+      "rank": 126,
       "uid": "1006764665854",
       "name": "Elaine",
       "rp": 19033,
@@ -2307,10 +2271,28 @@
         "twitter": ""
       },
       "rpChange": 0,
+      "rankChange": 2
+    },
+    {
+      "rank": 127,
+      "uid": "1008729761283",
+      "name": "Flinzar",
+      "rp": 19020,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=Flinzar",
+        "twitter": "https://twitter.com/Flinzarr"
+      },
+      "rpChange": -21,
       "rankChange": 0
     },
     {
-      "rank": 129,
+      "rank": 128,
       "uid": "1024032754837",
       "name": "zAstring",
       "rp": 19012,
@@ -2325,10 +2307,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 130,
+      "rank": 129,
       "uid": "1015005948659",
       "name": "Riddle NefuDoll",
       "rp": 19003,
@@ -2343,10 +2325,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 131,
+      "rank": 130,
       "uid": "1007195165537",
       "name": "NODE Orbit",
       "rp": 18990,
@@ -2361,16 +2343,16 @@
         "twitter": "https://twitter.com/OrbitApex_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 132,
+      "rank": 131,
       "uid": "1007452210623",
       "name": "Tusimil1",
       "rp": 18966,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -2379,10 +2361,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 133,
+      "rank": 132,
       "uid": "1008346274438",
       "name": "SHIRAZ",
       "rp": 18961,
@@ -2397,10 +2379,10 @@
         "twitter": "https://twitter.com/@Xh1ra2"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 134,
+      "rank": 133,
       "uid": "1011592527864",
       "name": "xMendosan Youtube",
       "rp": 18946,
@@ -2415,7 +2397,25 @@
         "twitter": "https://twitter.com/xMendosan"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 134,
+      "uid": "1009314581266",
+      "name": "Juicyshmooves",
+      "rp": 18896,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=juicyshmooves",
+        "twitter": ""
+      },
+      "rpChange": -225,
+      "rankChange": -13
     },
     {
       "rank": 135,
@@ -2437,6 +2437,24 @@
     },
     {
       "rank": 136,
+      "uid": "1012899899833",
+      "name": "Aki",
+      "rp": 18865,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 103,
+      "rankChange": 5
+    },
+    {
+      "rank": 137,
       "uid": "1007951357329",
       "name": "torin",
       "rp": 18863,
@@ -2451,10 +2469,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 137,
+      "rank": 138,
       "uid": "1007187729691",
       "name": "ROC sauceror",
       "rp": 18835,
@@ -2469,10 +2487,10 @@
         "twitter": "https://twitter.com/saucerorr"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 138,
+      "rank": 139,
       "uid": "1003929807030",
       "name": "ZIP_exguze",
       "rp": 18820,
@@ -2487,10 +2505,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 139,
+      "rank": 140,
       "uid": "1009927632439",
       "name": "xurms",
       "rp": 18804,
@@ -2505,10 +2523,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 140,
+      "rank": 141,
       "uid": "1005925886332",
       "name": "174",
       "rp": 18773,
@@ -2523,25 +2541,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 141,
-      "uid": "1012899899833",
-      "name": "Aki",
-      "rp": 18762,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 142,
@@ -2820,7 +2820,7 @@
       "rp": 18601,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -2924,7 +2924,7 @@
     {
       "rank": 163,
       "uid": "1007724048539",
-      "name": "- Empty name -",
+      "name": "Iirsa",
       "rp": 18548,
       "change": 0,
       "level": 0,
@@ -3013,42 +3013,24 @@
     },
     {
       "rank": 168,
-      "uid": "1009109533270",
-      "name": "FL_14L0st",
-      "rp": 18470,
+      "uid": "1003307788579",
+      "name": "#777",
+      "rp": 18467,
       "change": 0,
       "level": 0,
       "online": true,
       "statusText": "",
-      "country": "",
+      "country": "CA",
       "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": 185,
+      "rankChange": 13
     },
     {
       "rank": 169,
-      "uid": "1007182608317",
-      "name": "NONE",
-      "rp": 18445,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 170,
       "uid": "1014895816714",
       "name": "Nait",
       "rp": 18429,
@@ -3063,28 +3045,28 @@
         "twitter": "https://twitter.com/naitfp"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 171,
-      "uid": "1012152829039",
-      "name": "wishh",
-      "rp": 18425,
+      "rank": 170,
+      "uid": "1005829628974",
+      "name": "ELITE Dark",
+      "rp": 18413,
       "change": 0,
       "level": 0,
       "online": false,
       "statusText": "",
-      "country": "",
-      "input": "键鼠",
+      "country": "US",
+      "input": "手柄",
       "links": {
-        "twitch": "",
-        "twitter": ""
+        "twitch": "/core/out?type=twitch&id=darkiightt",
+        "twitter": "https://twitter.com/darkiightt"
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": 28,
+      "rankChange": 3
     },
     {
-      "rank": 172,
+      "rank": 171,
       "uid": "1023776970949",
       "name": "gorlan",
       "rp": 18395,
@@ -3099,28 +3081,28 @@
         "twitter": "https://twitter.com/gorlan001"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 172,
+      "uid": "1009109533270",
+      "name": "FL_14L0st",
+      "rp": 18393,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -77,
+      "rankChange": -4
     },
     {
       "rank": 173,
-      "uid": "1005829628974",
-      "name": "ELITE Dark",
-      "rp": 18385,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=darkiightt",
-        "twitter": "https://twitter.com/darkiightt"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 174,
       "uid": "1010943274769",
       "name": "ELITE Dig",
       "rp": 18369,
@@ -3135,7 +3117,25 @@
         "twitter": "https://twitter.com/DIGVIBEZZ"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 174,
+      "uid": "1007182608317",
+      "name": "NONE",
+      "rp": 18367,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -78,
+      "rankChange": -5
     },
     {
       "rank": 175,
@@ -3175,6 +3175,24 @@
     },
     {
       "rank": 177,
+      "uid": "1012242073784",
+      "name": "OE Feeds999",
+      "rp": 18357,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "US",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=Feeds999",
+        "twitter": "https://twitter.com/Feeds999"
+      },
+      "rpChange": 275,
+      "rankChange": 20
+    },
+    {
+      "rank": 178,
       "uid": "1009344159091",
       "name": "Heckk",
       "rp": 18350,
@@ -3189,10 +3207,28 @@
         "twitter": "https://twitter.com/Heckkem"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 178,
+      "rank": 179,
+      "uid": "1012152829039",
+      "name": "wishh",
+      "rp": 18338,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -87,
+      "rankChange": -8
+    },
+    {
+      "rank": 180,
       "uid": "1003215550058",
       "name": "silentHNL",
       "rp": 18331,
@@ -3207,10 +3243,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 179,
+      "rank": 181,
       "uid": "1013119394094",
       "name": "melt bitter",
       "rp": 18314,
@@ -3225,10 +3261,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 180,
+      "rank": 182,
       "uid": "1003566170678",
       "name": "DemoniioTV | Twitch",
       "rp": 18314,
@@ -3243,28 +3279,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 181,
-      "uid": "1003307788579",
-      "name": "#777",
-      "rp": 18282,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "CA",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 182,
+      "rank": 183,
       "uid": "2848446040",
       "name": "Vudo",
       "rp": 18276,
@@ -3279,10 +3297,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 183,
+      "rank": 184,
       "uid": "1008858312438",
       "name": "Dory_sho",
       "rp": 18272,
@@ -3297,10 +3315,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 184,
+      "rank": 185,
       "uid": "1000701256864",
       "name": "Personality",
       "rp": 18263,
@@ -3315,10 +3333,10 @@
         "twitter": "https://twitter.com/zeusdevo"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 185,
+      "rank": 186,
       "uid": "1009976640607",
       "name": "Eden07",
       "rp": 18212,
@@ -3333,10 +3351,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 186,
+      "rank": 187,
       "uid": "1016935132876",
       "name": "Gonzales",
       "rp": 18208,
@@ -3351,10 +3369,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 187,
+      "rank": 188,
       "uid": "1008910311703",
       "name": "Kuei",
       "rp": 18183,
@@ -3369,10 +3387,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 188,
+      "rank": 189,
       "uid": "1004449615375",
       "name": "- Empty name -",
       "rp": 18171,
@@ -3387,10 +3405,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 189,
+      "rank": 190,
       "uid": "1009944855550",
       "name": "X@Nmizu_7om",
       "rp": 18158,
@@ -3405,10 +3423,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 190,
+      "rank": 191,
       "uid": "1004747874452",
       "name": "pompoclat_TTV",
       "rp": 18144,
@@ -3423,10 +3441,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 191,
+      "rank": 192,
       "uid": "1008384012113",
       "name": "twitch rea1odd",
       "rp": 18142,
@@ -3441,10 +3459,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 192,
+      "rank": 193,
+      "uid": "1004824465567",
+      "name": "OakApex",
+      "rp": 18140,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "NO",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=oakapex",
+        "twitter": ""
+      },
+      "rpChange": 29,
+      "rankChange": 2
+    },
+    {
+      "rank": 194,
       "uid": "1008198696862",
       "name": "MaiAka17_Twitch",
       "rp": 18127,
@@ -3459,10 +3495,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 193,
+      "rank": 195,
       "uid": "1010400335131",
       "name": "NODE Beamzy",
       "rp": 18125,
@@ -3477,43 +3513,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 194,
-      "uid": "1012295540184",
-      "name": "LabonQuisha",
-      "rp": 18122,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 195,
-      "uid": "1004824465567",
-      "name": "OakApex",
-      "rp": 18111,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "NO",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=oakapex",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
       "rank": 196,
@@ -3535,42 +3535,6 @@
     },
     {
       "rank": 197,
-      "uid": "1012242073784",
-      "name": "OE Feeds999",
-      "rp": 18082,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=Feeds999",
-        "twitter": "https://twitter.com/Feeds999"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 198,
-      "uid": "1009250371493",
-      "name": "Empire-Skull11",
-      "rp": 18080,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 199,
       "uid": "1009085362749",
       "name": "ImNotOkay",
       "rp": 18074,
@@ -3585,10 +3549,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 200,
+      "rank": 198,
       "uid": "1005929595038",
       "name": "MuLKX",
       "rp": 18070,
@@ -3603,10 +3567,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 201,
+      "rank": 199,
       "uid": "1012035680915",
       "name": "Bedtimestory",
       "rp": 18064,
@@ -3621,10 +3585,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 202,
+      "rank": 200,
+      "uid": "1012295540184",
+      "name": "LabonQuisha",
+      "rp": 18038,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -84,
+      "rankChange": -6
+    },
+    {
+      "rank": 201,
       "uid": "2804134390",
       "name": "AthenasMerci",
       "rp": 18017,
@@ -3639,10 +3621,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 203,
+      "rank": 202,
       "uid": "1008456405916",
       "name": "Dory_HIROMUNE",
       "rp": 18011,
@@ -3657,10 +3639,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 204,
+      "rank": 203,
       "uid": "1005325425127",
       "name": "邪神照れたぁ",
       "rp": 18004,
@@ -3675,7 +3657,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 204,
+      "uid": "1009250371493",
+      "name": "Empire-Skull11",
+      "rp": 18003,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -77,
+      "rankChange": -6
     },
     {
       "rank": 205,
@@ -4008,7 +4008,7 @@
       "rp": 17733,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -4111,6 +4111,24 @@
     },
     {
       "rank": 229,
+      "uid": "1008876940441",
+      "name": "SBI karahate7",
+      "rp": 17708,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 103,
+      "rankChange": 11
+    },
+    {
+      "rank": 230,
       "uid": "1007262785437",
       "name": "qAmuree",
       "rp": 17689,
@@ -4125,10 +4143,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 230,
+      "rank": 231,
       "uid": "1009235950432",
       "name": "Apex",
       "rp": 17665,
@@ -4143,10 +4161,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 231,
+      "rank": 232,
       "uid": "1008151465473",
       "name": "bhenzo",
       "rp": 17663,
@@ -4161,16 +4179,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 232,
+      "rank": 233,
       "uid": "1014131981900",
       "name": "XTG OTOKOGI UNKMAN",
       "rp": 17659,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -4179,10 +4197,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 233,
+      "rank": 234,
       "uid": "1009902571827",
       "name": "ggmax",
       "rp": 17651,
@@ -4197,10 +4215,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 234,
+      "rank": 235,
       "uid": "1011041302007",
       "name": "DN_666",
       "rp": 17649,
@@ -4215,10 +4233,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 235,
+      "rank": 236,
       "uid": "1006975602862",
       "name": "foryxan",
       "rp": 17640,
@@ -4233,10 +4251,10 @@
         "twitter": "https://twitter.com/foryxan"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 236,
+      "rank": 237,
       "uid": "1003779616445",
       "name": "iR-Matteo",
       "rp": 17631,
@@ -4251,16 +4269,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 237,
+      "rank": 238,
       "uid": "1013036751109",
       "name": "S0chan_q",
       "rp": 17621,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "JP",
       "input": "键鼠",
@@ -4269,10 +4287,10 @@
         "twitter": "https://twitter.com/S0chan_q"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 238,
+      "rank": 239,
       "uid": "1008915781798",
       "name": "ZephyrJR",
       "rp": 17607,
@@ -4287,10 +4305,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 239,
+      "rank": 240,
       "uid": "1009700099231",
       "name": "PariahAPEX",
       "rp": 17605,
@@ -4305,25 +4323,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 240,
-      "uid": "1008876940441",
-      "name": "SBI karahate7",
-      "rp": 17605,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 241,
@@ -4363,6 +4363,24 @@
     },
     {
       "rank": 243,
+      "uid": "1011203091124",
+      "name": "LGN @ZedNr",
+      "rp": 17568,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=ZedNr",
+        "twitter": "https://twitter.com/@Zednr"
+      },
+      "rpChange": 42,
+      "rankChange": 10
+    },
+    {
+      "rank": 244,
       "uid": "1011998160181",
       "name": "WGR !_?",
       "rp": 17551,
@@ -4377,10 +4395,10 @@
         "twitter": "https://twitter.com/aqba_japan_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 244,
+      "rank": 245,
       "uid": "1010941230371",
       "name": "kn1ght48",
       "rp": 17549,
@@ -4395,10 +4413,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 245,
+      "rank": 246,
       "uid": "1011252576058",
       "name": "o2_neneta5",
       "rp": 17548,
@@ -4413,10 +4431,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 246,
+      "rank": 247,
       "uid": "1007775646182",
       "name": "Poor Guy :(",
       "rp": 17544,
@@ -4431,25 +4449,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 247,
-      "uid": "1010368314869",
-      "name": "berysall",
-      "rp": 17544,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "ID",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=berysall",
-        "twitter": "https://twitter.com/thisisberyy"
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 248,
@@ -4543,24 +4543,6 @@
     },
     {
       "rank": 253,
-      "uid": "1011203091124",
-      "name": "LGN @ZedNr",
-      "rp": 17526,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=ZedNr",
-        "twitter": "https://twitter.com/@Zednr"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 254,
       "uid": "1009911275844",
       "name": "- Empty name -",
       "rp": 17520,
@@ -4575,10 +4557,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 255,
+      "rank": 254,
       "uid": "1001486191247",
       "name": "noa",
       "rp": 17517,
@@ -4593,10 +4575,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 256,
+      "rank": 255,
       "uid": "1007455115367",
       "name": "twitch | ryuszen",
       "rp": 17511,
@@ -4611,10 +4593,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 257,
+      "rank": 256,
       "uid": "1005165474849",
       "name": "Nekuru_miside",
       "rp": 17510,
@@ -4629,10 +4611,10 @@
         "twitter": "https://twitter.com/nekuru_miside"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 258,
+      "rank": 257,
       "uid": "1007970864045",
       "name": "BS @(31)",
       "rp": 17505,
@@ -4647,10 +4629,10 @@
         "twitter": "https://twitter.com/naha99s"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 259,
+      "rank": 258,
       "uid": "1009229399335",
       "name": "NJZ IS 5",
       "rp": 17489,
@@ -4665,13 +4647,13 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 260,
-      "uid": "1011500211716",
-      "name": "GEN ASIAZXD",
-      "rp": 17487,
+      "rank": 259,
+      "uid": "1013258678600",
+      "name": "D4C",
+      "rp": 17481,
       "change": 0,
       "level": 0,
       "online": false,
@@ -4683,28 +4665,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 261,
-      "uid": "1013258678600",
-      "name": "D4C",
-      "rp": 17481,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 262,
+      "rank": 260,
       "uid": "1009688618755",
       "name": "Goat_Caigou",
       "rp": 17480,
@@ -4719,10 +4683,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 263,
+      "rank": 261,
+      "uid": "1011500211716",
+      "name": "GEN ASIAZXD",
+      "rp": 17479,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -8,
+      "rankChange": -1
+    },
+    {
+      "rank": 262,
       "uid": "1010071713191",
       "name": "搭流",
       "rp": 17469,
@@ -4737,10 +4719,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 264,
+      "rank": 263,
       "uid": "1007905468925",
       "name": "spin",
       "rp": 17466,
@@ -4755,7 +4737,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 265,
+      "uid": "1010368314869",
+      "name": "berysall",
+      "rp": 17459,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "ID",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=berysall",
+        "twitter": "https://twitter.com/thisisberyy"
+      },
+      "rpChange": -85,
+      "rankChange": -18
     },
     {
       "rank": 266,
@@ -4831,24 +4831,6 @@
     },
     {
       "rank": 270,
-      "uid": "2316895519",
-      "name": "Golden",
-      "rp": 17426,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=silencedisgolden",
-        "twitter": "https://twitter.com/SilencedGolden"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 271,
       "uid": "1008819556978",
       "name": "あ",
       "rp": 17425,
@@ -4863,10 +4845,10 @@
         "twitter": "https://twitter.com/mk_5CG"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 272,
+      "rank": 271,
       "uid": "1015424549639",
       "name": "R5_Nenemerry",
       "rp": 17414,
@@ -4881,10 +4863,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 273,
+      "rank": 272,
       "uid": "1008111606441",
       "name": "Term",
       "rp": 17403,
@@ -4899,28 +4881,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 275,
-      "uid": "1003499590194",
-      "name": "hitzbasic",
-      "rp": 17391,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 276,
+      "rank": 274,
       "uid": "1007354198067",
       "name": "KNC DAMADAO",
       "rp": 17385,
@@ -4935,10 +4899,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 277,
+      "rank": 275,
       "uid": "1005546170328",
       "name": "ForFun Sinetic",
       "rp": 17379,
@@ -4953,10 +4917,10 @@
         "twitter": "https://twitter.com/apexsinetic"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 278,
+      "rank": 276,
       "uid": "1010420870324",
       "name": "竹林醉酒人",
       "rp": 17379,
@@ -4971,10 +4935,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 279,
+      "rank": 277,
       "uid": "1012771159292",
       "name": "E36 Cinap",
       "rp": 17375,
@@ -4989,10 +4953,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 280,
+      "rank": 278,
       "uid": "1002855349212",
       "name": "NOS_Mauzxi",
       "rp": 17367,
@@ -5007,10 +4971,10 @@
         "twitter": "https://twitter.com/maximusmao10"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 281,
+      "rank": 279,
       "uid": "1012608104108",
       "name": "cznturionn",
       "rp": 17365,
@@ -5025,10 +4989,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 282,
+      "rank": 280,
+      "uid": "2316895519",
+      "name": "Golden",
+      "rp": 17365,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=silencedisgolden",
+        "twitter": "https://twitter.com/SilencedGolden"
+      },
+      "rpChange": -61,
+      "rankChange": -10
+    },
+    {
+      "rank": 281,
       "uid": "2412162934",
       "name": "MEEEMIAN",
       "rp": 17361,
@@ -5043,28 +5025,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 283,
-      "uid": "1010127128508",
-      "name": "NIRUi7",
-      "rp": 17350,
+      "rank": 282,
+      "uid": "1003499590194",
+      "name": "hitzbasic",
+      "rp": 17356,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
-      "country": "",
-      "input": "手柄",
+      "country": "US",
+      "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -35,
+      "rankChange": -7
     },
     {
-      "rank": 284,
+      "rank": 283,
       "uid": "2472156573",
       "name": "Fredstxr",
       "rp": 17336,
@@ -5079,10 +5061,10 @@
         "twitter": "https://twitter.com/Fredstxr"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 285,
+      "rank": 284,
       "uid": "1003648378993",
       "name": "cope maxxing",
       "rp": 17331,
@@ -5097,10 +5079,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 286,
+      "rank": 285,
       "uid": "1002689941391",
       "name": "colinudi",
       "rp": 17325,
@@ -5115,7 +5097,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 286,
+      "uid": "1010127128508",
+      "name": "NIRUi7",
+      "rp": 17320,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -30,
+      "rankChange": -3
     },
     {
       "rank": 287,
@@ -5227,6 +5227,24 @@
     },
     {
       "rank": 293,
+      "uid": "1005881573025",
+      "name": "S8UL Rogers",
+      "rp": 17287,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "AU",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=rogersoce",
+        "twitter": "https://twitter.com/RogersOCE"
+      },
+      "rpChange": 178,
+      "rankChange": 32
+    },
+    {
+      "rank": 294,
       "uid": "1009853916749",
       "name": "lonelinessdep",
       "rp": 17277,
@@ -5241,10 +5259,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 294,
+      "rank": 295,
       "uid": "1000971980782",
       "name": "Made In Heaven",
       "rp": 17277,
@@ -5259,10 +5277,10 @@
         "twitter": "https://twitter.com/@LivaiiApex"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 295,
+      "rank": 296,
       "uid": "1010095865989",
       "name": "NevvtonXtao",
       "rp": 17269,
@@ -5277,10 +5295,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 296,
+      "rank": 297,
       "uid": "1015384137401",
       "name": "ACE_XiaoC",
       "rp": 17262,
@@ -5295,10 +5313,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 297,
+      "rank": 298,
       "uid": "1009175956026",
       "name": "s4dmannn@twitch",
       "rp": 17259,
@@ -5313,10 +5331,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 298,
+      "rank": 299,
       "uid": "1009619724740",
       "name": "GROW_Lykq",
       "rp": 17252,
@@ -5331,10 +5349,10 @@
         "twitter": "https://twitter.com/Rejf4"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 299,
+      "rank": 300,
       "uid": "1005873097833",
       "name": "vabyss41",
       "rp": 17244,
@@ -5349,10 +5367,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 300,
+      "rank": 301,
       "uid": "1017498840931",
       "name": "Greetings From Trobriand Islands",
       "rp": 17242,
@@ -5367,10 +5385,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 301,
+      "rank": 302,
       "uid": "1013479733797",
       "name": "SallyApex",
       "rp": 17231,
@@ -5385,10 +5403,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 302,
+      "rank": 303,
       "uid": "1012435612435",
       "name": "ZRX_",
       "rp": 17229,
@@ -5403,10 +5421,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 303,
+      "rank": 304,
       "uid": "1011925559786",
       "name": "VSN LOTR31",
       "rp": 17221,
@@ -5421,10 +5439,10 @@
         "twitter": "https://twitter.com/TheLOTR31"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 304,
+      "rank": 305,
       "uid": "1022526597279",
       "name": "riku",
       "rp": 17217,
@@ -5439,10 +5457,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 305,
+      "rank": 306,
       "uid": "1009524560045",
       "name": "WydFuture",
       "rp": 17213,
@@ -5457,10 +5475,10 @@
         "twitter": "https://twitter.com/WydFuture"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 306,
+      "rank": 307,
       "uid": "1004795895477",
       "name": "twitch.tv/Verrahh",
       "rp": 17201,
@@ -5475,10 +5493,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 307,
+      "rank": 308,
       "uid": "1000633786156",
       "name": "ACEBGremZ",
       "rp": 17198,
@@ -5493,10 +5511,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 308,
+      "rank": 309,
       "uid": "1005097422990",
       "name": "Crook",
       "rp": 17195,
@@ -5511,10 +5529,28 @@
         "twitter": "https://twitter.com/crooklul"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 309,
+      "rank": 310,
+      "uid": "1000156360771",
+      "name": "No_711-Oscar",
+      "rp": 17194,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 21,
+      "rankChange": 3
+    },
+    {
+      "rank": 311,
       "uid": "1004836284239",
       "name": "RRQ EzFlashK",
       "rp": 17188,
@@ -5529,10 +5565,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 310,
+      "rank": 312,
       "uid": "1010649821599",
       "name": "MarifanaPower",
       "rp": 17186,
@@ -5547,28 +5583,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 311,
-      "uid": "1008786911422",
-      "name": "Twitch_Lsalaza",
-      "rp": 17183,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 312,
+      "rank": 313,
       "uid": "1008640431482",
       "name": "E36 Jusna",
       "rp": 17174,
@@ -5583,25 +5601,7 @@
         "twitter": "https://twitter.com/Jusna_s"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 313,
-      "uid": "1000156360771",
-      "name": "No_711-Oscar",
-      "rp": 17173,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 314,
@@ -5659,6 +5659,24 @@
     },
     {
       "rank": 317,
+      "uid": "1006266761676",
+      "name": "Twitch Okdipstick",
+      "rp": 17163,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 110,
+      "rankChange": 21
+    },
+    {
+      "rank": 318,
       "uid": "1005471995367",
       "name": "FLCN_Wxltzy",
       "rp": 17153,
@@ -5673,10 +5691,10 @@
         "twitter": "https://twitter.com/Wxltzy"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 318,
+      "rank": 319,
       "uid": "1006335842303",
       "name": "Blast_WM",
       "rp": 17146,
@@ -5691,10 +5709,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 319,
+      "rank": 320,
       "uid": "1000566702395",
       "name": "Zillxch",
       "rp": 17144,
@@ -5709,10 +5727,10 @@
         "twitter": "https://twitter.com/Zillach_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 320,
+      "rank": 321,
       "uid": "1011027046422",
       "name": "PlutoReality",
       "rp": 17142,
@@ -5727,10 +5745,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 321,
+      "rank": 322,
       "uid": "1008374404948",
       "name": "Only",
       "rp": 17138,
@@ -5745,10 +5763,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 322,
+      "rank": 323,
       "uid": "1009049578676",
       "name": "wasd",
       "rp": 17132,
@@ -5763,10 +5781,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 323,
+      "rank": 324,
       "uid": "1016823418023",
       "name": "qu1p",
       "rp": 17124,
@@ -5781,10 +5799,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 324,
+      "rank": 325,
       "uid": "1003175196342",
       "name": "LGN CollinFPS",
       "rp": 17114,
@@ -5799,25 +5817,7 @@
         "twitter": "https://twitter.com/CollinFPS"
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 325,
-      "uid": "1005881573025",
-      "name": "S8UL Rogers",
-      "rp": 17109,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "AU",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=rogersoce",
-        "twitter": "https://twitter.com/RogersOCE"
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 326,
@@ -6019,42 +6019,6 @@
     },
     {
       "rank": 337,
-      "uid": "1013340250708",
-      "name": "piter9_:]",
-      "rp": 17055,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 338,
-      "uid": "1006266761676",
-      "name": "Twitch Okdipstick",
-      "rp": 17053,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 339,
       "uid": "1008979325905",
       "name": "axzel :)",
       "rp": 17046,
@@ -6069,10 +6033,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 340,
+      "rank": 338,
       "uid": "1008799363504",
       "name": "ERy_tiktok/YouTube",
       "rp": 17040,
@@ -6087,28 +6051,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 341,
-      "uid": "1008903310168",
-      "name": "zerotwodream",
-      "rp": 17032,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 342,
+      "rank": 339,
       "uid": "1005761822457",
       "name": "Yukino",
       "rp": 17028,
@@ -6123,28 +6069,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 343,
-      "uid": "1000237798249",
-      "name": "Zwitzs",
+      "rank": 340,
+      "uid": "1008903310168",
+      "name": "zerotwodream",
       "rp": 17025,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
-      "country": "",
+      "country": "JP",
       "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -7,
+      "rankChange": 1
     },
     {
-      "rank": 344,
+      "rank": 341,
       "uid": "1006804233766",
       "name": "plentixttv",
       "rp": 17023,
@@ -6159,10 +6105,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 346,
+      "rank": 343,
       "uid": "1007857499119",
       "name": "Kizaron",
       "rp": 17013,
@@ -6177,10 +6123,10 @@
         "twitter": "https://twitter.com/kizaron"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 347,
+      "rank": 344,
       "uid": "1006251804015",
       "name": "LLLLRangoLLLL",
       "rp": 17013,
@@ -6195,10 +6141,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 348,
+      "rank": 345,
+      "uid": "1019971380886",
+      "name": "- Empty name -",
+      "rp": 17010,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 97,
+      "rankChange": 34
+    },
+    {
+      "rank": 346,
       "uid": "1006686705011",
       "name": "YC",
       "rp": 17008,
@@ -6213,10 +6177,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 349,
+      "rank": 347,
+      "uid": "1008786911422",
+      "name": "Twitch_Lsalaza",
+      "rp": 17008,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -175,
+      "rankChange": -36
+    },
+    {
+      "rank": 348,
       "uid": "1008934359701",
       "name": "O2_watage",
       "rp": 17005,
@@ -6231,10 +6213,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 350,
+      "rank": 349,
       "uid": "1008018074011",
       "name": "7Dyn",
       "rp": 17004,
@@ -6249,10 +6231,10 @@
         "twitter": "https://twitter.com/Dynner_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 351,
+      "rank": 350,
       "uid": "1011110589638",
       "name": "WDS_",
       "rp": 17004,
@@ -6267,10 +6249,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 352,
+      "rank": 351,
       "uid": "1009440485794",
       "name": "Inao",
       "rp": 16999,
@@ -6285,10 +6267,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 353,
+      "rank": 352,
       "uid": "1005655129440",
       "name": "Sedexxx_",
       "rp": 16998,
@@ -6303,10 +6285,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 354,
+      "rank": 353,
       "uid": "1013461578190",
       "name": "rst_ttv",
       "rp": 16995,
@@ -6321,10 +6303,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 355,
+      "rank": 354,
       "uid": "1019300433532",
       "name": "FlexxzeroTTV",
       "rp": 16994,
@@ -6339,7 +6321,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 355,
+      "uid": "1013340250708",
+      "name": "piter9_:]",
+      "rp": 16994,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -61,
+      "rankChange": -18
     },
     {
       "rank": 356,
@@ -6487,6 +6487,24 @@
     },
     {
       "rank": 367,
+      "uid": "1000237798249",
+      "name": "Zwitzs",
+      "rp": 16950,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -75,
+      "rankChange": -24
+    },
+    {
+      "rank": 368,
       "uid": "1007526715406",
       "name": "XyX1nn",
       "rp": 16949,
@@ -6501,10 +6519,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 368,
+      "rank": 369,
       "uid": "1006646531456",
       "name": "LFT_YY",
       "rp": 16949,
@@ -6519,10 +6537,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 369,
+      "rank": 370,
       "uid": "1002037198565",
       "name": "JimberlakeQ",
       "rp": 16947,
@@ -6537,10 +6555,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 370,
+      "rank": 371,
       "uid": "1007849032113",
       "name": "Bili_huan_vtb",
       "rp": 16943,
@@ -6555,10 +6573,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 371,
+      "rank": 372,
       "uid": "1011196843654",
       "name": "新春快樂",
       "rp": 16941,
@@ -6573,10 +6591,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 372,
+      "rank": 373,
+      "uid": "1008312028271",
+      "name": "Bowler",
+      "rp": 16941,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 240,
+      "rankChange": 77
+    },
+    {
+      "rank": 374,
       "uid": "1009893581260",
       "name": "ttv",
       "rp": 16940,
@@ -6591,10 +6627,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 373,
+      "rank": 375,
       "uid": "1010791304069",
       "name": "GK_Keon",
       "rp": 16938,
@@ -6609,10 +6645,10 @@
         "twitter": "https://twitter.com/Keonttv"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 374,
+      "rank": 376,
       "uid": "1009754093584",
       "name": "Wattice",
       "rp": 16936,
@@ -6627,10 +6663,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 376,
+      "rank": 378,
       "uid": "2412534181",
       "name": "Akuma",
       "rp": 16931,
@@ -6645,10 +6681,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 377,
+      "rank": 379,
       "uid": "1021827931666",
       "name": "RIXY4u",
       "rp": 16923,
@@ -6663,10 +6699,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 378,
+      "rank": 380,
       "uid": "1003864001257",
       "name": "Shaniqua the Last EBT Bender",
       "rp": 16915,
@@ -6681,28 +6717,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 379,
-      "uid": "1019971380886",
-      "name": "- Empty name -",
-      "rp": 16913,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 380,
+      "rank": 381,
       "uid": "1017484313447",
       "name": "07Zuishuai-Nanren",
       "rp": 16908,
@@ -6717,10 +6735,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 381,
+      "rank": 382,
       "uid": "1003135122829",
       "name": "Apryze",
       "rp": 16907,
@@ -6735,10 +6753,10 @@
         "twitter": "https://twitter.com/Apryze_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 382,
+      "rank": 383,
       "uid": "1011494350169",
       "name": "Constrictorx",
       "rp": 16897,
@@ -6753,10 +6771,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 383,
+      "rank": 384,
       "uid": "2305752035",
       "name": "DuDaBest1123",
       "rp": 16892,
@@ -6771,10 +6789,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 384,
+      "rank": 385,
       "uid": "1012596918459",
       "name": "dn_yama_taii7",
       "rp": 16888,
@@ -6789,10 +6807,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 385,
+      "rank": 386,
       "uid": "1017566790121",
       "name": "arya",
       "rp": 16881,
@@ -6807,10 +6825,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 386,
+      "rank": 387,
       "uid": "1008049623518",
       "name": "Zerking",
       "rp": 16879,
@@ -6825,10 +6843,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 387,
+      "rank": 388,
       "uid": "1008946185386",
       "name": "CRT_Verhulst",
       "rp": 16875,
@@ -6843,10 +6861,28 @@
         "twitter": "https://twitter.com/Verhulst"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 391,
+      "rank": 389,
+      "uid": "1009503197009",
+      "name": "Tsuki no yaya",
+      "rp": 16874,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "MY",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 84,
+      "rankChange": 26
+    },
+    {
+      "rank": 393,
       "uid": "1007326705897",
       "name": "Twitch.tv/HikaruEU",
       "rp": 16854,
@@ -6861,10 +6897,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 392,
+      "rank": 394,
       "uid": "1013933470610",
       "name": "season",
       "rp": 16851,
@@ -6879,28 +6915,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 394,
-      "uid": "1009741128158",
-      "name": "武器あるんだけど？",
-      "rp": 16844,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 396,
+      "rank": 397,
       "uid": "1011706749506",
       "name": "baobaoFPS",
       "rp": 16840,
@@ -6915,10 +6933,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 397,
+      "rank": 398,
       "uid": "1012733195026",
       "name": "_jojo",
       "rp": 16839,
@@ -6933,10 +6951,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 398,
+      "rank": 399,
       "uid": "1015890016727",
       "name": "sumansenw34",
       "rp": 16837,
@@ -6951,10 +6969,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 400,
+      "rank": 401,
       "uid": "1005084828907",
       "name": "CALLCCDIYA",
       "rp": 16831,
@@ -6969,10 +6987,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 401,
+      "rank": 402,
       "uid": "1008288846417",
       "name": "GOPGAPz",
       "rp": 16828,
@@ -6987,10 +7005,10 @@
         "twitter": "https://twitter.com/ItsGOPGAPz"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 402,
+      "rank": 403,
       "uid": "1007897429777",
       "name": "yaz",
       "rp": 16825,
@@ -7005,16 +7023,34 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 403,
+      "rank": 404,
+      "uid": "1008516279605",
+      "name": "xxx1iu",
+      "rp": 16822,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 66,
+      "rankChange": 24
+    },
+    {
+      "rank": 405,
       "uid": "1006519004946",
       "name": "KN yukaPEROdator",
       "rp": 16819,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "手柄",
@@ -7023,12 +7059,30 @@
         "twitter": "https://twitter.com/perodator"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 404,
+      "rank": 406,
+      "uid": "1009008984367",
+      "name": "- Empty name -",
+      "rp": 16817,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "JP",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 97,
+      "rankChange": 38
+    },
+    {
+      "rank": 407,
       "uid": "1007737210785",
-      "name": "p1tchey",
+      "name": "p1tch_ey",
       "rp": 16815,
       "change": 0,
       "level": 0,
@@ -7041,10 +7095,10 @@
         "twitter": "https://twitter.com/p1tchey_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 405,
+      "rank": 408,
       "uid": "1010694272946",
       "name": "NOVO_AdaM_zZ",
       "rp": 16814,
@@ -7059,10 +7113,10 @@
         "twitter": "https://twitter.com/AdaM_zZ__"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 406,
+      "rank": 409,
       "uid": "1009368733438",
       "name": "Alexwwwwssss",
       "rp": 16809,
@@ -7077,10 +7131,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 407,
+      "rank": 410,
       "uid": "1007889473912",
       "name": "LPwarriorLive",
       "rp": 16807,
@@ -7095,10 +7149,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 408,
+      "rank": 411,
       "uid": "2439615486",
       "name": "XSET Nфcturnal",
       "rp": 16807,
@@ -7113,10 +7167,10 @@
         "twitter": "https://twitter.com/oh_Nocturnal"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 409,
+      "rank": 412,
       "uid": "1010328381626",
       "name": "IzuYutonz ^. .^",
       "rp": 16807,
@@ -7131,16 +7185,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 410,
+      "rank": 413,
       "uid": "1007322061761",
       "name": "X@SprNox",
       "rp": 16795,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -7149,10 +7203,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 411,
+      "rank": 414,
       "uid": "1012995409578",
       "name": "Tiktok@ATOMICBLOOM",
       "rp": 16793,
@@ -7167,10 +7221,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 412,
+      "rank": 415,
       "uid": "1010363173175",
       "name": "0",
       "rp": 16792,
@@ -7185,10 +7239,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 413,
+      "rank": 416,
       "uid": "1006151301031",
       "name": "MobiuS",
       "rp": 16791,
@@ -7203,10 +7257,10 @@
         "twitter": "https://twitter.com/Mobius2005"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 414,
+      "rank": 417,
       "uid": "1014104650522",
       "name": "FAS melon21",
       "rp": 16790,
@@ -7221,28 +7275,10 @@
         "twitter": "https://twitter.com/@melon1680"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 415,
-      "uid": "1009503197009",
-      "name": "Tsuki no yaya",
-      "rp": 16790,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "MY",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 416,
+      "rank": 418,
       "uid": "1010970720424",
       "name": "SOL",
       "rp": 16785,
@@ -7257,10 +7293,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 418,
+      "rank": 419,
+      "uid": "1009741128158",
+      "name": "武器あるんだけど？",
+      "rp": 16783,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -61,
+      "rankChange": -25
+    },
+    {
+      "rank": 421,
       "uid": "1012052494198",
       "name": "ZipZap0822",
       "rp": 16781,
@@ -7275,28 +7329,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 419,
-      "uid": "1005517105725",
-      "name": "RR Datch",
-      "rp": 16780,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 420,
+      "rank": 422,
       "uid": "1006319243516",
       "name": "Rimufee",
       "rp": 16778,
@@ -7311,10 +7347,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 421,
+      "rank": 423,
       "uid": "1010081881586",
       "name": "- Empty name -",
       "rp": 16776,
@@ -7329,10 +7365,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 422,
+      "rank": 424,
       "uid": "1012168320424",
       "name": "马枪の武藏",
       "rp": 16767,
@@ -7347,10 +7383,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 423,
+      "rank": 425,
       "uid": "1016343351740",
       "name": "NyanNyaNyaaa",
       "rp": 16766,
@@ -7365,10 +7401,10 @@
         "twitter": "https://twitter.com/NyanPigButa"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 424,
+      "rank": 426,
       "uid": "1015138110456",
       "name": "- Empty name -",
       "rp": 16758,
@@ -7383,16 +7419,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 425,
+      "rank": 427,
       "uid": "1003705145592",
       "name": "kirakirakira03@Twitch",
       "rp": 16757,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -7401,10 +7437,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 426,
+      "rank": 428,
       "uid": "1007894200906",
       "name": "7fishys",
       "rp": 16756,
@@ -7419,10 +7455,10 @@
         "twitter": "https://twitter.com/7fishys"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 427,
+      "rank": 429,
       "uid": "1009544905859",
       "name": "Vntra",
       "rp": 16756,
@@ -7437,82 +7473,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -2
     },
     {
-      "rank": 428,
-      "uid": "1008516279605",
-      "name": "xxx1iu",
-      "rp": 16756,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 429,
-      "uid": "1000685785084",
-      "name": "OVER_Charmander",
-      "rp": 16755,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 430,
-      "uid": "2292200863",
-      "name": "Nox Nostra",
-      "rp": 16754,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=mjfr__",
-        "twitter": "https://twitter.com/@Mjfr__"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 431,
-      "uid": "1006146806730",
-      "name": "XTG_aqua",
-      "rp": 16753,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 434,
+      "rank": 432,
       "uid": "1020469810913",
       "name": "r4yuz",
       "rp": 16745,
@@ -7527,10 +7491,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 435,
+      "rank": 434,
       "uid": "1010808730183",
       "name": "CandleTrader-_-",
       "rp": 16741,
@@ -7545,10 +7509,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 436,
+      "rank": 435,
       "uid": "1009591087010",
       "name": "- Empty name -",
       "rp": 16741,
@@ -7563,10 +7527,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 437,
+      "rank": 436,
       "uid": "1005735259036",
       "name": "NOVO Friqz",
       "rp": 16737,
@@ -7581,10 +7545,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 438,
+      "rank": 437,
       "uid": "1008949436417",
       "name": "secondemotion",
       "rp": 16730,
@@ -7599,10 +7563,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 439,
+      "rank": 438,
       "uid": "1018434146150",
       "name": "T2K_n0n3mae",
       "rp": 16730,
@@ -7617,10 +7581,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 440,
+      "rank": 439,
       "uid": "1010063194355",
       "name": "xswl",
       "rp": 16728,
@@ -7635,10 +7599,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 441,
+      "rank": 440,
       "uid": "1011898301633",
       "name": "nanause",
       "rp": 16723,
@@ -7653,10 +7617,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 442,
+      "rank": 441,
       "uid": "1011885178419",
       "name": "zzz",
       "rp": 16722,
@@ -7671,46 +7635,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 443,
-      "uid": "2497703014",
-      "name": "Locky_vr",
-      "rp": 16720,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=locky_vr",
-        "twitter": "https://twitter.com/locky_vr"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 444,
-      "uid": "1009008984367",
-      "name": "- Empty name -",
-      "rp": 16720,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 445,
+      "rank": 442,
       "uid": "1003192313214",
       "name": "Deeds",
       "rp": 16716,
@@ -7725,10 +7653,10 @@
         "twitter": "https://twitter.com/yaboydeeds"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 446,
+      "rank": 443,
       "uid": "1010651343374",
       "name": "MagentaPepper",
       "rp": 16715,
@@ -7743,10 +7671,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 447,
+      "rank": 444,
       "uid": "1013663048188",
       "name": "HUGOwolfy",
       "rp": 16713,
@@ -7761,16 +7689,34 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 448,
+      "rank": 445,
+      "uid": "2316806708",
+      "name": "epic sniper man 6 7",
+      "rp": 16713,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=gdolphn",
+        "twitter": "https://twitter.com/gdolphn"
+      },
+      "rpChange": 42,
+      "rankChange": 22
+    },
+    {
+      "rank": 446,
       "uid": "1017272147428",
       "name": "ORC mosu",
       "rp": 16709,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "TH",
       "input": "手柄",
@@ -7779,10 +7725,10 @@
         "twitter": "https://twitter.com/mosudesu_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 449,
+      "rank": 447,
       "uid": "1000277189202",
       "name": "ISleepyPanda",
       "rp": 16702,
@@ -7797,28 +7743,10 @@
         "twitter": "https://twitter.com/ISleepy_Panda"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 450,
-      "uid": "1008312028271",
-      "name": "Bowler",
-      "rp": 16701,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 451,
+      "rank": 448,
       "uid": "1007725179627",
       "name": "AGC_Aiki",
       "rp": 16699,
@@ -7833,10 +7761,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 452,
+      "rank": 449,
       "uid": "1009453863403",
       "name": "01069",
       "rp": 16696,
@@ -7851,10 +7779,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 454,
+      "rank": 451,
+      "uid": "1005517105725",
+      "name": "RR Datch",
+      "rp": 16695,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -85,
+      "rankChange": -32
+    },
+    {
+      "rank": 452,
       "uid": "1006737216946",
       "name": "ぐがちゃんらぶち",
       "rp": 16693,
@@ -7869,10 +7815,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 455,
+      "rank": 453,
+      "uid": "1000685785084",
+      "name": "OVER_Charmander",
+      "rp": 16690,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -65,
+      "rankChange": -24
+    },
+    {
+      "rank": 454,
       "uid": "1009458745548",
       "name": "AochasoN",
       "rp": 16687,
@@ -7887,10 +7851,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 456,
+      "rank": 455,
       "uid": "1007294673714",
       "name": "SRL Ail3iS",
       "rp": 16686,
@@ -7905,10 +7869,10 @@
         "twitter": "https://twitter.com/Ail3iS"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 457,
+      "rank": 456,
       "uid": "1010643796916",
       "name": "泣きたいの尖頭",
       "rp": 16684,
@@ -7923,10 +7887,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 458,
+      "rank": 457,
       "uid": "1009256556278",
       "name": "from",
       "rp": 16683,
@@ -7941,10 +7905,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 459,
+      "rank": 458,
       "uid": "1011374918683",
       "name": "topher",
       "rp": 16682,
@@ -7959,10 +7923,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 460,
+      "rank": 459,
       "uid": "2279769578",
       "name": "oogxz",
       "rp": 16682,
@@ -7977,28 +7941,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 461,
-      "uid": "1011064322726",
-      "name": "- Empty name -",
-      "rp": 16681,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 462,
+      "rank": 460,
       "uid": "1010129674511",
       "name": "umikoe_fps",
       "rp": 16680,
@@ -8013,10 +7959,10 @@
         "twitter": "https://twitter.com/umikoefps"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 463,
+      "rank": 461,
       "uid": "1011482223684",
       "name": "@WavyBenji",
       "rp": 16678,
@@ -8031,10 +7977,10 @@
         "twitter": "https://twitter.com/Wavybenji_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 464,
+      "rank": 462,
       "uid": "1010702513499",
       "name": "Bad",
       "rp": 16676,
@@ -8049,10 +7995,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 465,
+      "rank": 463,
       "uid": "1002585583875",
       "name": "iLike2SweatOnYoU",
       "rp": 16672,
@@ -8067,46 +8013,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 466,
-      "uid": "1008042235913",
-      "name": "SBI Mitarashi",
-      "rp": 16672,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=mitarashi_numa",
-        "twitter": "https://twitter.com/mitarashi_numa"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 467,
-      "uid": "2316806708",
-      "name": "epic sniper man 6 7",
-      "rp": 16671,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=gdolphn",
-        "twitter": "https://twitter.com/gdolphn"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 468,
+      "rank": 464,
       "uid": "1018721030779",
       "name": "deathzify",
       "rp": 16670,
@@ -8121,10 +8031,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 4
     },
     {
-      "rank": 469,
+      "rank": 465,
       "uid": "1005125627760",
       "name": "发梦人",
       "rp": 16670,
@@ -8139,10 +8049,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 4
     },
     {
-      "rank": 471,
+      "rank": 466,
+      "uid": "1006146806730",
+      "name": "XTG_aqua",
+      "rp": 16668,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -85,
+      "rankChange": -35
+    },
+    {
+      "rank": 468,
       "uid": "1008691424335",
       "name": "Godsjinx",
       "rp": 16665,
@@ -8157,10 +8085,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 3
     },
     {
-      "rank": 472,
+      "rank": 469,
+      "uid": "2292200863",
+      "name": "Nox Nostra",
+      "rp": 16664,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=mjfr__",
+        "twitter": "https://twitter.com/@Mjfr__"
+      },
+      "rpChange": -90,
+      "rankChange": -39
+    },
+    {
+      "rank": 470,
       "uid": "1008915528039",
       "name": "dadonba",
       "rp": 16662,
@@ -8175,10 +8121,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 473,
+      "rank": 471,
       "uid": "1010463281462",
       "name": "Monuh3m",
       "rp": 16660,
@@ -8193,10 +8139,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 474,
+      "rank": 472,
       "uid": "1005382867617",
       "name": "QuarkTxT",
       "rp": 16660,
@@ -8211,10 +8157,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 475,
+      "rank": 473,
       "uid": "1009112734165",
       "name": "BokiiFPS",
       "rp": 16659,
@@ -8229,10 +8175,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 476,
+      "rank": 474,
       "uid": "1002741163869",
       "name": "Anjz",
       "rp": 16654,
@@ -8247,10 +8193,10 @@
         "twitter": "https://twitter.com/only_anibaljz"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 477,
+      "rank": 475,
       "uid": "1006320976008",
       "name": "eghnjsiuorhg",
       "rp": 16654,
@@ -8265,10 +8211,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 478,
+      "rank": 476,
+      "uid": "2497703014",
+      "name": "Locky_vr",
+      "rp": 16651,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=locky_vr",
+        "twitter": "https://twitter.com/locky_vr"
+      },
+      "rpChange": -69,
+      "rankChange": -33
+    },
+    {
+      "rank": 477,
       "uid": "1008035614678",
       "name": "iStrxctly",
       "rp": 16640,
@@ -8283,16 +8247,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 479,
+      "rank": 478,
       "uid": "1015902064909",
       "name": "- Empty name -",
       "rp": 16638,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -8301,10 +8265,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 480,
+      "rank": 479,
       "uid": "1000475789114",
       "name": "Renzalations",
       "rp": 16637,
@@ -8319,10 +8283,10 @@
         "twitter": "https://twitter.com/RenzoLuxBody"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 481,
+      "rank": 480,
       "uid": "1009118928554",
       "name": "1007 GenzO",
       "rp": 16637,
@@ -8337,10 +8301,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 482,
+      "rank": 481,
       "uid": "2340782694",
       "name": "linabob",
       "rp": 16631,
@@ -8355,10 +8319,10 @@
         "twitter": "https://twitter.com/linabob_"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 483,
+      "rank": 482,
       "uid": "1006332244570",
       "name": "Enchanttted",
       "rp": 16625,
@@ -8373,10 +8337,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 484,
+      "rank": 483,
       "uid": "1013291377153",
       "name": "わためいと",
       "rp": 16623,
@@ -8391,10 +8355,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 485,
+      "rank": 484,
       "uid": "1013362293378",
       "name": "sus4_ponpoko",
       "rp": 16621,
@@ -8409,10 +8373,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 486,
+      "rank": 485,
       "uid": "1009294027528",
       "name": "AdultBaby",
       "rp": 16621,
@@ -8427,10 +8391,46 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 489,
+      "rank": 487,
+      "uid": "1011064322726",
+      "name": "- Empty name -",
+      "rp": 16609,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -72,
+      "rankChange": -26
+    },
+    {
+      "rank": 488,
+      "uid": "1012611163886",
+      "name": "LvWaaaa",
+      "rp": 16609,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 262,
+      "rankChange": 168
+    },
+    {
+      "rank": 490,
       "uid": "1012296739674",
       "name": "zpshiudf+y789",
       "rp": 16600,
@@ -8445,10 +8445,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 490,
+      "rank": 491,
       "uid": "1005773907653",
       "name": ".goof #nerfconduit&axle",
       "rp": 16597,
@@ -8463,7 +8463,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 492,
@@ -8611,6 +8611,24 @@
     },
     {
       "rank": 500,
+      "uid": "1011519878350",
+      "name": "moRe",
+      "rp": 16572,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "TW",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 251,
+      "rankChange": 184
+    },
+    {
+      "rank": 501,
       "uid": "1011059760372",
       "name": "- Empty name -",
       "rp": 16569,
@@ -8625,10 +8643,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 501,
+      "rank": 502,
       "uid": "1006787258952",
       "name": "BURNED123456",
       "rp": 16565,
@@ -8643,10 +8661,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 502,
+      "rank": 503,
       "uid": "1010639745605",
       "name": "Okazaki Tomoya",
       "rp": 16563,
@@ -8661,10 +8679,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 503,
+      "rank": 504,
       "uid": "1004944080465",
       "name": "Spirtzy",
       "rp": 16562,
@@ -8679,25 +8697,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 504,
-      "uid": "1009717847229",
-      "name": "斎藤/eGZody",
-      "rp": 16560,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 505,
@@ -8742,7 +8742,7 @@
       "rp": 16556,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -8773,24 +8773,6 @@
     },
     {
       "rank": 510,
-      "uid": "1007652453522",
-      "name": "BB_SmileSlime",
-      "rp": 16553,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 511,
       "uid": "1012750161587",
       "name": "Kab1sho",
       "rp": 16551,
@@ -8805,10 +8787,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 512,
+      "rank": 511,
       "uid": "1017603184139",
       "name": "SKY WILL",
       "rp": 16549,
@@ -8823,7 +8805,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 512,
+      "uid": "1009534611146",
+      "name": "萧容鱼",
+      "rp": 16545,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 6,
+      "rankChange": 4
     },
     {
       "rank": 513,
@@ -8862,9 +8862,9 @@
       "rankChange": 0
     },
     {
-      "rank": 516,
-      "uid": "1009534611146",
-      "name": "萧容鱼",
+      "rank": 515,
+      "uid": "1009843873963",
+      "name": "KovaaK's36",
       "rp": 16539,
       "change": 0,
       "level": 0,
@@ -8878,6 +8878,24 @@
       },
       "rpChange": 0,
       "rankChange": 0
+    },
+    {
+      "rank": 516,
+      "uid": "1004588431813",
+      "name": "SR_Xynew",
+      "rp": 16538,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "US",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=xynew",
+        "twitter": "https://twitter.com/xynew_"
+      },
+      "rpChange": 30,
+      "rankChange": 20
     },
     {
       "rank": 518,
@@ -9012,7 +9030,7 @@
       "rp": 16520,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "TW",
       "input": "键鼠",
@@ -9078,7 +9096,7 @@
       "rankChange": 0
     },
     {
-      "rank": 533,
+      "rank": 534,
       "uid": "1019317101180",
       "name": "- Empty name -",
       "rp": 16512,
@@ -9093,10 +9111,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 534,
+      "rank": 535,
       "uid": "1015886702872",
       "name": "nothing eternal",
       "rp": 16512,
@@ -9111,10 +9129,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 535,
+      "rank": 536,
       "uid": "1006725764719",
       "name": "[a bit of aim] KIFUSS",
       "rp": 16508,
@@ -9129,25 +9147,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 536,
-      "uid": "1004588431813",
-      "name": "SR_Xynew",
-      "rp": 16508,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "US",
-      "input": "手柄",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=xynew",
-        "twitter": "https://twitter.com/xynew_"
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 537,
@@ -9223,26 +9223,8 @@
     },
     {
       "rank": 541,
-      "uid": "1007693418708",
-      "name": "_Twitch",
-      "rp": 16501,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 542,
       "uid": "1006746034894",
-      "name": "- Empty name -",
+      "name": "LOL_T0MqSL4yeR",
       "rp": 16500,
       "change": 0,
       "level": 0,
@@ -9255,16 +9237,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 543,
+      "rank": 542,
       "uid": "1006967227794",
       "name": "L1nMuuuuu",
       "rp": 16499,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -9273,10 +9255,46 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 545,
+      "rank": 543,
+      "uid": "1008042235913",
+      "name": "SBI Mitarashi",
+      "rp": 16497,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "手柄",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=mitarashi_numa",
+        "twitter": "https://twitter.com/mitarashi_numa"
+      },
+      "rpChange": -175,
+      "rankChange": -77
+    },
+    {
+      "rank": 544,
+      "uid": "1009717847229",
+      "name": "斎藤/eGZody",
+      "rp": 16495,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -65,
+      "rankChange": -40
+    },
+    {
+      "rank": 546,
       "uid": "1014578043436",
       "name": "- Empty name -",
       "rp": 16490,
@@ -9291,10 +9309,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 546,
+      "rank": 547,
       "uid": "1007892499940",
       "name": "ruubi",
       "rp": 16489,
@@ -9309,10 +9327,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 547,
+      "rank": 548,
       "uid": "1011162674007",
       "name": "- Empty name -",
       "rp": 16488,
@@ -9327,10 +9345,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 548,
+      "rank": 549,
       "uid": "1010051713056",
       "name": "AtQ",
       "rp": 16486,
@@ -9345,25 +9363,7 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 549,
-      "uid": "1013171856121",
-      "name": "- Empty name -",
-      "rp": 16485,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 550,
@@ -9403,24 +9403,6 @@
     },
     {
       "rank": 552,
-      "uid": "1012531707617",
-      "name": "loudpackfps",
-      "rp": 16481,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 553,
       "uid": "1008077007783",
       "name": "WGR_Shynk",
       "rp": 16477,
@@ -9435,10 +9417,10 @@
         "twitter": "https://twitter.com/ApexerShynk"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 554,
+      "rank": 553,
       "uid": "1017126329488",
       "name": "Bonjour Mademoiselle",
       "rp": 16477,
@@ -9453,10 +9435,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 555,
+      "rank": 554,
       "uid": "1007600801456",
       "name": "X_xSorryWingman",
       "rp": 16476,
@@ -9471,10 +9453,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 556,
+      "rank": 555,
       "uid": "2436068307",
       "name": "kentin1217",
       "rp": 16476,
@@ -9489,10 +9471,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 557,
+      "rank": 556,
       "uid": "1015429991202",
       "name": "XECT Co2",
       "rp": 16471,
@@ -9507,28 +9489,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 558,
-      "uid": "2350494401",
-      "name": "Twitch.tv/CrudeFPS",
-      "rp": 16471,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "US",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=CrudeFPS",
-        "twitter": "https://twitter.com/CrudeGames"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 559,
+      "rank": 557,
       "uid": "1005891213705",
       "name": "Asuka",
       "rp": 16470,
@@ -9543,28 +9507,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 560,
-      "uid": "1013292401400",
-      "name": "tito9923",
-      "rp": 16464,
+      "rank": 558,
+      "uid": "1007652453522",
+      "name": "BB_SmileSlime",
+      "rp": 16468,
       "change": 0,
       "level": 0,
       "online": true,
       "statusText": "",
-      "country": "US",
+      "country": "JP",
       "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -85,
+      "rankChange": -48
     },
     {
-      "rank": 561,
+      "rank": 559,
       "uid": "1012147763526",
       "name": "NOOB_Ayi",
       "rp": 16463,
@@ -9579,10 +9543,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 562,
+      "rank": 560,
       "uid": "1008045699886",
       "name": "路人",
       "rp": 16462,
@@ -9597,10 +9561,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 563,
+      "rank": 561,
       "uid": "1007913648198",
       "name": ">w",
       "rp": 16462,
@@ -9615,10 +9579,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 564,
+      "rank": 562,
       "uid": "1021836012311",
       "name": "meow",
       "rp": 16459,
@@ -9633,13 +9597,31 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 2
     },
     {
-      "rank": 565,
+      "rank": 563,
       "uid": "1013186350815",
       "name": "woodcityboy2",
       "rp": 16459,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": 2
+    },
+    {
+      "rank": 564,
+      "uid": "1011769519542",
+      "name": "Mira",
+      "rp": 16456,
       "change": 0,
       "level": 0,
       "online": false,
@@ -9650,11 +9632,11 @@
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": 165,
+      "rankChange": 159
     },
     {
-      "rank": 566,
+      "rank": 565,
       "uid": "1008513694018",
       "name": "ggsumida",
       "rp": 16455,
@@ -9669,10 +9651,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 569,
+      "rank": 568,
       "uid": "1008922783948",
       "name": "Futurelesslife",
       "rp": 16451,
@@ -9687,10 +9669,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 570,
+      "rank": 569,
       "uid": "1008146406149",
       "name": "ITOUONTHEWAVE",
       "rp": 16450,
@@ -9705,10 +9687,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 573,
+      "rank": 572,
       "uid": "1010834407308",
       "name": "TWITCH",
       "rp": 16445,
@@ -9723,10 +9705,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 574,
+      "rank": 573,
       "uid": "1011297816765",
       "name": "1amSolonely",
       "rp": 16443,
@@ -9741,7 +9723,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 574,
+      "uid": "1013292401400",
+      "name": "tito9923",
+      "rp": 16443,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -21,
+      "rankChange": -14
     },
     {
       "rank": 575,
@@ -9834,7 +9834,7 @@
       "rankChange": 0
     },
     {
-      "rank": 583,
+      "rank": 582,
       "uid": "1011242205008",
       "name": "AAL hazuぽよ",
       "rp": 16428,
@@ -9849,16 +9849,34 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
     },
     {
-      "rank": 584,
+      "rank": 583,
       "uid": "1005507888255",
       "name": "Sukeracho",
       "rp": 16428,
       "change": 0,
       "level": 0,
       "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": 1
+    },
+    {
+      "rank": 584,
+      "uid": "1006597250851",
+      "name": "^^b",
+      "rp": 16426,
+      "change": 0,
+      "level": 0,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -9943,30 +9961,12 @@
     },
     {
       "rank": 591,
-      "uid": "1008852604928",
-      "name": "RR Rye",
-      "rp": 16417,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "/core/out?type=twitch&id=ryedesu",
-        "twitter": "https://twitter.com/RyeDesu"
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 592,
       "uid": "1007818813510",
       "name": "Gucky",
       "rp": 16416,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -9975,7 +9975,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": 1
+    },
+    {
+      "rank": 592,
+      "uid": "1007693418708",
+      "name": "_Twitch",
+      "rp": 16416,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -85,
+      "rankChange": -51
     },
     {
       "rank": 593,
@@ -10128,7 +10146,7 @@
       "rp": 16404,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -10143,6 +10161,24 @@
       "rank": 604,
       "uid": "1020568217287",
       "name": "Kaiden",
+      "rp": 16404,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": 0
+    },
+    {
+      "rank": 606,
+      "uid": "1023456532525",
+      "name": "Youtube",
       "rp": 16404,
       "change": 0,
       "level": 0,
@@ -10164,7 +10200,7 @@
       "rp": 16402,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -10177,6 +10213,24 @@
     },
     {
       "rank": 611,
+      "uid": "1013171856121",
+      "name": "- Empty name -",
+      "rp": 16400,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -85,
+      "rankChange": -62
+    },
+    {
+      "rank": 612,
       "uid": "1011049707125",
       "name": "2nekosu",
       "rp": 16398,
@@ -10191,7 +10245,7 @@
         "twitter": "https://twitter.com/2nekosu"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
       "rank": 613,
@@ -10249,6 +10303,24 @@
     },
     {
       "rank": 617,
+      "uid": "1012531707617",
+      "name": "loudpackfps",
+      "rp": 16391,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -90,
+      "rankChange": -65
+    },
+    {
+      "rank": 618,
       "uid": "1009280309376",
       "name": "jiusheng",
       "rp": 16390,
@@ -10263,10 +10335,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 619,
+      "rank": 620,
       "uid": "1010128111744",
       "name": "HAVOC Xoyo",
       "rp": 16383,
@@ -10281,10 +10353,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 620,
+      "rank": 621,
       "uid": "1013844269278",
       "name": "APEX-KK",
       "rp": 16382,
@@ -10299,10 +10371,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 621,
+      "rank": 622,
       "uid": "1007316339888",
       "name": "MousePadTester ver.2",
       "rp": 16382,
@@ -10317,10 +10389,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 622,
+      "rank": 623,
       "uid": "1006259235121",
       "name": "WBD_Zovwi",
       "rp": 16382,
@@ -10335,10 +10407,46 @@
         "twitter": "https://twitter.com/wbd_luke"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -1
     },
     {
-      "rank": 625,
+      "rank": 626,
+      "uid": "2350494401",
+      "name": "Twitch.tv/CrudeFPS",
+      "rp": 16381,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "US",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=CrudeFPS",
+        "twitter": "https://twitter.com/CrudeGames"
+      },
+      "rpChange": -90,
+      "rankChange": -68
+    },
+    {
+      "rank": 627,
+      "uid": "1008892704005",
+      "name": "bili_Yukinnoo",
+      "rp": 16380,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 113,
+      "rankChange": 135
+    },
+    {
+      "rank": 628,
       "uid": "2313352150",
       "name": "tarochapi",
       "rp": 16379,
@@ -10353,10 +10461,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 626,
+      "rank": 629,
       "uid": "1010800204232",
       "name": "NZ_Nesocred",
       "rp": 16379,
@@ -10371,10 +10479,10 @@
         "twitter": "https://twitter.com/Nshmellooo"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 627,
+      "rank": 630,
       "uid": "1009277168503",
       "name": "- Empty name -",
       "rp": 16378,
@@ -10389,10 +10497,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 628,
+      "rank": 631,
       "uid": "1007846232942",
       "name": "ASNA W1nt3R",
       "rp": 16376,
@@ -10407,10 +10515,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 629,
+      "rank": 632,
       "uid": "1006021679291",
       "name": "Pr1ncess_XvV",
       "rp": 16372,
@@ -10425,10 +10533,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 630,
+      "rank": 633,
       "uid": "1000649586995",
       "name": "贼肉波奇",
       "rp": 16372,
@@ -10443,10 +10551,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 631,
+      "rank": 634,
       "uid": "1004323415831",
       "name": "FAS Ritsu6",
       "rp": 16371,
@@ -10461,10 +10569,28 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 632,
+      "rank": 635,
+      "uid": "1008081435861",
+      "name": "YoYshiman",
+      "rp": 16371,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 105,
+      "rankChange": 129
+    },
+    {
+      "rank": 636,
       "uid": "2431797928",
       "name": "BubblyBea",
       "rp": 16370,
@@ -10479,10 +10605,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 633,
+      "rank": 637,
       "uid": "1012109335012",
       "name": "KaizokuRessya",
       "rp": 16368,
@@ -10497,13 +10623,13 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 634,
-      "uid": "1010485220539",
-      "name": "2c1m Fengchun0v0",
-      "rp": 16366,
+      "rank": 639,
+      "uid": "2378822235",
+      "name": "Derek Jackson Gaming On Facebook",
+      "rp": 16363,
       "change": 0,
       "level": 0,
       "online": true,
@@ -10514,11 +10640,11 @@
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": 56,
+      "rankChange": 66
     },
     {
-      "rank": 636,
+      "rank": 640,
       "uid": "1007775721356",
       "name": "DZY",
       "rp": 16362,
@@ -10533,10 +10659,10 @@
         "twitter": "https://twitter.com/DizzyMizLizyy"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 638,
+      "rank": 643,
       "uid": "1008379406360",
       "name": "Rave",
       "rp": 16359,
@@ -10551,10 +10677,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 639,
+      "rank": 644,
       "uid": "2729153168",
       "name": "Dante",
       "rp": 16357,
@@ -10569,10 +10695,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 640,
+      "rank": 645,
       "uid": "1009410539458",
       "name": "PrismaIllya",
       "rp": 16357,
@@ -10587,10 +10713,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 641,
+      "rank": 646,
       "uid": "1012240300613",
       "name": "Yachiyo",
       "rp": 16356,
@@ -10605,10 +10731,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 642,
+      "rank": 647,
       "uid": "1010925948153",
       "name": "Kvii9",
       "rp": 16356,
@@ -10623,10 +10749,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 643,
+      "rank": 648,
       "uid": "1010379452900",
       "name": "sinsinsin",
       "rp": 16355,
@@ -10641,10 +10767,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 644,
+      "rank": 649,
       "uid": "1006832001120",
       "name": "takeshi0922",
       "rp": 16355,
@@ -10659,10 +10785,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 646,
+      "rank": 653,
       "uid": "1012129117443",
       "name": "Miku",
       "rp": 16352,
@@ -10677,10 +10803,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 647,
+      "rank": 654,
       "uid": "1009013740702",
       "name": "- Empty name -",
       "rp": 16351,
@@ -10695,10 +10821,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 648,
+      "rank": 655,
       "uid": "1007991853770",
       "name": "_Bamboo222",
       "rp": 16351,
@@ -10713,10 +10839,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 649,
+      "rank": 656,
       "uid": "1007716701440",
       "name": "替埃斯爱慕_窝哈斯特",
       "rp": 16350,
@@ -10731,10 +10857,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 651,
+      "rank": 658,
       "uid": "1008800369207",
       "name": "A-Solution",
       "rp": 16350,
@@ -10749,10 +10875,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 652,
+      "rank": 659,
       "uid": "2353964431",
       "name": "Straight Outta Wonton China",
       "rp": 16350,
@@ -10767,10 +10893,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 653,
+      "rank": 660,
       "uid": "1011316049635",
       "name": "DouYin_Apex-",
       "rp": 16349,
@@ -10785,33 +10911,15 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 654,
+      "rank": 661,
       "uid": "1007296450933",
       "name": "Douyin-w-m3",
       "rp": 16349,
       "change": 0,
       "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 656,
-      "uid": "1012611163886",
-      "name": "LvWaaaa",
-      "rp": 16347,
-      "change": 0,
-      "level": 0,
       "online": false,
       "statusText": "",
       "country": "",
@@ -10821,85 +10929,13 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 657,
-      "uid": "1007977251685",
-      "name": "zTxbakJr",
-      "rp": 16346,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 658,
-      "uid": "1019109703970",
-      "name": "UwU",
-      "rp": 16346,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 659,
-      "uid": "1011531524454",
-      "name": "Vlorzy",
-      "rp": 16345,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 660,
-      "uid": "1005942461406",
-      "name": "_K1llingRosesZz",
-      "rp": 16345,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "CN",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
       "rank": 662,
-      "uid": "1009564270090",
-      "name": "Schro2069",
-      "rp": 16344,
+      "uid": "1008719915710",
+      "name": "KyloZ",
+      "rp": 16348,
       "change": 0,
       "level": 0,
       "online": false,
@@ -10915,6 +10951,96 @@
     },
     {
       "rank": 663,
+      "uid": "1007977251685",
+      "name": "zTxbakJr",
+      "rp": 16346,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 664,
+      "uid": "1019109703970",
+      "name": "UwU",
+      "rp": 16346,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 665,
+      "uid": "1011531524454",
+      "name": "Vlorzy",
+      "rp": 16345,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 666,
+      "uid": "1005942461406",
+      "name": "_K1llingRosesZz",
+      "rp": 16345,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "CN",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 668,
+      "uid": "1009564270090",
+      "name": "Schro2069",
+      "rp": 16344,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 669,
       "uid": "1004609478090",
       "name": "yJely",
       "rp": 16343,
@@ -10929,10 +11055,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 664,
+      "rank": 670,
       "uid": "1011081185004",
       "name": "GavinIsConfused",
       "rp": 16341,
@@ -10947,10 +11073,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 665,
+      "rank": 671,
       "uid": "1012183584027",
       "name": "XXLuvMyselfXX",
       "rp": 16340,
@@ -10965,28 +11091,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 668,
-      "uid": "1008771348374",
-      "name": "crumbs",
-      "rp": 16339,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 669,
+      "rank": 674,
       "uid": "1012429450169",
       "name": "J",
       "rp": 16333,
@@ -11001,10 +11109,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 670,
+      "rank": 675,
       "uid": "1006359602005",
       "name": "Johnmeal-sc",
       "rp": 16333,
@@ -11019,10 +11127,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 672,
+      "rank": 677,
       "uid": "2283004400",
       "name": "AG TO OP",
       "rp": 16332,
@@ -11037,16 +11145,34 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 674,
+      "rank": 678,
+      "uid": "1008852604928",
+      "name": "RR Rye",
+      "rp": 16332,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "JP",
+      "input": "键鼠",
+      "links": {
+        "twitch": "/core/out?type=twitch&id=ryedesu",
+        "twitter": "https://twitter.com/RyeDesu"
+      },
+      "rpChange": -85,
+      "rankChange": -87
+    },
+    {
+      "rank": 680,
       "uid": "1007663459576",
       "name": "胜胜",
       "rp": 16331,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -11055,10 +11181,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 675,
+      "rank": 681,
       "uid": "1011081658049",
       "name": "man",
       "rp": 16328,
@@ -11073,10 +11199,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 676,
+      "rank": 682,
       "uid": "1011875760701",
       "name": "tse0oo0",
       "rp": 16328,
@@ -11091,10 +11217,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 678,
+      "rank": 684,
       "uid": "1009370469266",
       "name": "Hannibal Lecter",
       "rp": 16326,
@@ -11109,10 +11235,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 679,
+      "rank": 685,
       "uid": "1009690507813",
       "name": "TheMoonFellToMyWorld",
       "rp": 16324,
@@ -11127,10 +11253,28 @@
         "twitter": ""
       },
       "rpChange": 0,
+      "rankChange": -6
+    },
+    {
+      "rank": 686,
+      "uid": "1009919873056",
+      "name": "YT_NocturnOwl",
+      "rp": 16324,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
       "rankChange": 0
     },
     {
-      "rank": 680,
+      "rank": 687,
       "uid": "1000669542761",
       "name": "chen",
       "rp": 16323,
@@ -11145,10 +11289,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 681,
+      "rank": 688,
       "uid": "1016479576462",
       "name": "Sx1ng_TvT",
       "rp": 16323,
@@ -11163,10 +11307,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 682,
+      "rank": 689,
       "uid": "1016630514246",
       "name": "- Empty name -",
       "rp": 16323,
@@ -11181,10 +11325,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 683,
+      "rank": 690,
       "uid": "1013652055524",
       "name": "Dayoff#",
       "rp": 16322,
@@ -11199,28 +11343,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 684,
-      "uid": "1011519878350",
-      "name": "moRe",
-      "rp": 16321,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "TW",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 685,
+      "rank": 691,
       "uid": "1007558615901",
       "name": "KNC",
       "rp": 16321,
@@ -11235,10 +11361,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 686,
+      "rank": 692,
       "uid": "1002908958418",
       "name": "APEX_WEIJU",
       "rp": 16321,
@@ -11253,10 +11379,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 687,
+      "rank": 693,
       "uid": "1009159511742",
       "name": "nikoro33",
       "rp": 16320,
@@ -11271,10 +11397,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 688,
+      "rank": 694,
       "uid": "2351437866",
       "name": "- Empty name -",
       "rp": 16320,
@@ -11289,10 +11415,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 689,
+      "rank": 695,
       "uid": "1009985481439",
       "name": "Tekunoro_TTV",
       "rp": 16318,
@@ -11307,10 +11433,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 691,
+      "rank": 697,
       "uid": "1006205484201",
       "name": "madjin",
       "rp": 16318,
@@ -11325,10 +11451,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 692,
+      "rank": 698,
       "uid": "1009872096960",
       "name": "Gale Wind",
       "rp": 16317,
@@ -11343,16 +11469,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 695,
+      "rank": 701,
       "uid": "1009590682379",
       "name": "TTV_ShizuYukinon",
       "rp": 16316,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "US",
       "input": "键鼠",
@@ -11361,10 +11487,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 696,
+      "rank": 702,
       "uid": "1013013794192",
       "name": "Amos",
       "rp": 16315,
@@ -11379,10 +11505,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 697,
+      "rank": 704,
       "uid": "1007966866778",
       "name": "狮心红尘",
       "rp": 16312,
@@ -11397,10 +11523,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 698,
+      "rank": 705,
       "uid": "1008054785547",
       "name": "Bocek bow",
       "rp": 16312,
@@ -11415,10 +11541,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 699,
+      "rank": 706,
       "uid": "1011623177825",
       "name": "oftenunstable",
       "rp": 16312,
@@ -11433,10 +11559,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 700,
+      "rank": 707,
       "uid": "1010255774382",
       "name": "MiraTongue/YoutubeTiktok",
       "rp": 16311,
@@ -11451,10 +11577,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 701,
+      "rank": 708,
       "uid": "1009988472064",
       "name": "Hanekawa BY",
       "rp": 16309,
@@ -11469,16 +11595,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 702,
+      "rank": 709,
       "uid": "1008341649656",
       "name": "twitch.tv/ezuom",
       "rp": 16309,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -11487,10 +11613,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 703,
+      "rank": 710,
       "uid": "1012088469764",
       "name": "- Empty name -",
       "rp": 16308,
@@ -11505,10 +11631,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 704,
+      "rank": 711,
       "uid": "1009995896431",
       "name": "ggaryy6",
       "rp": 16307,
@@ -11523,28 +11649,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -7
     },
     {
-      "rank": 705,
-      "uid": "2378822235",
-      "name": "Derek Jackson Gaming On Facebook",
-      "rp": 16307,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 706,
+      "rank": 712,
       "uid": "1003059361388",
       "name": "JoystickHero14",
       "rp": 16306,
@@ -11559,10 +11667,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 707,
+      "rank": 713,
       "uid": "1020966992702",
       "name": "VIDAX",
       "rp": 16304,
@@ -11577,28 +11685,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 708,
-      "uid": "1008490321733",
-      "name": "VT recheesy",
-      "rp": 16303,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "RU",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 710,
+      "rank": 714,
       "uid": "1007928631860",
       "name": "GEN DEXTER",
       "rp": 16301,
@@ -11613,10 +11703,10 @@
         "twitter": "https://twitter.com/dexterstepsis"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 711,
+      "rank": 715,
       "uid": "1008655988806",
       "name": "Yukineko",
       "rp": 16300,
@@ -11631,10 +11721,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 713,
+      "rank": 717,
       "uid": "1005527572028",
       "name": "Code \"Sweat\" on BattleBeaver",
       "rp": 16297,
@@ -11649,10 +11739,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 714,
+      "rank": 718,
       "uid": "1008030957435",
       "name": "Z3th",
       "rp": 16295,
@@ -11667,10 +11757,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 716,
+      "rank": 721,
       "uid": "2471803150",
       "name": "- Empty name -",
       "rp": 16293,
@@ -11685,10 +11775,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 717,
+      "rank": 722,
       "uid": "1007850028327",
       "name": "Ace",
       "rp": 16293,
@@ -11703,10 +11793,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 718,
+      "rank": 723,
       "uid": "1010551679196",
       "name": "imadau",
       "rp": 16293,
@@ -11721,10 +11811,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 720,
+      "rank": 725,
       "uid": "1017031504643",
       "name": "Recyclable_Fan5",
       "rp": 16292,
@@ -11739,10 +11829,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 722,
+      "rank": 727,
       "uid": "1010980239049",
       "name": "NOT_CUDA | TWITCH",
       "rp": 16291,
@@ -11757,28 +11847,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 723,
-      "uid": "1011769519542",
-      "name": "Mira",
-      "rp": 16291,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 724,
+      "rank": 728,
       "uid": "1008826368973",
       "name": "Twitch.tv/HydraFPS_",
       "rp": 16291,
@@ -11793,10 +11865,10 @@
         "twitter": "https://twitter.com/HydraRMA7"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 725,
+      "rank": 729,
       "uid": "1009744178660",
       "name": "Sola Aoi",
       "rp": 16290,
@@ -11811,10 +11883,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 726,
+      "rank": 730,
       "uid": "1009315962493",
       "name": "chunbby",
       "rp": 16290,
@@ -11829,10 +11901,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 729,
+      "rank": 733,
       "uid": "1004768283282",
       "name": "Tommy",
       "rp": 16288,
@@ -11847,10 +11919,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 731,
+      "rank": 735,
       "uid": "1014922876977",
       "name": "@AcenSlish",
       "rp": 16286,
@@ -11865,10 +11937,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 732,
+      "rank": 736,
       "uid": "1011882464784",
       "name": "CCNM",
       "rp": 16286,
@@ -11883,10 +11955,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 733,
+      "rank": 737,
       "uid": "1013816906245",
       "name": "domodomoUwO",
       "rp": 16284,
@@ -11901,10 +11973,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 734,
+      "rank": 738,
       "uid": "1012545372757",
       "name": "dieinthesea",
       "rp": 16284,
@@ -11919,10 +11991,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 735,
+      "rank": 739,
       "uid": "1009060725749",
       "name": "CloudEFFX",
       "rp": 16284,
@@ -11937,10 +12009,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 736,
+      "rank": 740,
       "uid": "1013027200671",
       "name": "raize_fps",
       "rp": 16283,
@@ -11955,10 +12027,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 737,
+      "rank": 741,
       "uid": "1008800802851",
       "name": "Bili--",
       "rp": 16282,
@@ -11973,10 +12045,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 738,
+      "rank": 742,
       "uid": "1008501980918",
       "name": "- Empty name -",
       "rp": 16282,
@@ -11991,10 +12063,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 739,
+      "rank": 743,
       "uid": "1000340922499",
       "name": "Paul_FpsTv",
       "rp": 16281,
@@ -12009,10 +12081,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 740,
+      "rank": 744,
       "uid": "1008950472125",
       "name": "zz_4e1ken",
       "rp": 16281,
@@ -12027,10 +12099,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 741,
+      "rank": 746,
       "uid": "1010967854735",
       "name": "aimbot2177",
       "rp": 16280,
@@ -12045,10 +12117,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 742,
+      "rank": 747,
       "uid": "1008802308268",
       "name": "zobolove",
       "rp": 16280,
@@ -12063,10 +12135,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 746,
+      "rank": 751,
       "uid": "1009161173067",
       "name": "SakuyaaaTxT",
       "rp": 16277,
@@ -12081,10 +12153,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 747,
+      "rank": 752,
       "uid": "1016932485765",
       "name": "567Bathtub",
       "rp": 16276,
@@ -12099,12 +12171,30 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 748,
+      "rank": 753,
       "uid": "1006913453114",
       "name": "TTV_kkklkd/",
+      "rp": 16276,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": 0,
+      "rankChange": -5
+    },
+    {
+      "rank": 754,
+      "uid": "1010485220539",
+      "name": "2c1m Fengchun0v0",
       "rp": 16276,
       "change": 0,
       "level": 0,
@@ -12116,11 +12206,11 @@
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -90,
+      "rankChange": -120
     },
     {
-      "rank": 749,
+      "rank": 755,
       "uid": "2320725070",
       "name": "Tyg_Ronin",
       "rp": 16275,
@@ -12135,10 +12225,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 750,
+      "rank": 756,
       "uid": "1006658018944",
       "name": "PAL EITOp_q",
       "rp": 16274,
@@ -12153,10 +12243,10 @@
         "twitter": "https://twitter.com/EITOp_q"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 751,
+      "rank": 757,
       "uid": "1012220809334",
       "name": "RainbowDash-TuT",
       "rp": 16273,
@@ -12171,10 +12261,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 752,
+      "rank": 758,
       "uid": "1008830527942",
       "name": "Apocalyps_Zeno",
       "rp": 16272,
@@ -12189,10 +12279,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 755,
+      "rank": 761,
       "uid": "1013071551742",
       "name": "ReconTW",
       "rp": 16270,
@@ -12207,10 +12297,10 @@
         "twitter": "https://twitter.com/IReconTW"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 756,
+      "rank": 762,
       "uid": "1008585788224",
       "name": "MaronFPS",
       "rp": 16270,
@@ -12225,10 +12315,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 757,
+      "rank": 763,
       "uid": "1004729017565",
       "name": "slyy",
       "rp": 16269,
@@ -12243,10 +12333,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 759,
+      "rank": 765,
       "uid": "1013437986306",
       "name": "BbBb_bighaapy",
       "rp": 16268,
@@ -12261,10 +12351,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 760,
+      "rank": 766,
       "uid": "1009394667883",
       "name": "QiuQ",
       "rp": 16267,
@@ -12279,10 +12369,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 761,
+      "rank": 767,
       "uid": "1009094191167",
       "name": "tearsvowo",
       "rp": 16267,
@@ -12297,28 +12387,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -6
     },
     {
-      "rank": 762,
-      "uid": "1008892704005",
-      "name": "bili_Yukinnoo",
-      "rp": 16267,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 763,
+      "rank": 768,
       "uid": "1016955466838",
       "name": "misterWINGY",
       "rp": 16266,
@@ -12333,28 +12405,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 764,
-      "uid": "1008081435861",
-      "name": "YoYshiman",
-      "rp": 16266,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "JP",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 765,
+      "rank": 769,
       "uid": "1008473544675",
       "name": "lovuxoxo_ttv",
       "rp": 16265,
@@ -12369,16 +12423,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 766,
+      "rank": 770,
       "uid": "1007953682555",
       "name": "Xx7-Hades-7xX",
       "rp": 16264,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -12387,10 +12441,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 767,
+      "rank": 771,
       "uid": "1009729043863",
       "name": "- Empty name -",
       "rp": 16264,
@@ -12405,10 +12459,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 769,
+      "rank": 773,
       "uid": "2433244017",
       "name": "twitch | iikk_a",
       "rp": 16263,
@@ -12423,10 +12477,28 @@
         "twitter": "https://twitter.com/iikk_a"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 770,
+      "rank": 774,
+      "uid": "1008771348374",
+      "name": "crumbs",
+      "rp": 16262,
+      "change": 0,
+      "level": 0,
+      "online": true,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      },
+      "rpChange": -77,
+      "rankChange": -106
+    },
+    {
+      "rank": 775,
       "uid": "1009739863853",
       "name": "- Empty name -",
       "rp": 16261,
@@ -12441,10 +12513,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 771,
+      "rank": 776,
       "uid": "1017429391018",
       "name": "- Empty name -",
       "rp": 16261,
@@ -12459,10 +12531,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 772,
+      "rank": 777,
       "uid": "1013108292206",
       "name": "- Empty name -",
       "rp": 16261,
@@ -12477,10 +12549,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 773,
+      "rank": 778,
       "uid": "1005629769403",
       "name": "Flanzinho",
       "rp": 16260,
@@ -12495,10 +12567,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 774,
+      "rank": 779,
       "uid": "1008039358083",
       "name": "2749728969=fzh",
       "rp": 16259,
@@ -12513,28 +12585,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -5
     },
     {
-      "rank": 775,
-      "uid": "1013417526412",
-      "name": "aimbotXiaoMi",
-      "rp": 16259,
-      "change": 0,
-      "level": 0,
-      "online": true,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 776,
+      "rank": 780,
       "uid": "1012994526799",
       "name": "WL_Benjixxx",
       "rp": 16258,
@@ -12549,10 +12603,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 777,
+      "rank": 781,
       "uid": "1008808654740",
       "name": "小熊包",
       "rp": 16257,
@@ -12567,10 +12621,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -4
     },
     {
-      "rank": 779,
+      "rank": 782,
       "uid": "1007886030541",
       "name": "RC Euriece",
       "rp": 16255,
@@ -12585,10 +12639,10 @@
         "twitter": "https://twitter.com/realEuriece"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 780,
+      "rank": 783,
       "uid": "1007998673459",
       "name": "RindoY",
       "rp": 16255,
@@ -12603,10 +12657,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 781,
+      "rank": 784,
       "uid": "1013382200595",
       "name": "糖水糖水糖？",
       "rp": 16254,
@@ -12621,10 +12675,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 782,
+      "rank": 785,
       "uid": "1015751033801",
       "name": "NST_TimmySnipezz",
       "rp": 16252,
@@ -12639,10 +12693,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 783,
+      "rank": 786,
       "uid": "2556363155",
       "name": "o7Kuro",
       "rp": 16252,
@@ -12657,10 +12711,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 784,
+      "rank": 787,
       "uid": "1007369051783",
       "name": "qiqi49OwO",
       "rp": 16250,
@@ -12675,10 +12729,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 785,
+      "rank": 788,
       "uid": "1006985640159",
       "name": "5morisan",
       "rp": 16249,
@@ -12693,10 +12747,10 @@
         "twitter": "https://twitter.com/moritoyouknow"
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 786,
+      "rank": 789,
       "uid": "1011823976954",
       "name": "KILLUA1211",
       "rp": 16247,
@@ -12711,10 +12765,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 788,
+      "rank": 791,
       "uid": "1009003111738",
       "name": "POP 逍遥",
       "rp": 16245,
@@ -12729,10 +12783,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 789,
+      "rank": 792,
       "uid": "1002435905178",
       "name": "startingoverselfish",
       "rp": 16244,
@@ -12747,10 +12801,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 792,
+      "rank": 795,
       "uid": "1009209646765",
       "name": "Inolongerneednicotine",
       "rp": 16242,
@@ -12765,16 +12819,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 793,
+      "rank": 796,
       "uid": "1010393463739",
       "name": "1tzKopo",
       "rp": 16239,
       "change": 0,
       "level": 0,
-      "online": true,
+      "online": false,
       "statusText": "",
       "country": "US",
       "input": "手柄",
@@ -12783,16 +12837,16 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 794,
+      "rank": 797,
       "uid": "1010036856048",
       "name": "balou",
       "rp": 16235,
       "change": 0,
       "level": 0,
-      "online": false,
+      "online": true,
       "statusText": "",
       "country": "",
       "input": "键鼠",
@@ -12801,10 +12855,10 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 795,
+      "rank": 798,
       "uid": "1009096257936",
       "name": "My name is",
       "rp": 16228,
@@ -12819,61 +12873,25 @@
         "twitter": ""
       },
       "rpChange": 0,
-      "rankChange": 0
+      "rankChange": -3
     },
     {
-      "rank": 796,
-      "uid": "1014600572731",
-      "name": "@benjahhim",
-      "rp": 16228,
+      "rank": 799,
+      "uid": "1008490321733",
+      "name": "VT recheesy",
+      "rp": 16222,
       "change": 0,
       "level": 0,
       "online": false,
       "statusText": "",
-      "country": "IL",
+      "country": "RU",
       "input": "键鼠",
       "links": {
         "twitch": "",
         "twitter": ""
       },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 798,
-      "uid": "1006295843350",
-      "name": "YT_Fumifam",
-      "rp": 16217,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
-    },
-    {
-      "rank": 800,
-      "uid": "1010036026789",
-      "name": "Maya-L",
-      "rp": 16205,
-      "change": 0,
-      "level": 0,
-      "online": false,
-      "statusText": "",
-      "country": "",
-      "input": "键鼠",
-      "links": {
-        "twitch": "",
-        "twitter": ""
-      },
-      "rpChange": 0,
-      "rankChange": 0
+      "rpChange": -81,
+      "rankChange": -91
     }
   ]
 }

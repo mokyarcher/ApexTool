@@ -94,8 +94,8 @@ export default function RankedLeaderboard() {
                 <div key={player.uid} className="grid grid-cols-[48px_36px_1fr] md:grid-cols-[56px_36px_1fr_140px_80px] gap-2 md:gap-3 items-center px-4 py-3 hover:bg-white/[0.03] transition">
                   <div className="text-center">
                     <div className={`font-display text-xl ${rankColor(player.rank)}`}>#{player.rank}</div>
-                    {player.rankChange > 0 && <div className="flex items-center justify-center gap-0.5 text-[10px] text-emerald-400"><TrendingUp size={10} />{player.rankChange}</div>}
-                    {player.rankChange < 0 && <div className="flex items-center justify-center gap-0.5 text-[10px] text-red-400"><TrendingDown size={10} />{Math.abs(player.rankChange)}</div>}
+                    {player.rankChange > 0 && <div className="flex items-center justify-center gap-0.5 text-xs font-bold text-emerald-400"><TrendingUp size={12} />↑{player.rankChange}</div>}
+                    {player.rankChange < 0 && <div className="flex items-center justify-center gap-0.5 text-xs font-bold text-red-400"><TrendingDown size={12} />↓{Math.abs(player.rankChange)}</div>}
                   </div>
                   <img src={rankIcon} alt={rankLabel} title={rankLabel} className="h-8 w-8 object-contain" />
                   <div className="min-w-0">
@@ -113,8 +113,8 @@ export default function RankedLeaderboard() {
                   </div>
                   <div className="text-right">
                     <div className="text-white text-lg font-display leading-none">{player.rp.toLocaleString()}</div>
-                    {player.rpChange > 0 && <div className="text-[11px] text-emerald-400 mt-0.5">+{player.rpChange.toLocaleString()}</div>}
-                    {player.rpChange < 0 && <div className="text-[11px] text-red-400 mt-0.5">{player.rpChange.toLocaleString()}</div>}
+                    {player.rpChange > 0 && <div className="text-xs font-bold text-emerald-400 mt-0.5">+{player.rpChange.toLocaleString()} RP</div>}
+                    {player.rpChange < 0 && <div className="text-xs font-bold text-red-400 mt-0.5">{player.rpChange.toLocaleString()} RP</div>}
                   </div>
                   <div className="flex items-center gap-1 text-zinc-400 text-xs">
                     <InputIcon size={14} /> {player.input}
