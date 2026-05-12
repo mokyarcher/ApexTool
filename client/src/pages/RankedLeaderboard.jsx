@@ -1,4 +1,4 @@
-import { ExternalLink, Gamepad2, Keyboard, Radio, Search, Shield, Trophy, Users } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Gamepad2, Keyboard, Radio, Search, Shield, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
@@ -20,16 +20,22 @@ function rankColor(rank) {
   return 'text-zinc-400';
 }
 
+const PAGE_SIZE = 50;
+
 export default function RankedLeaderboard() {
   const { data, loading, error, reload } = useFetch(api.rankedLeaderboard, []);
   const [predator, setPredator] = useState(null);
   const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
   const players = data?.players || [];
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return players;
     return players.filter((p) => p.name.toLowerCase().includes(q) || p.uid.includes(q));
   }, [players, query]);
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const predThreshold = predator?.RP?.PC?.val || Infinity;
 
   useEffect(() => {
     api.predator().then(setPredator).catch(() => {});
@@ -62,7 +68,7 @@ export default function RankedLeaderboard() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
             <input
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => { setQuery(e.target.value); setPage(1); }}
               className="w-full bg-zinc-950/70 border border-white/10 pl-9 pr-3 py-2 text-sm text-white outline-none focus:border-red-500/60"
               placeholder="搜索玩家名或 UID"
             />
@@ -79,12 +85,15 @@ export default function RankedLeaderboard() {
             <div>输入</div>
           </div>
           <div className="divide-y divide-white/[0.06]">
-            {filtered.map((player) => {
+            {paged.map((player) => {
               const InputIcon = player.input === '手柄' ? Gamepad2 : Keyboard;
+              const isPred = player.rp >= predThreshold;
+              const rankIcon = isPred ? '/ranks/apex-predator.png' : '/ranks/master.png';
+              const rankLabel = isPred ? 'Apex Predator' : 'Master';
               return (
                 <div key={player.uid} className="grid grid-cols-[48px_36px_1fr] md:grid-cols-[56px_36px_1fr_140px_80px] gap-2 md:gap-3 items-center px-4 py-3 hover:bg-white/[0.03] transition">
                   <div className={`font-display text-xl ${rankColor(player.rank)}`}>#{player.rank}</div>
-                  <img src="/ranks/apex-predator.png" alt="Apex Predator" className="h-8 w-8 object-contain" />
+                  <img src={rankIcon} alt={rankLabel} title={rankLabel} className="h-8 w-8 object-contain" />
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 min-w-0">
                       <span className="font-bold text-white truncate text-sm">{player.name}</span>
@@ -110,6 +119,24 @@ export default function RankedLeaderboard() {
             })}
           </div>
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2">
+            <button className="btn px-2 py-1.5" disabled={page <= 1} onClick={() => { setPage(page - 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+              <ChevronLeft size={16} />
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+              <button key={p} onClick={() => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className={`min-w-[36px] px-2 py-1.5 text-sm ${p === page ? 'btn bg-red-500/20 border-red-500/40 text-white' : 'btn text-zinc-400'}`}>
+                {p}
+              </button>
+            ))}
+            <button className="btn px-2 py-1.5" disabled={page >= totalPages} onClick={() => { setPage(page + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Sidebar */}
