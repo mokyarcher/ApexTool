@@ -86,9 +86,6 @@ const players = rows.map((row, index) => {
   };
 }).filter((player) => player.name && player.rp);
 
-// Re-number ranks sequentially (source data may have gaps from banned players)
-players.forEach((p, i) => { p.rank = i + 1; });
-
 const payload = {
   title: 'Apex 实时排位排行榜（BR/PC）',
   source: 'Apex Legends Status',
