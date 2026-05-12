@@ -59,7 +59,7 @@ export default function RankedLeaderboard() {
           </div>
           <h1 className="font-display text-3xl text-white">{data.title}</h1>
           <p className="text-zinc-400 text-sm mt-1">
-            数据来源: <a className="text-red-300 hover:text-red-200" href={data.sourceUrl} target="_blank" rel="noreferrer">{data.source}</a> · 当前收录 {data.count} 名玩家
+            数据来源: <a className="text-red-300 hover:text-red-200" href={data.sourceUrl} target="_blank" rel="noreferrer">{data.source}</a> · 当前收录 {data.count} 名玩家 · 更新周期: 日间每小时
           </p>
         </div>
 
