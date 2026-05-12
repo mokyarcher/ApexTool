@@ -112,7 +112,7 @@ export default function RankedLeaderboard() {
                     <div className="text-[11px] text-zinc-500 mt-0.5">UID {player.uid}{player.level ? ` · Lv.${player.level}` : ''}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-white text-lg font-display leading-none">{player.rp.toLocaleString()}</div>
+                    <div className="text-white text-lg font-display leading-none">{player.rp.toLocaleString()} <span className="text-xs text-zinc-400">RP</span></div>
                     {player.rpChange > 0 && <div className="text-xs font-bold text-emerald-400 mt-0.5">+{player.rpChange.toLocaleString()} RP</div>}
                     {player.rpChange < 0 && <div className="text-xs font-bold text-red-400 mt-0.5">{player.rpChange.toLocaleString()} RP</div>}
                   </div>
