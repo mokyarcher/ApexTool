@@ -2,8 +2,8 @@
   "title": "Apex 实时排位排行榜（BR/PC）",
   "source": "Apex Legends Status",
   "sourceUrl": "https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC",
-  "importedAt": "2026-05-12T02:22:40.564Z",
-  "count": 682,
+  "importedAt": "2026-05-12T02:26:38.124Z",
+  "count": 683,
   "players": [
     {
       "rank": 1,
@@ -1530,6 +1530,22 @@
       "uid": "1010236157105",
       "name": "Milkty2525omg",
       "rp": 19367,
+      "change": 0,
+      "level": 0,
+      "online": false,
+      "statusText": "",
+      "country": "",
+      "input": "键鼠",
+      "links": {
+        "twitch": "",
+        "twitter": ""
+      }
+    },
+    {
+      "rank": 97,
+      "uid": "1007182608317",
+      "name": "- Hidden -",
+      "rp": 19360,
       "change": 0,
       "level": 0,
       "online": false,
