@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { chromium } from 'playwright';
 import readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 
-const toolDir = path.dirname(new URL(import.meta.url).pathname);
+const toolDir = path.dirname(fileURLToPath(import.meta.url));
 const configPath = path.join(toolDir, 'config.json');
 
 if (!fs.existsSync(configPath)) {
