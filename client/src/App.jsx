@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import { Trophy, Coins, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles, Medal } from 'lucide-react';
+import { Trophy, Coins, Crosshair, Gamepad2, ShoppingBag, Flame, Search, BookOpen, Megaphone, User, LogIn, Sparkles, Medal } from 'lucide-react';
 import ParticleNest from './components/ParticleNest.jsx';
 import { AuthProvider, useAuth } from './components/AuthContext.jsx';
 import AiAssistant from './components/AiAssistant.jsx';
@@ -18,6 +18,7 @@ const Auth = lazy(() => import('./pages/Auth.jsx'));
 const Profile = lazy(() => import('./pages/Profile.jsx'));
 const ApexMBTI = lazy(() => import('./pages/ApexMBTI.jsx'));
 const RankedLeaderboard = lazy(() => import('./pages/RankedLeaderboard.jsx'));
+const WeaponSkins = lazy(() => import('./pages/WeaponSkins.jsx'));
 
 const Loading = () => (
   <div className="flex items-center justify-center py-32">
@@ -29,6 +30,7 @@ const navLeft = [
   { to: '/battlepass', label: '通行证', icon: Trophy },
   { to: '/shop', label: '商店', icon: ShoppingBag },
   { to: '/mythic', label: '神话级', icon: Flame },
+  { to: '/weapons', label: '枪械', icon: Crosshair },
   { to: '/patch-notes', label: '更新', icon: Megaphone },
   { to: '/coins', label: '金币比例', icon: Coins },
 ];
@@ -147,6 +149,7 @@ function AppContent() {
             <Route path="/crafting" element={<Crafting />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/mythic" element={<Mythic />} />
+            <Route path="/weapons" element={<WeaponSkins />} />
             <Route path="/stats" element={<PlayerStats />} />
             <Route path="/leaderboard" element={<RankedLeaderboard />} />
             <Route path="/encyclopedia" element={<Encyclopedia />} />
