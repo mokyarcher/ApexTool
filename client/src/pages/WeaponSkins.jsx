@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Crosshair, Eye, Sparkles } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Crosshair, Eye, Sparkles, X } from 'lucide-react';
 import '@google/model-viewer/dist/model-viewer.min.js';
 
 /* ── Weapon categories ── */
@@ -82,24 +82,155 @@ const WEAPONS = [
 
 const SKINS_PER_PAGE = 4;
 
-/* ── 3D Model Viewer Modal ── */
+/* ── Floating hexagonal particles (same as Mythic) ── */
+function ApexParticles({ count = 50 }) {
+  const particles = useRef(
+    Array.from({ length: count }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: 3 + Math.random() * 7,
+      opacity: 0.4 + Math.random() * 0.6,
+      duration: 6 + Math.random() * 10,
+      delay: Math.random() * -10,
+      color: Math.random() > 0.3
+        ? `rgb(${200 + Math.random() * 55}, ${140 + Math.random() * 60}, ${20 + Math.random() * 40})`
+        : `rgb(${180 + Math.random() * 75}, ${50 + Math.random() * 30}, ${20 + Math.random() * 20})`,
+    }))
+  ).current;
+  return (
+    <div className="apex-particles">
+      {particles.map((p, i) => (
+        <div
+          key={i}
+          className="apex-particle"
+          style={{
+            left: p.left,
+            top: p.top,
+            width: p.size,
+            height: p.size * 1.15,
+            backgroundColor: p.color,
+            opacity: p.opacity,
+            animationDuration: `${p.duration}s`,
+            animationDelay: `${p.delay}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* ── 3D Model Viewer Modal (Mythic-style) ── */
 function ModelViewer({ skin, onClose }) {
+  const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState('download');
+  const [loadError, setLoadError] = useState(false);
+  const mvRef = useRef(null);
+  const stallTimer = useRef(null);
+
+  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
+  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+
+  useEffect(() => {
+    const el = mvRef.current;
+    if (!el) return;
+    const onProgress = (e) => {
+      const p = Math.round(e.detail.totalProgress * 100);
+      setProgress(p);
+      clearTimeout(stallTimer.current);
+      if (p < 100) {
+        stallTimer.current = setTimeout(() => {
+          if (phase !== 'done') setPhase('processing');
+        }, 1500);
+      }
+    };
+    const onLoad = () => {
+      clearTimeout(stallTimer.current);
+      setProgress(100);
+      setPhase('done');
+    };
+    const onError = () => {
+      clearTimeout(stallTimer.current);
+      setLoadError(true);
+      setPhase('done');
+    };
+    el.addEventListener('progress', onProgress);
+    el.addEventListener('load', onLoad);
+    el.addEventListener('error', onError);
+    return () => {
+      clearTimeout(stallTimer.current);
+      el.removeEventListener('progress', onProgress);
+      el.removeEventListener('load', onLoad);
+      el.removeEventListener('error', onError);
+    };
+  }, []);
+
+  function close() { setVisible(false); setTimeout(onClose, 400); }
+  const isLoading = phase !== 'done';
+
   if (!skin) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
-      <div className="relative w-full max-w-3xl aspect-square mx-4" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center bg-black/60 border border-white/20 text-white hover:bg-red-500/40 transition">✕</button>
-        <model-viewer
-          src={skin.model}
-          alt={skin.name}
-          auto-rotate
-          camera-controls
-          shadow-intensity="1"
-          style={{ width: '100%', height: '100%', background: 'radial-gradient(circle, #1a1a2e 0%, #0a0a0a 100%)' }}
-        />
-        <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-          <div className="text-white font-display text-xl">{skin.name}</div>
-          {skin.rarity && <div className="text-red-400 text-xs mt-1">{skin.rarity}</div>}
+    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-400 ease-out ${visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'}`} onClick={close}>
+      <button className="absolute top-4 right-4 text-white/70 hover:text-white transition z-10" onClick={close}><X size={28} /></button>
+      <div
+        className={`relative w-[90vw] h-[85vh] max-w-[1200px] transition-all duration-400 ease-out ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Info overlay */}
+        <div className="absolute top-6 left-6 z-10">
+          <h2 className="font-display text-3xl text-white font-bold">{skin.name}</h2>
+          <div className="text-sm text-zinc-400 mt-1">{skin.rarity}</div>
+        </div>
+        <button className="absolute bottom-6 left-6 z-10 flex items-center gap-3 text-zinc-400 hover:text-white transition" onClick={close}>
+          <span className="text-sm border border-zinc-600 px-2 py-1">ESC</span>
+          <span className="text-sm">返回</span>
+        </button>
+        {/* Top progress bar */}
+        {isLoading && (
+          <div className="absolute top-0 left-0 right-0 z-10">
+            <div className="h-1 bg-zinc-800/50 w-full">
+              <div
+                className={`h-full bg-gradient-to-r from-red-600 to-red-400 transition-all duration-300 ease-out ${phase === 'processing' ? 'animate-pulse' : ''}`}
+                style={{ width: phase === 'processing' ? '100%' : `${progress}%` }}
+              />
+            </div>
+          </div>
+        )}
+        {/* Model not found message */}
+        {loadError && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+            <div className="text-5xl mb-4">🚀</div>
+            <div className="text-xl text-zinc-300 font-semibold">模型文件正在路上</div>
+            <div className="text-sm text-zinc-500 mt-2">Model file is on the way...</div>
+          </div>
+        )}
+        {/* Apex background + particles + model-viewer */}
+        <div className="apex-viewer-bg" style={{ width: '100%', height: '100%' }}>
+          <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+            <defs>
+              <filter id="apex-smoke-filter-weapon" x="-50%" y="-50%" width="200%" height="200%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="2" result="noise">
+                  <animate attributeName="seed" from="0" to="100" dur="20s" repeatCount="indefinite" />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            </defs>
+          </svg>
+          <ApexParticles />
+          <model-viewer
+            ref={mvRef}
+            src={skin.model}
+            alt={skin.name}
+            camera-controls
+            auto-rotate
+            shadow-intensity="1.2"
+            shadow-softness="0.8"
+            exposure="1.3"
+            environment-image="neutral"
+            tone-mapping="commerce"
+            interaction-prompt="auto"
+            style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2, background: 'transparent' }}
+          />
         </div>
       </div>
     </div>
