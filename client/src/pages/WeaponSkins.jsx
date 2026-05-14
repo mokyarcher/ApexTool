@@ -464,7 +464,7 @@ export default function WeaponSkins() {
         <WeaponDetail
           weapon={selectedWeapon}
           onClose={() => setSelectedWeapon(null)}
-          onViewModel={(skin) => { setSelectedWeapon(null); setViewingSkin(skin); }}
+          onViewModel={(skin) => { setViewingSkin(skin); }}
         />
       )}
 
