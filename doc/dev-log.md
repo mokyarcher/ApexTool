@@ -1,5 +1,102 @@
 # ApexTool 开发记录
 
+## 2026-05-14
+
+### 枪械图鉴页面（新功能）
+
+新增 `/weapons` 页面，导航栏「枪械」入口（Crosshair 图标）。
+
+**功能**：
+- 按武器类别筛选：全部 / 突击步枪 / 冲锋枪 / 轻机枪 / 射手步枪 / 狙击枪 / 霰弹枪 / 手枪
+- 武器卡片展示 2D 图片，hover 放大 + 红色投影效果
+- 点击武器弹出详情面板，展示精品皮肤列表
+- 预留 3D 模型查看器（`@google/model-viewer`），皮肤数据加 `model` 字段即可启用
+- 收录全部 31 把武器，皮肤数据持续更新中
+
+**文件**：
+- `client/src/pages/WeaponSkins.jsx` — 页面组件
+- `client/src/App.jsx` — 路由 `/weapons` + 导航入口
+
+### 排行榜数据保护
+
+**问题**：5/13 晚间抓取时 DataTable 未完全加载，HTML 只有默认 10 行数据，覆盖了正常的 750+ 玩家数据。
+
+**修复**（双层保护）：
+- `save-leaderboard.mjs`：DataTable 展开改为重试 5 次（每次等 2 秒），全部失败则 `exit(1)` 不保存 HTML
+- `import-ranked-leaderboard.js`：新增安全检查，新数据 < 100 人且旧数据 >= 100 人时拒绝覆盖
+
+### 健康检查优化
+
+- 监测时间改为日间（9:00 ~ 23:00），凌晨不检测
+- 检测时间点从整点改为每小时第 10 分钟（更新后 10 分钟检测）
+- 通知消息中的时间从 UTC 格式改为北京时间（`Asia/Shanghai`）
+
+### 其他
+
+- `downloads/` 目录加入 `.gitignore`，模型 zip 不再提交到 git
+
+---
+
+## 2026-05-11 ~ 2026-05-12
+
+### 排行榜系统（新功能）
+
+新增 `/leaderboard` 页面，导航栏「排行榜」入口（Medal 图标）。
+
+**数据采集**（家里电脑定时任务）：
+- `save-leaderboard.mjs`：Playwright 打开排行榜页面，展开 DataTable 全部行，保存 HTML
+- `import-ranked-leaderboard.js`：解析 HTML 提取玩家数据，生成 `ranked-leaderboard.json`
+- PowerShell + Batch 脚本：SCP 上传 HTML → SSH 执行导入 → git push
+- Windows 任务计划：日间每小时整点自动执行，`--auto` 参数自动关闭窗口
+
+**前端功能**：
+- 分页显示（每页 50 人），支持搜索玩家名
+- 段位图标：动态显示猎杀者 / 大师图标（通过 Predator API 获取阈值）
+- 国旗显示：使用 flagcdn.com 展示玩家国家/地区
+- 输入方式标签：手柄 / 键鼠
+- 涨跌显示：对比上次更新，展示 RP 变化（+/- 数值）和排名变化（↑/↓ 箭头）
+- 前三名彩色名字：#1 红色、#2 金色、#3 紫色
+- 更新周期标注：「更新周期: 日间每小时」
+
+**健康监控**：
+- `health-check-leaderboard.js`：定时检查玩家数量、数据时效、数据质量
+- 异常时通过企业微信机器人发送告警通知
+- crontab 定时执行（日间 9:10 ~ 23:10）
+
+**文件**：
+| 文件 | 用途 |
+|------|------|
+| `client/src/pages/RankedLeaderboard.jsx` | 前端页面 |
+| `server/scripts/import-ranked-leaderboard.js` | HTML 解析 + JSON 生成 |
+| `server/scripts/health-check-leaderboard.js` | 数据健康检查 |
+| `server/scripts/notify.js` | 企业微信通知 |
+| `server/data/ranked-leaderboard.json` | 排行榜数据 |
+| `tools/ranked-leaderboard-updater/` | 采集工具（Playwright + PS + BAT） |
+| `config/notify.json` | 通知配置（webhook） |
+
+### AI 助手（新功能）
+
+- 新增浮动 AI 助手组件（`AiAssistant.jsx`），集成 Longcat API
+- 支持上下文对话，基于本地数据回答 Apex 相关问题
+- 右下角悬浮按钮，点击展开对话面板
+
+### S29 赛季更新
+
+- 通行证更新至 S29 Split 1（超频赛季），60 级奖励数据
+- 通行证图片按赛季分目录：`client/public/bp/s29-1/`
+- 赛季名称修正为「超频 (Overclocked)」
+- ICP 备案链接添加到页面底部
+
+### 性能优化
+
+- 传家宝模型改为仅预加载当前页模型，不再全量预加载
+
+### 战绩查询修复
+
+- Alter / Axle 新英雄使用本地图标，避免 API 图片缺失
+
+---
+
 ## 2026-05-06
 
 ### 更新公告数据 - 同步 S29 Overclocked 官方内容
