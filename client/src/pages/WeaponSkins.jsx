@@ -193,7 +193,7 @@ function WeaponDetail({ weapon, onClose, onViewModel }) {
         <div className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
 
         {/* Header */}
-        <div className="relative p-5 bg-gradient-to-r from-red-950/30 to-zinc-950/60 border-b border-white/5">
+        <div className="relative p-5 pr-32 sm:pr-40 bg-gradient-to-r from-red-950/30 to-zinc-950/60 border-b border-white/5">
           <button onClick={onClose} className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-2 py-1 text-xs text-zinc-400 hover:text-white bg-black/40 border border-white/10 hover:border-white/30 transition">
             <span className="px-1.5 py-0.5 text-[10px] bg-white/10 border border-white/20">ESC</span> 返回
           </button>
