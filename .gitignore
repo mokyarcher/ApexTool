@@ -14,5 +14,7 @@ server/debug-*.html
 # Leaderboard temp HTML (source for import script)
 leaderboard.html
 leaderboard_files/
+# Weapon skin GLB models (served as static, not in git)
+client/public/weapons/**/*.glb
 # Downloaded model zips
 downloads/

@@ -36,7 +36,20 @@ const WEAPONS = [
   { id: 'hemlok', name: 'Hemlok', category: 'ar', image: '/weapons/hemlok.png' },
   { id: 'nemesis', name: 'Nemesis', category: 'ar', image: '/weapons/nemesis.png' },
   // 冲锋枪
-  { id: 'r99', name: 'R-99', category: 'smg', image: '/weapons/r99.png' },
+  { id: 'r99', name: 'R-99', category: 'smg', image: '/weapons/r99.png', skins: [
+    { id: 'r99-axle-launch-bundle', name: 'Axle Launch Bundle', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/axle-launch-bundle.glb' },
+    { id: 'r99-beat-dropper', name: 'Beat Dropper', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/beat-dropper.glb' },
+    { id: 'r99-buzz-kill', name: 'Buzz Kill', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/buzz-kill.glb' },
+    { id: 'r99-frey-mythic', name: 'Frey Mythic', rarity: '神话', image: '/weapons/r99.png', model: '/weapons/r99/glb/frey-mythic.glb' },
+    { id: 'r99-i-scream', name: 'I-Scream', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/i-scream.glb' },
+    { id: 'r99-ku-pow', name: 'KU-POW', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/ku-pow.glb' },
+    { id: 'r99-outlands-avalanche', name: 'Outlands Avalanche', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/outlands-avalanche.glb' },
+    { id: 'r99-paradigm-shifter', name: 'Paradigm Shifter', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/paradigm-shifter.glb' },
+    { id: 'r99-solar-flare', name: 'Solar Flare', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/solar-flare.glb' },
+    { id: 'r99-street-rush', name: 'Street Rush', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/street-rush.glb' },
+    { id: 'r99-swift-death', name: 'Swift Death', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/swift-death.glb' },
+    { id: 'r99-system-error', name: 'System Error', rarity: '传说', image: '/weapons/r99.png', model: '/weapons/r99/glb/system-error.glb' },
+  ] },
   { id: 'alternator', name: 'Alternator', category: 'smg', image: '/weapons/alternator.png' },
   { id: 'car', name: 'C.A.R.', category: 'smg', image: '/weapons/car.png' },
   { id: 'prowler', name: 'Prowler', category: 'smg', image: '/weapons/prowler.png' },
@@ -65,7 +78,7 @@ const WEAPONS = [
   { id: 'wingman', name: 'Wingman', category: 'pistol', image: '/weapons/wingman.png' },
   { id: 'p2020', name: 'P2020', category: 'pistol', image: '/weapons/p2020.png' },
   { id: 're45', name: 'RE-45', category: 'pistol', image: '/weapons/re45.png' },
-].map(w => ({ ...w, skins: mockSkins(w.id, w.image) }));
+].map(w => w.skins ? w : { ...w, skins: mockSkins(w.id, w.image) });
 
 const SKINS_PER_PAGE = 4;
 
