@@ -71,8 +71,20 @@ const players = rows.map((row, index) => {
   const rpCell = cells[3] || '';
   const uid = firstMatch(playerCell, /profile\/uid\/[^/]+\/([0-9]+)/i) || firstMatch(playerCell, /load(?:Sum|Perf)\(&#39;([0-9]+)&#39;\)/i) || `unknown-${index}`;
   const name = cleanText(firstMatch(playerCell, /<a[^>]*profile\/uid[^>]*>([\s\S]*?)<\/a>/i)) || 'NONE';
-  const rank = toNumber(firstMatch(rankCell, /<span[^>]*font-size:\s*25px[^>]*>([\s\S]*?)<\/span>/i)) || index + 1;
-  const rp = toNumber(firstMatch(rpCell, /<span[^>]*font-size:\s*20px[^>]*>([\s\S]*?)<\/span>/i));
+  // Support both old and new HTML structures
+  // Old: <span style="font-size: 25px">1</span>
+  // New: <span class="v2-lb-rank" data-rank-display="">#1</span>
+  const rank = toNumber(
+    firstMatch(rankCell, /<span[^>]*class="v2-lb-rank"[^>]*data-rank-display[^>]*>(?:<span[^>]*>)?([0-9]+)/i) ||
+    firstMatch(rankCell, /<span[^>]*font-size:\s*25px[^>]*>([\s\S]*?)<\/span>/i)
+  ) || index + 1;
+
+  // Old: <span style="font-size: 20px">47170</span>
+  // New: <span class="v2-lb-score__value">47,170</span>
+  const rp = toNumber(
+    firstMatch(rpCell, /<span[^>]*class="v2-lb-score__value"[^>]*>([\s\S]*?)<\/span>/i) ||
+    firstMatch(rpCell, /<span[^>]*font-size:\s*20px[^>]*>([\s\S]*?)<\/span>/i)
+  );
   const changeRaw = cleanText(firstMatch(rpCell, /<p[\s\S]*?<\/p>/i));
   const change = toNumber(changeRaw);
   const level = toNumber(firstMatch(playerCell, /等级\s*<span[^>]*>([\s\S]*?)<\/span>/i)) || toNumber(firstMatch(playerCell, /level\s*<span[^>]*>([\s\S]*?)<\/span>/i));
@@ -97,6 +109,13 @@ const players = rows.map((row, index) => {
     links: { twitch, twitter },
   };
 }).filter((player) => player.rp > 0);
+
+// Safety: refuse to overwrite good data with bad scrape
+const MIN_PLAYERS = 100;
+if (players.length < MIN_PLAYERS && Object.keys(prevMap).length >= MIN_PLAYERS) {
+  console.error(`ABORTED: Only ${players.length} players parsed (expected >= ${MIN_PLAYERS}). Previous data had ${Object.keys(prevMap).length} players. Refusing to overwrite.`);
+  process.exit(1);
+}
 
 // Calculate changes vs previous data
 for (const p of players) {

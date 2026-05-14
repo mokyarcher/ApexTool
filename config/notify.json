@@ -1,0 +1,25 @@
+{
+  "email": {
+    "enabled": false,
+    "smtp": {
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "secure": false,
+      "auth": {
+        "user": "",
+        "pass": ""
+      }
+    },
+    "from": "",
+    "to": []
+  },
+  "webhook": {
+    "enabled": true,
+    "url": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=234a9e14-84a3-4963-8b54-5784d20612ab",
+    "type": "wechat"
+  },
+  "logfile": {
+    "enabled": true,
+    "path": "/opt/projects/ApexTool/logs/notifications.log"
+  }
+}

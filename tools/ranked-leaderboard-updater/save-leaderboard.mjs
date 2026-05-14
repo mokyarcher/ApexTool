@@ -37,27 +37,37 @@ try {
   console.warn('Timed out waiting for leaderboard table. Saving current HTML anyway.');
 }
 
-// Expand DataTable to show ALL rows instead of just 50
+// Expand DataTable to show ALL rows instead of just default 10
 console.log('Expanding table to show all rows...');
-const rowCount = await page.evaluate(() => {
-  try {
-    const table = $('#liveTable').DataTable();
-    const total = table.rows().count();
-    table.page.len(total).draw();
-    return total;
-  } catch (e) {
-    return -1;
+let rowCount = -1;
+for (let attempt = 1; attempt <= 5; attempt++) {
+  await new Promise((r) => setTimeout(r, 2000));
+  rowCount = await page.evaluate(() => {
+    try {
+      const table = $('#liveTable').DataTable();
+      const total = table.rows().count();
+      if (total <= 10) return -1;
+      table.page.len(total).draw();
+      return total;
+    } catch (e) {
+      return -1;
+    }
+  });
+  if (rowCount > 10) {
+    console.log(`Table expanded: ${rowCount} total rows (attempt ${attempt})`);
+    break;
   }
-});
+  console.log(`Attempt ${attempt}/5: DataTable not ready (got ${rowCount}), retrying...`);
+}
 
-if (rowCount > 0) {
-  console.log(`Table expanded: ${rowCount} total rows`);
-} else {
-  console.warn('Could not expand table. Saving current page only.');
+if (rowCount <= 10) {
+  console.error('FAILED: Could not expand table after 5 attempts. Aborting to prevent bad data.');
+  await browser.close();
+  process.exit(1);
 }
 
 // Wait for DOM to update after expanding
-await new Promise((r) => setTimeout(r, 3000));
+await new Promise((r) => setTimeout(r, 5000));
 
 const html = await page.content();
 fs.writeFileSync(htmlPath, html, 'utf8');

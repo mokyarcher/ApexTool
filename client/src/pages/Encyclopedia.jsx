@@ -301,81 +301,101 @@ function WeaponCompare({ weapons }) {
   );
 }
 
-function WeaponRow({ weapon }) {
-  const [expanded, setExpanded] = useState(false);
+function WeaponDetailModal({ weapon, onClose }) {
+  const [visible, setVisible] = useState(false);
   const ammoStyle = AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300';
+  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
+  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
+  function close() { setVisible(false); setTimeout(onClose, 300); }
 
   return (
-    <div className="border border-white/[0.06] bg-black/40 overflow-hidden">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center gap-4 p-4 hover:bg-white/[0.03] transition-colors text-left"
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`}
+      onClick={close}
+    >
+      <div
+        className={`relative w-full max-w-lg bg-zinc-950 border border-white/[0.08] overflow-hidden transition-all duration-300 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        onClick={e => e.stopPropagation()}
       >
-        <div className="w-14 h-14 bg-zinc-800 flex-shrink-0 overflow-hidden">
-          <img
-            src={weapon.image}
-            alt={weapon.name}
-            className="w-full h-full object-contain p-1"
-            onError={e => { e.target.style.display = 'none'; }}
-          />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-white">{weapon.name}</span>
-            <span className="text-xs text-zinc-500">{weapon.nameEN}</span>
-          </div>
-          <div className="flex items-center gap-2 mt-1">
-            <span className={`text-xs px-2 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
-            <span className="text-xs text-zinc-400">
-              身体 <span className="text-white">{weapon.bodyDamage}</span>
-              {' · '}
-              爆头 <span className="text-red-400">{weapon.headDamage}</span>
-              {' · '}
-              DPS <span className="text-amber-400">{weapon.dps}</span>
-            </span>
-          </div>
-        </div>
-        {expanded ? <ChevronUp size={18} className="text-zinc-500" /> : <ChevronDown size={18} className="text-zinc-500" />}
-      </button>
+        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
+        <button className="absolute top-3 right-3 text-zinc-500 hover:text-white transition z-10" onClick={close}><X size={18} /></button>
 
-      {expanded && (
-        <div className="px-4 pb-4 border-t border-white/[0.06] pt-3">
-          <p className="text-sm text-zinc-400 mb-3">{weapon.description}</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-            <div className="bg-zinc-800/50 p-3">
-              <div className="text-xs text-zinc-500 mb-1">伤害</div>
-              <div className="text-white">
-                身体 {weapon.bodyDamage} · 头 {weapon.headDamage} · 腿 {weapon.legDamage}
-              </div>
-            </div>
-            <div className="bg-zinc-800/50 p-3">
-              <div className="text-xs text-zinc-500 mb-1">射速</div>
-              <div className="text-white">{weapon.rpm} RPM</div>
-            </div>
-            <div className="bg-zinc-800/50 p-3">
-              <div className="text-xs text-zinc-500 mb-1">弹匣容量</div>
-              <div className="text-white text-xs">
-                {weapon.magSize.base != null ? (
-                  <>
-                    <span className="text-zinc-400">基础</span> {weapon.magSize.base}
-                    {weapon.magSize.white && <> · <span className="text-zinc-300">白</span> {weapon.magSize.white}</>}
-                    {weapon.magSize.blue && <> · <span className="text-blue-400">蓝</span> {weapon.magSize.blue}</>}
-                    {weapon.magSize.purple && <> · <span className="text-purple-400">紫</span> {weapon.magSize.purple}</>}
-                  </>
-                ) : '无弹匣'}
-              </div>
-            </div>
-            <div className="bg-zinc-800/50 p-3">
-              <div className="text-xs text-zinc-500 mb-1">换弹时间</div>
-              <div className="text-white text-xs">
-                {weapon.reloadTime.tactical != null
-                  ? <>{weapon.reloadTime.tactical}s / {weapon.reloadTime.full}s</>
-                  : '无需换弹'}
-              </div>
-            </div>
+        <div className="flex gap-4 p-5 pb-4">
+          <div className="w-28 h-20 bg-zinc-900 flex-shrink-0 flex items-center justify-center">
+            <img src={weapon.image} alt={weapon.name} className="w-full h-full object-contain p-2" onError={e => { e.target.style.display = 'none'; }} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-white text-lg leading-tight">{weapon.name}</div>
+            <div className="text-xs text-zinc-500 mb-2">{weapon.nameEN}</div>
+            <span className={`text-xs px-2 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
           </div>
         </div>
-      )}
+
+        <p className="text-sm text-zinc-400 px-5 pb-4 leading-relaxed">{weapon.description}</p>
+
+        <div className="grid grid-cols-2 gap-px bg-white/[0.04] border-t border-white/[0.06]">
+          {[
+            { label: '身体伤害', value: weapon.bodyDamage, color: 'text-white' },
+            { label: '爆头伤害', value: weapon.headDamage, color: 'text-red-400' },
+            { label: '腿部伤害', value: weapon.legDamage, color: 'text-zinc-400' },
+            { label: '射速', value: `${weapon.rpm} RPM`, color: 'text-amber-400' },
+            { label: 'DPS', value: weapon.dps, color: 'text-emerald-400' },
+            { label: '换弹', value: weapon.reloadTime?.tactical != null ? `${weapon.reloadTime.tactical}s / ${weapon.reloadTime.full}s` : '无需换弹', color: 'text-blue-400' },
+          ].map(({ label, value, color }) => (
+            <div key={label} className="bg-zinc-950 px-4 py-3">
+              <div className="text-xs text-zinc-500 mb-0.5">{label}</div>
+              <div className={`font-mono font-bold ${color}`}>{value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="px-5 py-3 border-t border-white/[0.06]">
+          <div className="text-xs text-zinc-500 mb-1.5">弹匣容量</div>
+          <div className="flex gap-3 text-sm font-mono">
+            {weapon.magSize?.base != null ? (
+              <>
+                <span><span className="text-zinc-500 text-xs">基础</span> <span className="text-white">{weapon.magSize.base}</span></span>
+                {weapon.magSize.white && <span><span className="text-zinc-400 text-xs">白</span> <span className="text-zinc-200">{weapon.magSize.white}</span></span>}
+                {weapon.magSize.blue && <span><span className="text-blue-400 text-xs">蓝</span> <span className="text-blue-300">{weapon.magSize.blue}</span></span>}
+                {weapon.magSize.purple && <span><span className="text-purple-400 text-xs">紫</span> <span className="text-purple-300">{weapon.magSize.purple}</span></span>}
+              </>
+            ) : <span className="text-zinc-500">无弹匣</span>}
+          </div>
+        </div>
+
+        <div className="px-5 py-3 border-t border-white/[0.06] flex justify-end">
+          <button className="flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition" onClick={close}>
+            <span className="border border-zinc-700 px-1.5 py-0.5 text-xs">ESC</span> 关闭
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WeaponCard({ weapon, onClick }) {
+  const ammoStyle = AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300';
+  return (
+    <div
+      onClick={onClick}
+      className="group relative border border-white/[0.06] bg-black/40 overflow-hidden cursor-pointer hover:border-red-500/40 hover:bg-white/[0.03] transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-500/10"
+    >
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/40 transition-all duration-300" />
+      <div className="h-28 bg-zinc-900/60 flex items-center justify-center p-3">
+        <img src={weapon.image} alt={weapon.name} className="h-full w-full object-contain transition duration-300 group-hover:scale-105" onError={e => { e.target.style.display = 'none'; }} />
+      </div>
+      <div className="p-3 pt-2">
+        <div className="font-bold text-white text-sm leading-tight truncate">{weapon.name}</div>
+        <div className="text-[11px] text-zinc-500 mb-2 truncate">{weapon.nameEN}</div>
+        <div className="flex items-center justify-between">
+          <span className={`text-[10px] px-1.5 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
+          <span className="text-[11px] text-zinc-400 font-mono">
+            <span className="text-red-400">{weapon.headDamage}</span>
+            <span className="text-zinc-600"> / </span>
+            <span className="text-amber-400">{weapon.dps}</span>
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -388,6 +408,7 @@ export default function Encyclopedia() {
   const [roleFilter, setRoleFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [search, setSearch] = useState('');
+  const [selectedWeapon, setSelectedWeapon] = useState(null);
 
   const filteredLegends = legendsData?.legends?.filter(l => {
     if (roleFilter !== 'all' && l.role !== roleFilter) return false;
@@ -531,13 +552,14 @@ export default function Encyclopedia() {
           {weaponsLoading && <Loader />}
           {weaponsError && <ErrorBox error={weaponsError} onRetry={reloadWeapons} />}
           {!weaponsLoading && !weaponsError && (
-            <div className="space-y-2 mt-3">
-              {filteredWeapons.map(w => <WeaponRow key={w.id} weapon={w} />)}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-3">
+              {filteredWeapons.map(w => <WeaponCard key={w.id} weapon={w} onClick={() => setSelectedWeapon(w)} />)}
               {filteredWeapons.length === 0 && (
-                <div className="text-center text-zinc-500 py-12">没有匹配的武器</div>
+                <div className="col-span-full text-center text-zinc-500 py-12">没有匹配的武器</div>
               )}
             </div>
           )}
+          {selectedWeapon && <WeaponDetailModal weapon={selectedWeapon} onClose={() => setSelectedWeapon(null)} />}
         </>
       )}
 

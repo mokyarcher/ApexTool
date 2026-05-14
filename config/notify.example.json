@@ -1,0 +1,26 @@
+{
+  "_comment": "企业微信 Webhook 配置示例",
+  "email": {
+    "enabled": false,
+    "smtp": {
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "secure": false,
+      "auth": {
+        "user": "",
+        "pass": ""
+      }
+    },
+    "from": "",
+    "to": []
+  },
+  "webhook": {
+    "enabled": true,
+    "url": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=你的密钥",
+    "type": "wechat"
+  },
+  "logfile": {
+    "enabled": true,
+    "path": "/opt/projects/ApexTool/logs/notifications.log"
+  }
+}

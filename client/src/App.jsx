@@ -37,7 +37,7 @@ const navRight = [
   { to: '/encyclopedia', label: '百科', icon: BookOpen },
   { to: '/leaderboard', label: '排行榜', icon: Medal },
   { to: '/stats', label: '战绩查询', icon: Search },
-  { to: '/mbti', label: '人格测试', icon: Sparkles },
+  // { to: '/mbti', label: '人格测试', icon: Sparkles },
 ];
 
 function UserButton() {

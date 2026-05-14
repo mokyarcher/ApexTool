@@ -1,0 +1,67 @@
+[
+  {
+    "domain": "sketchfab.com",
+    "expirationDate": 1808414785.893573,
+    "hostOnly": true,
+    "httpOnly": false,
+    "name": "sb_csrftoken",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "ZqwCrZlOLvs4bIEMvk3TVbcGITPlrwo7Y0bZjx3jk831cJ7peKASk9OksBAMUnAg"
+  },
+  {
+    "domain": ".sketchfab.com",
+    "expirationDate": 1810144275,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "OptanonConsent",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": false,
+    "session": false,
+    "storeId": null,
+    "value": "isIABGlobal=false&datestamp=Wed+May+13+2026+01%3A51%3A15+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=6.34.0&hosts=&consentId=9e4d1de9-d6ee-4d6a-bff2-b27d14ec904a&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A0&AwaitingReconsent=false"
+  },
+  {
+    "domain": ".sketchfab.com",
+    "expirationDate": 1778954093,
+    "hostOnly": false,
+    "httpOnly": false,
+    "name": "aws-waf-token",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "e35cafba-6c2f-4834-bd2b-dfc0e2ff3124:NgoAiBF8jqcMAAAA:ekMPFvPI+TPw8U2xkCo6b+YsS1QG4Hx7wAqF/wd3WEIwWuH3Sty9ZbsUTndRXZFtcnHG4RVKsoUGwQcZwLfxD6gAoiA4ySPGmTj/2MXXr7WkxRuob/wfc9KQlDpiw8DT1SMLEr9wtPPSJeAQ/QLniwnATyjCPdv5zVyCenEpOYSSeSMB16w/eIosDjiS3Um9I4GgIPKH89LRPtHVFo0wTCjuvkUy+IjoLhwatLm/7fndItH8Z02uWEmMoEYq8JzW+WchMg=="
+  },
+  {
+    "domain": "sketchfab.com",
+    "expirationDate": 1808501185.893696,
+    "hostOnly": true,
+    "httpOnly": true,
+    "name": "sb_sessionid",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "zfbtujbuqhw8nk4nygvzow6izrvw2wyi"
+  },
+  {
+    "domain": "sketchfab.com",
+    "expirationDate": 1808661410,
+    "hostOnly": true,
+    "httpOnly": false,
+    "name": "sf_getting_started_closed",
+    "path": "/",
+    "sameSite": null,
+    "secure": true,
+    "session": false,
+    "storeId": null,
+    "value": "true"
+  }
+]
