@@ -88,13 +88,18 @@ async function checkHealth() {
   };
 }
 
+function toBJ(iso) {
+  if (!iso) return 'N/A';
+  return new Date(iso).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+}
+
 // 执行检查
 const result = await checkHealth();
 
 console.log('🏥 排行榜数据健康检查\n');
 console.log(`状态: ${result.healthy ? '✅ 健康' : '❌ 异常'}`);
 console.log(`玩家数: ${result.stats.playerCount}`);
-console.log(`更新时间: ${result.stats.importedAt || 'N/A'}`);
+console.log(`更新时间: ${toBJ(result.stats.importedAt)}`);
 console.log(`最高分: ${result.stats.topRP.toLocaleString()} RP`);
 
 if (result.issues.length > 0) {
@@ -103,7 +108,7 @@ if (result.issues.length > 0) {
   console.log('\n💡 建议: 运行更新脚本重新获取数据');
 
   // 发送通知
-  const message = `玩家数: ${result.stats.playerCount}\n更新时间: ${result.stats.importedAt || 'N/A'}\n最高分: ${result.stats.topRP.toLocaleString()} RP\n\n问题:\n${result.issues.join('\n')}`;
+  const message = `玩家数: ${result.stats.playerCount}\n更新时间: ${toBJ(result.stats.importedAt)}\n最高分: ${result.stats.topRP.toLocaleString()} RP\n\n问题:\n${result.issues.join('\n')}`;
   await notify('🚨 Apex排行榜数据异常', message);
 
   process.exit(1);  // 异常退出码，可用于监控告警
