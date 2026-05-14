@@ -203,9 +203,6 @@ function WeaponDetail({ weapon, onClose, onViewModel }) {
               <div className="text-[10px] tracking-[0.3em] text-red-400/80 font-bold uppercase">{CATEGORIES.find(c => c.id === weapon.category)?.label}</div>
               <h2 className="font-display text-2xl text-white mt-1">{weapon.name}</h2>
             </div>
-            <div className="ml-auto flex items-center gap-3 text-sm">
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 text-zinc-400 text-xs">{skins.length} 款皮肤</span>
-            </div>
           </div>
         </div>
 
