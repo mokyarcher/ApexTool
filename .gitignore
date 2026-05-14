@@ -14,3 +14,5 @@ server/debug-*.html
 # Leaderboard temp HTML (source for import script)
 leaderboard.html
 leaderboard_files/
+# Downloaded model zips
+downloads/
