@@ -1,6 +1,6 @@
 {
-  "name": "余震里程碑收集",
-  "nameEN": "Aftershock Milestone Collection",
+  "name": "超频赛季收集",
+  "nameEN": "Overclock Season Collection",
   "startDate": "2026-04-16T00:00:00+08:00",
   "durationDays": 20,
   "banner": "/shop/milestone/banner.jpg",
@@ -56,7 +56,7 @@
     }
   ],
   "detail": {
-    "title": "余震逆转突击",
+    "title": "超频赛季收集",
     "subtitle": "里程碑衣服",
     "icon": "/shop/milestone/icon.jpg",
     "bundleContents": [
