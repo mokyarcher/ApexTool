@@ -480,7 +480,7 @@ export default function Encyclopedia() {
   const { data: weaponsData, loading: weaponsLoading, error: weaponsError, reload: reloadWeapons } = useFetch(api.weapons);
 
   const [roleFilter, setRoleFilter] = useState('all');
-  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [categoryFilter, setCategoryFilter] = useState('ar');
   const [search, setSearch] = useState('');
   const [selectedWeapon, setSelectedWeapon] = useState(null);
   const [hoverWeapon, setHoverWeapon] = useState(null);
@@ -594,16 +594,6 @@ export default function Encyclopedia() {
 
         {tab === 'weapons' && (
           <div className="flex items-center gap-2 flex-wrap">
-            <button
-              onClick={() => setCategoryFilter('all')}
-              className={`px-3 py-1 text-xs transition-all ${
-                categoryFilter === 'all'
-                  ? 'bg-white/10 text-white border border-white/20'
-                  : 'text-zinc-500 hover:text-zinc-300 border border-transparent'
-              }`}
-            >
-              全部
-            </button>
             {categories.map(c => (
               <button
                 key={c.id}
