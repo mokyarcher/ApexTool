@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react';
 import { BookOpen, Swords, Shield, Zap, Clock, ChevronDown, ChevronUp, Crosshair, Target, Gauge, GitCompareArrows, X } from 'lucide-react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
@@ -306,31 +306,30 @@ function WeaponPopover({ weapon, anchor }) {
   const popRef = useRef(null);
   const [pos, setPos] = useState(null);
 
-  // Calculate position whenever weapon/anchor changes
-  const updatePos = useCallback(() => {
+  // Reset pos when anchor changes so we remeasure
+  const anchorKey = anchor ? `${anchor.top}-${anchor.left}-${anchor.right}-${anchor.bottom}` : null;
+
+  useLayoutEffect(() => {
     if (!anchor || !popRef.current) return;
-    const popH = popRef.current.offsetHeight;
-    const popW = popRef.current.offsetWidth;
+    const el = popRef.current;
+    const popH = el.offsetHeight;
+    const popW = el.offsetWidth;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const gap = 12;
 
-    // Prefer right side; if not enough space, show on left
-    let left, side;
+    let left;
     if (anchor.right + gap + popW + 8 < vw) {
       left = anchor.right + gap;
-      side = 'right';
     } else {
       left = anchor.left - popW - gap;
-      side = 'left';
     }
 
-    // Vertically center on the card, clamp to viewport
     let top = anchor.top + anchor.height / 2 - popH / 2;
     top = Math.max(8, Math.min(top, vh - popH - 8));
 
-    setPos({ top, left, side });
-  }, [anchor]);
+    setPos({ top, left });
+  }, [anchorKey]);
 
   if (!weapon || !anchor) return null;
 
@@ -340,9 +339,9 @@ function WeaponPopover({ weapon, anchor }) {
 
   return (
     <div
-      ref={el => { popRef.current = el; if (el && !pos) updatePos(); }}
+      ref={popRef}
       className="fixed z-50 w-[320px] border border-white/[0.08] bg-zinc-950 shadow-xl shadow-black/50 overflow-hidden pointer-events-none"
-      style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999, maxHeight: 'calc(100vh - 16px)', opacity: pos ? 1 : 0, transition: 'opacity 0.15s ease-out' }}
+      style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999, maxHeight: 'calc(100vh - 16px)', opacity: pos ? 1 : 0, transition: 'opacity 0.12s ease-out' }}
     >
       {/* Top accent line */}
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
