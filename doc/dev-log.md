@@ -1169,6 +1169,30 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 
 ---
 
+## 2026-05-15 R-99 武器皮肤图源与模型更新
+
+### R-99 皮肤缩略图
+
+- 新增 R-99 12 个皮肤真实缩略图资源
+- `WeaponSkins.jsx` 中 R-99 皮肤卡片从通用 `/weapons/r99.png` 改为各自皮肤图
+- 修正 `solar-lare.jpg` 文件名为 `solar-flare.jpg`
+
+### R-99 Solar Flare 模型压缩
+
+- 新增/更新 `solar-flare.glb`
+- 使用 `gltf-transform optimize --texture-compress webp --texture-size 1024` 压缩
+- 模型体积从约 16.77MB 压缩到约 1.19MB
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `client/src/pages/WeaponSkins.jsx` | R-99 皮肤缩略图路径更新 |
+| `client/public/weapons/r99/skins/` | 新增 12 张 R-99 皮肤缩略图 |
+| `client/public/weapons/r99/glb/solar-flare.glb` | 新增压缩后的 Solar Flare 模型 |
+
+---
+
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）
