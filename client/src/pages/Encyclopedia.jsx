@@ -340,7 +340,7 @@ function WeaponPopover({ weapon, anchor }) {
   return (
     <div
       ref={popRef}
-      className="fixed z-50 w-[320px] border border-red-500/30 bg-[#111113] rounded shadow-[0_0_30px_rgba(218,41,42,0.15),0_8px_32px_rgba(0,0,0,0.7)] overflow-hidden pointer-events-none ring-1 ring-red-500/10"
+      className="fixed z-50 w-[320px] border border-red-500/30 bg-[#1a1a1f] rounded shadow-[0_0_30px_rgba(218,41,42,0.15),0_8px_32px_rgba(0,0,0,0.7)] overflow-hidden pointer-events-none ring-1 ring-red-500/10"
       style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999, maxHeight: 'calc(100vh - 16px)', opacity: pos ? 1 : 0, transition: 'opacity 0.12s ease-out' }}
     >
       {/* Top accent line */}
@@ -451,7 +451,7 @@ function WeaponCard({ weapon, isActive, onHover, onLeave }) {
       onMouseEnter={handleEnter}
       onMouseLeave={onLeave}
       className={`group relative border bg-black/40 overflow-hidden cursor-default transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-500/10 ${
-        isActive ? 'border-red-500/50 bg-white/[0.04] shadow-lg shadow-red-500/10' : 'border-white/[0.06] hover:border-red-500/40 hover:bg-white/[0.03]'
+        isActive ? 'border-red-500/50 bg-[#1a1a1f] shadow-lg shadow-red-500/10' : 'border-white/[0.06] hover:border-red-500/40 hover:bg-white/[0.03]'
       }`}
     >
       <div className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent to-transparent transition-all duration-300 ${isActive ? 'via-red-500/60' : 'via-red-500/0 group-hover:via-red-500/40'}`} />
