@@ -1109,6 +1109,34 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 
 ---
 
+## 2025-05-15 百科武器数据 - 悬浮详情优化
+
+### 武器数据展示改为悬浮弹出框
+
+- 移除原有点击弹出模态框（`WeaponDetailModal`），改为鼠标悬停卡片时在旁边弹出详情面板
+- `WeaponPopover` 使用 `position: fixed` + `getBoundingClientRect()` 自适应定位
+  - 优先显示在卡片右侧，空间不足时切到左侧
+  - 垂直居中对齐卡片，clamp 到视口边界
+  - `pointer-events-none` 不阻挡其他卡片悬停
+  - `animate-fade-in` 入场动画 + 毛玻璃背景
+- 卡牌网格恢复满宽 5 列布局
+
+### 武器 Tips 数据
+
+- `weapons.json` 新增 `tips` 字段（29 把武器），包含：
+  - `phase`（适用阶段）、`scene`（最佳场景）、`recoil`（后坐力评级）
+  - `tier`（S/A/B/C 强度评级）、`tip`（战术使用建议）
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `server/data/weapons.json` | 29 把武器新增 tips 字段 |
+| `client/src/pages/Encyclopedia.jsx` | WeaponDetailModal → WeaponPopover 悬浮弹出 |
+| `client/tailwind.config.js` | 新增 animate-fade-in 动画 |
+
+---
+
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）

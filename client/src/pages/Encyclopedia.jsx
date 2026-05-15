@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { BookOpen, Swords, Shield, Zap, Clock, ChevronDown, ChevronUp, Crosshair, Target, Gauge, GitCompareArrows, X } from 'lucide-react';
 import { api } from '../api.js';
 import { useFetch } from '../hooks/useFetch.js';
@@ -301,95 +301,174 @@ function WeaponCompare({ weapons }) {
   );
 }
 
-function WeaponDetailModal({ weapon, onClose }) {
-  const [visible, setVisible] = useState(false);
+/* ── Floating Weapon Detail Popover ── */
+function WeaponPopover({ weapon, anchor }) {
+  const popRef = useRef(null);
+  const [pos, setPos] = useState({ top: 0, left: 0, side: 'right' });
+
+  // Calculate position whenever weapon/anchor changes
+  const updatePos = useCallback(() => {
+    if (!anchor || !popRef.current) return;
+    const popH = popRef.current.offsetHeight;
+    const popW = popRef.current.offsetWidth;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const gap = 12;
+
+    // Prefer right side; if not enough space, show on left
+    let left, side;
+    if (anchor.right + gap + popW + 8 < vw) {
+      left = anchor.right + gap;
+      side = 'right';
+    } else {
+      left = anchor.left - popW - gap;
+      side = 'left';
+    }
+
+    // Vertically center on the card, clamp to viewport
+    let top = anchor.top + anchor.height / 2 - popH / 2;
+    top = Math.max(8, Math.min(top, vh - popH - 8));
+
+    setPos({ top, left, side });
+  }, [anchor]);
+
+  // Recalc on mount and when anchor changes
+  useRef(null); // force fresh ref
+  if (popRef.current) updatePos();
+
+  if (!weapon || !anchor) return null;
+
   const ammoStyle = AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300';
-  useEffect(() => { const h = (e) => { if (e.key === 'Escape') close(); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
-  useEffect(() => { requestAnimationFrame(() => setVisible(true)); }, []);
-  function close() { setVisible(false); setTimeout(onClose, 300); }
+  const tierColors = { S: 'text-red-400 bg-red-500/15 border-red-500/40', A: 'text-amber-400 bg-amber-500/15 border-amber-500/40', B: 'text-blue-400 bg-blue-500/15 border-blue-500/40', C: 'text-zinc-400 bg-zinc-500/15 border-zinc-500/40' };
+  const tierStyle = tierColors[weapon.tips?.tier] || tierColors.B;
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'}`}
-      onClick={close}
+      ref={el => { popRef.current = el; if (el) updatePos(); }}
+      className="fixed z-50 w-[320px] border border-white/[0.08] bg-zinc-950/95 backdrop-blur-xl shadow-2xl shadow-black/60 overflow-hidden animate-fade-in pointer-events-none"
+      style={{ top: pos.top, left: pos.left, maxHeight: 'calc(100vh - 16px)' }}
     >
-      <div
-        className={`relative w-full max-w-lg bg-zinc-950 border border-white/[0.08] overflow-hidden transition-all duration-300 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
-        <button className="absolute top-3 right-3 text-zinc-500 hover:text-white transition z-10" onClick={close}><X size={18} /></button>
+      {/* Top accent line */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
 
-        <div className="flex gap-4 p-5 pb-4">
-          <div className="w-28 h-20 bg-zinc-900 flex-shrink-0 flex items-center justify-center">
-            <img src={weapon.image} alt={weapon.name} className="w-full h-full object-contain p-2" onError={e => { e.target.style.display = 'none'; }} />
+      {/* Header */}
+      <div className="p-4 pb-3 bg-gradient-to-b from-zinc-900/60 to-transparent">
+        <div className="flex items-start gap-3">
+          <div className="w-20 h-14 bg-zinc-900/80 flex-shrink-0 flex items-center justify-center border border-white/[0.05]">
+            <img src={weapon.image} alt={weapon.name} className="w-full h-full object-contain p-1" onError={e => { e.target.style.display = 'none'; }} />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-bold text-white text-lg leading-tight">{weapon.name}</div>
-            <div className="text-xs text-zinc-500 mb-2">{weapon.nameEN}</div>
-            <span className={`text-xs px-2 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
-          </div>
-        </div>
-
-        <p className="text-sm text-zinc-400 px-5 pb-4 leading-relaxed">{weapon.description}</p>
-
-        <div className="grid grid-cols-2 gap-px bg-white/[0.04] border-t border-white/[0.06]">
-          {[
-            { label: '身体伤害', value: weapon.bodyDamage, color: 'text-white' },
-            { label: '爆头伤害', value: weapon.headDamage, color: 'text-red-400' },
-            { label: '腿部伤害', value: weapon.legDamage, color: 'text-zinc-400' },
-            { label: '射速', value: `${weapon.rpm} RPM`, color: 'text-amber-400' },
-            { label: 'DPS', value: weapon.dps, color: 'text-emerald-400' },
-            { label: '换弹', value: weapon.reloadTime?.tactical != null ? `${weapon.reloadTime.tactical}s / ${weapon.reloadTime.full}s` : '无需换弹', color: 'text-blue-400' },
-          ].map(({ label, value, color }) => (
-            <div key={label} className="bg-zinc-950 px-4 py-3">
-              <div className="text-xs text-zinc-500 mb-0.5">{label}</div>
-              <div className={`font-mono font-bold ${color}`}>{value}</div>
+            <div className="font-bold text-white text-base leading-tight">{weapon.name}</div>
+            <div className="text-[11px] text-zinc-500">{weapon.nameEN}</div>
+            <div className="flex items-center gap-2 mt-1.5">
+              <span className={`text-[10px] px-1.5 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
+              {weapon.tips?.tier && <span className={`text-[10px] px-1.5 py-0.5 font-bold border ${tierStyle}`}>Tier {weapon.tips.tier}</span>}
             </div>
-          ))}
-        </div>
-
-        <div className="px-5 py-3 border-t border-white/[0.06]">
-          <div className="text-xs text-zinc-500 mb-1.5">弹匣容量</div>
-          <div className="flex gap-3 text-sm font-mono">
-            {weapon.magSize?.base != null ? (
-              <>
-                <span><span className="text-zinc-500 text-xs">基础</span> <span className="text-white">{weapon.magSize.base}</span></span>
-                {weapon.magSize.white && <span><span className="text-zinc-400 text-xs">白</span> <span className="text-zinc-200">{weapon.magSize.white}</span></span>}
-                {weapon.magSize.blue && <span><span className="text-blue-400 text-xs">蓝</span> <span className="text-blue-300">{weapon.magSize.blue}</span></span>}
-                {weapon.magSize.purple && <span><span className="text-purple-400 text-xs">紫</span> <span className="text-purple-300">{weapon.magSize.purple}</span></span>}
-              </>
-            ) : <span className="text-zinc-500">无弹匣</span>}
           </div>
         </div>
+      </div>
 
-        <div className="px-5 py-3 border-t border-white/[0.06] flex justify-end">
-          <button className="flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition" onClick={close}>
-            <span className="border border-zinc-700 px-1.5 py-0.5 text-xs">ESC</span> 关闭
-          </button>
+      {/* Core stats */}
+      <div className="grid grid-cols-3 gap-px bg-white/[0.04] border-t border-b border-white/[0.06]">
+        {[
+          { label: '身体', value: weapon.bodyDamage, color: 'text-white' },
+          { label: '爆头', value: weapon.headDamage, color: 'text-red-400' },
+          { label: '腿部', value: weapon.legDamage, color: 'text-zinc-400' },
+          { label: '射速', value: weapon.rpm, color: 'text-amber-400' },
+          { label: 'DPS', value: weapon.dps, color: 'text-emerald-400' },
+          { label: '换弹', value: weapon.reloadTime?.tactical != null ? `${weapon.reloadTime.tactical}s` : '-', color: 'text-blue-400' },
+        ].map(({ label, value, color }) => (
+          <div key={label} className="bg-zinc-950 px-3 py-2 text-center">
+            <div className="text-[10px] text-zinc-500">{label}</div>
+            <div className={`font-mono font-bold text-sm ${color}`}>{value}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Mag size */}
+      <div className="px-4 py-2.5 border-b border-white/[0.06]">
+        <div className="text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">弹匣容量</div>
+        {weapon.magSize?.base != null ? (
+          <div className="flex items-center gap-2">
+            {[
+              { label: '基础', value: weapon.magSize.base, color: 'bg-zinc-500' },
+              { label: '白', value: weapon.magSize.white, color: 'bg-zinc-300' },
+              { label: '蓝', value: weapon.magSize.blue, color: 'bg-blue-400' },
+              { label: '紫', value: weapon.magSize.purple, color: 'bg-purple-400' },
+            ].filter(m => m.value != null).map(m => (
+              <div key={m.label} className="flex-1 text-center">
+                <div className="h-1.5 rounded-full mb-1" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                  <div className={`h-full rounded-full ${m.color}`} style={{ width: `${Math.min(100, (m.value / 50) * 100)}%` }} />
+                </div>
+                <div className="text-[10px] text-zinc-500">{m.label}</div>
+                <div className="text-xs font-mono text-zinc-200">{m.value}</div>
+              </div>
+            ))}
+          </div>
+        ) : <div className="text-xs text-zinc-500">无弹匣</div>}
+      </div>
+
+      {/* Tips */}
+      {weapon.tips && (
+        <div className="px-4 py-2.5 border-b border-white/[0.06]">
+          <div className="text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">战术建议</div>
+          <div className="grid grid-cols-3 gap-1.5 mb-2">
+            {[
+              { label: '阶段', value: weapon.tips.phase },
+              { label: '场景', value: weapon.tips.scene },
+              { label: '后坐力', value: weapon.tips.recoil },
+            ].map(t => (
+              <div key={t.label} className="bg-zinc-900/60 border border-white/[0.04] px-2 py-1">
+                <div className="text-[9px] text-zinc-600">{t.label}</div>
+                <div className="text-[11px] text-zinc-200 font-medium">{t.value}</div>
+              </div>
+            ))}
+          </div>
+          <div className="text-[11px] text-zinc-300 leading-relaxed bg-zinc-900/40 border border-white/[0.04] px-2.5 py-1.5">
+            <span className="text-red-400 font-bold mr-1">TIP</span> {weapon.tips.tip}
+          </div>
         </div>
+      )}
+
+      {/* Description */}
+      <div className="px-4 py-2.5">
+        <div className="text-[10px] text-zinc-500 mb-1 uppercase tracking-wider">武器简介</div>
+        <p className="text-[11px] text-zinc-400 leading-relaxed">{weapon.description}</p>
+        {weapon.note && <p className="text-[10px] text-amber-400/80 mt-1.5 border-l-2 border-amber-500/40 pl-2">{weapon.note}</p>}
       </div>
     </div>
   );
 }
 
-function WeaponCard({ weapon, onClick }) {
+function WeaponCard({ weapon, isActive, onHover, onLeave }) {
+  const cardRef = useRef(null);
   const ammoStyle = AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300';
+
+  const handleEnter = () => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    onHover(weapon, { top: rect.top, left: rect.left, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height });
+  };
+
   return (
     <div
-      onClick={onClick}
-      className="group relative border border-white/[0.06] bg-black/40 overflow-hidden cursor-pointer hover:border-red-500/40 hover:bg-white/[0.03] transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-500/10"
+      ref={cardRef}
+      onMouseEnter={handleEnter}
+      onMouseLeave={onLeave}
+      className={`group relative border bg-black/40 overflow-hidden cursor-default transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-500/10 ${
+        isActive ? 'border-red-500/50 bg-white/[0.04] shadow-lg shadow-red-500/10' : 'border-white/[0.06] hover:border-red-500/40 hover:bg-white/[0.03]'
+      }`}
     >
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/40 transition-all duration-300" />
-      <div className="h-28 bg-zinc-900/60 flex items-center justify-center p-3">
+      <div className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent to-transparent transition-all duration-300 ${isActive ? 'via-red-500/60' : 'via-red-500/0 group-hover:via-red-500/40'}`} />
+      <div className="h-24 bg-zinc-900/60 flex items-center justify-center p-2.5">
         <img src={weapon.image} alt={weapon.name} className="h-full w-full object-contain transition duration-300 group-hover:scale-105" onError={e => { e.target.style.display = 'none'; }} />
       </div>
-      <div className="p-3 pt-2">
-        <div className="font-bold text-white text-sm leading-tight truncate">{weapon.name}</div>
-        <div className="text-[11px] text-zinc-500 mb-2 truncate">{weapon.nameEN}</div>
+      <div className="p-2.5 pt-2">
+        <div className="font-bold text-white text-xs leading-tight truncate">{weapon.name}</div>
+        <div className="text-[10px] text-zinc-500 mb-1.5 truncate">{weapon.nameEN}</div>
         <div className="flex items-center justify-between">
-          <span className={`text-[10px] px-1.5 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
-          <span className="text-[11px] text-zinc-400 font-mono">
+          <span className={`text-[9px] px-1.5 py-0.5 ${ammoStyle}`}>{weapon.ammoType}</span>
+          <span className="text-[10px] text-zinc-400 font-mono">
             <span className="text-red-400">{weapon.headDamage}</span>
             <span className="text-zinc-600"> / </span>
             <span className="text-amber-400">{weapon.dps}</span>
@@ -409,6 +488,22 @@ export default function Encyclopedia() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [search, setSearch] = useState('');
   const [selectedWeapon, setSelectedWeapon] = useState(null);
+  const [hoverWeapon, setHoverWeapon] = useState(null);
+  const [hoverAnchor, setHoverAnchor] = useState(null);
+  const hoverTimer = useRef(null);
+
+  const handleWeaponHover = useCallback((weapon, anchor) => {
+    clearTimeout(hoverTimer.current);
+    setHoverWeapon(weapon);
+    setHoverAnchor(anchor);
+  }, []);
+
+  const handleWeaponLeave = useCallback(() => {
+    hoverTimer.current = setTimeout(() => {
+      setHoverWeapon(null);
+      setHoverAnchor(null);
+    }, 80);
+  }, []);
 
   const filteredLegends = legendsData?.legends?.filter(l => {
     if (roleFilter !== 'all' && l.role !== roleFilter) return false;
@@ -553,13 +648,15 @@ export default function Encyclopedia() {
           {weaponsError && <ErrorBox error={weaponsError} onRetry={reloadWeapons} />}
           {!weaponsLoading && !weaponsError && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-3">
-              {filteredWeapons.map(w => <WeaponCard key={w.id} weapon={w} onClick={() => setSelectedWeapon(w)} />)}
+              {filteredWeapons.map(w => (
+                <WeaponCard key={w.id} weapon={w} isActive={hoverWeapon?.id === w.id} onHover={handleWeaponHover} onLeave={handleWeaponLeave} />
+              ))}
               {filteredWeapons.length === 0 && (
                 <div className="col-span-full text-center text-zinc-500 py-12">没有匹配的武器</div>
               )}
             </div>
           )}
-          {selectedWeapon && <WeaponDetailModal weapon={selectedWeapon} onClose={() => setSelectedWeapon(null)} />}
+          <WeaponPopover weapon={hoverWeapon} anchor={hoverAnchor} />
         </>
       )}
 
