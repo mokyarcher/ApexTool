@@ -340,7 +340,7 @@ function WeaponPopover({ weapon, anchor }) {
   return (
     <div
       ref={popRef}
-      className="fixed z-50 w-[320px] border border-white/[0.08] bg-zinc-950 shadow-xl shadow-black/50 overflow-hidden pointer-events-none"
+      className="fixed z-50 w-[320px] border border-red-500/30 bg-[#111113] rounded shadow-[0_0_30px_rgba(218,41,42,0.15),0_8px_32px_rgba(0,0,0,0.7)] overflow-hidden pointer-events-none ring-1 ring-red-500/10"
       style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999, maxHeight: 'calc(100vh - 16px)', opacity: pos ? 1 : 0, transition: 'opacity 0.12s ease-out' }}
     >
       {/* Top accent line */}
