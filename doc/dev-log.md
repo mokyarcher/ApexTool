@@ -1225,6 +1225,38 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 
 ---
 
+## 2026-05-15 Solar Flare GLB 加载兼容性修复
+
+### 问题原因
+
+- `solar-flare.glb` 文件实际存在，浏览器请求也不是 404
+- 前端显示“模型文件正在路上”的原因是 `model-viewer` 触发加载错误
+- 上一次使用 `gltf-transform optimize` 压缩时引入了 `EXT_meshopt_compression`
+- 当前项目的 `model-viewer` 环境对该扩展兼容性不好，导致模型请求成功但解析失败
+
+### 修复方式
+
+- 使用备份原模型 `solar-flare-bak.glb` 重新压缩
+- 先通过 `gltf-transform resize` 将纹理限制到 1024
+- 再通过 `gltf-transform webp` 进行 WebP 纹理压缩
+- 压缩后 `solar-flare.glb` 从约 16MB 降至约 2.3MB
+- 新模型扩展与其他可正常加载的 R-99 模型保持一致，仅要求 `EXT_texture_webp`
+
+### 后续注意
+
+- 武器 GLB 模型压缩不要直接使用 `gltf-transform optimize`
+- 压缩后必须检查 `extensionsUsed` 和 `extensionsRequired`
+- 避免生成带 `EXT_meshopt_compression` 的模型文件
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `client/public/weapons/r99/glb/solar-flare.glb` | 重新生成兼容版压缩模型 |
+| `client/src/pages/WeaponSkins.jsx` | 保留 R-99 模型默认侧面展示视角 |
+
+---
+
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）

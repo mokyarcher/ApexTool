@@ -223,7 +223,7 @@ function ModelViewer({ skin, onClose }) {
             alt={skin.name}
             camera-controls
             orientation="90deg 0deg 90deg"
-            camera-orbit="0deg 75deg auto"
+            camera-orbit="0deg 82deg 105%"
             shadow-intensity="1.2"
             shadow-softness="0.8"
             exposure="1.3"
