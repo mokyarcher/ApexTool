@@ -1193,6 +1193,22 @@ JSON 从 4 项扩充至 10 项，根据实际图片素材补全：
 
 ---
 
+## 2026-05-15 武器皮肤 3D 查看器默认姿态优化
+
+### 默认模型展示角度
+
+- `model-viewer` 新增默认 `orientation="0deg 0deg -90deg"`
+- 新增 `camera-orbit="90deg 75deg auto"`，让武器进入查看器时更接近横向平放展示
+- 不修改 GLB 模型文件本身，仅调整前端默认展示姿态
+
+### 涉及文件
+
+| 文件 | 改动 |
+|------|------|
+| `client/src/pages/WeaponSkins.jsx` | 调整武器 3D 查看器默认 orientation 和 camera-orbit |
+
+---
+
 - [ ] 战绩查询 - 排位分历史曲线图（Match History / RP 趋势折线图）
 - [ ] 战绩查询 - 赛季进度对比（Progression，按赛季 split 对比排位变化）
 - [ ] 战绩查询 - 统计图表（各传奇游戏时长/使用率、排位/等级变化、胜率/选取率）
