@@ -304,7 +304,7 @@ function WeaponCompare({ weapons }) {
 /* ── Floating Weapon Detail Popover ── */
 function WeaponPopover({ weapon, anchor }) {
   const popRef = useRef(null);
-  const [pos, setPos] = useState({ top: 0, left: 0, side: 'right' });
+  const [pos, setPos] = useState(null);
 
   // Calculate position whenever weapon/anchor changes
   const updatePos = useCallback(() => {
@@ -332,10 +332,6 @@ function WeaponPopover({ weapon, anchor }) {
     setPos({ top, left, side });
   }, [anchor]);
 
-  // Recalc on mount and when anchor changes
-  useRef(null); // force fresh ref
-  if (popRef.current) updatePos();
-
   if (!weapon || !anchor) return null;
 
   const ammoStyle = AMMO_STYLE[weapon.ammoType] || 'bg-zinc-500/20 text-zinc-300';
@@ -344,9 +340,9 @@ function WeaponPopover({ weapon, anchor }) {
 
   return (
     <div
-      ref={el => { popRef.current = el; if (el) updatePos(); }}
-      className="fixed z-50 w-[320px] border border-white/[0.08] bg-zinc-950/95 backdrop-blur-xl shadow-2xl shadow-black/60 overflow-hidden animate-fade-in pointer-events-none"
-      style={{ top: pos.top, left: pos.left, maxHeight: 'calc(100vh - 16px)' }}
+      ref={el => { popRef.current = el; if (el && !pos) updatePos(); }}
+      className="fixed z-50 w-[320px] border border-white/[0.08] bg-zinc-950 shadow-xl shadow-black/50 overflow-hidden pointer-events-none"
+      style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999, maxHeight: 'calc(100vh - 16px)', opacity: pos ? 1 : 0, transition: 'opacity 0.15s ease-out' }}
     >
       {/* Top accent line */}
       <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
