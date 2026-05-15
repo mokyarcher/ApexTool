@@ -479,7 +479,7 @@ export default function Encyclopedia() {
   const { data: legendsData, loading: legendsLoading, error: legendsError, reload: reloadLegends } = useFetch(api.legends);
   const { data: weaponsData, loading: weaponsLoading, error: weaponsError, reload: reloadWeapons } = useFetch(api.weapons);
 
-  const [roleFilter, setRoleFilter] = useState('all');
+  const [roleFilter, setRoleFilter] = useState('突击手');
   const [categoryFilter, setCategoryFilter] = useState('ar');
   const [search, setSearch] = useState('');
   const [selectedWeapon, setSelectedWeapon] = useState(null);
@@ -512,7 +512,7 @@ export default function Encyclopedia() {
     return true;
   }) || [];
 
-  const roles = ['all', '突击手', '空袭手', '侦察兵', '支援', '控场手'];
+  const roles = ['突击手', '空袭手', '侦察兵', '支援', '控场手'];
   const categories = weaponsData?.categories || [];
 
   return (
@@ -585,7 +585,7 @@ export default function Encyclopedia() {
                     : 'text-zinc-500 hover:text-zinc-300 border border-transparent'
                 }`}
               >
-                {r === 'all' ? '全部' : r}
+                {r}
               </button>
             ))}
             <span className="text-xs text-zinc-600 ml-2">{filteredLegends.length} 个角色</span>
